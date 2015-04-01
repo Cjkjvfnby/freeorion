@@ -16,6 +16,7 @@ data = [
 ]
 
 for source in data:
+    print source
     full = 'full_file_' + source
     make_copy(source, full, add_english=True, remove_same=False)
-    # make_copy(full, source, add_english=False, remove_same=True)
+    make_copy(full, source, add_english=False, remove_same=True)
