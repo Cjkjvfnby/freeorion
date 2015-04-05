@@ -138,10 +138,11 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
 
                 if not is_value:
                     is_key = False
+                    value = normalize_value(value)
 
                     if key in other:
                         if remove_same:
-                            if value == other[key]:
+                            if value == normalize_value(other[key]):
                                 continue
                         result.append(key)
                         result.append(normalize_value(other[key]))
@@ -150,7 +151,7 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
                             result.pop()
                         if add_english:
                             result.append(key)
-                            result.append(normalize_value(value))
+                            result.append(value)
 
     # add new line at end of file
     if result[-1]:
