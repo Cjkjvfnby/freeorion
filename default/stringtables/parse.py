@@ -152,6 +152,10 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
                             result.append(key)
                             result.append(normalize_value(value))
 
+    # add new line at end of file
+    if result[-1]:
+        result.append('')
+
     with open(result_path, 'w') as f:
         f.write('\n'.join(result))
     parse(result_path)
