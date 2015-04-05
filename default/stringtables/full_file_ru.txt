@@ -167,7 +167,7 @@ DUMP
 Дамп данных для отладки
 
 UNOWNED
-Бесхозный 
+'''Бесхозный '''
 NOWHERE
 Cannot be produced
 
@@ -413,27 +413,27 @@ SM_MONSTER
 SM_KRILL_1
 Маленький рой космического планктона
 SM_KRILL_1_DESC
-'''Космический планктон - это маленькие непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. Не агрессивны. Являются препятствием для навигации кораблей. Стремительно размножаются в поясах астероидов.'''
+Космический планктон - это маленькие непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. Не агрессивны. Являются препятствием для навигации кораблей. Стремительно размножаются в поясах астероидов.
 
 SM_KRILL_2
 Рой космического планктона
 SM_KRILL_2_DESC
-'''Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. Не агрессивны. Являются препятствием для навигации кораблей. Стремительно размножаются в поясах астероидов.'''
+Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. Не агрессивны. Являются препятствием для навигации кораблей. Стремительно размножаются в поясах астероидов.
 
 SM_KRILL_3
 Большой рой космического планктона
 SM_KRILL_3_DESC
-'''Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. В больших количествах пытаются съесть корабли. Являются препятствием для навигации. Стремительно размножаются в поясах астероидов.'''
+Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. В больших количествах пытаются съесть корабли. Являются препятствием для навигации. Стремительно размножаются в поясах астероидов.
 
 SM_KRILL_4
 Тьма космического планктона
 SM_KRILL_4_DESC
-'''Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. При достижении максимума популяции (десятки миллионов особей) беспощадно нападают на корабли и сжирают космические постройки. Являются препятствием для навигации кораблей. Стремительно размножаются в местах со слабой гравитацией, например в поясах астероидов.'''
+Космический планктон - это маленькие, непонятные насекомые, обитающие в пылевых облаках и астероидах. Они общаются с помощью световых импульсов, координируя действия всего роя. При достижении максимума популяции (десятки миллионов особей) беспощадно нападают на корабли и сжирают космические постройки. Являются препятствием для навигации кораблей. Стремительно размножаются в местах со слабой гравитацией, например в поясах астероидов.
 
 SM_TREE
 Космический лес
 SM_TREE_DESC
-'''Космический лес состоит из нескольких "деревьев" с волокнистыми кронами, которые, разрастаясь, образуют кокон вокруг звезды системы. Космический лес является препятствием для навигации и разрастаясь может перекинуться на соседние звезды.'''
+Космический лес состоит из нескольких "деревьев" с волокнистыми кронами, которые, разрастаясь, образуют кокон вокруг звезды системы. Космический лес является препятствием для навигации и разрастаясь может перекинуться на соседние звезды.
 
 SM_SEED
 Семечко космического леса
@@ -453,7 +453,7 @@ SM_DRAGON_DESC
 SM_DRONE
 Боевой робот
 SM_DRONE_DESC
-'''Инструмент давно забытой войны, боевой робот все еще служит своей программе: атаковать все, что не может от него улететь.'''
+Инструмент давно забытой войны, боевой робот все еще служит своей программе: атаковать все, что не может от него улететь.
 
 SM_DRONE_FACTORY
 Фабрика Боевых роботов
@@ -563,7 +563,7 @@ SM_SNAIL_DESC
 SM_DAMPENING_CLOUD
 Грязное облако
 SM_DAMPENING_CLOUD_DESC
-'''Космическое облако высокозаряженных частиц, обладающее некой чувствительностью. Быстро притягивается и разряжает любые накопители энергии, что влечет паралич целых звездных флотилий.'''
+Космическое облако высокозаряженных частиц, обладающее некой чувствительностью. Быстро притягивается и разряжает любые накопители энергии, что влечет паралич целых звездных флотилий.
 
 SM_ACIREMA_GUARD
 Защитник Ахиремы
@@ -594,13 +594,13 @@ FLD_MOLECULAR_CLOUD
 Молекулярное Облако
 
 FLD_MOLECULAR_CLOUD_DESC
-Диффузное облако сложных молекул, которое разрушает щиты корабля. 
+'''Диффузное облако сложных молекул, которое разрушает щиты корабля. '''
 
 FLD_NEBULA_1
 Туманность
 
 FLD_NEBULA_1_DESC
-Облако водорода, которое может сжаться, сформировав новую звезду. 
+'''Облако водорода, которое может сжаться, сформировав новую звезду. '''
 FLD_NEBULA_2
 [[FLD_NEBULA_1]]
 FLD_NEBULA_2_DESC
@@ -738,7 +738,7 @@ OPTIONS_DB_FAKE_MODE_CHANGE
 Avoids certain issues with real screen mode changes, which are known to appear on linux.'''
 
 OPTIONS_DB_FULLSCREEN_MONITOR_ID
-Выберите, монитор для использования в полноэкранном режиме. Основной монитор имеет индексом 0. Необходим перезапуск, чтобы изменения вступили в силу. 
+'''Выберите, монитор для использования в полноэкранном режиме. Основной монитор имеет индексом 0. Необходим перезапуск, чтобы изменения вступили в силу. '''
 
 OPTIONS_DB_UI_CHAT_HIDE_INTERVAL
 Временной интервал в секундах, после которого окно чата сетевой игры исчезнет, если нет активности в чате.  Значение 0 - не закрывать окно чата.
@@ -832,7 +832,7 @@ OPTIONS_DB_APP_HEIGHT_WINDOWED
 Высота окна (в оконном режиме).
 
 OPTIONS_DB_APP_LEFT_WINDOWED
-Устанавливает горизонтальное положение в оконном режиме. По сравнению с левом краем монитора. 
+'''Устанавливает горизонтальное положение в оконном режиме. По сравнению с левом краем монитора. '''
 
 OPTIONS_DB_APP_TOP_WINDOWED
 Устанавливает вертикальное положение в оконном режиме. По сравнению с верхнем краем монитора.
@@ -1104,13 +1104,13 @@ OPTIONS_DB_GAMESETUP_AI_MAX_AGGRESSION
 Степень недружелюбности компьютерных игроков
 
 OPTIONS_DB_GAMESETUP_EMPIRE_NAME
-'''Название вашей империи.'''
+Название вашей империи.
 
 OPTIONS_DB_GAMESETUP_PLAYER_NAME
-'''Имя будет использовано в игровых сообщениях.'''
+Имя будет использовано в игровых сообщениях.
 
 OPTIONS_DB_GAMESETUP_EMPIRE_COLOR
-'''Цвет вашей империи.'''
+Цвет вашей империи.
 
 OPTIONS_DB_GAMESETUP_STARTING_SPECIES_NAME
 Расса населяющая столицу вашей империи.
@@ -2136,7 +2136,7 @@ CENSUS_SPECIES_HEADER
 Вид
 
 CENSUS_TAG_HEADER
-Характеристика 
+'''Характеристика '''
 
 MAP_DETECTION_TITLE
 Обнаружение
@@ -2167,9 +2167,9 @@ SP_SYSTEM_PRODUCTION
 Производство в системе
 
 RESOURCE_PRODUCTION_TOOLTIP
-%1% в системе: %2% 
+'''%1% в системе: %2% '''
 RESOURCE_ALLOCATION_TOOLTIP
-%1%: %2% 
+'''%1%: %2% '''
 
 INDUSTRY_PRODUCTION
 Промышленность
@@ -2231,7 +2231,7 @@ PL_TYPE_SIZE
 PL_TYPE_SIZE_ENV
 %1% %2% (%3%)
 PL_NO_VISIBILITY
-Планету в данный момент не видно. 
+'''Планету в данный момент не видно. '''
 PL_BASIC_VISIBILITY
 Планета скрыта от датчиков.
 PL_LAST_TURN_SEEN
@@ -2285,7 +2285,7 @@ TT_CHANGE
 Изменение
 
 TT_BREAKDOWN_SUMMARY
-%1%: %2% 
+'''%1%: %2% '''
 
 TT_TARGETS_BREAKDOWN_SUMMARY
 Модификации %1%: %2%
@@ -2517,13 +2517,13 @@ MOD_DESTROY
 Уничтожить
 
 MOD_SET_OWNER
-Установить владельца 
+'''Установить владельца '''
 
 MOD_ADD_STARLANE
-Добавить Межзвёздный путь 
+'''Добавить Межзвёздный путь '''
 
 MOD_REMOVE_STARLANE
-Удалить Межзвёздный путь 
+'''Удалить Межзвёздный путь '''
 
 ###############
 #  Diplomacy  #
@@ -2602,10 +2602,10 @@ TECH_WND_UNRESEARCHABLE
 Not Researchable
 
 TECH_WND_ENQUEUED
-Ждущие Обработки 
+'''Ждущие Обработки '''
 
 TECH_WND_UNRESEARCHED_PREREQUISITES
-Необходимо Исследовать: 
+'''Необходимо Исследовать: '''
 
 TECH_WND_LIST_VIEW
 Просмотр списком
@@ -2659,7 +2659,7 @@ RESEARCH_INFO_RP
 ОИ
 
 RESEARCH_QUEUE_PROMPT
-Дважды щёлкните мышью или нажмите Shift на любой пункт, чтобы добавить его к очереди исследования. 
+'''Дважды щёлкните мышью или нажмите Shift на любой пункт, чтобы добавить его к очереди исследования. '''
 
 ####################
 # BuildSelectorWnd #
@@ -2708,7 +2708,7 @@ PRODUCTION_DETAIL_CENTER_ON_BUILD
 К строению
 
 PRODUCTION_QUEUE_PROMPT
-Дважды нажмите на любой пункт, чтобы добавить его к очереди производства. 
+'''Дважды нажмите на любой пункт, чтобы добавить его к очереди производства. '''
 
 #################
 # ProductionWnd #
@@ -2723,7 +2723,7 @@ PRODUCTION_INFO_PANEL_TITLE
 PRODUCTION_INFO_PP
 ОП
 PRODUCTION_QUEUE_MULTIPLES
-%1%x 
+'''%1%x '''
 PRODUCTION_QUEUE_REPETITIONS
 %1%⟳
 
@@ -2879,7 +2879,7 @@ Statistics Test 3
 ####               E N C Y C L O P E D I A               ####
 #############################################################
 ENC_SPECIES_PLANET_TYPE_SUITABILITY_COLUMN1
-%1%:	
+'''%1%:	'''
 ENC_SPECIES_PLANET_TYPE_SUITABILITY
 %1%	%2% (%3%)
 
@@ -2935,7 +2935,7 @@ ENC_SPECIES
 Артефакты
 
 ENC_FIELD_TYPE
-Тип поля 
+'''Тип поля '''
 
 ENC_SHIP_DESIGN
 Дизайн корабля
@@ -2953,7 +2953,7 @@ ENC_EMPIRE
 Империя
 
 EMPIRE_CAPITAL
-Столица: 
+'''Столица: '''
 
 NO_CAPITAL
 Нет столицы
@@ -2962,13 +2962,13 @@ EMPIRE_METERS
 Показатели:
 
 OWNED_PLANETS
-Планеты империи: 
+'''Планеты империи: '''
 
 NO_OWNED_PLANETS_KNOWN
 Нет планет во владении
 
 OWNED_FLEETS
-Флоты: 
+'''Флоты: '''
 
 OWNED_FLEET_AT_SYSTEM
 %1% в %2%
@@ -3167,7 +3167,7 @@ ENC_UNLOCKS
 
 '''
 ENC_SHIP_PART_CAN_MOUNT_IN_SLOT_TYPES
-Can mount in: 
+'''Can mount in: '''
 ENC_TECH_DETAIL_UNLOCKED_ITEM_STR
 '''%1%: %2%
 '''
@@ -3178,7 +3178,7 @@ ENC_LOOKUP
 Справка o %1%
 
 ENC_COMBAT_LOG
-Протокол боев 
+'''Протокол боев '''
 
 ENC_COMBAT_LOG_DESCRIPTION_STR
 Бой в %1% в ходу %2%:
@@ -3187,7 +3187,7 @@ ENC_COMBAT_ATTACK_STR
 Раунд %4%: %1% Атака %2% наносит %3% урона
 
 ENC_COMBAT_UNKNOWN_OBJECT
-Неизвестно 
+'''Неизвестно '''
 ENC_ROUND_BEGIN
 '''
 Round %1%'''
@@ -3214,21 +3214,21 @@ Summary
 COMBAT_SUMMARY_PARTICIPANT_RELATIVE
 Bars:Relative
 COMBAT_SUMMARY_PARTICIPANT_RELATIVE_TIP
-'''The widths of the bars are currently relative to their current health.'''
+The widths of the bars are currently relative to their current health.
 COMBAT_SUMMARY_PARTICIPANT_EQUAL
 Bars:Equal
 COMBAT_SUMMARY_PARTICIPANT_EQUAL_TIP
-'''The widths of the bars are currently boringly equal. Press here for a more exiting mode!'''
+The widths of the bars are currently boringly equal. Press here for a more exiting mode!
 OPTIONS_DB_UI_COMBAT_SUMMARY_BAR_WIDTH_PROPORTIONAL
 If true, the bars of battle participants will be scaled horizontally to be proportional to their current health.
 COMBAT_SUMMARY_HEALTH_SMOOTH
 Health:Smooth
 COMBAT_SUMMARY_HEALTH_SMOOTH_TIP
-'''The healthiness of a ship is current shown by smooth interpolation'''
+The healthiness of a ship is current shown by smooth interpolation
 COMBAT_SUMMARY_HEALTH_BAR
 Health:Bar
 COMBAT_SUMMARY_HEALTH_BAR_TIP
-'''The healthiness of a ship is currently shown with a two colour bar'''
+The healthiness of a ship is currently shown with a two colour bar
 OPTIONS_DB_UI_COMBAT_SUMMARY_BAR_HEALTH_SMOOTH
 If true, the color of the bars of battle participant will be interpolated smootly accoring to their remaining health percentage.
 COMBAT_SUMMARY_BAR_HEIGHT_PROPORTIONAL
@@ -3318,28 +3318,28 @@ PEACE_TEXT
 OUTPOSTS_TITLE
 Аванпосты
 OUTPOSTS_TEXT
-'''Аванпосты - это автоматические станции, которые могут размещаться в местах, где жизнь колонистов невозможна. На них отсутствует население, и, как правило нет промышленности. Но они создают [[encyclopedia SUPPLY_TITLE]] (при наличии соответствующей технологии), а так же обеспечивают обзор той области, где расположены. На планетах, где уже есть Аванпост могут быть основаны колонии. Чтобы построить Аванпост необходим корабль с модулем [[shippart CO_OUTPOST_POD]] на борту.'''
+Аванпосты - это автоматические станции, которые могут размещаться в местах, где жизнь колонистов невозможна. На них отсутствует население, и, как правило нет промышленности. Но они создают [[encyclopedia SUPPLY_TITLE]] (при наличии соответствующей технологии), а так же обеспечивают обзор той области, где расположены. На планетах, где уже есть Аванпост могут быть основаны колонии. Чтобы построить Аванпост необходим корабль с модулем [[shippart CO_OUTPOST_POD]] на борту.
 
 GROWTH_FOCUS_TITLE
 Цель: Рост населения
 GROWTH_FOCUS_TEXT
-'''Рост населения достигается за счет освоения и экспорта редких материалов и веществ, что привлекает мигрантов. Доступен только в определенных ситуациях: на некоторых родных планетах, и на планетах с артефактами, способствующими росту населения. Планеты, которые ориентированы на рост населения, увеличивают максимальное население только на других планетах, соединённых с ними [[encyclopedia SUPPLY_TITLE]]. Родные планеты, ориентированные на рост населения, только помогают другим планетам, также ориентированным на рост населения. Планета с артефактами, способствующими росту населения и сфокусированные на нём, помогает только соответствующему типу населения, например, некоторые помогают только росту органических видов жизни.'''
+Рост населения достигается за счет освоения и экспорта редких материалов и веществ, что привлекает мигрантов. Доступен только в определенных ситуациях: на некоторых родных планетах, и на планетах с артефактами, способствующими росту населения. Планеты, которые ориентированы на рост населения, увеличивают максимальное население только на других планетах, соединённых с ними [[encyclopedia SUPPLY_TITLE]]. Родные планеты, ориентированные на рост населения, только помогают другим планетам, также ориентированным на рост населения. Планета с артефактами, способствующими росту населения и сфокусированные на нём, помогает только соответствующему типу населения, например, некоторые помогают только росту органических видов жизни.
 
 MINING_FOCUS_TITLE
 Цель: добыча
 MINING_FOCUS_TEXT
-'''Mining Focus is currently disabled.'''
+Mining Focus is currently disabled.
 #The Mining Focus is only available on planets with certain rare specials. Focusing on Mining provides a production bonus.
 
 TRADE_FOCUS_TITLE
 Цель: торговля
 TRADE_FOCUS_TEXT
-'''Trade doesn't do anything, yet. It is just a placeholder to show that more resources are planned.'''
+Trade doesn't do anything, yet. It is just a placeholder to show that more resources are planned.
 
 PROTECTION_FOCUS_TITLE
 Цель: защита
 PROTECTION_FOCUS_TEXT
-'''Планета полность переключается на оборону.  [[encyclopedia TROOP_TITLE]], Планетарная [[encyclopedia DEFENSE_TITLE]], и Планетарные [[encyclopedia SHIELDS_TITLE]] повышаются.'''
+Планета полность переключается на оборону.  [[encyclopedia TROOP_TITLE]], Планетарная [[encyclopedia DEFENSE_TITLE]], и Планетарные [[encyclopedia SHIELDS_TITLE]] повышаются.
 
 INDUSTRY_TITLE
 Промышленность
@@ -3363,17 +3363,17 @@ Research does not require [[encyclopedia SUPPLY_TITLE]] line connections to be u
 HAPPINESS_TITLE
 Счастье
 HAPPINESS_TEXT
-'''Happiness doesn't do anything yet.'''
+Happiness doesn't do anything yet.
 
 INFRASTRUCTURE_TITLE
 Инфраструктура
 INFRASTRUCTURE_TEXT
-'''The term Infrastructure refers to technical structures that support a colonized planet: energy, transportation, telecommunication and social services for the citizens.'''
+The term Infrastructure refers to technical structures that support a colonized planet: energy, transportation, telecommunication and social services for the citizens.
 
 DEFENSE_TITLE
 Оборона
 DEFENSE_TEXT
-'''The Defense meter of a planet represents the power of the ground to space weapons installed. It's comparable to the Damage value of a space ship.'''
+The Defense meter of a planet represents the power of the ground to space weapons installed. It's comparable to the Damage value of a space ship.
 
 SHIELDS_TITLE
 Энерго-щиты
@@ -3415,17 +3415,17 @@ TROOP_TEXT
 The Troop meter on a planet represents the power of the defending ground forces. The invading force must send a more powerful force (i.e. a higher cumulative number) to conquer a planet.'''
 
 ORGANIC_SPECIES_TITLE
-Метаболизм органических 
+'''Метаболизм органических '''
 ORGANIC_SPECIES_TEXT
-'''Organic species are more or less, 'life as we know it'. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when an Organic Growth Special is colonized, and focused on Growth. Organic Growth specials are marked with a little green 'O' in the corner.'''
+Organic species are more or less, 'life as we know it'. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when an Organic Growth Special is colonized, and focused on Growth. Organic Growth specials are marked with a little green 'O' in the corner.
 LITHIC_SPECIES_TITLE
 Lithic Metabolism
 LITHIC_SPECIES_TEXT
-'''Lithic species are silicon or mineral-based. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when a Lithic Growth Special is colonized, and focused on Growth. Lithic Growth specials are marked with a little grey 'L' in the corner.'''
+Lithic species are silicon or mineral-based. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when a Lithic Growth Special is colonized, and focused on Growth. Lithic Growth specials are marked with a little grey 'L' in the corner.
 ROBOTIC_SPECIES_TITLE
 Robotic Metabolism
 ROBOTIC_SPECIES_TEXT
-'''Robotic species are sapient machines. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when a Robotic Growth Special is colonized, and focused on Growth. Robotic Growth specials are marked with a little red 'R' in the corner.'''
+Robotic species are sapient machines. These species' max population can be increased when their connected homeworld is set on [[encyclopedia GROWTH_FOCUS_TITLE]], or when a Robotic Growth Special is colonized, and focused on Growth. Robotic Growth specials are marked with a little red 'R' in the corner.
 PHOTOTROPHIC_SPECIES_TITLE
 Phototrophic Metabolism
 PHOTOTROPHIC_SPECIES_TEXT
@@ -3440,12 +3440,12 @@ Population changes:
 SELF_SUSTAINING_SPECIES_TITLE
 Self-Sustaining Metabolism
 SELF_SUSTAINING_SPECIES_TEXT
-'''Self-Sustaining species may be energy or crystalline beings or something even stranger. Their commonality is that they need no sustenance, so their max population is very high. While there are no specials that boost their growth, their max population is equal to a species that is provided with all three growth specials.'''
+Self-Sustaining species may be energy or crystalline beings or something even stranger. Their commonality is that they need no sustenance, so their max population is very high. While there are no specials that boost their growth, their max population is equal to a species that is provided with all three growth specials.
 
 TELEPATHIC_TITLE
-Телепатия 
+'''Телепатия '''
 TELEPATHY_TEXT
-'''Telepathic species are immune to mind-control and make it easier to research [[tech LRN_PSIONICS]].'''
+Telepathic species are immune to mind-control and make it easier to research [[tech LRN_PSIONICS]].
 XENOPHOBIC_SPECIES_TITLE
 Xenophobic
 XENOPHOBIC_SPECIES_TEXT
@@ -3456,7 +3456,7 @@ Xenophobic species start with [[tech CON_CONC_CAMP]].'''
 FUEL_TITLE
 Топливо
 FUEL_TEXT
-'''Fuel allows ships to travel the star-lanes. When entering a star-lane a ship consumes 1 unit of fuel. Fuel is not used up at any other time. [[encyclopedia SUPPLY_TITLE]] lines will fully refuel a ship. If a ship travels beyond friendly supply lines, fuel will slowly regenerate when the ship is outside of the star-lanes.'''
+Fuel allows ships to travel the star-lanes. When entering a star-lane a ship consumes 1 unit of fuel. Fuel is not used up at any other time. [[encyclopedia SUPPLY_TITLE]] lines will fully refuel a ship. If a ship travels beyond friendly supply lines, fuel will slowly regenerate when the ship is outside of the star-lanes.
 
 SUPPLY_TITLE
 Снабжение
@@ -3467,10 +3467,10 @@ The supply meter on a planet represents the number of star-lanes supply can reac
 FLEET_UPKEEP_TITLE
 Fleet Upkeep
 FLEET_UPKEEP_TEXT
-'''The cost of a fleet is more than the sum of the cost of its ships due to the operational costs associated with managing multiple ships. When producing new ships, costs increase by 1% for each ship already owned by the empire. The cost of the [[shippart CO_COLONY_POD]], [[shippart CO_SUSPEND_ANIM_POD]] and [[shippart CO_OUTPOST_POD]] as well as all the colony buildings instead increase by 6% for each planet already owned by the empire.'''
+The cost of a fleet is more than the sum of the cost of its ships due to the operational costs associated with managing multiple ships. When producing new ships, costs increase by 1% for each ship already owned by the empire. The cost of the [[shippart CO_COLONY_POD]], [[shippart CO_SUSPEND_ANIM_POD]] and [[shippart CO_OUTPOST_POD]] as well as all the colony buildings instead increase by 6% for each planet already owned by the empire.
 
 EVACUATION_TITLE
-Эвакуация 
+'''Эвакуация '''
 EVACUATION_TEXT
 '''The [[buildingtype BLD_EVACUATION]] project when built will remove the population of a planet. Each turn some of the population will be removed. If there are planets colonized by the same species with free space, and connected by [[encyclopedia SUPPLY_TITLE]] lines, one will be randomly chosen and the population will move there. If there are no appropriate planets available, the population disappears into the vastness of space.
 During an evacuation production drops to nothing. When the colony is empty, it reverts to an [[encyclopedia OUTPOSTS_TITLE]]. It still belongs to the same empire, and may be re-colonized once the [[buildingtype BLD_EVACUATION]] deletes itself.'''
@@ -3503,11 +3503,11 @@ Maniacal:
 STRUCTURE_TITLE
 Structure
 STRUCTURE_TEXT
-'''Structure is amount of damage that ship can take until it is destroyed. Structure can be restored by repairing.'''
+Structure is amount of damage that ship can take until it is destroyed. Structure can be restored by repairing.
 STARLANE_SPEED_TITLE
-[[METER_SPEED]]
+Starline Speed
 STARLANE_SPEED_TEXT
-'''Speed on galaxy map  (uu/turn)'''
+Speed on galaxy map  (uu/turn)
 AI_ERROR_MSG
 AI_Error: AI script error
 
@@ -3547,19 +3547,19 @@ COMBAT_PLANETS
 Планеты
 
 COMBAT_REMAINING
- Оставшиеся
+''' Оставшиеся'''
 
 COMBAT_RETREATED
- Отступившие
+''' Отступившие'''
 
 COMBAT_DESTROYED
- Уничтоженные
+''' Уничтоженные'''
 
 COMBAT_DEFENSELESS
- Беззащитные
+''' Беззащитные'''
 
 COMBAT_LOST
- Потеряны!
+''' Потеряны!'''
 
 ####################
 # TurnProgress     #
@@ -3718,13 +3718,13 @@ Next Turn Population Growth
 ####################
 
 VISIBLE
-Видимый 
+'''Видимый '''
 
 PREVIOUSLY_VISIBLE
 Пред. видимый
 
 DESTROYED
-Разрушенный 
+'''Разрушенный '''
 
 CONDITION_ALL
 Все
@@ -3854,7 +3854,7 @@ SITREP_SHIP_BUILT_LABEL
 SITREP_SHIP_BATCH_BUILT
 %rawtext% %shipdesign% были произведены в %system%.
 SITREP_SHIP_BATCH_BUILT_LABEL
-Корабли пакетного Производства 
+'''Корабли пакетного Производства '''
 
 SITREP_BUILDING_BUILT
 Новый комплекс %building% был построен на планете %planet%.
@@ -3961,12 +3961,12 @@ SITREP_UNOWNED_SHIP_DAMAGED_AT_SYSTEM_LABEL
 SITREP_PLANET_BOMBARDED_AT_SYSTEM
 Планета %planet% империи %empire% в системе %system% подверглась бомбардировкам.
 SITREP_PLANET_BOMBARDED_AT_SYSTEM_LABEL
-Бомбардировка Планеты Империи 
+'''Бомбардировка Планеты Империи '''
 
 SITREP_UNOWNED_PLANET_BOMBARDED_AT_SYSTEM
 Планета %planet% в системе %system% подверглась бомбардировкам.
 SITREP_UNOWNED_PLANET_BOMBARDED_AT_SYSTEM_LABEL
-Бомбардировка Бесхозной Планеты 
+'''Бомбардировка Бесхозной Планеты '''
 
 SITREP_GROUND_BATTLE
 Битва на планете %planet%.
@@ -4071,7 +4071,7 @@ Experimentor Monster Spawn
 EFFECT_ANCIENT_SHIP
 В Древние руинах на %planet% обнаружили %predefinedshipdesign%.
 EFFECT_ANCIENT_SHIP_LABEL
-Древние руины Корабль 
+'''Древние руины Корабль '''
 EFFECT_ANCIENT_SHIP_RUMORS
 Rumors spread through the galaxy that a %predefinedshipdesign% was revealed to a xenoarcheology expedition at Ancient Ruins!
 EFFECT_ANCIENT_SHIP_RUMORS_LABEL
@@ -4098,7 +4098,7 @@ Ancient Ruins Tech Rumors
 EFFECT_CONC_CAMP_COMLETE
 Этническая чистка на %planet% завершена.
 EFFECT_CONC_CAMP_COMLETE_LABEL
-Этническая чистка 
+'''Этническая чистка '''
 
 EFFECT_DRYDOCK_SHIP_REPAIR
 %ship% починен в %building% на %planet%.
@@ -4226,7 +4226,7 @@ OCCUPIED_PLANETS
 ENVIRONMENTAL_PREFERENCES
 Настройки окружающей среды:
 FOCUS_PREFERENCE
-Preferred Focus: 
+'''Preferred Focus: '''
 
 ### Note: Description Macros for species are named the same as the Effect controlling Macros in species.txt. Copy&Paste for accurate description.
 
@@ -4886,7 +4886,7 @@ The Ugmors home world is a rockey planet that rotates very quickly, (once every 
 '''
 
 SP_GISGUFGTHRIM
-'''Гис Гуф Г-трим'''
+Гис Гуф Г-трим
 SP_GISGUFGTHRIM_GAMEPLAY_DESC
 '''Травоядные ракообразные, живущие в колонии вне планеты в гелеобразной субстанции.
 Предпочитают токсичные миры.
@@ -5096,7 +5096,7 @@ SP_EXPERIMENTOR_GAMEPLAY_DESC
 [[ULTIMATE_DETECTION]]
 '''
 SP_EXPERIMENTOR_DESC
-'''The Experimentors are an ancient precursor race, whose existence is devoted to the pursuit of knowledge. Their desire to learn is unmatched, and they unashamed to treat even entire galaxies as mere laboratories for their experiments.'''
+The Experimentors are an ancient precursor race, whose existence is devoted to the pursuit of knowledge. Their desire to learn is unmatched, and they unashamed to treat even entire galaxies as mere laboratories for their experiments.
 
 SP_SUPER_TEST
 Супер-тестеры
@@ -5250,7 +5250,7 @@ VOLCANIC_ASH_MASTER_SPECIAL_DESC
 VOLCANIC_ACTIVITY_SPECIAL
 Высокая вулканическая активность
 VOLCANIC_ACTIVITY_SPECIAL_DESC
-'''На этой планете высокая вулканическая активность, из-за чего поверхность планеты иногда трудно увидеть.'''
+На этой планете высокая вулканическая активность, из-за чего поверхность планеты иногда трудно увидеть.
 
 VOLCANIC_ASH_SLAVE_SPECIAL
 Вулканический пепел
@@ -5524,7 +5524,7 @@ FOCUS_BIOTERROR
 FOCUS_STARGATE_SEND
 Отправка В Звездные врата
 FOCUS_STARGATE_SEND_DESC
-Отправка судов в системе через звездные врата 
+'''Отправка судов в системе через звездные врата '''
 FOCUS_STARGATE_RECEIVE
 Получение Через Звездный врата
 FOCUS_STARGATE_RECEIVE_DESC
@@ -5755,7 +5755,7 @@ PC_COLONY
 PC_SPEED
 Speed
 PC_GENERAL
-Общий 
+'''Общий '''
 PC_BOMBARD
 Бомбардировка
 PC_INDUSTRY
@@ -5821,7 +5821,7 @@ DESC_VAR_STARTYPE
 тип звезды
 
 DESC_VAR_VALUE
-предыдущее значение 
+'''предыдущее значение '''
 DESC_VAR_GALAXYMAXAIAGGRESSION
 the galaxy MAX AI Aggression setting
 DESC_VAR_GALAXYSIZE
@@ -6160,341 +6160,341 @@ DESC_CREATE_SYSTEM
 # Conditions
 
 DESC_ALL
- во вселенной
+''' во вселенной'''
 
 DESC_ALL_NOT
- не во вселенной
+''' не во вселенной'''
 
 DESC_EMPIRE_AFFILIATION_SELF
- это принадлежит империи %1%
+''' это принадлежит империи %1%'''
 
 DESC_EMPIRE_AFFILIATION_SELF_NOT
- это не принадлежит империи %1%
+''' это не принадлежит империи %1%'''
 
 DESC_EMPIRE_AFFILIATION
- это принадлежит %1% из %2% империй
+''' это принадлежит %1% из %2% империй'''
 
 DESC_EMPIRE_AFFILIATION_NOT
- это не принадлежит %1% из %2% империй
+''' это не принадлежит %1% из %2% империй'''
 
 DESC_EMPIRE_AFFILIATION_ANY
- это принадлежит любой империи
+''' это принадлежит любой империи'''
 
 DESC_EMPIRE_AFFILIATION_ANY_NOT
- это не принадлежит империи
+''' это не принадлежит империи'''
 
 DESC_SOURCE
- это исходный объект
+''' это исходный объект'''
 
 DESC_SOURCE_NOT
- это не исходный объект
+''' это не исходный объект'''
 
 DESC_ROOT_CANDIDATE
- это может быть исходным объектом
+''' это может быть исходным объектом'''
 
 DESC_ROOT_CANDIDATE_NOT
- это не может быть исходным объектом
+''' это не может быть исходным объектом'''
 
 DESC_TARGET
- это целевой объект
+''' это целевой объект'''
 
 DESC_TARGET_NOT
- это не целевой объект
+''' это не целевой объект'''
 
 DESC_HOMEWORLD
- это родной мир
+''' это родной мир'''
 
 DESC_HOMEWORLD_NOT
- это не родной мир
+''' это не родной мир'''
 
 DESC_CAPITAL
- это столичная планета империи
+''' это столичная планета империи'''
 
 DESC_CAPITAL_NOT
- это не столичная планета империи
+''' это не столичная планета империи'''
 
 DESC_MONSTER
- это космический монстр
+''' это космический монстр'''
 
 DESC_MONSTER_NOT
- это не космический монстр
+''' это не космический монстр'''
 
 DESC_ARMED
- это вооруженный корабль
+''' это вооруженный корабль'''
 
 DESC_ARMED_NOT
- это не вооруженный корабль
+''' это не вооруженный корабль'''
 
 DESC_TYPE
- это %1%
+''' это %1%'''
 
 DESC_TYPE_NOT
- это не %1%
+''' это не %1%'''
 
 DESC_BUILDING
- это содержит %1% строения
+''' это содержит %1% строения'''
 
 DESC_BUILDING_NOT
- это не содержит %1% строения
+''' это не содержит %1% строения'''
 
 DESC_SPECIAL
- должна быть артефакт: %1%
+''' должна быть артефакт: %1%'''
 
 DESC_SPECIAL_NOT
- не должно быть артефакт: %1%
+''' не должно быть артефакт: %1%'''
 
 DESC_SPECIAL_TURN_RANGE
- у этого была особенность %1% в промежуток между %2% и %3% ходами
+''' у этого была особенность %1% в промежуток между %2% и %3% ходами'''
 
 DESC_SPECIAL_TURN_RANGE_NOT
- у этого не было особенности %1% в промежуток между %2% и %3% ходами
+''' у этого не было особенности %1% в промежуток между %2% и %3% ходами'''
 
 DESC_CREATED_ON_TURN
- это было создано в промежуток между %1% и %2% ходами
+''' это было создано в промежуток между %1% и %2% ходами'''
 
 DESC_CREATED_ON_TURN_NOT
- это не было создано в промежуток между %1% и %2% ходами
+''' это не было создано в промежуток между %1% и %2% ходами'''
 
 DESC_CONTAINS
- это содержит объект%1%
+''' это содержит объект%1%'''
 
 DESC_CONTAINS_NOT
- это не содержит объект%1%
+''' это не содержит объект%1%'''
 
 DESC_PLANET_TYPE
- это %1% планета
+''' это %1% планета'''
 
 DESC_PLANET_TYPE_NOT
- это не %1% планета
+''' это не %1% планета'''
 
 DESC_PLANET_SIZE
- это %1% планета
+''' это %1% планета'''
 
 DESC_PLANET_SIZE_NOT
- это не %1% планета
+''' это не %1% планета'''
 
 DESC_PLANET_ENVIRONMENT
- это %1% планета
+''' это %1% планета'''
 
 DESC_PLANET_ENVIRONMENT_NOT
- это не %1% планета
+''' это не %1% планета'''
 DESC_PLANET_ENVIRONMENT_CUR_SPECIES
 that it currently has
 
 DESC_SPECIES
- у этого есть артефакт %1%
+''' у этого есть артефакт %1%'''
 
 DESC_SPECIES_NOT
- у этого нет артефакта %1%
+''' у этого нет артефакта %1%'''
 DESC_ENQUEUED
- where empire %1% has between %2% and %3% things on the production queue
+''' where empire %1% has between %2% and %3% things on the production queue'''
  
 DESC_ENQUEUED_NOT
- where empire %1% does not have between %2% and %3% things on the production queue
+''' where empire %1% does not have between %2% and %3% things on the production queue'''
  
 DESC_ENQUEUED_BUILDING
- where empire %1% has between %2% and %3% %4% buildings on the production queue
+''' where empire %1% has between %2% and %3% %4% buildings on the production queue'''
  
 DESC_ENQUEUED_BUILDING_NOT
- where empire %1% does not have between %2% and %3% %4% buildings on the production queue
+''' where empire %1% does not have between %2% and %3% %4% buildings on the production queue'''
  
 DESC_ENQUEUED_DESIGN
- where empire %1% has between %2% and %3% %4% ships on the production queue
+''' where empire %1% has between %2% and %3% %4% ships on the production queue'''
 DESC_ENQUEUED_DESIGN_NOT
- where empire %1% does not have between %2% and %3% %4% ships on the production queue
+''' where empire %1% does not have between %2% and %3% %4% ships on the production queue'''
 
 DESC_FOCUS_TYPE
- это имеет цель %1%
+''' это имеет цель %1%'''
 
 DESC_FOCUS_TYPE_NOT
- это не имеет цель %1%
+''' это не имеет цель %1%'''
 
 DESC_STAR_TYPE
- это система со звездой типа: %1%
+''' это система со звездой типа: %1%'''
 
 DESC_STAR_TYPE_NOT
- это не система %1% звезд
+''' это не система %1% звезд'''
 
 DESC_DESIGN_HAS_HULL
- содержит корпус %1%
+''' содержит корпус %1%'''
 
 DESC_DESIGN_HAS_HULL_NOT
- не содержит корпус %1%
+''' не содержит корпус %1%'''
 
 DESC_DESIGN_HAS_PART
- содержит между %1% и %2% части %3%
+''' содержит между %1% и %2% части %3%'''
 
 DESC_DESIGN_HAS_PART_NOT
- не содержит между %1% и %2% части %3%
+''' не содержит между %1% и %2% части %3%'''
 
 DESC_DESIGN_HAS_PART_CLASS
- содержит части класса %1%
+''' содержит части класса %1%'''
 
 DESC_DESIGN_HAS_PART_CLASS_NOT
- не содержит части класса %1%
+''' не содержит части класса %1%'''
 
 DESC_PREDEFINED_SHIP_DESIGN
- от дизайна %1%
+''' от дизайна %1%'''
 
 DESC_PREDEFINED_SHIP_DESIGN_NOT
- не от дизайна %1%
+''' не от дизайна %1%'''
 
 DESC_NUMBERED_SHIP_DESIGN
- от дизайна %1%
+''' от дизайна %1%'''
 
 DESC_NUMBERED_SHIP_DESIGN_NOT
- не от дизайна %1%
+''' не от дизайна %1%'''
 
 DESC_CHANCE_PERCENTAGE
- шанс составляет %1%%%
+''' шанс составляет %1%%%'''
 
 DESC_CHANCE_PERCENTAGE_NOT
- шанс составляет (100 - %1%)%%
+''' шанс составляет (100 - %1%)%%'''
 
 DESC_CHANCE
- с вероятностью %1%
+''' с вероятностью %1%'''
 
 DESC_CHANCE_NOT
- с вероятностью 1 - %1%
+''' с вероятностью 1 - %1%'''
 
 DESC_PRODUCED_BY_EMPIRE
- создано империей %1%
+''' создано империей %1%'''
 
 DESC_PRODUCED_BY_EMPIRE_NOT
- не создано империей %1%
+''' не создано империей %1%'''
 
 DESC_METER_VALUE_CURRENT
- у этого есть текущее %1% между %2% и %3%
+''' у этого есть текущее %1% между %2% и %3%'''
 
 DESC_METER_VALUE_CURRENT_NOT
- у этого нет текущего %1% между %2% и %3%
+''' у этого нет текущего %1% между %2% и %3%'''
 
 DESC_SHIP_PART_METER_VALUE_CURRENT
- у этого есть %2% %1% между %3% и %4%
+''' у этого есть %2% %1% между %3% и %4%'''
 
 DESC_SHIP_PART_METER_VALUE_CURRENT_NOT
- у этого нет %2% %1% между %3% и %4%
+''' у этого нет %2% %1% между %3% и %4%'''
 
 DESC_EMPIRE_METER_VALUE_CURRENT
- если у империи %4% есть %1% между %2% и %3%
+''' если у империи %4% есть %1% между %2% и %3%'''
 
 DESC_EMPIRE_METER_VALUE_CURRENT_NOT
- если у империи %4% нет %1% между %2% и %3%
+''' если у империи %4% нет %1% между %2% и %3%'''
 
 DESC_EMPIRE_STOCKPILE_VALUE
- это принадлежит империи с %1% запас между %2% и %3%
+''' это принадлежит империи с %1% запас между %2% и %3%'''
 
 DESC_EMPIRE_STOCKPILE_VALUE_NOT
- это не принадлежит империи с %1% запаса между %2% и %3%
+''' это не принадлежит империи с %1% запаса между %2% и %3%'''
 
 DESC_VISIBLE_TO_EMPIRE
- это видимо для империи %1%
+''' это видимо для империи %1%'''
 
 DESC_VISIBLE_TO_EMPIRE_NOT
- это скрыто от империи %1%
+''' это скрыто от империи %1%'''
 
 DESC_WITHIN_DISTANCE
- это в пределах %1% любых объектов%2%
+''' это в пределах %1% любых объектов%2%'''
 
 DESC_WITHIN_DISTANCE_NOT
- это не в пределах %1% любых объектов%2%
+''' это не в пределах %1% любых объектов%2%'''
 
 DESC_WITHIN_STARLANE_JUMPS
- это в пределах %1% прыжков от любого объекта%2%
+''' это в пределах %1% прыжков от любого объекта%2%'''
 
 DESC_WITHIN_STARLANE_JUMPS_NOT
- это не в пределах %1% прыжков от любого объекта%2%
+''' это не в пределах %1% прыжков от любого объекта%2%'''
 
 DESC_CAN_ADD_STARLANE_CONNECTION
- это можно соединить звездными путями с любой системой, имеющей объект%1%
+''' это можно соединить звездными путями с любой системой, имеющей объект%1%'''
 
 DESC_CAN_ADD_STARLANE_CONNECTION_NOT
 это нельзя соединить звездными путями с любой системой, имеющей объект%1%
 
 DESC_CAN_REMOVE_STARLANE_CONNECTION
- можно убрать звездные пути к любой системы, имеющей объект%1%
+''' можно убрать звездные пути к любой системы, имеющей объект%1%'''
 
 DESC_CAN_REMOVE_STARLANE_CONNECTION_NOT
 нельзя убрать звездные пути к любой системы, имеющей объект%1%
 
 DESC_EXPLORED_BY_EMPIRE
- исследовано империей %1%
+''' исследовано империей %1%'''
 
 DESC_EXPLORED_BY_EMPIRE_NOT
- не исследовано империей %1%
+''' не исследовано империей %1%'''
 
 DESC_STATIONARY
- стационарный объект
+''' стационарный объект'''
 
 DESC_STATIONARY_NOT
- подвижный объект
+''' подвижный объект'''
 
 DESC_CAN_COLONIZE
- виды, которые могут колонизировать
+''' виды, которые могут колонизировать'''
 
 DESC_CAN_COLONIZE_NOT
- виды, которые не могут колонизировать
+''' виды, которые не могут колонизировать'''
 
 DESC_CAN_PRODUCE_SHIPS
- виды, которые могут производить суда
+''' виды, которые могут производить суда'''
 
 DESC_CAN_PRODUCE_SHIPS_NOT
- виды, которые не могут производить суда
+''' виды, которые не могут производить суда'''
  
 DESC_SUPPLY_CONNECTED_FLEET
- находится в системе, где империя %1% может осуществлять снабжение флота
+''' находится в системе, где империя %1% может осуществлять снабжение флота'''
 
 DESC_SUPPLY_CONNECTED_FLEET_NOT
- находится в системе, где империя %1% не может осуществлять снабжение флота
+''' находится в системе, где империя %1% не может осуществлять снабжение флота'''
 
 DESC_SUPPLY_CONNECTED_RESOURCE
- этот ресурс связан империей %1% с объектом%2%
+''' этот ресурс связан империей %1% с объектом%2%'''
 
 DESC_SUPPLY_CONNECTED_RESOURCE_NOT
- этот ресурс не связан империей %1% с объектом%2%
+''' этот ресурс не связан империей %1% с объектом%2%'''
 DESC_ORDERED_BOMBARDED
- that is being bombarded by an object %1%
+''' that is being bombarded by an object %1%'''
 DESC_ORDERED_BOMBARDED_NOT
- that is not being bombarded by an object %1%
+''' that is not being bombarded by an object %1%'''
 
 DESC_AND_BETWEEN_OPERANDS
- и
+''' и'''
 
 DESC_OR_BETWEEN_OPERANDS
- или
+''' или'''
 
 DESC_TURN
- в промежутке ходов от %1% до %2%
+''' в промежутке ходов от %1% до %2%'''
 
 DESC_TURN_NOT
- не в промежутке ходов от %1% до %2%
+''' не в промежутке ходов от %1% до %2%'''
 
 DESC_TURN_MIN_ONLY
- начиная с хода %1%
+''' начиная с хода %1%'''
 
 DESC_TURN_MIN_ONLY_NOT
- перед ходом %1%
+''' перед ходом %1%'''
 
 DESC_TURN_MAX_ONLY
- до хода %1%
+''' до хода %1%'''
 
 DESC_TURN_MAX_ONLY_NOT
- после хода %1%
+''' после хода %1%'''
 
 DESC_TURN_ANY
- в любой ход
+''' в любой ход'''
 
 DESC_TURN_ANY_NOT
- не в ход
+''' не в ход'''
 
 DESC_NUMBER_OF
- один из %1% случайно выбранных объектов%2%
+''' один из %1% случайно выбранных объектов%2%'''
 
 DESC_NUMBER_OF_NOT
- не один из %1% случайно выбранных объектов%2%
+''' не один из %1% случайно выбранных объектов%2%'''
 
 DESC_MAX_NUMBER_OF
- один из %1% объектов с наибольшим показателем%2% и%3%
+''' один из %1% объектов с наибольшим показателем%2% и%3%'''
 
 DESC_MAX_NUMBER_OF_NOT
 не один из %1% объектов с наибольшим показателем%2% и%3%
@@ -6511,63 +6511,63 @@ DESC_MODE_NUMBER_OF
 DESC_MODE_NUMBER_OF_NOT
 не один из %1% объектов со средним показателем%2% и%3%
 DESC_VALUE_TEST
- when %1% is between %2% and %3%
+''' when %1% is between %2% and %3%'''
 DESC_VALUE_TEST_NOT
- when %1% is not between %2% and %3%
+''' when %1% is not between %2% and %3%'''
 
 DESC_CONTAINED_BY
- содержится в объекте%1%
+''' содержится в объекте%1%'''
 
 DESC_CONTAINED_BY_NOT
- не содержится в объекте%1%
+''' не содержится в объекте%1%'''
 
 DESC_IN_SYSTEM
- в системе с ID %1%
+''' в системе с ID %1%'''
 
 DESC_IN_SYSTEM_NOT
- не в системе с ID %1%
+''' не в системе с ID %1%'''
 
 DESC_IN_SYSTEM_SIMPLE
- в системе
+''' в системе'''
 
 DESC_IN_SYSTEM_SIMPLE_NOT
- не в системе
+''' не в системе'''
 
 DESC_OBJECT_ID
- объект с id %1%
+''' объект с id %1%'''
 
 DESC_OBJECT_ID_NOT
- не объект с id %1%
+''' не объект с id %1%'''
 
 DESC_OWNER_HAS_TECH
- принадлежит империи, которая освоила технологию %1%
+''' принадлежит империи, которая освоила технологию %1%'''
 
 DESC_OWNER_HAS_TECH_NOT
- не принадлежит империи, которая освоила технологию %1%
+''' не принадлежит империи, которая освоила технологию %1%'''
 
 DESC_OWNER_HAS_BUILDING_TYPE
- здание разблокировано для империи
+''' здание разблокировано для империи'''
 
 DESC_OWNER_HAS_BUILDING_TYPE_NOT
- здание заблокировано для империи
+''' здание заблокировано для империи'''
 
 DESC_OWNER_HAS_SHIP_DESIGN
- проект корабля разблокирован для империи
+''' проект корабля разблокирован для империи'''
 
 DESC_OWNER_HAS_SHIP_DESIGN_NOT
- проект корабля заблокирован для империи
+''' проект корабля заблокирован для империи'''
 
 DESC_NUMBER
- если есть объекты%3% между %1% и %2%
+''' если есть объекты%3% между %1% и %2%'''
 
 DESC_NUMBER_NOT
- если нет объектов%3% между %1% и %2%
+''' если нет объектов%3% между %1% и %2%'''
 
 DESC_HAS_TAG
- это %1%
+''' это %1%'''
 
 DESC_HAS_TAG_NOT
- это не %1%
+''' это не %1%'''
 
 #############################################################
 ####            T E C H   C A T A G O R I E S            ####
@@ -6729,23 +6729,23 @@ GRO_GENETIC_ENG
 Генная Инженерия
 
 GRO_GENETIC_ENG_DESC
-'''Палитра генетики настолько же разнообразна, как и формы жизни, из которых она заимствуется.  Гены могут быть удалены, скопированы и заменены в геномы для создания трансгенных организмов с набором особенностей, невозможных в природе.  Также, гены могут быть изменены перед заменой, записывая измененные базовые коды напрямую, что позволяет создавать полностью новые гены.  Несмотря на это, методы ограничены небольшими модификациями существующих генов, доступных для анализа.'''
+Палитра генетики настолько же разнообразна, как и формы жизни, из которых она заимствуется.  Гены могут быть удалены, скопированы и заменены в геномы для создания трансгенных организмов с набором особенностей, невозможных в природе.  Также, гены могут быть изменены перед заменой, записывая измененные базовые коды напрямую, что позволяет создавать полностью новые гены.  Несмотря на это, методы ограничены небольшими модификациями существующих генов, доступных для анализа.
 CON_REMOTE_COL
 Remote Colonization
 CON_REMOTE_COL_DESC
-'''Founding new colonies beyond the supply range of already established worlds is a complex endeavour. It requires colony ships which can carry all the equipment required to build up a self-sustaining colony as well as an initial contingent of colonists.'''
+Founding new colonies beyond the supply range of already established worlds is a complex endeavour. It requires colony ships which can carry all the equipment required to build up a self-sustaining colony as well as an initial contingent of colonists.
 
 GRO_SYMBIOTIC_BIO
 Симбиозная Биология
 
 GRO_SYMBIOTIC_BIO_DESC
-'''Увеличивет максимальное население хороших, средних и приемлемых планет на Крохотная: +1, Маленькая: +2, Средняя: +3, Большая: +4, Огромная: +5 планет соответственно.'''
+Увеличивет максимальное население хороших, средних и приемлемых планет на Крохотная: +1, Маленькая: +2, Средняя: +3, Большая: +4, Огромная: +5 планет соответственно.
 
 GRO_GENETIC_MED
 Генная Медицина
 
 GRO_GENETIC_MED_DESC
-'''Традиционная Генная Инженерия изменяет генетические коды и потом применяет, либо выращивает модифицированные организмы.  Похожая техника может быть применена к уже взрослым личностям.  Целью такого лечения может быть косметическая или улучшающая модификация, корректировка, профилактический или срочный медицинский уход.  Снижение задержки между изменением и результатом с поколений до месяцев, дней или часов дает соответствующее расширение границ и силы возможных изменений.'''
+Традиционная Генная Инженерия изменяет генетические коды и потом применяет, либо выращивает модифицированные организмы.  Похожая техника может быть применена к уже взрослым личностям.  Целью такого лечения может быть косметическая или улучшающая модификация, корректировка, профилактический или срочный медицинский уход.  Снижение задержки между изменением и результатом с поколений до месяцев, дней или часов дает соответствующее расширение границ и силы возможных изменений.
 
 GRO_LIFECYCLE_MAN
 Манипуляция с Жизненным Циклом
@@ -7001,7 +7001,7 @@ CON_ORBITAL_HAB
 Орбитальные поселения
 
 CON_ORBITAL_HAB_DESC
-'''Если планета непригодна к жизни, увеличивает максимальное население на ней на 2.'''
+Если планета непригодна к жизни, увеличивает максимальное население на ней на 2.
 
 CON_NDIM_STRC
 N-мерные строения
@@ -7059,7 +7059,7 @@ Traditional propulsion devices operate well on objects of relatively low mass. H
 SHP_TRANSSPACE_DRIVE
 Транс-пространственный Двигатель
 SHP_TRANSSPACE_DRIVE_DESC
-Even when spatial dimensions are skewed by relativistic effects, an object generally has constant space-time characteristics. By creating a device which alters the characteristics of space-time itself using quasi-relativistic effects, it would be possible to create a fast, stealthy method of propulsion. 
+'''Even when spatial dimensions are skewed by relativistic effects, an object generally has constant space-time characteristics. By creating a device which alters the characteristics of space-time itself using quasi-relativistic effects, it would be possible to create a fast, stealthy method of propulsion. '''
 
 SHP_MIDCOMB_LOG
 Средне-тыловое обеспечение
@@ -7093,7 +7093,7 @@ Even when it is inert, organic material is much more versatile than standard mat
 SHP_DOMESTIC_MONSTER
 Одомашненная Мега-Фауна
 SHP_DOMESTIC_MONSTER_DESC
-'''Though huge and alien the time-tested arts of domestication can also be applied to the space monsters that travel the starlanes. Building Colonies or Outposts at monster nests will enable the raising of domesticated monsters.'''
+Though huge and alien the time-tested arts of domestication can also be applied to the space monsters that travel the starlanes. Building Colonies or Outposts at monster nests will enable the raising of domesticated monsters.
 
 SHP_ENDOCRINE_SYSTEMS
 Эндокринные системы Мега-фауны
@@ -7131,7 +7131,7 @@ Typically, the manipulation of energy requires it to be in the form of matter so
 SHP_QUANT_ENRG_MAG
 Увеличение Квантовой энергий
 SHP_QUANT_ENRG_MAG_DESC
-'''Due to quantum uncertainty, it is possible for a particle to arbitrarily gain a small amount of energy or for new particles to temporarily enter existence. By detecting and magnifying these fluctuations in quantum energy, it would be possible to tremendously increase the capabilities of an energy hull.'''
+Due to quantum uncertainty, it is possible for a particle to arbitrarily gain a small amount of energy or for new particles to temporarily enter existence. By detecting and magnifying these fluctuations in quantum energy, it would be possible to tremendously increase the capabilities of an energy hull.
 
 SHP_ENRG_BOUND_MAN
 Манипуляция пограничной энергией
@@ -7141,7 +7141,7 @@ SHP_ENRG_BOUND_MAN_DESC
 SHP_SOLAR_CONT
 Solar Containment
 SHP_SOLAR_CONT_DESC
-'''A hull constructed from pure energy, while far more versatile than a solid hull, has a disadvantage in that it is unable to harness the potential energy of material objects. If, however, it were made possible to contain a hull composed not of pure energy, but of super-heated gases constantly undergoing a self-sustaining fusion reaction, the limitations of both pure energy and solid matter could be avoided.'''
+A hull constructed from pure energy, while far more versatile than a solid hull, has a disadvantage in that it is unable to harness the potential energy of material objects. If, however, it were made possible to contain a hull composed not of pure energy, but of super-heated gases constantly undergoing a self-sustaining fusion reaction, the limitations of both pure energy and solid matter could be avoided.
 SHP_KRILL_SPAWN
 Krill Spawner
 SHP_KRILL_SPAWN_DESC
@@ -7150,7 +7150,7 @@ Unlocks the Krill Spawner ship part, which causes wild space krill to appear in 
 SPY_ROOT_DECEPTION
 Маскировка
 SPY_ROOT_DECEPTION_DESC
-'''The art of deception is not natural to every species, but the ability to hide the truth can be most useful.'''
+The art of deception is not natural to every species, but the ability to hide the truth can be most useful.
 
 #############################################################
 ####          T E C H   A P P L I C A T I O N S          ####
@@ -7244,7 +7244,7 @@ EXOBOT_SHORT_DESC
 Создаёт поселение экзоботов
 
 STARLANE_SPEED_SHORT_DESC
-Увеличивает Межзвёздную скорость 
+'''Увеличивает Межзвёздную скорость '''
 
 CON_ORBITAL_CON
 Орбитальное конструирование
@@ -7293,7 +7293,7 @@ GRO_SUBTER_HAB
 Подземные жилища
 
 GRO_SUBTER_HAB_DESC
-'''Увеличивает максимальное население всех планет в соответствии с размером планеты: Крохотные +1, Маленькие +2, Средние +3, Большие +4, Гигантски +5.'''
+Увеличивает максимальное население всех планет в соответствии с размером планеты: Крохотные +1, Маленькие +2, Средние +3, Большие +4, Гигантски +5.
 
 GRO_GENOME_BANK
 Банк генотипов
@@ -7434,13 +7434,13 @@ DEF_DEFENSE_NET_2
 Сеть Планетарной Обороны 2
 
 DEF_DEFENSE_NET_2_DESC
-'''Увеличивает Макс [[encyclopedia DEFENSE_TITLE]] на всех планетах на 15, суммируется с [[tech DEF_DEFENSE_NET_1]].'''
+Увеличивает Макс [[encyclopedia DEFENSE_TITLE]] на всех планетах на 15, суммируется с [[tech DEF_DEFENSE_NET_1]].
 
 DEF_DEFENSE_NET_3
 Сеть Планетарной Обороны 3
 
 DEF_DEFENSE_NET_3_DESC
-'''Увеличивает Макс [[encyclopedia DEFENSE_TITLE]] на всех планетах на 25, суммируется со всеми Технологиями обороной сети.'''
+Увеличивает Макс [[encyclopedia DEFENSE_TITLE]] на всех планетах на 25, суммируется со всеми Технологиями обороной сети.
 
 DEF_DEFENSE_NET_REGEN_1
 Регенерация обороной Сети 1
@@ -7453,33 +7453,33 @@ Defense regeneration allows a planet's defenses to function on turns after they 
 DEF_DEFENSE_NET_REGEN_2
 Регенерация обороной Сети 2
 DEF_DEFENSE_NET_REGEN_2_DESC
-'''Increases planets' [[encyclopedia DEFENSE_TITLE]] by 0.25 times the planets' infrastructure, each turn, up to the max defense value, cumulative with regeneration from [[tech DEF_DEFENSE_NET_REGEN_1]].'''
+Increases planets' [[encyclopedia DEFENSE_TITLE]] by 0.25 times the planets' infrastructure, each turn, up to the max defense value, cumulative with regeneration from [[tech DEF_DEFENSE_NET_REGEN_1]].
 
 DEF_PLAN_BARRIER_SHLD_1
 Планетарный защитный Щит 1
 
 DEF_PLAN_BARRIER_SHLD_1_DESC
-'''Увеличивает Макс [[encyclopedia SHIELDS_TITLE]] на планетах на 30, суммируется с [[tech LRN_FORCE_FIELD]], и восстанавливает каждый ход на единицу плюс 25% от размера инфраструктуры планеты.'''
+Увеличивает Макс [[encyclopedia SHIELDS_TITLE]] на планетах на 30, суммируется с [[tech LRN_FORCE_FIELD]], и восстанавливает каждый ход на единицу плюс 25% от размера инфраструктуры планеты.
 
 DEF_PLAN_BARRIER_SHLD_2
 Планетарный защитный Щит 2
 DEF_PLAN_BARRIER_SHLD_2_DESC
-'''Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 60, cumulative with other shield boosts, and regenerates each turn by one plus the value of the planets' infrastructure.'''
+Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 60, cumulative with other shield boosts, and regenerates each turn by one plus the value of the planets' infrastructure.
 
 DEF_PLAN_BARRIER_SHLD_3
 Планетарный защитный Щит 3
 DEF_PLAN_BARRIER_SHLD_3_DESC
-'''Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 90, cumulative with other shield boosts, and regenerates each turn by one plus twice the value of the planets' infrastructure.'''
+Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 90, cumulative with other shield boosts, and regenerates each turn by one plus twice the value of the planets' infrastructure.
 
 DEF_PLAN_BARRIER_SHLD_4
 Планетарный защитный Щит 4
 DEF_PLAN_BARRIER_SHLD_4_DESC
-'''Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 150, cumulative with other shield boosts, and regenerates each turn by one plus 2.5 times the value of the planets' infrastructure.'''
+Increases max [[encyclopedia SHIELDS_TITLE]] on planets by 150, cumulative with other shield boosts, and regenerates each turn by one plus 2.5 times the value of the planets' infrastructure.
 
 DEF_PLAN_BARRIER_SHLD_5
 Планетарный защитный Щит 5
 DEF_PLAN_BARRIER_SHLD_5_DESC
-'''Increases max [[encyclopedia SHIELDS_TITLE]] on planets by an additional 150, cumulative with other shield boosts and regenerates each turn by one plus 5 times the value of the planets' infrastructure.'''
+Increases max [[encyclopedia SHIELDS_TITLE]] on planets by an additional 150, cumulative with other shield boosts and regenerates each turn by one plus 5 times the value of the planets' infrastructure.
 
 DEF_SYST_DEF_MINE_1
 Миная Система обороны 1
@@ -7493,12 +7493,12 @@ Mines regenerate each turn, so are not depleted by use.'''
 DEF_SYST_DEF_MINE_2
 Миная Система обороны 2
 DEF_SYST_DEF_MINE_2_DESC
-'''Reduces the structure of enemy ships by an additional 4 per turn, cumulative with [[tech DEF_SYST_DEF_MINE_1]].'''
+Reduces the structure of enemy ships by an additional 4 per turn, cumulative with [[tech DEF_SYST_DEF_MINE_1]].
 
 DEF_SYST_DEF_MINE_3
 Миная Система обороны 3
 DEF_SYST_DEF_MINE_3_DESC
-'''Reduces the structure of enemy ships by an additional 8 per turn, cumulative with prerequisite defense mine techs.'''
+Reduces the structure of enemy ships by an additional 8 per turn, cumulative with prerequisite defense mine techs.
 
 DEF_ROOT_DEFENSE
 Самооборона
@@ -7538,7 +7538,7 @@ DEF_PLANET_CLOAK_DESC
 By phasing parts a planet in and out of space-time, its [[encyclopedia STEALTH_TITLE]] can be increased massively.
 
 SHP_FLEET_REPAIR
-Ремонтное Поле флота 
+'''Ремонтное Поле флота '''
 
 SHP_FLEET_REPAIR_DESC
 Позволяет кораблям в радиусе [[encyclopedia SUPPLY_TITLE]] ремонтировать повреждения в размере 1 за ход. Не работает, сразу после сражения.
@@ -7560,7 +7560,7 @@ SHP_BASIC_DAM_CONT_DESC
 SHP_ADV_DAM_CONT
 Усовершенствованный контроль Урона
 SHP_ADV_DAM_CONT_DESC
-'''Repairs damaged ships by 10% of structure per turn if they are stationary and have not been in combat that turn. This is cumulative with [[tech SHP_BASIC_DAM_CONT]] and [[tech SHP_FLEET_REPAIR]].'''
+Repairs damaged ships by 10% of structure per turn if they are stationary and have not been in combat that turn. This is cumulative with [[tech SHP_BASIC_DAM_CONT]] and [[tech SHP_FLEET_REPAIR]].
 
 SHP_ROOT_AGGRESSION
 Агрессия
@@ -7570,77 +7570,77 @@ Allows basic weapons and [[shippart GT_TROOP_POD]]s.
 SHP_WEAPON_1_2
 Электромагнитное Орудие 2
 SHP_WEAPON_1_2_DESC
-'''Refines Mass Driver to level 2.'''
+Refines Mass Driver to level 2.
 
 SHP_WEAPON_1_3
 Электромагнитное Орудие 3
 SHP_WEAPON_1_3_DESC
-'''Refines Mass Driver to level 3.'''
+Refines Mass Driver to level 3.
 
 SHP_WEAPON_1_4
 Электромагнитное Орудие 4
 SHP_WEAPON_1_4_DESC
-'''Refines Mass Driver to level 4.'''
+Refines Mass Driver to level 4.
 
 SHP_WEAPON_2_1
 Лазер 1
 SHP_WEAPON_2_1_DESC
-'''Unlocks the Laser, a more powerful ship's weapon than the Mass Driver.'''
+Unlocks the Laser, a more powerful ship's weapon than the Mass Driver.
 
 SHP_WEAPON_2_2
 Лазер 2
 SHP_WEAPON_2_2_DESC
-'''Refines Laser to level 2.'''
+Refines Laser to level 2.
 
 SHP_WEAPON_2_3
 Лазер 3
 SHP_WEAPON_2_3_DESC
-'''Refines Laser to level 3.'''
+Refines Laser to level 3.
 
 SHP_WEAPON_2_4
 Лазер 4
 SHP_WEAPON_2_4_DESC
-'''Refines Laser to level 4.'''
+Refines Laser to level 4.
 
 SHP_WEAPON_3_1
 Плазменная пушка 1
 SHP_WEAPON_3_1_DESC
-'''Unlocks the Plasma Cannon, a more powerful ship's weapon than the Laser.'''
+Unlocks the Plasma Cannon, a more powerful ship's weapon than the Laser.
 
 SHP_WEAPON_3_2
 Плазменная пушка 2
 SHP_WEAPON_3_2_DESC
-'''Refines Plasma Cannon to level 2.'''
+Refines Plasma Cannon to level 2.
 
 SHP_WEAPON_3_3
 Плазменная пушка 3
 SHP_WEAPON_3_3_DESC
-'''Refines Plasma Cannon to level 3.'''
+Refines Plasma Cannon to level 3.
 
 SHP_WEAPON_3_4
 Плазменная пушка 4
 SHP_WEAPON_3_4_DESC
-'''Refines Plasma Cannon to level 4.'''
+Refines Plasma Cannon to level 4.
 
 SHP_WEAPON_4_1
 Смертоносный луч 1
 SHP_WEAPON_4_1_DESC
-'''Unlocks the Death Ray, the ultimate ship's weapon.'''
+Unlocks the Death Ray, the ultimate ship's weapon.
 
 SHP_WEAPON_4_2
 Смертоносный луч 2
 SHP_WEAPON_4_2_DESC
-'''Refines Death Ray to level 2.'''
+Refines Death Ray to level 2.
 
 SHP_WEAPON_4_3
 Смертоносный луч 3
 SHP_WEAPON_4_3_DESC
-'''Refines Death Ray to level 3.'''
+Refines Death Ray to level 3.
 
 SHP_WEAPON_4_4
 Смертоносный луч 4
 SHP_WEAPON_4_4_DESC
-'''Refines Death Ray to level 4. The ultimate refinement of the ultimate weapon.'''
+Refines Death Ray to level 4. The ultimate refinement of the ultimate weapon.
 
 SHP_ION_CANNON
 Ионное орудие
@@ -7731,7 +7731,7 @@ The ultimate in detection. Increases the [[encyclopedia DETECTION_RANGE_TITLE]] 
 SPY_STEALTH_1
 Электромагнитный демпфер
 SPY_STEALTH_1_DESC
-Unlocks the [[shippart ST_CLOAK_1]] ship part and gives all planets and outposts in the empire the [[special CLOUD_COVER_SLAVE_SPECIAL]] special which increases the [[encyclopedia STEALTH_TITLE]] of all planets and buildings by 20. 
+'''Unlocks the [[shippart ST_CLOAK_1]] ship part and gives all planets and outposts in the empire the [[special CLOUD_COVER_SLAVE_SPECIAL]] special which increases the [[encyclopedia STEALTH_TITLE]] of all planets and buildings by 20. '''
 
 SPY_STEALTH_2
 Поглощающие поля
@@ -7743,7 +7743,7 @@ Simply dampening electromagnetic emissions can make an object completely invisib
 SPY_STEALTH_3
 Пространственная маскировка
 SPY_STEALTH_3_DESC
-Unlocks the [[shippart ST_CLOAK_3]] ship part and gives all planets and outposts in the empire the [[special DIM_RIFT_SLAVE_SPECIAL]] special which increases the [[encyclopedia STEALTH_TITLE]] of all planets and buildings by 60. 
+'''Unlocks the [[shippart ST_CLOAK_3]] ship part and gives all planets and outposts in the empire the [[special DIM_RIFT_SLAVE_SPECIAL]] special which increases the [[encyclopedia STEALTH_TITLE]] of all planets and buildings by 60. '''
 
 SPY_STEALTH_4
 Фазовая маскировка
@@ -7844,7 +7844,7 @@ This hull is designed to look exactly like a real asteroid. This hull gets a tre
 SHP_MINIAST_SWARM
 Mini-Asteroid Swarm
 SHP_MINIAST_SWARM_DESC
-This hull is constructed from a small asteroid, much of which has been broken off to form numerous tiny asteroids, which are controlled by the main hull. 
+'''This hull is constructed from a small asteroid, much of which has been broken off to form numerous tiny asteroids, which are controlled by the main hull. '''
 
 SHP_SCAT_AST_HULL
 Рассеянный Корпус Астероида
@@ -7854,12 +7854,12 @@ This flagship is constructed from several large asteroids, some of which have be
 SHP_ORG_HULL
 Органический Корпус
 SHP_ORG_HULL_DESC
-This is the most basic type of organic hull: a living hull grown from the most basic unit of life and raised for battle. 
+'''This is the most basic type of organic hull: a living hull grown from the most basic unit of life and raised for battle. '''
 
 SHP_ENDOSYMB_HULL
 Эндосимбиотический Корпус
 SHP_ENDOSYMB_HULL_DESC
-This mono-cellular hull exists in a symbiotic relationship with its crew, suspending them in its cytoplasm and using them as organelles. 
+'''This mono-cellular hull exists in a symbiotic relationship with its crew, suspending them in its cytoplasm and using them as organelles. '''
 
 SHP_SENT_HULL
 Разумный Корпус
@@ -7881,7 +7881,7 @@ SHP_NOVA_BOMB_DESC
 The most powerful weapon ever devised, capable of destroying an entire star system.
 
 SHP_DEATH_SPORE
-Споры Смерти 
+'''Споры Смерти '''
 SHP_DEATH_SPORE_DESC
 Unlocks the [[shippart SP_DEATH_SPORE]] which allows ships to reduce the population of planets with [[encyclopedia ORGANIC_SPECIES_TITLE]].
 
@@ -7893,7 +7893,7 @@ Unlocks the [[shippart SP_BIOTERM]], which allows ships to greatly reduce the po
 SPY_PLANET_STEALTH_MOD
 Модификатор Планетной Маскировки
 SPY_PLANET_STEALTH_MOD_DESC
-'''Increases the natural [[encyclopedia STEALTH_TITLE]] of planets to 4.99, so that systems will be made visible to empires before their planets.'''
+Increases the natural [[encyclopedia STEALTH_TITLE]] of planets to 4.99, so that systems will be made visible to empires before their planets.
 
 #############################################################
 ####            T E C H   R E F I N E M E N T            ####
@@ -7929,7 +7929,7 @@ BLD_EVACUATION
 Переселение
 
 BLD_EVACUATION_DESC
-Удаляет населения с этой планеты в течение нескольких ходов. Если подходящий альтернативный планеты доступны, с тем же видом и достаточно дополнительной емкости,  население будет переселеться туда. 
+'''Удаляет населения с этой планеты в течение нескольких ходов. Если подходящий альтернативный планеты доступны, с тем же видом и достаточно дополнительной емкости,  население будет переселеться туда. '''
 
 BLD_OBSERVATORY
 Обсерватория
@@ -7962,7 +7962,7 @@ Represents imperial power and prestige and functions as a centre of control for 
 BLD_SUPER_TEST
 Super-Tester Takeover
 BLD_SUPER_TEST_DESC
-'''Switches the species of the planet to Super-Testers. For Official Testing Purposes, or for cheating.'''
+Switches the species of the planet to Super-Testers. For Official Testing Purposes, or for cheating.
 
 BLD_SHIPYARD_BASE
 Верфь
@@ -8303,7 +8303,7 @@ BLD_EXPERIMENTOR_OUTPOST_DESC
 The outpost of the Experimentors, used for carrying out highly advanced experiments. This structure also acts as a cloak to prevent anyone from interfering with their work.
 
 BLD_NOVA_BOMB_ACTIVATOR
-Активатор Нова бомбы 
+'''Активатор Нова бомбы '''
 BLD_NOVA_BOMB_ACTIVATOR_DESC
 Activates all Nova Bombs within one starlane jump.
 BLD_COL_ABADDONI
@@ -8413,11 +8413,11 @@ PART_DESC_STRENGTH
 PART_DESC_SHIELD_STRENGTH
 Shield Strength: %1%
 PART_DESC_DETECTION
-'''Detection Strength: %1%'''
+Detection Strength: %1%
 # Detection Range: %2%
 
 PART_DESC_DIRECT_FIRE_STATS
-'''Урон при атаке: %1%'''
+Урон при атаке: %1%
 
 ## TEMPORARILY HIDDEN
 # Rate of Fire: %2% shots/turn
@@ -8450,82 +8450,82 @@ PART_DESC_FIGHTER_STATS
 SR_WEAPON_1_1
 Электромагнитное Орудие 1
 SR_WEAPON_1_1_DESC
-'''The Mass Driver, a basic weapon.'''
+The Mass Driver, a basic weapon.
 
 SR_WEAPON_1_2
 Электромагнитное Орудие 2
 SR_WEAPON_1_2_DESC
-'''Mass Driver, refined to level 2.'''
+Mass Driver, refined to level 2.
 
 SR_WEAPON_1_3
 Электромагнитное Орудие 3
 SR_WEAPON_1_3_DESC
-'''Mass Driver, refined to level 3.'''
+Mass Driver, refined to level 3.
 
 SR_WEAPON_1_4
 Электромагнитное Орудие 4
 SR_WEAPON_1_4_DESC
-'''Mass Driver, refined to level 4.'''
+Mass Driver, refined to level 4.
 
 SR_WEAPON_2_1
 Лазер 1
 SR_WEAPON_2_1_DESC
-'''The Laser, a more powerful ship's weapon than the Mass Driver.'''
+The Laser, a more powerful ship's weapon than the Mass Driver.
 
 SR_WEAPON_2_2
 Лазер 2
 SR_WEAPON_2_2_DESC
-'''Laser, refined to level 2.'''
+Laser, refined to level 2.
 
 SR_WEAPON_2_3
 Лазер 3
 SR_WEAPON_2_3_DESC
-'''Laser, refined to level 3.'''
+Laser, refined to level 3.
 
 SR_WEAPON_2_4
 Лазер 4
 SR_WEAPON_2_4_DESC
-'''Laser, refined to level 4.'''
+Laser, refined to level 4.
 
 SR_WEAPON_3_1
 Плазменная Пушка 1
 SR_WEAPON_3_1_DESC
-'''The Plasma Cannon, a more powerful ship's weapon than the Laser.'''
+The Plasma Cannon, a more powerful ship's weapon than the Laser.
 
 SR_WEAPON_3_2
 Плазменная Пушка 2
 SR_WEAPON_3_2_DESC
-'''Plasma Cannon, refined to level 2.'''
+Plasma Cannon, refined to level 2.
 
 SR_WEAPON_3_3
 Плазменная Пушка 3
 SR_WEAPON_3_3_DESC
-'''Plasma Cannon, refined to level 3.'''
+Plasma Cannon, refined to level 3.
 
 SR_WEAPON_3_4
 Плазменная Пушка 4
 SR_WEAPON_3_4_DESC
-'''Plasma Cannon, refined to level 4.'''
+Plasma Cannon, refined to level 4.
 
 SR_WEAPON_4_1
 Смертельный Луч 1
 SR_WEAPON_4_1_DESC
-'''The Death Ray, the ultimate ship's weapon.'''
+The Death Ray, the ultimate ship's weapon.
 
 SR_WEAPON_4_2
 Смертельный Луч 2
 SR_WEAPON_4_2_DESC
-'''Death Ray, refined to level 2.'''
+Death Ray, refined to level 2.
 
 SR_WEAPON_4_3
 Смертельный Луч 3
 SR_WEAPON_4_3_DESC
-'''Death Ray, refined to level 3.'''
+Death Ray, refined to level 3.
 
 SR_WEAPON_4_4
 Смертельный Луч 4
 SR_WEAPON_4_4_DESC
-'''Death Ray, refined to level 4. The ultimate refinement of the ultimate weapon.'''
+Death Ray, refined to level 4. The ultimate refinement of the ultimate weapon.
 
 SR_WEAPON_2
 Лазер
@@ -8646,7 +8646,7 @@ FU_SINGULARITY_ENGINE_CORE
 Основной Сингулярный Двигатель
 
 FU_SINGULARITY_ENGINE_CORE_DESC
-A smaller cousin of the Hyperspace Dam outfitted for ships, the Singularity Engine Core drastically boosts power generation. Увеличивает Межзвёздную скорость на 20. 
+'''A smaller cousin of the Hyperspace Dam outfitted for ships, the Singularity Engine Core drastically boosts power generation. Увеличивает Межзвёздную скорость на 20. '''
 FU_TRANSPATIAL_DRIVE
 Trans-spatial Drive
 FU_TRANSPATIAL_DRIVE_DESC
@@ -8709,36 +8709,36 @@ Modulates the frequency of any matter waves emitted from the ship to match that 
 AR_STD_PLATE
 Стандартная Броня
 AR_STD_PLATE_DESC
-'''Basic armor plating providing only moderate enhancement to a ship's hull durability.'''
+Basic armor plating providing only moderate enhancement to a ship's hull durability.
 
 AR_ZORTRIUM_PLATE
 Зортриумная Броня
 AR_ZORTRIUM_PLATE_DESC
-'''Stronger defense than standard plating.'''
+Stronger defense than standard plating.
 
 AR_DIAMOND_PLATE
 Алмазная Броня
 AR_DIAMOND_PLATE_DESC
-'''Stronger defense than zortrium plating.'''
+Stronger defense than zortrium plating.
 
 AR_XENTRONIUM_PLATE
 Ксентронимная Броня
 AR_XENTRONIUM_PLATE_DESC
-'''Extremely strong and durable armor plating.'''
+Extremely strong and durable armor plating.
 
 AR_ROCK_PLATE
 Скальная броня
 AR_ROCK_PLATE_DESC
-'''A strong, cheap alternative to alloys. This part can only be built if there is an [[buildingtype BLD_SHIPYARD_AST_REF]] at an asteroid belt somewhere in the empire or an ally's empire.'''
+A strong, cheap alternative to alloys. This part can only be built if there is an [[buildingtype BLD_SHIPYARD_AST_REF]] at an asteroid belt somewhere in the empire or an ally's empire.
 AR_CRYSTAL_PLATE
 Crystal Armor Plating
 AR_CRYSTAL_PLATE_DESC
-'''An incredibly strong armor produced with advanced crystallization techniques. This part can only be built if there is an [[buildingtype BLD_SHIPYARD_AST_REF]] at an asteroid belt somewhere in the empire or an ally's empire.'''
+An incredibly strong armor produced with advanced crystallization techniques. This part can only be built if there is an [[buildingtype BLD_SHIPYARD_AST_REF]] at an asteroid belt somewhere in the empire or an ally's empire.
 
 AR_NEUTRONIUM_PLATE
 Нейтронная Броня
 AR_NEUTRONIUM_PLATE_DESC
-'''Strongest, most durable armor plating. Admirable defense.'''
+Strongest, most durable armor plating. Admirable defense.
 AR_PRECURSOR_PLATE
 Precursor Armor Plating
 AR_PRECURSOR_PLATE_DESC
@@ -8803,7 +8803,7 @@ All Colony class ship parts require the planet at which they are built to have a
 CO_OUTPOST_POD
 Модуль Аванпоста
 CO_OUTPOST_POD_DESC
-'''Outposts modules allow you to establish unmanned station. These may be place on uninhabitable planets. They have no population, and normally produce no resources. But they provide vision create [[encyclopedia SUPPLY_TITLE]] lines when the right tech is researched. Outposts can be upgraded to colonies. The cost of this part increases as the empire expands to reflect the upkeep costs of a large empire.'''
+Outposts modules allow you to establish unmanned station. These may be place on uninhabitable planets. They have no population, and normally produce no resources. But they provide vision create [[encyclopedia SUPPLY_TITLE]] lines when the right tech is researched. Outposts can be upgraded to colonies. The cost of this part increases as the empire expands to reflect the upkeep costs of a large empire.
 GT_TROOP_POD
 Ground Troop Pod
 GT_TROOP_POD_DESC
@@ -8837,7 +8837,7 @@ SP_BIOTERM_DESC
 A powerful biological weapon which quickly reduces the population of a planet with [[encyclopedia ORGANIC_SPECIES_TITLE]].
 
 SP_NOVA_BOMB
-Бомба Нова 
+'''Бомба Нова '''
 SP_NOVA_BOMB_DESC
 A weapon of tremendous power capable of destroying an entire system. The weapon will activate when it receives the signal from a Nova Bomb Activator not more than one starlane jump away.
 SP_KRILL_SPAWNER
@@ -9292,300 +9292,300 @@ SH_DAMPENING_CLOUD_BODY_DESC
 #############################################################
 
 NO_INDUSTRY
-'''---	Нет [[encyclopedia INDUSTRY_TITLE]]'''
+---	Нет [[encyclopedia INDUSTRY_TITLE]]
 
 BAD_INDUSTRY
-'''-	Плохая [[encyclopedia INDUSTRY_TITLE]]: -50%'''
+-	Плохая [[encyclopedia INDUSTRY_TITLE]]: -50%
 
 AVERAGE_INDUSTRY
 '''	Средняя [[encyclopedia INDUSTRY_TITLE]]: 100%'''
 
 GOOD_INDUSTRY
-'''+	Хорошая [[encyclopedia INDUSTRY_TITLE]]: 150%'''
++	Хорошая [[encyclopedia INDUSTRY_TITLE]]: 150%
 
 GREAT_INDUSTRY
-'''++	Превосходная [[encyclopedia INDUSTRY_TITLE]]: 200%'''
+++	Превосходная [[encyclopedia INDUSTRY_TITLE]]: 200%
 
 ULTIMATE_INDUSTRY
-'''+++	Беспрецедентная [[encyclopedia INDUSTRY_TITLE]]: 400%'''
++++	Беспрецедентная [[encyclopedia INDUSTRY_TITLE]]: 400%
 
 NO_RESEARCH
-'''---	Нет [[encyclopedia RESEARCH_TITLE]]'''
+---	Нет [[encyclopedia RESEARCH_TITLE]]
 
 BAD_RESEARCH
-'''-	Плохая [[encyclopedia RESEARCH_TITLE]]: -50%'''
+-	Плохая [[encyclopedia RESEARCH_TITLE]]: -50%
 
 AVERAGE_RESEARCH
 '''	Средняя [[encyclopedia RESEARCH_TITLE]]: 100%'''
 
 GOOD_RESEARCH
-'''+	Хорошая [[encyclopedia RESEARCH_TITLE]]: 150%'''
++	Хорошая [[encyclopedia RESEARCH_TITLE]]: 150%
 
 GREAT_RESEARCH
-'''++	Превосходная [[encyclopedia RESEARCH_TITLE]]: 200%'''
+++	Превосходная [[encyclopedia RESEARCH_TITLE]]: 200%
 
 ULTIMATE_RESEARCH
-'''+++	Беспрецедентная [[encyclopedia RESEARCH_TITLE]]: 400%'''
++++	Беспрецедентная [[encyclopedia RESEARCH_TITLE]]: 400%
 
 NO_GROUND_TROOPS
-'''---	Нет наземных [[encyclopedia TROOP_TITLE]]'''
+---	Нет наземных [[encyclopedia TROOP_TITLE]]
 
 BAD_GROUND_TROOPS
-'''-	Плохие наземные [[encyclopedia TROOP_TITLE]]: -50%.'''
+-	Плохие наземные [[encyclopedia TROOP_TITLE]]: -50%.
 
 AVERAGE_GROUND_TROOPS
 '''	Средние наземные [[encyclopedia TROOP_TITLE]]:-100%.'''
 
 GOOD_GROUND_TROOPS
-'''+	Хорошие наземные [[encyclopedia TROOP_TITLE]]: 150%.'''
++	Хорошие наземные [[encyclopedia TROOP_TITLE]]: 150%.
 
 GREAT_GROUND_TROOPS
-'''++	Превосходные наземные [[encyclopedia TROOP_TITLE]]: 200%.'''
+++	Превосходные наземные [[encyclopedia TROOP_TITLE]]: 200%.
 
 ULTIMATE_GROUND_TROOPS
-'''+++	Беспрецедентные наземные [[encyclopedia TROOP_TITLE]]: 300%.'''
++++	Беспрецедентные наземные [[encyclopedia TROOP_TITLE]]: 300%.
 
 BAD_DETECTION
-'''-	Плохое [[encyclopedia DETECTION_RANGE_TITLE]]: -20 малус.'''
+-	Плохое [[encyclopedia DETECTION_RANGE_TITLE]]: -20 малус.
 
 GOOD_DETECTION
-'''+	Хорошее [[encyclopedia DETECTION_RANGE_TITLE]]: +25 бонус.'''
++	Хорошее [[encyclopedia DETECTION_RANGE_TITLE]]: +25 бонус.
 
 GREAT_DETECTION
-'''++	Превосходное [[encyclopedia DETECTION_RANGE_TITLE]]: +50 бонус.'''
+++	Превосходное [[encyclopedia DETECTION_RANGE_TITLE]]: +50 бонус.
 
 ULTIMATE_DETECTION
-'''+++	Беспрецедентное обнаружение: +100 бонус.'''
++++	Беспрецедентное обнаружение: +100 бонус.
 
 BAD_STEALTH
-'''-	Плохая [[encyclopedia STEALTH_TITLE]]: -15 малус.'''
+-	Плохая [[encyclopedia STEALTH_TITLE]]: -15 малус.
 
 AVERAGE_STEALTH
 '''	Средняя [[encyclopedia STEALTH_TITLE]].'''
 
 GOOD_STEALTH
-'''+	Хорошая [[encyclopedia STEALTH_TITLE]]: +15 бонус.'''
++	Хорошая [[encyclopedia STEALTH_TITLE]]: +15 бонус.
 
 GREAT_STEALTH
-'''++	Превосходная [[encyclopedia STEALTH_TITLE]]: +40 бонус.'''
+++	Превосходная [[encyclopedia STEALTH_TITLE]]: +40 бонус.
 
 ULTIMATE_STEALTH
-'''+++	Беспрецендентная [[encyclopedia STEALTH_TITLE]]: +60 бонус.'''
++++	Беспрецендентная [[encyclopedia STEALTH_TITLE]]: +60 бонус.
 
 BAD_WEAPONS
-'''-	Плохие Пилоты: на 25% меньше урона.'''
+-	Плохие Пилоты: на 25% меньше урона.
 
 GOOD_WEAPONS
-'''+	Хорошие Пилоты: на 25% больше урона.'''
++	Хорошие Пилоты: на 25% больше урона.
 
 GREAT_WEAPONS
-'''++	Превосходные Пилоты: на 50% больше урона.'''
+++	Превосходные Пилоты: на 50% больше урона.
 
 ULTIMATE_WEAPONS
-'''+++	Беспрецедентные Пилоты: двойной урон.'''
++++	Беспрецедентные Пилоты: двойной урон.
 
 BAD_POPULATION
-'''-	 Малое население 75%'''
+-	 Малое население 75%
 
 AVERAGE_POPULATION
 '''	Среднее население'''
 
 GOOD_POPULATION
-'''+	 Большое население 125%'''
++	 Большое население 125%
 BAD_SUPPLY
-'''-	Bad [[encyclopedia SUPPLY_TITLE]]: no bonus'''
+-	Bad [[encyclopedia SUPPLY_TITLE]]: no bonus
 AVERAGE_SUPPLY
 '''	Average [[encyclopedia SUPPLY_TITLE]]: +1'''
 GREAT_SUPPLY
-'''+	Great [[encyclopedia SUPPLY_TITLE]]: +2'''
++	Great [[encyclopedia SUPPLY_TITLE]]: +2
 ULTIMATE_SUPPLY
-'''++	Ultimate [[encyclopedia SUPPLY_TITLE]]: +3'''
+++	Ultimate [[encyclopedia SUPPLY_TITLE]]: +3
 
 BROAD_EP
-'''++	Широкая Толерантность Планеты: процветает большое число видов.'''
+++	Широкая Толерантность Планеты: процветает большое число видов.
 
 NARROW_EP
-'''-	Узкая Толерантность Планеты: процветает  меньшее число видов.'''
+-	Узкая Толерантность Планеты: процветает  меньшее число видов.
 
 #############################################################
 ####          A C C O U N T I N G    L A B E L S         ####
 #############################################################
 
 STANDARD_CONSTRUCTION_LABEL
-'''%1% Средняя [[encyclopedia INFRASTRUCTURE_TITLE]'''
+%1% Средняя [[encyclopedia INFRASTRUCTURE_TITLE]
 
 GOOD_ENVIRONMENT_LABEL
-'''%1% Хорошая окружающая среда'''
+%1% Хорошая окружающая среда
 
 ADEQUATE_ENVIRONMENT_LABEL
-'''%1% Приемлемая окружающая среда'''
+%1% Приемлемая окружающая среда
 
 POOR_ENVIRONMENT_LABEL
-'''%1% Бедная окружающая среда'''
+%1% Бедная окружающая среда
 
 HOSTILE_ENVIRONMENT_LABEL
-'''%1% Враждебная окружающая среда'''
+%1% Враждебная окружающая среда
 UNINHABTIABLE_ENVIRONMENT_LABEL
-'''%1% Uninhabitable Environment'''
+%1% Uninhabitable Environment
 
 ENV_ENCAPSUL_LABEL
-'''%1% Экологическая Инкапсуляция'''
+%1% Экологическая Инкапсуляция
 
 SELF_SUSTAINING_LABEL
-'''Самоокупающийся'''
+Самоокупающийся
 SUBTERRANEAN_LABEL
-'''Subterranean Bonus'''
+Subterranean Bonus
 
 GAIA_LABEL
-'''Гайя-бонус'''
+Гайя-бонус
 WORLDTREE_LABEL
-'''World Tree Bonus'''
+World Tree Bonus
 
 HOMEWORLD_LABEL
-'''Родина'''
+Родина
 
 BAD_POPULATION_LABEL
-'''%1% Малое население'''
+%1% Малое население
 
 GOOD_POPULATION_LABEL
-'''%1% Большое население'''
+%1% Большое население
 
 FOCUS_MINING_LABEL
-'''%1% Цель - добыча'''
+%1% Цель - добыча
 
 FOCUS_HEAVY_MINING_LABEL
-'''%1% Цель - тяжелая добыча'''
+%1% Цель - тяжелая добыча
 
 BAD_MINING_LABEL
-'''%1% Плохая добыча'''
+%1% Плохая добыча
 
 GOOD_MINING_LABEL
-'''%1% Хорошая добыча'''
+%1% Хорошая добыча
 
 GREAT_MINING_LABEL
-'''%1% Превосходная добыча'''
+%1% Превосходная добыча
 
 ULTIMATE_MINING_LABEL
-'''%1% Беспрецедентная добыча'''
+%1% Беспрецедентная добыча
 
 FOCUS_INDUSTRY_LABEL
-'''%2% Цель - промышленность'''
+%2% Цель - промышленность
 
 BAD_INDUSTRY_LABEL
-'''%2% Плохая промышленность'''
+%2% Плохая промышленность
 
 GOOD_INDUSTRY_LABEL
-'''%2% Хорошая промышленность'''
+%2% Хорошая промышленность
 
 GREAT_INDUSTRY_LABEL
-'''%2% Превосходная промышленность'''
+%2% Превосходная промышленность
 
 ULTIMATE_INDUSTRY_LABEL
-'''%2% Беспрецедентная промышленность'''
+%2% Беспрецедентная промышленность
 
 FOCUS_RESEARCH_LABEL
-'''%2% Цель - наука'''
+%2% Цель - наука
 
 BAD_RESEARCH_LABEL
-'''%2% Плохая наука'''
+%2% Плохая наука
 
 GOOD_RESEARCH_LABEL
-'''%2% Хорошая наука'''
+%2% Хорошая наука
 
 GREAT_RESEARCH_LABEL
-'''%2% Превосходная наука'''
+%2% Превосходная наука
 
 ULTIMATE_RESEARCH_LABEL
-'''%2% Беспрецедентная наука'''
+%2% Беспрецедентная наука
 BAD_SUPPLY_LABEL
-'''%2% Bad Supply'''
+%2% Bad Supply
 AVERAGE_SUPPLY_LABEL
-'''%2% Average Supply'''
+%2% Average Supply
 GREAT_SUPPLY_LABEL
-'''%2% Great Supply'''
+%2% Great Supply
 ULTIMATE_SUPPLY_LABEL
-'''%2% Ultimate Supply'''
+%2% Ultimate Supply
 
 BAD_TROOPS_LABEL
-'''%2% Плохие войска'''
+%2% Плохие войска
 
 AVERAGE_TROOPS_LABEL
-'''%2% Средние войска'''
+%2% Средние войска
 
 GOOD_TROOPS_LABEL
-'''%2% Хорошие войска'''
+%2% Хорошие войска
 
 GREAT_TROOPS_LABEL
-'''%2% Превосходные войска'''
+%2% Превосходные войска
 
 ULTIMATE_TROOPS_LABEL
-'''%2% Беспрецедентные войска'''
+%2% Беспрецедентные войска
 INDEPENDENT_TROOP_LABEL
-'''Independent Homeworld'''
+Independent Homeworld
 
 OUTPOST_TROOP_LABEL
-'''Аванпост'''
+Аванпост
 NATIVE_PLANETARY_DEFENSE_LABEL
-'''%2% Planetary Defense'''
+%2% Planetary Defense
 NATIVE_PLANETARY_SHIELDS_LABEL
-'''%2% Planetary Shields'''
+%2% Planetary Shields
 
 VERY_BRIGHT_STAR
-'''Очень яркая звезда'''
+Очень яркая звезда
 
 BRIGHT_STAR
-'''Яркая звезда'''
+Яркая звезда
 
 DIM_STAR
-'''Тусклая звезда'''
+Тусклая звезда
 
 NO_STAR
-'''Нет звезды'''
+Нет звезды
 TINY_PLANET_LABEL
-'''Tiny Planet'''
+Tiny Planet
 SMALL_PLANET_LABEL
-'''Small Planet'''
+Small Planet
 LARGE_PLANET_LABEL
-'''Large Planet'''
+Large Planet
 HUGE_PLANET_LABEL
-'''Huge Planet'''
+Huge Planet
 GAS_GIANT_LABEL
-'''Gas Giant'''
+Gas Giant
 
 HOMEWORLD_SUPPLY
-'''Снабжение с родины'''
+Снабжение с родины
 
 HOMEWORLD_BONUS
-'''Родина'''
+Родина
 
 ORBITAL_HAB_LABEL
-'''Обитают на орбите'''
+Обитают на орбите
 
 NDIM_STRC_LABEL
-'''N-мернатя структура'''
+N-мернатя структура
 
 WEAK_VISION_LABEL
-'''Слабое зрение'''
+Слабое зрение
 
 MODERATE_VISION_LABEL
-'''Нормальное зрение'''
+Нормальное зрение
 
 GOOD_VISION_LABEL
-'''Хорошее зрение'''
+Хорошее зрение
 
 EXCELLENT_VISION_LABEL
-'''Прекрасное зрение'''
+Прекрасное зрение
 
 FOCUS_PROTECTION_LABEL
-'''Защитный Фокус'''
+Защитный Фокус
 XENOPHOBIC_LABEL_SELF
-'''Xenophobic Frenzy (other species nearby)'''
+Xenophobic Frenzy (other species nearby)
 XENOPHOBIC_LABEL_TRITH_OTHER
-'''Xenophobic Harassment: Trith'''
+Xenophobic Harassment: Trith
 XENOPHOBIC_LABEL_EAXAW_OTHER
-'''Xenophobic Harassment: Eaxaw'''
+Xenophobic Harassment: Eaxaw
 ORGANIC_GROWTH
-'''Organic Growth'''
+Organic Growth
 BASIC_CONTENTEDNESS_LABEL
 General Contentedness
 FOCUS_PREFERENCE_LABEL
@@ -9798,7 +9798,7 @@ STAR_GROUP_CHARS
 ψ
 ω'''
 STAR_GROUP_NAMES
-'''Centauri'''
+Centauri
 STAR_NAMES
 '''Aadhavan
 Aaftaab
@@ -12990,7 +12990,7 @@ Xanthus
 Yarak
 Yekub'''
 SHIP_NAME_OTHER
-'''Eternal September'''
+Eternal September
 SHIP_NAME_DEVS
 '''Adrian Broher
 Aquataine
