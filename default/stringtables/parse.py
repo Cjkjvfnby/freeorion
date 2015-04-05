@@ -21,6 +21,9 @@ def parse(path):
         key = None
         value = True
         for line in lines:
+            line = re.sub("'''( |\t)+$", "'''", line)   # replace spaces after quotes
+            line = re.sub("^( |\t)+'''", "'''", line)   # replace spaces before quotes
+
             if not is_value and not line.strip() or line.startswith('#'):
                 continue
             elif not is_key:
@@ -114,8 +117,9 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
                 key = line
                 is_key = True
                 break
-
         for line in lines:
+            line = re.sub("'''( |\t)+$", "'''", line)   # replace spaces after quotes
+            line = re.sub("^( |\t)+'''", "'''", line)   # replace spaces before quotes
             if not is_value and not line.strip() or line.startswith('#'):
                 if line != result[-1]:
                     result.append(line)
@@ -147,7 +151,7 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
                         result.append(key)
                         result.append(normalize_value(other[key]))
                     else:
-                        if not result[-1]:
+                        if not result[-1] and not result[-2]:
                             result.pop()
                         if add_english:
                             result.append(key)
@@ -215,6 +219,7 @@ def find_unused_russian():
 
 
 def not_for_translate():
+    return []
     en = parse('en.txt')
     # Base keys
     keys = ['SITREP_PRIORITY_ORDER']
