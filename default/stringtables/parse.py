@@ -55,6 +55,9 @@ def parse(path):
 
     assert not inner_tags, '[%s]Reference to unknown tag(s) present: %s' % (os.path.basename(path),
                                                                             sorted(inner_tags))
+    for k, v in translations.items():
+        if v.startswith("'''") and v.endswith("'''"):
+            translations[k] = v[3:-3]
     return translations
 
 
@@ -141,16 +144,29 @@ def make_copy(other_path, result_path, other=None, add_english=False, remove_sam
                             if value == other[key]:
                                 continue
                         result.append(key)
-                        result.append(other[key])
+                        result.append(normalize_value(other[key]))
                     else:
                         if not result[-1]:
                             result.pop()
                         if add_english:
                             result.append(key)
-                            result.append(value)
+                            result.append(normalize_value(value))
+
     with open(result_path, 'w') as f:
         f.write('\n'.join(result))
     parse(result_path)
+
+
+def normalize_value(val):
+    if val.startswith("'''") and val.endswith("'''"):
+        val = val[3:-3]
+
+    if '\n' in val or val.startswith((' ', '\t')) or val.endswith((' ', '\t')):
+        return "'''%s'''" % val
+    if not val:
+        return "''''''"
+    return val
+
 
 if __name__ == '__main__':
     parser = ArgumentParser()
