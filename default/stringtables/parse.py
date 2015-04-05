@@ -64,26 +64,22 @@ def parse(path):
     return translations
 
 
-def compare(en_path, other):
-    en_dict = parse(en_path)
-    other_dict = parse(other)
-    en_key_set = set(en_dict)
-    other_key_set = set(other_dict)
-    only_en = en_key_set.difference(other_key_set)
-    only_other = other_key_set.difference(en_key_set)
-    print '==== Present only in %s' % en_path
-    for key in only_en:
+def compare(first, second):
+    first_dict = parse(first)
+    second_dict = parse(second)
+    first_key_set = set(first_dict)
+    second_key_set = set(second_dict)
+    only_first = first_key_set.difference(second_key_set)
+    only_second = second_key_set.difference(first_key_set)
+    print '==== Present only in %s' % first
+    for key in only_first:
         print key
-        print en_dict[key]
+        print first_dict[key]
         print
 
-    print '==== Present only in %s' % other
-    for key in only_other:
+    print '==== Present only in %s' % second
+    for key in only_second:
         print key
-
-    for key in en_key_set.intersection(other_key_set):
-        if en_dict[key] == other_dict[key]:
-            print 'values for "%s" are equals: %s' % (key, en_dict[key])
 
 
 def make_copy(other_path, result_path, other=None, add_english=False, remove_same=False):
