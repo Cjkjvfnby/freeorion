@@ -11,7 +11,7 @@ import freeOrionAIInterface as fo  # interface used to interact with FreeOrion A
 import AIstate
 import ColonisationAI
 import ExplorationAI
-import DiplomaticCorp
+from DiplomaticCorp import diplomacy_corp
 import FleetUtilsAI
 import InvasionAI
 import MilitaryAI
@@ -121,14 +121,14 @@ def handleChatMessage(sender_id, message_text):  # pylint: disable=invalid-name
 def handleDiplomaticMessage(message):  # pylint: disable=invalid-name
     """Called when this player receives a diplomatic message update from the server,
     such as if another player declares war, accepts peace, or cancels a proposed peace treaty."""
-    DiplomaticCorp.handle_diplomatic_message(message)
+    diplomacy_corp.handle_diplomatic_message(message)
 
 
 @chat_on_error
 def handleDiplomaticStatusUpdate(status_update):  # pylint: disable=invalid-name
     """Called when this player receives an update about the diplomatic status between players, which may
     or may not include this player."""
-    DiplomaticCorp.handle_diplomatic_status_update(status_update)
+    diplomacy_corp.handle_diplomatic_status_update(status_update)
 
 
 @chat_on_error

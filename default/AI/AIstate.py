@@ -62,7 +62,7 @@ class AIstate(object):
         self.__fleetRoleByID = {}
         self.designStats = {}
         self.design_rating_adjustments = {}
-        self.diplomatic_logs = {}
+        self.diplomatic_logs = []  # (sender, recipient, turn, type)
         self.__priorityByType = {}
 
         #self.__explorableSystemByType = {}
@@ -112,9 +112,11 @@ class AIstate(object):
                             'qualifyingOutpostBaseTargets',
                             'qualifyingTroopBaseTargets',
                             'planet_status',
-                            'diplomatic_logs']:
+                            ]:
             if dict_attrib not in state_dict:
                 self.__dict__[dict_attrib] = {}
+        if 'diplomatic_logs' not in self.__dict__:
+            self.__dict__['diplomatic_logs'] = []
         for std_attrib in ['empire_standard_fighter', 'empire_standard_enemy']:
             if std_attrib not in state_dict:
                 self.__dict__[std_attrib] = (4, ((4, 1),), 0.0, 10.0)
@@ -1094,19 +1096,4 @@ class AIstate(object):
                 # old fleet may have different role after split, later will be again identified
                 #self.remove_fleet_role(fleet_id)  # in current system, orig new fleet will not yet have been assigned a role
 
-    def log_peace_request(self, initiating_empire_id, recipient_empire_id):
-        """Keep a record of peace requests made or received by this empire."""
 
-        peace_requests = self.diplomatic_logs.setdefault('peace_requests', {})
-        log_index = (initiating_empire_id, recipient_empire_id)
-        peace_requests.setdefault(log_index, []).append(fo.currentTurn())
-
-    def log_war_declarations(self, initiating_empire_id, recipient_empire_id):
-        """Keep a record of war declarations made or received by this empire."""
-
-        # if war declaration is made on turn 1, don't hold it against them
-        if fo.currentTurn() == 1:
-            return
-        war_declarations = self.diplomatic_logs.setdefault('war_declarations', {})
-        log_index = (initiating_empire_id, recipient_empire_id)
-        war_declarations.setdefault(log_index, []).append(fo.currentTurn())
