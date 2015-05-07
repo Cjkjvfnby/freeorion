@@ -40,7 +40,7 @@ don't commit logger wrapped function to repo.
 """
 
 import freeOrionAIInterface as fo
-from freeorion_tools import dict_from_map
+from freeorion_tools import dict_from_map, UserString
 
 
 def system_to_string(system):
@@ -107,3 +107,9 @@ def logger(function):
         print "%s(*%s, **%s)" % (function.__name__, args, kwargs)
         return function(*args, **kwargs)
     return inner
+
+
+def user_string_list(key):
+    return [x for x in UserString(key).split('\n') if x.strip()]
+
+fo.userStringList = user_string_list
