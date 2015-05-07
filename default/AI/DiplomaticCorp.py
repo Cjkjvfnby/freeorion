@@ -1,5 +1,4 @@
 """Handle diplomatic messages and response determination."""
-
 import random
 
 import freeOrionAIInterface as fo  # pylint: disable=import-error
@@ -22,7 +21,7 @@ class DiplomacyCorp(object):
         turn = fo.currentTurn()
         if message_type == WAR_DECLARATION and turn == 1:
             return  # Ignore first turn war declaration
-        foAI.foAIstate.diplomatic_logs.append((message.sender, message.recipient, turn, message_type))
+        foAI.foAIstate.diplomatic_logs.append((message.sender, turn, message_type))
 
     @chat_on_error
     def handle_diplomatic_message(self, message):
@@ -81,8 +80,8 @@ class DiplomacyCorp(object):
         # TODO: consider proximity, competitive needs, relations with other empires, past history with this empire, etc.
         # in the meantime, somewhat random
         proposal_irritation = sum(2.0 if message_type == WAR_DECLARATION else 0.1
-                                  for sender, recipient, turn, message_type in foAI.foAIstate.diplomatic_logs
-                                  if sender == other_empire_id and recipient == fo.empireID())
+                                  for sender, turn, message_type in foAI.foAIstate.diplomatic_logs
+                                  if sender == other_empire_id)
 
         irritation = (foAI.foAIstate.aggression * (2.0 + proposal_irritation) + 0.5)
         attitude = 10 * random.random() - irritation

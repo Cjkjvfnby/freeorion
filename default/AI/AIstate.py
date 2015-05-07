@@ -62,7 +62,7 @@ class AIstate(object):
         self.__fleetRoleByID = {}
         self.designStats = {}
         self.design_rating_adjustments = {}
-        self.diplomatic_logs = []  # (sender, recipient, turn, type)
+        self.diplomatic_logs = []  # (sender, turn, type)
         self.__priorityByType = {}
 
         #self.__explorableSystemByType = {}
