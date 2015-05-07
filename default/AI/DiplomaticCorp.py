@@ -17,7 +17,7 @@ class DiplomacyCorp(object):
 
     def _log_diplomacy(self, message):
         """Keep a record of peace requests made or received by this empire."""
-        message_type = self._MISSION_TYPES(message.type)
+        message_type = self._MISSION_TYPES[message.type]
         turn = fo.currentTurn()
         if message_type == WAR_DECLARATION and turn == 1:
             return  # Ignore first turn war declaration
@@ -29,17 +29,18 @@ class DiplomacyCorp(object):
         Handle a diplomatic message update from the server,
         such as if another player declares war, accepts peace, or cancels a proposed peace treaty.
         """
-        self._log_diplomacy(message)
+        message_type = message.type
         recipient = message.recipient
         sender = message.sender
-        print "Received diplomatic %s message from empire %s to empire %s" % (message.type, sender, recipient)
+        if message.type == fo.diplomaticMessageType.noMessage:
+            return
+        print "Received diplomatic %s message from empire %s to empire %s" % (message_type.name, fo.getEmpire(sender), fo.getEmpire(recipient))
+        self._log_diplomacy(message)
         print "My empire id: %s" % fo.empireID()
         if recipient != fo.empireID():
             print_error("Got message from wrong empire")
             return
-
-
-        if message.type == fo.diplomaticMessageType.peaceProposal:
+        if message_type == fo.diplomaticMessageType.peaceProposal:
             proposal_sender_player = fo.empirePlayerID(sender)
             suffix = "MILD" if foAI.foAIstate.aggression <= fo.aggression.typical else "HARSH"
             possible_acknowledgments = UserStringList("AI_PEACE_PROPOSAL_ACKNOWLEDGEMENTS_" + suffix + "_LIST")
@@ -99,11 +100,13 @@ class BeginnerDiplomacyCorpus(DiplomacyCorp):
 
 
 def _get_diplomacy_corpus():
-    if foAI.foAIstate.aggression == fo.aggression.maniacal:
-        return ManiacalDiplomacyCorpus()
-    elif foAI.foAIstate.aggression == fo.aggression.beginner:
-        return BeginnerDiplomacyCorpus
-    else:
-        return DiplomacyCorp()
+    # if foAI.foAIstate.aggression == fo.aggression.maniacal:
+    #     return ManiacalDiplomacyCorpus()
+    # elif foAI.foAIstate.aggression == fo.aggression.beginner:
+    #     return BeginnerDiplomacyCorpus
+    # else:
+
+    # Hack for testing, before I figure out how to get aggression.
+    return DiplomacyCorp()
 
 diplomacy_corp = _get_diplomacy_corpus()
