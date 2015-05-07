@@ -660,9 +660,11 @@ SM_ACIREMA_GUARD_DESC
 An unmanned armed ship, built by the Acirema, guards the system.
 
 SM_EXP_OUTPOST
-Experimentor Outpost Ship
+Experiment Zero
 SM_EXP_OUTPOST_DESC
-An outpost ship constructed by the Experimentors to transport experimental equipment between galaxies.
+'''An ancient creation of the Experimentors that reduces shields and damage. 
+
+Experiment Zero was sent to this galaxy to guard the outpost of the Experimentors with its unique abilities. While it does not attack directly it consists of quadrillions of diminutive units that fill the whole space of the system and hamper enemy shields and weapons to the point that all but the very best equipment will be ineffective.'''
 
 SM_COSMIC_DRAGON
 Cosmic Dragon
@@ -10685,7 +10687,7 @@ Invincible'''
 
 ### End of Capital Names Lists
 
-### AI Diplomacy Strings and Lists 
+### AI Diplomacy Strings and Lists
 ### Translator Note: for AI Keys ending with "LIST", each line of the provided value should be an independent entry; each entry must be a single line.
 ### For such lists, you may provide more or fewer entries than are provided in en.txt, unless otherwise indicated in a comment for that key
 
@@ -10731,6 +10733,51 @@ You fools did not believe this peace would last, did you?
 
 ### End of AI Diplomacy Message Lists
 
+### Beginning of AI Shipdesign Name List
+### Make sure that only one name is used per line. The names are roughly ordered by order of appearence in the game.
+### Adding more names here does not neccssarily mean they will be used by the AI as the switch to another name is determined by some algorithm.
+AI_SHIPDESIGN_NAME_INVALID
+Invalid Design
+
+AI_SHIPDESIGN_NAME_MILITARY
+'''Harpy
+Gorgon
+Centaur
+Cerberus
+Griffin
+Manticore
+Hydra
+Python
+Pegasus
+Phoenix
+Atlas
+Helios
+Prometheus
+Poseidon
+Hades
+Nemesis'''
+
+AI_SHIPDESIGN_NAME_TROOPER_ORBITAL
+SpaceInvaders
+
+AI_SHIPDESIGN_NAME_TROOPER_STANDARD
+StormTroopers
+
+AI_SHIPDESIGN_NAME_COLONISATION_ORBITAL
+Orbital Seeder
+
+AI_SHIPDESIGN_NAME_COLONISATION_STANDARD
+Seeder
+
+AI_SHIPDESIGN_NAME_OUTPOSTER_ORBITAL
+Orbital Outposter
+
+AI_SHIPDESIGN_NAME_OUTPOSTER_STANDARD
+Outposter
+
+AI_SHIPDESIGN_NAME_ORBITAL_DEFENSE
+'''Decoy
+Starbase'''
 
 #############################################################
 ####           HOTKEYS NAMES AND DESCRIPTIONS            ####
