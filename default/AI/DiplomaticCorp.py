@@ -10,18 +10,18 @@ WAR_DECLARATION = 0
 
 
 class DiplomacyCorp(object):
-    _types = {
+    _MISSION_TYPES = {
         fo.diplomaticMessageType.peaceProposal: PEACE_PROPOSAL,
         fo.diplomaticMessageType.warDeclaration: WAR_DECLARATION
     }
 
     def _log_diplomacy(self, message):
         """Keep a record of peace requests made or received by this empire."""
-        message_type = self._types(message.type)
+        message_type = self._MISSION_TYPES(message.type)
         turn = fo.currentTurn()
         if message_type == WAR_DECLARATION and turn == 1:
             return  # Ignore first turn war declaration
-        foAI.foAIstate.diplomatic_logs.append((message.sender, turn, message_type))
+        foAI.foAIstate.diplomatic_logs.append((message.sender, message.recipient, turn, message_type))
 
     @chat_on_error
     def handle_diplomatic_message(self, message):
@@ -29,7 +29,7 @@ class DiplomacyCorp(object):
         Handle a diplomatic message update from the server,
         such as if another player declares war, accepts peace, or cancels a proposed peace treaty.
         """
-
+        self._log_diplomacy(message)
         recipient = message.recipient
         sender = message.sender
         print "Received diplomatic %s message from empire %s to empire %s" % (message.type, sender, recipient)
@@ -37,7 +37,7 @@ class DiplomacyCorp(object):
         if recipient != fo.empireID():
             print_error("Got message from wrong empire")
             return
-        self._log_diplomacy(message)
+
 
         if message.type == fo.diplomaticMessageType.peaceProposal:
             proposal_sender_player = fo.empirePlayerID(sender)
@@ -80,8 +80,8 @@ class DiplomacyCorp(object):
         # TODO: consider proximity, competitive needs, relations with other empires, past history with this empire, etc.
         # in the meantime, somewhat random
         proposal_irritation = sum(2.0 if message_type == WAR_DECLARATION else 0.1
-                                  for sender, turn, message_type in foAI.foAIstate.diplomatic_logs
-                                  if sender == other_empire_id)
+                                  for sender, recipient, turn, message_type in foAI.foAIstate.diplomatic_logs
+                                  if sender == other_empire_id and recipient == fo.empireID())
 
         irritation = (foAI.foAIstate.aggression * (2.0 + proposal_irritation) + 0.5)
         attitude = 10 * random.random() - irritation
