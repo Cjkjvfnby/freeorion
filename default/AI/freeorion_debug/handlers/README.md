@@ -5,7 +5,7 @@
   - create python file
   - add call of `register_pre_handler` or `register_post_handler`
   - add handler to config file (section: `main`, key: `handler` space separated names of python files with out extension)
-  - run game with config file
+  - run game with param `--ai-config <path to config file>`
 
 ## Existing handlers:
   - `charts_handler`:
