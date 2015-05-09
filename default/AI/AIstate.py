@@ -62,6 +62,7 @@ class AIstate(object):
         self.__fleetRoleByID = {}
         self.designStats = {}
         self.design_rating_adjustments = {}
+        self.diplomatic_logs = []  # (sender, recipient, turn, type)
         self.__priorityByType = {}
 
         #self.__explorableSystemByType = {}
@@ -110,9 +111,12 @@ class AIstate(object):
         for dict_attrib in ['qualifyingColonyBaseTargets',
                             'qualifyingOutpostBaseTargets',
                             'qualifyingTroopBaseTargets',
-                            'planet_status']:
+                            'planet_status',
+                            ]:
             if dict_attrib not in state_dict:
                 self.__dict__[dict_attrib] = {}
+        if 'diplomatic_logs' not in self.__dict__:
+            self.__dict__['diplomatic_logs'] = []
         for std_attrib in ['empire_standard_fighter', 'empire_standard_enemy']:
             if std_attrib not in state_dict:
                 self.__dict__[std_attrib] = (4, ((4, 1),), 0.0, 10.0)
@@ -1091,3 +1095,5 @@ class AIstate(object):
                 print "\t from splitting fleet ID %4d with %d ships, got %d new fleets:" % (fleet_id, fleet_len, len(new_fleets))
                 # old fleet may have different role after split, later will be again identified
                 #self.remove_fleet_role(fleet_id)  # in current system, orig new fleet will not yet have been assigned a role
+
+
