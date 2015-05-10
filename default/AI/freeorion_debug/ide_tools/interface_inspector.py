@@ -1,8 +1,10 @@
 import os
 from inspect import getmembers, getdoc, isroutine
 from generate_stub import make_stub
+import platform
 
 data = []
+
 
 def get_member_info(member):
     info = {
@@ -127,6 +129,8 @@ def _inspect(obj, *instances):
 
 
 def inspect(obj, *instances):
-    data = _inspect(obj, *instances)
-    result_path = os.path.join(os.path.dirname(__file__), 'result', '%s.py' % obj.__name__)
-    make_stub(data, result_path)
+    folder_name = os.path.join(os.path.dirname(__file__), '%s_result' % platform.system())
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    result_path = os.path.join(folder_name, '%s.py' % obj.__name__)
+    make_stub(_inspect(obj, *instances), result_path)
