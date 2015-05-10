@@ -3,8 +3,6 @@ from inspect import getmembers, getdoc, isroutine
 from generate_stub import make_stub
 import platform
 
-data = []
-
 
 def get_member_info(member):
     info = {
@@ -62,7 +60,7 @@ def inspect_instance(instance):
     for name, member in getmembers(instance):
         if not name in parent_attrs + ['__module__']:
             info['attrs'][name] = get_member_info(member)
-    data.append(info)
+    return info
 
 
 def inspect_boost_class(name, obj):
@@ -75,19 +73,18 @@ def inspect_boost_class(name, obj):
             'doc': getdoc(obj),
             'parents': [str(parent.__name__) for parent in parents]
             }
-    data.append(info)
     for name, member in getmembers(obj):
         if not name in parent_attrs + ['__module__', '__instance_size__']:
             info['attrs'][name] = get_member_info(member)
-
+    return info
 
 def inspect_boost_function(name, value):
-    info = {
+    return {
         'type': 'function',
         'name': name,
         'doc': getdoc(value)
     }
-    data.append(info)
+
 
 
 def inspect_type(name, obj):
@@ -97,11 +94,11 @@ def inspect_type(name, obj):
 
     for k, v in obj.values.items():
          enum_dict.setdefault(v, [None, None])[0] = k
-    info = {'type': "enum",
+    return {'type': "enum",
             'name': name,
             'enum_dicts': enum_dict,
             }
-    data.append(info)
+
 
 switcher = {
     "<type 'type'>": inspect_type,
@@ -111,17 +108,19 @@ switcher = {
 
 
 def _inspect(obj, *instances):
+    data = []
+
     for name, member in getmembers(obj):
         function = switcher.get(str(type(member)), None)
         if function:
-            function(name, member)
+            data.append(function(name, member))
         elif name in ('__doc__', '__package__', '__name__'):
             pass
         else:
             print "Unknown", name, type(member), member
     for instance in instances:
         try:
-            inspect_instance(instance)
+            data.append(inspect_instance(instance))
         except Exception as e:
             print "Error inspecting:", type(instance), type(e), e
             from traceback import print_exc
@@ -132,5 +131,6 @@ def inspect(obj, *instances):
     folder_name = os.path.join(os.path.dirname(__file__), '%s_result' % platform.system())
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
+
     result_path = os.path.join(folder_name, '%s.py' % obj.__name__)
     make_stub(_inspect(obj, *instances), result_path)
