@@ -51,19 +51,21 @@ SHIP_DESIGN = 'D'
 EMPIRE = 'E'
 
 
-def to_map(method):
+def to_dict(method):
     @wraps(method)
     def wrapper(*args):
         return dict_from_map(method(*args))
     return wrapper
 
-fo.universe.getVisibilityTurnsMap = to_map(fo.universe.getVisibilityTurnsMap)
+fo.universe.getVisibilityTurnsMap = to_dict(fo.universe.getVisibilityTurnsMap)
+fo.empire.supplyProjections = to_dict(fo.empire.supplyProjections)
 
 
 def to_str(prefix, id, name):
     return '{}_{}<{}>'.format(prefix, id, name)
 
 fo.to_str = to_str
+
 
 def system_to_string(system):
     return to_str(SYSTEM, system.systemID, system.name)
