@@ -102,6 +102,16 @@ def normilize_rtype(rtype):
     return rtype
 
 
+def process_docstring(info):
+    """
+    Make linux and windows stabs look alike.
+    """
+
+    return info.replace('class ', '').replace('struct ', '').replace('enum ', '')\
+        .replace('basic_string<char,std::char_traits<char>,std::allocator<char> >', 'string')\
+        .replace(" ", '')
+
+
 class Docs(object):
     def __init__(self, text, indent):
         self.indent = indent
@@ -142,7 +152,12 @@ class Docs(object):
         res = []
         for name, doc, info in zip(headers, docs, signatures):
             arg_types, rtype = parse_name(name)
-            res.append((arg_types, rtype, info))
+            # This signatures differes on linux and windows, just ignore them
+            if name.startswith(('__delitem__', '__len__', '__iter__', '__getitem__', '__contains__', '__setitem__')):
+                res.append((arg_types, rtype, 'platform dependant'))
+            else:
+                res.append((arg_types, rtype, info))
+
         self.resources = res
         arg_types, rtypes, infos = zip(*res)
         rtypes = set(rtypes)
@@ -152,7 +167,7 @@ class Docs(object):
         if doc:
             doc.append('')
         self.header = doc + ['C++ signature%s:' % ('' if len(res) == 1 else 's')]
-        self.header.extend('    %s' % info for info in infos)
+        self.header.extend('    %s' % process_docstring(info) for info in infos)
 
         # TODO dont ignore second implementation for arguments.
         _, args = merge_args(arg_types[:1])
