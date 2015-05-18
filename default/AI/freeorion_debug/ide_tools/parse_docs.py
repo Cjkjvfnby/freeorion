@@ -109,7 +109,7 @@ def process_docstring(info):
 
     return info.replace('class ', '').replace('struct ', '').replace('enum ', '')\
         .replace('basic_string<char,std::char_traits<char>,std::allocator<char> >', 'string')\
-        .replace(" ", '')
+        .replace(", ", ',')
 
 
 class Docs(object):
