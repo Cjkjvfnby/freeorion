@@ -20,7 +20,7 @@ class IntBoolMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -31,7 +31,7 @@ class IntBoolMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -42,7 +42,7 @@ class IntBoolMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -53,7 +53,7 @@ class IntBoolMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<int const, bool> > > __iter__(boost::python::back_reference<std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -62,7 +62,7 @@ class IntBoolMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -75,7 +75,7 @@ class IntBoolMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<int, bool, std::less<int>, std::allocator<std::pair<int const, bool> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -86,7 +86,7 @@ class IntDblMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -97,7 +97,7 @@ class IntDblMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -108,7 +108,7 @@ class IntDblMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -119,7 +119,7 @@ class IntDblMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<int const, double> > > __iter__(boost::python::back_reference<std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -128,7 +128,7 @@ class IntDblMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -141,7 +141,7 @@ class IntDblMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -152,7 +152,7 @@ class IntIntMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -163,7 +163,7 @@ class IntIntMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -174,7 +174,7 @@ class IntIntMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -185,7 +185,7 @@ class IntIntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<int const, int> > > __iter__(boost::python::back_reference<std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -194,7 +194,7 @@ class IntIntMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -207,7 +207,7 @@ class IntIntMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -218,7 +218,7 @@ class IntPairVec(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -229,7 +229,7 @@ class IntPairVec(object):
     def extend(self, obj):
         """
         C++ signature:
-            void extend(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue},boost::python::api::object)
+            voidextend(std::vector<std::pair<int,int>,std::allocator<std::pair<int,int>>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -240,7 +240,7 @@ class IntPairVec(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -251,7 +251,7 @@ class IntPairVec(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -262,7 +262,7 @@ class IntPairVec(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, __gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > __iter__(boost::python::back_reference<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -271,7 +271,7 @@ class IntPairVec(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -284,7 +284,7 @@ class IntPairVec(object):
     def append(self, obj):
         """
         C++ signature:
-            void append(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue},boost::python::api::object)
+            voidappend(std::vector<std::pair<int,int>,std::allocator<std::pair<int,int>>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -295,7 +295,7 @@ class IntPairVec(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -306,7 +306,7 @@ class IntSet(object):
     def count(self, number):
         """
         C++ signature:
-            unsigned int count(std::set<int, std::less<int>, std::allocator<int> >,int)
+            unsignedintcount(std::set<int,std::less<int>,std::allocator<int>>,int)
         
         :param number:
         :type number: int
@@ -317,7 +317,7 @@ class IntSet(object):
     def __contains__(self, number):
         """
         C++ signature:
-            bool __contains__(std::set<int, std::less<int>, std::allocator<int> >,int)
+            platformdependant
         
         :param number:
         :type number: int
@@ -328,7 +328,7 @@ class IntSet(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_const_iterator<int> > __iter__(boost::python::back_reference<std::set<int, std::less<int>, std::allocator<int> >&>)
+            platformdependant
         
         :rtype iter
         """
@@ -337,7 +337,7 @@ class IntSet(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned int __len__(std::set<int, std::less<int>, std::allocator<int> >)
+            platformdependant
         
         :rtype int
         """
@@ -346,7 +346,7 @@ class IntSet(object):
     def empty(self):
         """
         C++ signature:
-            bool empty(std::set<int, std::less<int>, std::allocator<int> >)
+            boolempty(std::set<int,std::less<int>,std::allocator<int>>)
         
         :rtype bool
         """
@@ -355,7 +355,7 @@ class IntSet(object):
     def size(self):
         """
         C++ signature:
-            unsigned int size(std::set<int, std::less<int>, std::allocator<int> >)
+            unsignedintsize(std::set<int,std::less<int>,std::allocator<int>>)
         
         :rtype int
         """
@@ -366,7 +366,7 @@ class IntSetSet(object):
     def count(self, int_set):
         """
         C++ signature:
-            unsigned int count(std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >,std::set<int, std::less<int>, std::allocator<int> >)
+            unsignedintcount(std::set<std::set<int,std::less<int>,std::allocator<int>>,std::less<std::set<int,std::less<int>,std::allocator<int>>>,std::allocator<std::set<int,std::less<int>,std::allocator<int>>>>,std::set<int,std::less<int>,std::allocator<int>>)
         
         :param int_set:
         :type int_set: IntSet
@@ -377,7 +377,7 @@ class IntSetSet(object):
     def __contains__(self, int_set):
         """
         C++ signature:
-            bool __contains__(std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >,std::set<int, std::less<int>, std::allocator<int> >)
+            platformdependant
         
         :param int_set:
         :type int_set: IntSet
@@ -388,7 +388,7 @@ class IntSetSet(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_const_iterator<std::set<int, std::less<int>, std::allocator<int> > > > __iter__(boost::python::back_reference<std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -397,7 +397,7 @@ class IntSetSet(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned int __len__(std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >)
+            platformdependant
         
         :rtype int
         """
@@ -406,7 +406,7 @@ class IntSetSet(object):
     def empty(self):
         """
         C++ signature:
-            bool empty(std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >)
+            boolempty(std::set<std::set<int,std::less<int>,std::allocator<int>>,std::less<std::set<int,std::less<int>,std::allocator<int>>>,std::allocator<std::set<int,std::less<int>,std::allocator<int>>>>)
         
         :rtype bool
         """
@@ -415,7 +415,7 @@ class IntSetSet(object):
     def size(self):
         """
         C++ signature:
-            unsigned int size(std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > >)
+            unsignedintsize(std::set<std::set<int,std::less<int>,std::allocator<int>>,std::less<std::set<int,std::less<int>,std::allocator<int>>>,std::allocator<std::set<int,std::less<int>,std::allocator<int>>>>)
         
         :rtype int
         """
@@ -426,7 +426,7 @@ class IntVec(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::vector<int, std::allocator<int> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -437,7 +437,7 @@ class IntVec(object):
     def extend(self, obj):
         """
         C++ signature:
-            void extend(std::vector<int, std::allocator<int> > {lvalue},boost::python::api::object)
+            voidextend(std::vector<int,std::allocator<int>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -448,7 +448,7 @@ class IntVec(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::vector<int, std::allocator<int> >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -459,7 +459,7 @@ class IntVec(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::vector<int, std::allocator<int> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -470,7 +470,7 @@ class IntVec(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > > __iter__(boost::python::back_reference<std::vector<int, std::allocator<int> >&>)
+            platformdependant
         
         :rtype iter
         """
@@ -479,7 +479,7 @@ class IntVec(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::vector<int, std::allocator<int> > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -492,7 +492,7 @@ class IntVec(object):
     def append(self, obj):
         """
         C++ signature:
-            void append(std::vector<int, std::allocator<int> > {lvalue},boost::python::api::object)
+            voidappend(std::vector<int,std::allocator<int>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -503,7 +503,7 @@ class IntVec(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::vector<int, std::allocator<int> > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -514,7 +514,7 @@ class ItemSpecVec(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -525,7 +525,7 @@ class ItemSpecVec(object):
     def extend(self, obj):
         """
         C++ signature:
-            void extend(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue},boost::python::api::object)
+            voidextend(std::vector<ItemSpec,std::allocator<ItemSpec>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -536,7 +536,7 @@ class ItemSpecVec(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::vector<ItemSpec, std::allocator<ItemSpec> >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -547,7 +547,7 @@ class ItemSpecVec(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -558,7 +558,7 @@ class ItemSpecVec(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, __gnu_cxx::__normal_iterator<ItemSpec*, std::vector<ItemSpec, std::allocator<ItemSpec> > > > __iter__(boost::python::back_reference<std::vector<ItemSpec, std::allocator<ItemSpec> >&>)
+            platformdependant
         
         :rtype iter
         """
@@ -567,7 +567,7 @@ class ItemSpecVec(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -580,7 +580,7 @@ class ItemSpecVec(object):
     def append(self, obj):
         """
         C++ signature:
-            void append(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue},boost::python::api::object)
+            voidappend(std::vector<ItemSpec,std::allocator<ItemSpec>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -591,7 +591,7 @@ class ItemSpecVec(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::vector<ItemSpec, std::allocator<ItemSpec> > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -602,7 +602,7 @@ class MeterTypeMeterMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -613,7 +613,7 @@ class MeterTypeMeterMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -624,7 +624,7 @@ class MeterTypeMeterMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -635,7 +635,7 @@ class MeterTypeMeterMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<MeterType const, Meter> > > __iter__(boost::python::back_reference<std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -644,7 +644,7 @@ class MeterTypeMeterMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -657,7 +657,7 @@ class MeterTypeMeterMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<MeterType, Meter, std::less<MeterType>, std::allocator<std::pair<MeterType const, Meter> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -678,7 +678,7 @@ class PairIntInt_IntMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -689,7 +689,7 @@ class PairIntInt_IntMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -700,7 +700,7 @@ class PairIntInt_IntMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -711,7 +711,7 @@ class PairIntInt_IntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, int> > > __iter__(boost::python::back_reference<std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -720,7 +720,7 @@ class PairIntInt_IntMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -733,7 +733,7 @@ class PairIntInt_IntMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<std::pair<int, int>, int, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -744,7 +744,7 @@ class ShipPartMeterMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -755,7 +755,7 @@ class ShipPartMeterMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -766,7 +766,7 @@ class ShipPartMeterMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -777,7 +777,7 @@ class ShipPartMeterMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_internal_reference<1ul, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<std::pair<MeterType, std::string> const, Meter> > > __iter__(boost::python::back_reference<std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -786,7 +786,7 @@ class ShipPartMeterMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -799,7 +799,7 @@ class ShipPartMeterMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<std::pair<MeterType, std::string>, Meter, std::less<std::pair<MeterType, std::string> >, std::allocator<std::pair<std::pair<MeterType, std::string> const, Meter> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -810,7 +810,7 @@ class ShipSlotVec(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -821,7 +821,7 @@ class ShipSlotVec(object):
     def extend(self, obj):
         """
         C++ signature:
-            void extend(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue},boost::python::api::object)
+            voidextend(std::vector<ShipSlotType,std::allocator<ShipSlotType>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -832,7 +832,7 @@ class ShipSlotVec(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::vector<ShipSlotType, std::allocator<ShipSlotType> >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -843,7 +843,7 @@ class ShipSlotVec(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -854,7 +854,7 @@ class ShipSlotVec(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, __gnu_cxx::__normal_iterator<ShipSlotType*, std::vector<ShipSlotType, std::allocator<ShipSlotType> > > > __iter__(boost::python::back_reference<std::vector<ShipSlotType, std::allocator<ShipSlotType> >&>)
+            platformdependant
         
         :rtype object
         """
@@ -863,7 +863,7 @@ class ShipSlotVec(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -876,7 +876,7 @@ class ShipSlotVec(object):
     def append(self, obj):
         """
         C++ signature:
-            void append(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue},boost::python::api::object)
+            voidappend(std::vector<ShipSlotType,std::allocator<ShipSlotType>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -887,7 +887,7 @@ class ShipSlotVec(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::vector<ShipSlotType, std::allocator<ShipSlotType> > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -898,7 +898,7 @@ class StringSet(object):
     def count(self, string):
         """
         C++ signature:
-            unsigned int count(std::set<std::string, std::less<std::string>, std::allocator<std::string> >,std::string)
+            unsignedintcount(std::set<std::string,std::less<std::string>,std::allocator<std::string>>,std::string)
         
         :param string:
         :type string: str
@@ -909,7 +909,7 @@ class StringSet(object):
     def __contains__(self, string):
         """
         C++ signature:
-            bool __contains__(std::set<std::string, std::less<std::string>, std::allocator<std::string> >,std::string)
+            platformdependant
         
         :param string:
         :type string: str
@@ -920,7 +920,7 @@ class StringSet(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_const_iterator<std::string> > __iter__(boost::python::back_reference<std::set<std::string, std::less<std::string>, std::allocator<std::string> >&>)
+            platformdependant
         
         :rtype iter
         """
@@ -929,7 +929,7 @@ class StringSet(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned int __len__(std::set<std::string, std::less<std::string>, std::allocator<std::string> >)
+            platformdependant
         
         :rtype int
         """
@@ -938,7 +938,7 @@ class StringSet(object):
     def empty(self):
         """
         C++ signature:
-            bool empty(std::set<std::string, std::less<std::string>, std::allocator<std::string> >)
+            boolempty(std::set<std::string,std::less<std::string>,std::allocator<std::string>>)
         
         :rtype bool
         """
@@ -947,7 +947,7 @@ class StringSet(object):
     def size(self):
         """
         C++ signature:
-            unsigned int size(std::set<std::string, std::less<std::string>, std::allocator<std::string> >)
+            unsignedintsize(std::set<std::string,std::less<std::string>,std::allocator<std::string>>)
         
         :rtype int
         """
@@ -958,7 +958,7 @@ class StringVec(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::vector<std::string, std::allocator<std::string> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -969,7 +969,7 @@ class StringVec(object):
     def extend(self, obj):
         """
         C++ signature:
-            void extend(std::vector<std::string, std::allocator<std::string> > {lvalue},boost::python::api::object)
+            voidextend(std::vector<std::string,std::allocator<std::string>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -980,7 +980,7 @@ class StringVec(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::vector<std::string, std::allocator<std::string> >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -991,7 +991,7 @@ class StringVec(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::vector<std::string, std::allocator<std::string> > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -1002,7 +1002,7 @@ class StringVec(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, __gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > > > __iter__(boost::python::back_reference<std::vector<std::string, std::allocator<std::string> >&>)
+            platformdependant
         
         :rtype iter
         """
@@ -1011,7 +1011,7 @@ class StringVec(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::vector<std::string, std::allocator<std::string> > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -1024,7 +1024,7 @@ class StringVec(object):
     def append(self, obj):
         """
         C++ signature:
-            void append(std::vector<std::string, std::allocator<std::string> > {lvalue},boost::python::api::object)
+            voidappend(std::vector<std::string,std::allocator<std::string>>{lvalue},boost::python::api::object)
         
         :param obj:
         :type obj: object
@@ -1035,7 +1035,7 @@ class StringVec(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::vector<std::string, std::allocator<std::string> > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -1046,7 +1046,7 @@ class VisibilityIntMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -1057,7 +1057,7 @@ class VisibilityIntMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -1068,7 +1068,7 @@ class VisibilityIntMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -1079,7 +1079,7 @@ class VisibilityIntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<Visibility const, int> > > __iter__(boost::python::back_reference<std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -1088,7 +1088,7 @@ class VisibilityIntMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -1101,7 +1101,7 @@ class VisibilityIntMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -1109,6 +1109,10 @@ class VisibilityIntMap(object):
 
 
 class buildingType(object):
+    @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
     @property
     def description(self):
         return str()
@@ -1124,7 +1128,7 @@ class buildingType(object):
     def canBeProduced(self, number1, number2):
         """
         C++ signature:
-            bool canBeProduced(BuildingType {lvalue},int,int)
+            boolcanBeProduced(BuildingType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1137,7 +1141,7 @@ class buildingType(object):
     def productionTime(self, number1, number2):
         """
         C++ signature:
-            int productionTime(BuildingType {lvalue},int,int)
+            intproductionTime(BuildingType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1150,7 +1154,7 @@ class buildingType(object):
     def perTurnCost(self, number1, number2):
         """
         C++ signature:
-            float perTurnCost(BuildingType {lvalue},int,int)
+            floatperTurnCost(BuildingType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1163,7 +1167,7 @@ class buildingType(object):
     def captureResult(self, number1, number2, number3, boolean):
         """
         C++ signature:
-            CaptureResult captureResult(BuildingType {lvalue},int,int,int,bool)
+            CaptureResultcaptureResult(BuildingType{lvalue},int,int,int,bool)
         
         :param number1:
         :type number1: int
@@ -1180,7 +1184,7 @@ class buildingType(object):
     def productionCost(self, number1, number2):
         """
         C++ signature:
-            float productionCost(BuildingType {lvalue},int,int)
+            floatproductionCost(BuildingType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1307,7 +1311,7 @@ class empire(object):
     def resourceAvailable(self, resource_type):
         """
         C++ signature:
-            float resourceAvailable(Empire {lvalue},ResourceType)
+            floatresourceAvailable(Empire{lvalue},ResourceType)
         
         :param resource_type:
         :type resource_type: resourceType
@@ -1318,7 +1322,7 @@ class empire(object):
     def techResearched(self, string):
         """
         C++ signature:
-            bool techResearched(Empire {lvalue},std::string)
+            booltechResearched(Empire{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -1329,7 +1333,7 @@ class empire(object):
     def resourceProduction(self, resource_type):
         """
         C++ signature:
-            float resourceProduction(Empire {lvalue},ResourceType)
+            floatresourceProduction(Empire{lvalue},ResourceType)
         
         :param resource_type:
         :type resource_type: resourceType
@@ -1340,7 +1344,7 @@ class empire(object):
     def productionCostAndTime(self, production_queue_element):
         """
         C++ signature:
-            std::pair<float, int> productionCostAndTime(Empire,ProductionQueue::Element)
+            std::pair<float,int>productionCostAndTime(Empire,ProductionQueue::Element)
         
         :param production_queue_element:
         :type production_queue_element: productionQueueElement
@@ -1351,7 +1355,7 @@ class empire(object):
     def shipDesignAvailable(self, number):
         """
         C++ signature:
-            bool shipDesignAvailable(Empire {lvalue},int)
+            boolshipDesignAvailable(Empire{lvalue},int)
         
         :param number:
         :type number: int
@@ -1362,7 +1366,7 @@ class empire(object):
     def numSitReps(self, number):
         """
         C++ signature:
-            int numSitReps(Empire {lvalue},int)
+            intnumSitReps(Empire{lvalue},int)
         
         :param number:
         :type number: int
@@ -1373,7 +1377,7 @@ class empire(object):
     def getResourcePool(self, resource_type):
         """
         C++ signature:
-            boost::shared_ptr<ResourcePool> getResourcePool(Empire {lvalue},ResourceType)
+            boost::shared_ptr<ResourcePool>getResourcePool(Empire{lvalue},ResourceType)
         
         :param resource_type:
         :type resource_type: resourceType
@@ -1384,7 +1388,7 @@ class empire(object):
     def resourceStockpile(self, resource_type):
         """
         C++ signature:
-            float resourceStockpile(Empire {lvalue},ResourceType)
+            floatresourceStockpile(Empire{lvalue},ResourceType)
         
         :param resource_type:
         :type resource_type: resourceType
@@ -1395,7 +1399,7 @@ class empire(object):
     def hasExploredSystem(self, number):
         """
         C++ signature:
-            bool hasExploredSystem(Empire {lvalue},int)
+            boolhasExploredSystem(Empire{lvalue},int)
         
         :param number:
         :type number: int
@@ -1406,7 +1410,7 @@ class empire(object):
     def buildingTypeAvailable(self, string):
         """
         C++ signature:
-            bool buildingTypeAvailable(Empire {lvalue},std::string)
+            boolbuildingTypeAvailable(Empire{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -1417,7 +1421,7 @@ class empire(object):
     def obstructedStarlanes(self):
         """
         C++ signature:
-            std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > obstructedStarlanes(Empire)
+            std::vector<std::pair<int,int>,std::allocator<std::pair<int,int>>>obstructedStarlanes(Empire)
         
         :rtype IntPairVec
         """
@@ -1426,7 +1430,7 @@ class empire(object):
     def population(self):
         """
         C++ signature:
-            float population(Empire {lvalue})
+            floatpopulation(Empire{lvalue})
         
         :rtype float
         """
@@ -1435,7 +1439,7 @@ class empire(object):
     def supplyProjections(self, number, boolean):
         """
         C++ signature:
-            std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > > supplyProjections(Empire,int,bool)
+            std::map<int,int,std::less<int>,std::allocator<std::pair<intconst,int>>>supplyProjections(Empire,int,bool)
         
         :param number:
         :type number: int
@@ -1448,8 +1452,8 @@ class empire(object):
     def canBuild(self, build_type, string, number):
         """
         C++ signatures:
-            bool canBuild(Empire {lvalue},BuildType,std::string,int)
-            bool canBuild(Empire {lvalue},BuildType,int,int)
+            boolcanBuild(Empire{lvalue},BuildType,std::string,int)
+            boolcanBuild(Empire{lvalue},BuildType,int,int)
         
         :param build_type:
         :type build_type: buildType
@@ -1464,7 +1468,7 @@ class empire(object):
     def getSitRep(self, number):
         """
         C++ signature:
-            SitRepEntry getSitRep(Empire,int)
+            SitRepEntrygetSitRep(Empire,int)
         
         :param number:
         :type number: int
@@ -1475,7 +1479,7 @@ class empire(object):
     def getTechStatus(self, string):
         """
         C++ signature:
-            TechStatus getTechStatus(Empire {lvalue},std::string)
+            TechStatusgetTechStatus(Empire{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -1486,7 +1490,7 @@ class empire(object):
     def researchProgress(self, string):
         """
         C++ signature:
-            float researchProgress(Empire {lvalue},std::string)
+            floatresearchProgress(Empire{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -1553,6 +1557,10 @@ class galaxySetupData(object):
 
 class hullType(object):
     @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
+    @property
     def name(self):
         return str()
 
@@ -1577,13 +1585,17 @@ class hullType(object):
         return ShipSlotVec()
 
     @property
+    def speed(self):
+        return float()
+
+    @property
     def starlaneSpeed(self):
         return float()
 
     def productionCost(self, number1, number2):
         """
         C++ signature:
-            float productionCost(HullType {lvalue},int,int)
+            floatproductionCost(HullType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1596,7 +1608,7 @@ class hullType(object):
     def productionTime(self, number1, number2):
         """
         C++ signature:
-            int productionTime(HullType {lvalue},int,int)
+            intproductionTime(HullType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1609,7 +1621,7 @@ class hullType(object):
     def numSlotsOfSlotType(self, ship_slot_type):
         """
         C++ signature:
-            unsigned int numSlotsOfSlotType(HullType {lvalue},ShipSlotType)
+            unsignedintnumSlotsOfSlotType(HullType{lvalue},ShipSlotType)
         
         :param ship_slot_type:
         :type ship_slot_type: shipSlotType
@@ -1648,6 +1660,10 @@ class partType(object):
         return ShipSlotVec()
 
     @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
+    @property
     def capacity(self):
         return float()
 
@@ -1662,7 +1678,7 @@ class partType(object):
     def productionTime(self, number1, number2):
         """
         C++ signature:
-            int productionTime(PartType {lvalue},int,int)
+            intproductionTime(PartType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1675,7 +1691,7 @@ class partType(object):
     def productionCost(self, number1, number2):
         """
         C++ signature:
-            float productionCost(PartType {lvalue},int,int)
+            floatproductionCost(PartType{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -1688,7 +1704,7 @@ class partType(object):
     def canMountInSlotType(self, ship_slot_type):
         """
         C++ signature:
-            bool canMountInSlotType(PartType {lvalue},ShipSlotType)
+            boolcanMountInSlotType(PartType{lvalue},ShipSlotType)
         
         :param ship_slot_type:
         :type ship_slot_type: shipSlotType
@@ -1731,7 +1747,7 @@ class productionQueue(object):
     def __getitem__(self, number):
         """
         C++ signature:
-            ProductionQueue::Element __getitem__(ProductionQueue {lvalue},int)
+            platformdependant
         
         :param number:
         :type number: int
@@ -1742,7 +1758,7 @@ class productionQueue(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Deque_iterator<ProductionQueue::Element, ProductionQueue::Element&, ProductionQueue::Element*> > __iter__(boost::python::back_reference<ProductionQueue&>)
+            platformdependant
         
         :rtype object
         """
@@ -1751,7 +1767,7 @@ class productionQueue(object):
     def objectsWithWastedPP(self, res_pool):
         """
         C++ signature:
-            std::set<std::set<int, std::less<int>, std::allocator<int> >, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::set<int, std::less<int>, std::allocator<int> > > > objectsWithWastedPP(ProductionQueue {lvalue},boost::shared_ptr<ResourcePool>)
+            std::set<std::set<int,std::less<int>,std::allocator<int>>,std::less<std::set<int,std::less<int>,std::allocator<int>>>,std::allocator<std::set<int,std::less<int>,std::allocator<int>>>>objectsWithWastedPP(ProductionQueue{lvalue},boost::shared_ptr<ResourcePool>)
         
         :param res_pool:
         :type res_pool: resPool
@@ -1762,7 +1778,7 @@ class productionQueue(object):
     def availablePP(self, res_pool):
         """
         C++ signature:
-            std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > availablePP(ProductionQueue {lvalue},boost::shared_ptr<ResourcePool>)
+            std::map<std::set<int,std::less<int>,std::allocator<int>>,float,std::less<std::set<int,std::less<int>,std::allocator<int>>>,std::allocator<std::pair<std::set<int,std::less<int>,std::allocator<int>>const,float>>>availablePP(ProductionQueue{lvalue},boost::shared_ptr<ResourcePool>)
         
         :param res_pool:
         :type res_pool: resPool
@@ -1773,7 +1789,7 @@ class productionQueue(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned int __len__(ProductionQueue {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -1826,7 +1842,7 @@ class resPoolMap(object):
     def __delitem__(self, obj):
         """
         C++ signature:
-            void __delitem__(std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -1837,7 +1853,7 @@ class resPoolMap(object):
     def __getitem__(self, obj2):
         """
         C++ signature:
-            boost::python::api::object __getitem__(boost::python::back_reference<std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > >&>,_object*)
+            platformdependant
         
         :param obj2:
         :type obj2: object
@@ -1848,7 +1864,7 @@ class resPoolMap(object):
     def __contains__(self, obj):
         """
         C++ signature:
-            bool __contains__(std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > {lvalue},_object*)
+            platformdependant
         
         :param obj:
         :type obj: object
@@ -1859,7 +1875,7 @@ class resPoolMap(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Rb_tree_iterator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > __iter__(boost::python::back_reference<std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > >&>)
+            platformdependant
         
         :rtype object
         """
@@ -1868,7 +1884,7 @@ class resPoolMap(object):
     def __setitem__(self, obj1, obj2):
         """
         C++ signature:
-            void __setitem__(std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > {lvalue},_object*,_object*)
+            platformdependant
         
         :param obj1:
         :type obj1: object
@@ -1881,7 +1897,7 @@ class resPoolMap(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned long __len__(std::map<std::set<int, std::less<int>, std::allocator<int> >, float, std::less<std::set<int, std::less<int>, std::allocator<int> > >, std::allocator<std::pair<std::set<int, std::less<int>, std::allocator<int> > const, float> > > {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -1908,7 +1924,7 @@ class researchQueue(object):
     def __getitem__(self, number):
         """
         C++ signature:
-            ResearchQueue::Element __getitem__(ResearchQueue {lvalue},int)
+            platformdependant
         
         :param number:
         :type number: int
@@ -1919,7 +1935,7 @@ class researchQueue(object):
     def __contains__(self, research_queue_element):
         """
         C++ signature:
-            bool __contains__(ResearchQueue const*,ResearchQueue::Element)
+            platformdependant
         
         :param research_queue_element:
         :type research_queue_element: researchQueueElement
@@ -1930,7 +1946,7 @@ class researchQueue(object):
     def __iter__(self):
         """
         C++ signature:
-            boost::python::objects::iterator_range<boost::python::return_value_policy<boost::python::return_by_value, boost::python::default_call_policies>, std::_Deque_iterator<ResearchQueue::Element, ResearchQueue::Element&, ResearchQueue::Element*> > __iter__(boost::python::back_reference<ResearchQueue&>)
+            platformdependant
         
         :rtype object
         """
@@ -1939,7 +1955,7 @@ class researchQueue(object):
     def __len__(self):
         """
         C++ signature:
-            unsigned int __len__(ResearchQueue {lvalue})
+            platformdependant
         
         :rtype int
         """
@@ -1948,7 +1964,7 @@ class researchQueue(object):
     def inQueue(self, string):
         """
         C++ signature:
-            bool inQueue(ResearchQueue {lvalue},std::string)
+            boolinQueue(ResearchQueue{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -1987,6 +2003,10 @@ class resourceCenter(object):
 
 class shipDesign(object):
     @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
+    @property
     def dump(self):
         return str()
 
@@ -2000,10 +2020,6 @@ class shipDesign(object):
 
     @property
     def detection(self):
-        return float()
-
-    @property
-    def colonyCapacity(self):
         return float()
 
     @property
@@ -2055,6 +2071,10 @@ class shipDesign(object):
         return int()
 
     @property
+    def colonyCapacity(self):
+        return float()
+
+    @property
     def structure(self):
         return float()
 
@@ -2078,10 +2098,23 @@ class shipDesign(object):
     def industryGeneration(self):
         return float()
 
+    def productionTime(self, number1, number2):
+        """
+        C++ signature:
+            intproductionTime(ShipDesign{lvalue},int,int)
+        
+        :param number1:
+        :type number1: int
+        :param number2:
+        :type number2: int
+        :rtype int
+        """
+        return int()
+
     def productionCost(self, number1, number2):
         """
         C++ signature:
-            float productionCost(ShipDesign {lvalue},int,int)
+            floatproductionCost(ShipDesign{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2094,7 +2127,7 @@ class shipDesign(object):
     def productionLocationForEmpire(self, number1, number2):
         """
         C++ signature:
-            bool productionLocationForEmpire(ShipDesign {lvalue},int,int)
+            boolproductionLocationForEmpire(ShipDesign{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2107,7 +2140,7 @@ class shipDesign(object):
     def perTurnCost(self, number1, number2):
         """
         C++ signature:
-            float perTurnCost(ShipDesign {lvalue},int,int)
+            floatperTurnCost(ShipDesign{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2120,7 +2153,7 @@ class shipDesign(object):
     def description(self, boolean):
         """
         C++ signature:
-            std::string description(ShipDesign {lvalue},bool)
+            std::stringdescription(ShipDesign{lvalue},bool)
         
         :param boolean:
         :type boolean: bool
@@ -2128,23 +2161,10 @@ class shipDesign(object):
         """
         return str()
 
-    def productionTime(self, number1, number2):
-        """
-        C++ signature:
-            int productionTime(ShipDesign {lvalue},int,int)
-        
-        :param number1:
-        :type number1: int
-        :param number2:
-        :type number2: int
-        :rtype int
-        """
-        return int()
-
     def name(self, boolean):
         """
         C++ signature:
-            std::string name(ShipDesign {lvalue},bool)
+            std::stringname(ShipDesign{lvalue},bool)
         
         :param boolean:
         :type boolean: bool
@@ -2169,7 +2189,7 @@ class sitrep(object):
     def getDataString(self, string):
         """
         C++ signature:
-            std::string getDataString(SitRepEntry {lvalue},std::string)
+            std::stringgetDataString(SitRepEntry{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2180,7 +2200,7 @@ class sitrep(object):
     def getDataIDNumber(self, string):
         """
         C++ signature:
-            int getDataIDNumber(SitRepEntry {lvalue},std::string)
+            intgetDataIDNumber(SitRepEntry{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2213,7 +2233,7 @@ class special(object):
     def initialCapacity(self, number):
         """
         C++ signature:
-            float initialCapacity(Special {lvalue},int)
+            floatinitialCapacity(Special{lvalue},int)
         
         :param number:
         :type number: int
@@ -2262,7 +2282,7 @@ class species(object):
     def getPlanetEnvironment(self, planet_type):
         """
         C++ signature:
-            PlanetEnvironment getPlanetEnvironment(Species {lvalue},PlanetType)
+            PlanetEnvironmentgetPlanetEnvironment(Species{lvalue},PlanetType)
         
         :param planet_type:
         :type planet_type: planetType
@@ -2307,7 +2327,7 @@ class tech(object):
     def researchCost(self, number):
         """
         C++ signature:
-            float researchCost(Tech {lvalue},int)
+            floatresearchCost(Tech{lvalue},int)
         
         :param number:
         :type number: int
@@ -2318,7 +2338,7 @@ class tech(object):
     def recursivePrerequisites(self, number):
         """
         C++ signature:
-            std::vector<std::string, std::allocator<std::string> > recursivePrerequisites(Tech,int)
+            std::vector<std::string,std::allocator<std::string>>recursivePrerequisites(Tech,int)
         
         :param number:
         :type number: int
@@ -2329,7 +2349,7 @@ class tech(object):
     def perTurnCost(self, number):
         """
         C++ signature:
-            float perTurnCost(Tech {lvalue},int)
+            floatperTurnCost(Tech{lvalue},int)
         
         :param number:
         :type number: int
@@ -2340,7 +2360,7 @@ class tech(object):
     def researchTime(self, number):
         """
         C++ signature:
-            int researchTime(Tech {lvalue},int)
+            intresearchTime(Tech{lvalue},int)
         
         :param number:
         :type number: int
@@ -2381,7 +2401,7 @@ class universe(object):
     def jumpDistance(self, number1, number2):
         """
         C++ signature:
-            int jumpDistance(Universe,int,int)
+            intjumpDistance(Universe,int,int)
         
         :param number1:
         :type number1: int
@@ -2394,7 +2414,7 @@ class universe(object):
     def dump(self):
         """
         C++ signature:
-            void dump(Universe)
+            voiddump(Universe)
         
         :rtype None
         """
@@ -2403,7 +2423,7 @@ class universe(object):
     def linearDistance(self, number1, number2):
         """
         C++ signature:
-            double linearDistance(Universe,int,int)
+            doublelinearDistance(Universe,int,int)
         
         :param number1:
         :type number1: int
@@ -2416,7 +2436,7 @@ class universe(object):
     def getObject(self, number):
         """
         C++ signature:
-            UniverseObject const* getObject(Universe,int)
+            UniverseObjectconst*getObject(Universe,int)
         
         :param number:
         :type number: int
@@ -2427,7 +2447,7 @@ class universe(object):
     def getPlanet(self, number):
         """
         C++ signature:
-            Planet const* getPlanet(Universe,int)
+            Planetconst*getPlanet(Universe,int)
         
         :param number:
         :type number: int
@@ -2438,7 +2458,7 @@ class universe(object):
     def getShip(self, number):
         """
         C++ signature:
-            Ship const* getShip(Universe,int)
+            Shipconst*getShip(Universe,int)
         
         :param number:
         :type number: int
@@ -2449,7 +2469,7 @@ class universe(object):
     def systemsConnected(self, number1, number2, number3):
         """
         C++ signature:
-            bool systemsConnected(Universe,int,int,int)
+            boolsystemsConnected(Universe,int,int,int)
         
         :param number1:
         :type number1: int
@@ -2464,7 +2484,7 @@ class universe(object):
     def getVisibilityTurnsMap(self, number1, number2):
         """
         C++ signature:
-            std::map<Visibility, int, std::less<Visibility>, std::allocator<std::pair<Visibility const, int> > > getVisibilityTurnsMap(Universe {lvalue},int,int)
+            std::map<Visibility,int,std::less<Visibility>,std::allocator<std::pair<Visibilityconst,int>>>getVisibilityTurnsMap(Universe{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2477,7 +2497,7 @@ class universe(object):
     def leastJumpsPath(self, number1, number2, number3):
         """
         C++ signature:
-            std::vector<int, std::allocator<int> > leastJumpsPath(Universe,int,int,int)
+            std::vector<int,std::allocator<int>>leastJumpsPath(Universe,int,int,int)
         
         :param number1:
         :type number1: int
@@ -2492,7 +2512,7 @@ class universe(object):
     def getFleet(self, number):
         """
         C++ signature:
-            Fleet const* getFleet(Universe,int)
+            Fleetconst*getFleet(Universe,int)
         
         :param number:
         :type number: int
@@ -2503,7 +2523,7 @@ class universe(object):
     def getImmediateNeighbors(self, number1, number2):
         """
         C++ signature:
-            std::vector<int, std::allocator<int> > getImmediateNeighbors(Universe,int,int)
+            std::vector<int,std::allocator<int>>getImmediateNeighbors(Universe,int,int)
         
         :param number1:
         :type number1: int
@@ -2516,7 +2536,7 @@ class universe(object):
     def updateMeterEstimates(self, item_list):
         """
         C++ signature:
-            void updateMeterEstimates(Universe,boost::python::list)
+            voidupdateMeterEstimates(Universe,boost::python::list)
         
         :param item_list:
         :type item_list: list
@@ -2527,7 +2547,7 @@ class universe(object):
     def getField(self, number):
         """
         C++ signature:
-            Field const* getField(Universe,int)
+            Fieldconst*getField(Universe,int)
         
         :param number:
         :type number: int
@@ -2538,7 +2558,7 @@ class universe(object):
     def destroyedObjectIDs(self, number):
         """
         C++ signature:
-            std::set<int, std::less<int>, std::allocator<int> > destroyedObjectIDs(Universe {lvalue},int)
+            std::set<int,std::less<int>,std::allocator<int>>destroyedObjectIDs(Universe{lvalue},int)
         
         :param number:
         :type number: int
@@ -2549,7 +2569,7 @@ class universe(object):
     def getSystemNeighborsMap(self, number1, number2):
         """
         C++ signature:
-            std::map<int, double, std::less<int>, std::allocator<std::pair<int const, double> > > getSystemNeighborsMap(Universe,int,int)
+            std::map<int,double,std::less<int>,std::allocator<std::pair<intconst,double>>>getSystemNeighborsMap(Universe,int,int)
         
         :param number1:
         :type number1: int
@@ -2562,7 +2582,7 @@ class universe(object):
     def systemHasStarlane(self, number1, number2):
         """
         C++ signature:
-            bool systemHasStarlane(Universe {lvalue},int,int)
+            boolsystemHasStarlane(Universe{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2575,7 +2595,7 @@ class universe(object):
     def shortestPath(self, number1, number2, number3):
         """
         C++ signature:
-            std::vector<int, std::allocator<int> > shortestPath(Universe,int,int,int)
+            std::vector<int,std::allocator<int>>shortestPath(Universe,int,int,int)
         
         :param number1:
         :type number1: int
@@ -2590,7 +2610,7 @@ class universe(object):
     def getVisibility(self, number1, number2):
         """
         C++ signature:
-            Visibility getVisibility(Universe {lvalue},int,int)
+            VisibilitygetVisibility(Universe{lvalue},int,int)
         
         :param number1:
         :type number1: int
@@ -2603,7 +2623,7 @@ class universe(object):
     def getSystem(self, number):
         """
         C++ signature:
-            System const* getSystem(Universe,int)
+            Systemconst*getSystem(Universe,int)
         
         :param number:
         :type number: int
@@ -2614,7 +2634,7 @@ class universe(object):
     def getBuilding(self, number):
         """
         C++ signature:
-            Building const* getBuilding(Universe,int)
+            Buildingconst*getBuilding(Universe,int)
         
         :param number:
         :type number: int
@@ -2687,7 +2707,7 @@ class universeObject(object):
     def contains(self, number):
         """
         C++ signature:
-            bool contains(UniverseObject {lvalue},int)
+            boolcontains(UniverseObject{lvalue},int)
         
         :param number:
         :type number: int
@@ -2698,7 +2718,7 @@ class universeObject(object):
     def hasTag(self, string):
         """
         C++ signature:
-            bool hasTag(UniverseObject {lvalue},std::string)
+            boolhasTag(UniverseObject{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2709,7 +2729,7 @@ class universeObject(object):
     def nextTurnCurrentMeterValue(self, meter_type):
         """
         C++ signature:
-            float nextTurnCurrentMeterValue(UniverseObject {lvalue},MeterType)
+            floatnextTurnCurrentMeterValue(UniverseObject{lvalue},MeterType)
         
         :param meter_type:
         :type meter_type: meterType
@@ -2720,7 +2740,7 @@ class universeObject(object):
     def initialMeterValue(self, meter_type):
         """
         C++ signature:
-            float initialMeterValue(UniverseObject {lvalue},MeterType)
+            floatinitialMeterValue(UniverseObject{lvalue},MeterType)
         
         :param meter_type:
         :type meter_type: meterType
@@ -2731,7 +2751,7 @@ class universeObject(object):
     def containedBy(self, number):
         """
         C++ signature:
-            bool containedBy(UniverseObject {lvalue},int)
+            boolcontainedBy(UniverseObject{lvalue},int)
         
         :param number:
         :type number: int
@@ -2742,7 +2762,7 @@ class universeObject(object):
     def currentMeterValue(self, meter_type):
         """
         C++ signature:
-            float currentMeterValue(UniverseObject {lvalue},MeterType)
+            floatcurrentMeterValue(UniverseObject{lvalue},MeterType)
         
         :param meter_type:
         :type meter_type: meterType
@@ -2753,7 +2773,7 @@ class universeObject(object):
     def specialAddedOnTurn(self, string):
         """
         C++ signature:
-            int specialAddedOnTurn(UniverseObject {lvalue},std::string)
+            intspecialAddedOnTurn(UniverseObject{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2764,7 +2784,7 @@ class universeObject(object):
     def ownedBy(self, number):
         """
         C++ signature:
-            bool ownedBy(UniverseObject {lvalue},int)
+            boolownedBy(UniverseObject{lvalue},int)
         
         :param number:
         :type number: int
@@ -2775,7 +2795,7 @@ class universeObject(object):
     def getMeter(self, meter_type):
         """
         C++ signature:
-            Meter const* getMeter(UniverseObject {lvalue},MeterType)
+            Meterconst*getMeter(UniverseObject{lvalue},MeterType)
         
         :param meter_type:
         :type meter_type: meterType
@@ -2786,7 +2806,7 @@ class universeObject(object):
     def hasSpecial(self, string):
         """
         C++ signature:
-            bool hasSpecial(UniverseObject {lvalue},std::string)
+            boolhasSpecial(UniverseObject{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2821,8 +2841,8 @@ class field(universeObject):
     def inField(self, base_object):
         """
         C++ signatures:
-            bool inField(Field,UniverseObject)
-            bool inField(Field {lvalue},double,double)
+            boolinField(Field,UniverseObject)
+            boolinField(Field{lvalue},double,double)
         
         :param base_object:
         :type base_object: universeObject
@@ -2949,7 +2969,7 @@ class planet(universeObject, popCenter, resourceCenter):
     def nextBetterPlanetTypeForSpecies(self, string):
         """
         C++ signature:
-            PlanetType nextBetterPlanetTypeForSpecies(Planet {lvalue},std::string)
+            PlanetTypenextBetterPlanetTypeForSpecies(Planet{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2960,7 +2980,7 @@ class planet(universeObject, popCenter, resourceCenter):
     def environmentForSpecies(self, string):
         """
         C++ signature:
-            PlanetEnvironment environmentForSpecies(Planet {lvalue},std::string)
+            PlanetEnvironmentenvironmentForSpecies(Planet{lvalue},std::string)
         
         :param string:
         :type string: str
@@ -2971,7 +2991,7 @@ class planet(universeObject, popCenter, resourceCenter):
     def OrbitalPositionOnTurn(self, number):
         """
         C++ signature:
-            Radian OrbitalPositionOnTurn(Planet {lvalue},int)
+            RadianOrbitalPositionOnTurn(Planet{lvalue},int)
         
         :param number:
         :type number: int
@@ -3052,7 +3072,7 @@ class ship(universeObject):
     def currentPartMeterValue(self, meter_type, string):
         """
         C++ signature:
-            float currentPartMeterValue(Ship {lvalue},MeterType,std::string)
+            floatcurrentPartMeterValue(Ship{lvalue},MeterType,std::string)
         
         :param meter_type:
         :type meter_type: meterType
@@ -3065,7 +3085,7 @@ class ship(universeObject):
     def initialPartMeterValue(self, meter_type, string):
         """
         C++ signature:
-            float initialPartMeterValue(Ship {lvalue},MeterType,std::string)
+            floatinitialPartMeterValue(Ship{lvalue},MeterType,std::string)
         
         :param meter_type:
         :type meter_type: meterType
@@ -3120,7 +3140,7 @@ class system(universeObject):
     def HasStarlaneToSystemID(self, number):
         """
         C++ signature:
-            bool HasStarlaneToSystemID(System {lvalue},int)
+            boolHasStarlaneToSystemID(System{lvalue},int)
         
         :param number:
         :type number: int
@@ -3133,7 +3153,7 @@ class system(universeObject):
         Currently unused.
         
         C++ signature:
-            bool HasWormholeToSystemID(System {lvalue},int)
+            boolHasWormholeToSystemID(System{lvalue},int)
         
         :param number:
         :type number: int
@@ -3443,7 +3463,7 @@ class shipPartClass(Enum):
     stealth = None  # shipPartClass(8, "stealth")
     fuel = None  # shipPartClass(9, "fuel")
     colony = None  # shipPartClass(10, "colony")
-    starlaneSpeed = None  # shipPartClass(11, "starlaneSpeed")
+    speed = None  # shipPartClass(11, "speed")
     general = None  # shipPartClass(12, "general")
     bombard = None  # shipPartClass(13, "bombard")
     industry = None  # shipPartClass(14, "industry")
@@ -3462,7 +3482,7 @@ shipPartClass.detection = shipPartClass(7, "detection")
 shipPartClass.stealth = shipPartClass(8, "stealth")
 shipPartClass.fuel = shipPartClass(9, "fuel")
 shipPartClass.colony = shipPartClass(10, "colony")
-shipPartClass.starlaneSpeed = shipPartClass(11, "starlaneSpeed")
+shipPartClass.speed = shipPartClass(11, "speed")
 shipPartClass.general = shipPartClass(12, "general")
 shipPartClass.bombard = shipPartClass(13, "bombard")
 shipPartClass.industry = shipPartClass(14, "industry")
@@ -3580,7 +3600,7 @@ visibility.full = visibility(3, "full")
 def allEmpireIDs():
     """
     C++ signature:
-        std::vector<int, std::allocator<int> > allEmpireIDs()
+        std::vector<int,std::allocator<int>>allEmpireIDs()
     :rtype IntVec
     """
     return IntVec()
@@ -3589,7 +3609,7 @@ def allEmpireIDs():
 def allPlayerIDs():
     """
     C++ signature:
-        std::vector<int, std::allocator<int> > allPlayerIDs()
+        std::vector<int,std::allocator<int>>allPlayerIDs()
     :rtype IntVec
     """
     return IntVec()
@@ -3598,7 +3618,7 @@ def allPlayerIDs():
 def currentTurn():
     """
     C++ signature:
-        int currentTurn()
+        intcurrentTurn()
     :rtype int
     """
     return int()
@@ -3607,7 +3627,7 @@ def currentTurn():
 def doneTurn():
     """
     C++ signature:
-        void doneTurn()
+        voiddoneTurn()
     :rtype None
     """
     return None
@@ -3616,7 +3636,7 @@ def doneTurn():
 def empireID():
     """
     C++ signature:
-        int empireID()
+        intempireID()
     :rtype int
     """
     return int()
@@ -3625,7 +3645,7 @@ def empireID():
 def empirePlayerID(number):
     """
     C++ signature:
-        int empirePlayerID(int)
+        intempirePlayerID(int)
     
     :param number:
     :type number: int
@@ -3637,7 +3657,7 @@ def empirePlayerID(number):
 def getAIConfigStr():
     """
     C++ signature:
-        std::string getAIConfigStr()
+        std::stringgetAIConfigStr()
     :rtype str
     """
     return str()
@@ -3646,7 +3666,7 @@ def getAIConfigStr():
 def getAIDir():
     """
     C++ signature:
-        std::string getAIDir()
+        std::stringgetAIDir()
     :rtype str
     """
     return str()
@@ -3655,7 +3675,7 @@ def getAIDir():
 def getBuildingType(string):
     """
     C++ signature:
-        BuildingType const* getBuildingType(std::string)
+        BuildingTypeconst*getBuildingType(std::string)
     
     :param string:
     :type string: str
@@ -3667,8 +3687,8 @@ def getBuildingType(string):
 def getEmpire():
     """
     C++ signatures:
-        Empire const* getEmpire()
-        Empire const* getEmpire(int)
+        Empireconst*getEmpire()
+        Empireconst*getEmpire(int)
     :rtype empire
     """
     return empire()
@@ -3677,7 +3697,7 @@ def getEmpire():
 def getFieldType(string):
     """
     C++ signature:
-        FieldType const* getFieldType(std::string)
+        FieldTypeconst*getFieldType(std::string)
     
     :param string:
     :type string: str
@@ -3689,7 +3709,7 @@ def getFieldType(string):
 def getGalaxySetupData():
     """
     C++ signature:
-        GalaxySetupData getGalaxySetupData()
+        GalaxySetupDatagetGalaxySetupData()
     :rtype galaxySetupData
     """
     return galaxySetupData()
@@ -3698,7 +3718,7 @@ def getGalaxySetupData():
 def getHullType(string):
     """
     C++ signature:
-        HullType const* getHullType(std::string)
+        HullTypeconst*getHullType(std::string)
     
     :param string:
     :type string: str
@@ -3710,7 +3730,7 @@ def getHullType(string):
 def getPartType(string):
     """
     C++ signature:
-        PartType const* getPartType(std::string)
+        PartTypeconst*getPartType(std::string)
     
     :param string:
     :type string: str
@@ -3722,7 +3742,7 @@ def getPartType(string):
 def getSaveStateString():
     """
     C++ signature:
-        std::string getSaveStateString()
+        std::stringgetSaveStateString()
     :rtype str
     """
     return str()
@@ -3731,7 +3751,7 @@ def getSaveStateString():
 def getShipDesign(number):
     """
     C++ signature:
-        ShipDesign const* getShipDesign(int)
+        ShipDesignconst*getShipDesign(int)
     
     :param number:
     :type number: int
@@ -3743,7 +3763,7 @@ def getShipDesign(number):
 def getSpecial(string):
     """
     C++ signature:
-        Special const* getSpecial(std::string)
+        Specialconst*getSpecial(std::string)
     
     :param string:
     :type string: str
@@ -3755,7 +3775,7 @@ def getSpecial(string):
 def getSpecies(string):
     """
     C++ signature:
-        Species const* getSpecies(std::string)
+        Speciesconst*getSpecies(std::string)
     
     :param string:
     :type string: str
@@ -3767,7 +3787,7 @@ def getSpecies(string):
 def getTech(string):
     """
     C++ signature:
-        Tech const* getTech(std::string)
+        Techconst*getTech(std::string)
     
     :param string:
     :type string: str
@@ -3779,7 +3799,7 @@ def getTech(string):
 def getTechCategories(obj):
     """
     C++ signature:
-        std::vector<std::string, std::allocator<std::string> > getTechCategories(TechManager {lvalue})
+        std::vector<std::string,std::allocator<std::string>>getTechCategories(TechManager{lvalue})
     
     :param obj:
     :type obj: object
@@ -3791,7 +3811,7 @@ def getTechCategories(obj):
 def getUniverse():
     """
     C++ signature:
-        Universe getUniverse()
+        UniversegetUniverse()
     :rtype universe
     """
     return universe()
@@ -3800,7 +3820,7 @@ def getUniverse():
 def issueAggressionOrder(number, boolean):
     """
     C++ signature:
-        int issueAggressionOrder(int,bool)
+        intissueAggressionOrder(int,bool)
     
     :param number:
     :type number: int
@@ -3814,7 +3834,7 @@ def issueAggressionOrder(number, boolean):
 def issueBombardOrder(number1, number2):
     """
     C++ signature:
-        int issueBombardOrder(int,int)
+        intissueBombardOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -3828,7 +3848,7 @@ def issueBombardOrder(number1, number2):
 def issueChangeFocusOrder(number, string):
     """
     C++ signature:
-        int issueChangeFocusOrder(int,std::string)
+        intissueChangeFocusOrder(int,std::string)
     
     :param number:
     :type number: int
@@ -3842,7 +3862,7 @@ def issueChangeFocusOrder(number, string):
 def issueChangeProductionQuantityOrder(number1, number2, number3):
     """
     C++ signature:
-        int issueChangeProductionQuantityOrder(int,int,int)
+        intissueChangeProductionQuantityOrder(int,int,int)
     
     :param number1:
     :type number1: int
@@ -3858,7 +3878,7 @@ def issueChangeProductionQuantityOrder(number1, number2, number3):
 def issueColonizeOrder(number1, number2):
     """
     C++ signature:
-        int issueColonizeOrder(int,int)
+        intissueColonizeOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -3872,7 +3892,7 @@ def issueColonizeOrder(number1, number2):
 def issueCreateShipDesignOrder(string1, string2, string3, item_list, string4, string5, boolean):
     """
     C++ signature:
-        int issueCreateShipDesignOrder(std::string,std::string,std::string,boost::python::list,std::string,std::string,bool)
+        intissueCreateShipDesignOrder(std::string,std::string,std::string,boost::python::list,std::string,std::string,bool)
     
     :param string1:
     :type string1: str
@@ -3896,7 +3916,7 @@ def issueCreateShipDesignOrder(string1, string2, string3, item_list, string4, st
 def issueDequeueProductionOrder(number):
     """
     C++ signature:
-        int issueDequeueProductionOrder(int)
+        intissueDequeueProductionOrder(int)
     
     :param number:
     :type number: int
@@ -3908,7 +3928,7 @@ def issueDequeueProductionOrder(number):
 def issueDequeueTechOrder(string):
     """
     C++ signature:
-        int issueDequeueTechOrder(std::string)
+        intissueDequeueTechOrder(std::string)
     
     :param string:
     :type string: str
@@ -3920,7 +3940,7 @@ def issueDequeueTechOrder(string):
 def issueEnqueueBuildingProductionOrder(string, number):
     """
     C++ signature:
-        int issueEnqueueBuildingProductionOrder(std::string,int)
+        intissueEnqueueBuildingProductionOrder(std::string,int)
     
     :param string:
     :type string: str
@@ -3934,7 +3954,7 @@ def issueEnqueueBuildingProductionOrder(string, number):
 def issueEnqueueShipProductionOrder(number1, number2):
     """
     C++ signature:
-        int issueEnqueueShipProductionOrder(int,int)
+        intissueEnqueueShipProductionOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -3948,7 +3968,7 @@ def issueEnqueueShipProductionOrder(number1, number2):
 def issueEnqueueTechOrder(string, number):
     """
     C++ signature:
-        int issueEnqueueTechOrder(std::string,int)
+        intissueEnqueueTechOrder(std::string,int)
     
     :param string:
     :type string: str
@@ -3962,7 +3982,7 @@ def issueEnqueueTechOrder(string, number):
 def issueFleetMoveOrder(number1, number2):
     """
     C++ signature:
-        int issueFleetMoveOrder(int,int)
+        intissueFleetMoveOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -3976,7 +3996,7 @@ def issueFleetMoveOrder(number1, number2):
 def issueFleetTransferOrder(number1, number2):
     """
     C++ signature:
-        int issueFleetTransferOrder(int,int)
+        intissueFleetTransferOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -3990,7 +4010,7 @@ def issueFleetTransferOrder(number1, number2):
 def issueGiveObjectToEmpireOrder(number1, number2):
     """
     C++ signature:
-        int issueGiveObjectToEmpireOrder(int,int)
+        intissueGiveObjectToEmpireOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -4004,7 +4024,7 @@ def issueGiveObjectToEmpireOrder(number1, number2):
 def issueInvadeOrder(number1, number2):
     """
     C++ signature:
-        int issueInvadeOrder(int,int)
+        intissueInvadeOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -4018,7 +4038,7 @@ def issueInvadeOrder(number1, number2):
 def issueNewFleetOrder(string, number):
     """
     C++ signature:
-        int issueNewFleetOrder(std::string,int)
+        intissueNewFleetOrder(std::string,int)
     
     :param string:
     :type string: str
@@ -4032,7 +4052,7 @@ def issueNewFleetOrder(string, number):
 def issueRenameOrder(number, string):
     """
     C++ signature:
-        int issueRenameOrder(int,std::string)
+        intissueRenameOrder(int,std::string)
     
     :param number:
     :type number: int
@@ -4046,7 +4066,7 @@ def issueRenameOrder(number, string):
 def issueRequeueProductionOrder(number1, number2):
     """
     C++ signature:
-        int issueRequeueProductionOrder(int,int)
+        intissueRequeueProductionOrder(int,int)
     
     :param number1:
     :type number1: int
@@ -4060,7 +4080,7 @@ def issueRequeueProductionOrder(number1, number2):
 def issueScrapOrder(number):
     """
     C++ signature:
-        int issueScrapOrder(int)
+        intissueScrapOrder(int)
     
     :param number:
     :type number: int
@@ -4072,7 +4092,7 @@ def issueScrapOrder(number):
 def playerEmpireID(number):
     """
     C++ signature:
-        int playerEmpireID(int)
+        intplayerEmpireID(int)
     
     :param number:
     :type number: int
@@ -4084,7 +4104,7 @@ def playerEmpireID(number):
 def playerID():
     """
     C++ signature:
-        int playerID()
+        intplayerID()
     :rtype int
     """
     return int()
@@ -4093,7 +4113,7 @@ def playerID():
 def playerIsAI(number):
     """
     C++ signature:
-        bool playerIsAI(int)
+        boolplayerIsAI(int)
     
     :param number:
     :type number: int
@@ -4105,7 +4125,7 @@ def playerIsAI(number):
 def playerIsHost(number):
     """
     C++ signature:
-        bool playerIsHost(int)
+        boolplayerIsHost(int)
     
     :param number:
     :type number: int
@@ -4117,8 +4137,8 @@ def playerIsHost(number):
 def playerName():
     """
     C++ signatures:
-        std::string playerName()
-        std::string playerName(int)
+        std::stringplayerName()
+        std::stringplayerName(int)
     :rtype str
     """
     return str()
@@ -4127,7 +4147,7 @@ def playerName():
 def sendChatMessage(number, string):
     """
     C++ signature:
-        void sendChatMessage(int,std::string)
+        voidsendChatMessage(int,std::string)
     
     :param number:
     :type number: int
@@ -4141,7 +4161,7 @@ def sendChatMessage(number, string):
 def sendDiplomaticMessage(diplomatic_message):
     """
     C++ signature:
-        void sendDiplomaticMessage(DiplomaticMessage)
+        voidsendDiplomaticMessage(DiplomaticMessage)
     
     :param diplomatic_message:
     :type diplomatic_message: diplomaticMessage
@@ -4153,7 +4173,7 @@ def sendDiplomaticMessage(diplomatic_message):
 def setSaveStateString(string):
     """
     C++ signature:
-        void setSaveStateString(std::string)
+        voidsetSaveStateString(std::string)
     
     :param string:
     :type string: str
@@ -4165,7 +4185,7 @@ def setSaveStateString(string):
 def techs():
     """
     C++ signature:
-        std::vector<std::string, std::allocator<std::string> > techs()
+        std::vector<std::string,std::allocator<std::string>>techs()
     :rtype StringVec
     """
     return StringVec()
@@ -4174,7 +4194,7 @@ def techs():
 def techsInCategory(string):
     """
     C++ signature:
-        std::vector<std::string, std::allocator<std::string> > techsInCategory(std::string)
+        std::vector<std::string,std::allocator<std::string>>techsInCategory(std::string)
     
     :param string:
     :type string: str
@@ -4186,7 +4206,7 @@ def techsInCategory(string):
 def updateMeterEstimates(boolean):
     """
     C++ signature:
-        void updateMeterEstimates(bool)
+        voidupdateMeterEstimates(bool)
     
     :param boolean:
     :type boolean: bool
@@ -4198,7 +4218,7 @@ def updateMeterEstimates(boolean):
 def updateProductionQueue():
     """
     C++ signature:
-        void updateProductionQueue()
+        voidupdateProductionQueue()
     :rtype None
     """
     return None
@@ -4207,7 +4227,7 @@ def updateProductionQueue():
 def updateResearchQueue():
     """
     C++ signature:
-        void updateResearchQueue()
+        voidupdateResearchQueue()
     :rtype None
     """
     return None
@@ -4216,7 +4236,7 @@ def updateResearchQueue():
 def updateResourcePools():
     """
     C++ signature:
-        void updateResourcePools()
+        voidupdateResourcePools()
     :rtype None
     """
     return None
@@ -4225,7 +4245,7 @@ def updateResourcePools():
 def userString(string):
     """
     C++ signature:
-        std::string userString(std::string)
+        std::stringuserString(std::string)
     
     :param string:
     :type string: str
@@ -4234,11 +4254,35 @@ def userString(string):
     return str()
 
 
+def userStringExists(string):
+    """
+    C++ signature:
+        booluserStringExists(std::string)
+    
+    :param string:
+    :type string: str
+    :rtype bool
+    """
+    return bool()
+
+
+def userStringList(string):
+    """
+    C++ signature:
+        boost::python::listuserStringList(std::string)
+    
+    :param string:
+    :type string: str
+    :rtype list
+    """
+    return list()
+
+
 def validShipDesign(string, string_list):
     """
     C++ signatures:
-        bool validShipDesign(std::string,std::vector<std::string, std::allocator<std::string> >)
-        bool validShipDesign(ShipDesign)
+        boolvalidShipDesign(std::string,std::vector<std::string,std::allocator<std::string>>)
+        boolvalidShipDesign(ShipDesign)
     
     :param string:
     :type string: str

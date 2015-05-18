@@ -1,7 +1,6 @@
 import os
 from inspect import getmembers, getdoc, isroutine
 from generate_stub import make_stub
-import platform
 
 
 def get_member_info(member):
@@ -78,6 +77,7 @@ def inspect_boost_class(name, obj):
             info['attrs'][name] = get_member_info(member)
     return info
 
+
 def inspect_boost_function(name, value):
     return {
         'type': 'function',
@@ -128,9 +128,6 @@ def _inspect(obj, *instances):
 
 
 def inspect(obj, *instances):
-    folder_name = os.path.join(os.path.dirname(__file__), '%s_result' % platform.system())
-    if not os.path.exists(folder_name):
-        os.makedirs(folder_name)
-
+    folder_name = os.path.join(os.path.dirname(__file__), 'result')
     result_path = os.path.join(folder_name, '%s.py' % obj.__name__)
     make_stub(_inspect(obj, *instances), result_path)
