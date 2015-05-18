@@ -53,7 +53,7 @@ class IntBoolMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<int,bool,struct std::less<int>,class std::allocator<struct std::pair<int const ,bool> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<int,bool,struct std::less<int>,class std::allocator<struct std::pair<int const ,bool> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<int const ,bool> > > > > __iter__(struct boost::python::back_reference<class std::map<int,bool,struct std::less<int>,class std::allocator<struct std::pair<int const ,bool> > > &>)
         
         :rtype object
         """
@@ -119,7 +119,7 @@ class IntDblMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<int,double,struct std::less<int>,class std::allocator<struct std::pair<int const ,double> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<int,double,struct std::less<int>,class std::allocator<struct std::pair<int const ,double> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<int const ,double> > > > > __iter__(struct boost::python::back_reference<class std::map<int,double,struct std::less<int>,class std::allocator<struct std::pair<int const ,double> > > &>)
         
         :rtype object
         """
@@ -185,7 +185,7 @@ class IntIntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<int,int,struct std::less<int>,class std::allocator<struct std::pair<int const ,int> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<int,int,struct std::less<int>,class std::allocator<struct std::pair<int const ,int> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<int const ,int> > > > > __iter__(struct boost::python::back_reference<class std::map<int,int,struct std::less<int>,class std::allocator<struct std::pair<int const ,int> > > &>)
         
         :rtype object
         """
@@ -262,7 +262,7 @@ class IntPairVec(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::pair<int,int>,class std::allocator<struct std::pair<int,int> > > > > __iter__(struct boost::python::back_reference<class std::vector<struct std::pair<int,int>,class std::allocator<struct std::pair<int,int> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::_Simple_types<struct std::pair<int,int> > > > > __iter__(struct boost::python::back_reference<class std::vector<struct std::pair<int,int>,class std::allocator<struct std::pair<int,int> > > &>)
         
         :rtype object
         """
@@ -328,7 +328,7 @@ class IntSet(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<class std::_Tset_traits<int,struct std::less<int>,class std::allocator<int>,0> > > > __iter__(struct boost::python::back_reference<class std::set<int,struct std::less<int>,class std::allocator<int> > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<struct std::_Tree_simple_types<int> > > > __iter__(struct boost::python::back_reference<class std::set<int,struct std::less<int>,class std::allocator<int> > &>)
         
         :rtype iter
         """
@@ -388,7 +388,7 @@ class IntSetSet(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<class std::_Tset_traits<class std::set<int,struct std::less<int>,class std::allocator<int> >,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<class std::set<int,struct std::less<int>,class std::allocator<int> > >,0> > > > __iter__(struct boost::python::back_reference<class std::set<class std::set<int,struct std::less<int>,class std::allocator<int> >,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<class std::set<int,struct std::less<int>,class std::allocator<int> > > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<struct std::_Tree_simple_types<class std::set<int,struct std::less<int>,class std::allocator<int> > > > > > __iter__(struct boost::python::back_reference<class std::set<class std::set<int,struct std::less<int>,class std::allocator<int> >,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<class std::set<int,struct std::less<int>,class std::allocator<int> > > > &>)
         
         :rtype object
         """
@@ -470,7 +470,7 @@ class IntVec(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<int,class std::allocator<int> > > > __iter__(struct boost::python::back_reference<class std::vector<int,class std::allocator<int> > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::_Simple_types<int> > > > __iter__(struct boost::python::back_reference<class std::vector<int,class std::allocator<int> > &>)
         
         :rtype iter
         """
@@ -558,7 +558,7 @@ class ItemSpecVec(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct ItemSpec,class std::allocator<struct ItemSpec> > > > __iter__(struct boost::python::back_reference<class std::vector<struct ItemSpec,class std::allocator<struct ItemSpec> > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::_Simple_types<struct ItemSpec> > > > __iter__(struct boost::python::back_reference<class std::vector<struct ItemSpec,class std::allocator<struct ItemSpec> > &>)
         
         :rtype iter
         """
@@ -635,7 +635,7 @@ class MeterTypeMeterMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<enum MeterType,class Meter,struct std::less<enum MeterType>,class std::allocator<struct std::pair<enum MeterType const ,class Meter> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<enum MeterType,class Meter,struct std::less<enum MeterType>,class std::allocator<struct std::pair<enum MeterType const ,class Meter> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<enum MeterType const ,class Meter> > > > > __iter__(struct boost::python::back_reference<class std::map<enum MeterType,class Meter,struct std::less<enum MeterType>,class std::allocator<struct std::pair<enum MeterType const ,class Meter> > > &>)
         
         :rtype object
         """
@@ -711,7 +711,7 @@ class PairIntInt_IntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<struct std::pair<int,int>,int,struct std::less<struct std::pair<int,int> >,class std::allocator<struct std::pair<struct std::pair<int,int> const ,int> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<struct std::pair<int,int>,int,struct std::less<struct std::pair<int,int> >,class std::allocator<struct std::pair<struct std::pair<int,int> const ,int> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<struct std::pair<int,int> const ,int> > > > > __iter__(struct boost::python::back_reference<class std::map<struct std::pair<int,int>,int,struct std::less<struct std::pair<int,int> >,class std::allocator<struct std::pair<struct std::pair<int,int> const ,int> > > &>)
         
         :rtype object
         """
@@ -777,7 +777,7 @@ class ShipPartMeterMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_internal_reference<1,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class Meter,struct std::less<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > >,class std::allocator<struct std::pair<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > const ,class Meter> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class Meter,struct std::less<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > >,class std::allocator<struct std::pair<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > const ,class Meter> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_internal_reference<1,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > const ,class Meter> > > > > __iter__(struct boost::python::back_reference<class std::map<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class Meter,struct std::less<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > >,class std::allocator<struct std::pair<struct std::pair<enum MeterType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > const ,class Meter> > > &>)
         
         :rtype object
         """
@@ -854,7 +854,7 @@ class ShipSlotVec(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<enum ShipSlotType,class std::allocator<enum ShipSlotType> > > > __iter__(struct boost::python::back_reference<class std::vector<enum ShipSlotType,class std::allocator<enum ShipSlotType> > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::_Simple_types<enum ShipSlotType> > > > __iter__(struct boost::python::back_reference<class std::vector<enum ShipSlotType,class std::allocator<enum ShipSlotType> > &>)
         
         :rtype object
         """
@@ -920,7 +920,7 @@ class StringSet(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<class std::_Tset_traits<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,0> > > > __iter__(struct boost::python::back_reference<class std::set<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_const_iterator<class std::_Tree_val<struct std::_Tree_simple_types<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > > > __iter__(struct boost::python::back_reference<class std::set<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > &>)
         
         :rtype iter
         """
@@ -1002,7 +1002,7 @@ class StringVec(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > > > __iter__(struct boost::python::back_reference<class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Vector_iterator<class std::_Vector_val<struct std::_Simple_types<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > > > __iter__(struct boost::python::back_reference<class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > &>)
         
         :rtype iter
         """
@@ -1079,7 +1079,7 @@ class VisibilityIntMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<enum Visibility,int,struct std::less<enum Visibility>,class std::allocator<struct std::pair<enum Visibility const ,int> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<enum Visibility,int,struct std::less<enum Visibility>,class std::allocator<struct std::pair<enum Visibility const ,int> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<enum Visibility const ,int> > > > > __iter__(struct boost::python::back_reference<class std::map<enum Visibility,int,struct std::less<enum Visibility>,class std::allocator<struct std::pair<enum Visibility const ,int> > > &>)
         
         :rtype object
         """
@@ -1109,6 +1109,10 @@ class VisibilityIntMap(object):
 
 
 class buildingType(object):
+    @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
     @property
     def description(self):
         return str()
@@ -1553,6 +1557,10 @@ class galaxySetupData(object):
 
 class hullType(object):
     @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
+    @property
     def name(self):
         return str()
 
@@ -1575,6 +1583,10 @@ class hullType(object):
     @property
     def slots(self):
         return ShipSlotVec()
+
+    @property
+    def speed(self):
+        return float()
 
     @property
     def starlaneSpeed(self):
@@ -1646,6 +1658,10 @@ class partType(object):
     @property
     def mountableSlotTypes(self):
         return ShipSlotVec()
+
+    @property
+    def costTimeLocationInvariant(self):
+        return bool()
 
     @property
     def capacity(self):
@@ -1742,7 +1758,7 @@ class productionQueue(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Deque_iterator<struct ProductionQueue::Element,class std::allocator<struct ProductionQueue::Element> > > __iter__(struct boost::python::back_reference<struct ProductionQueue &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Deque_iterator<class std::_Deque_val<struct std::_Deque_simple_types<struct ProductionQueue::Element> > > > __iter__(struct boost::python::back_reference<struct ProductionQueue &>)
         
         :rtype object
         """
@@ -1859,7 +1875,7 @@ class resPoolMap(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<class std::_Tmap_traits<class std::set<int,struct std::less<int>,class std::allocator<int> >,float,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<struct std::pair<class std::set<int,struct std::less<int>,class std::allocator<int> > const ,float> >,0> > > > __iter__(struct boost::python::back_reference<class std::map<class std::set<int,struct std::less<int>,class std::allocator<int> >,float,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<struct std::pair<class std::set<int,struct std::less<int>,class std::allocator<int> > const ,float> > > &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Tree_iterator<class std::_Tree_val<struct std::_Tree_simple_types<struct std::pair<class std::set<int,struct std::less<int>,class std::allocator<int> > const ,float> > > > > __iter__(struct boost::python::back_reference<class std::map<class std::set<int,struct std::less<int>,class std::allocator<int> >,float,struct std::less<class std::set<int,struct std::less<int>,class std::allocator<int> > >,class std::allocator<struct std::pair<class std::set<int,struct std::less<int>,class std::allocator<int> > const ,float> > > &>)
         
         :rtype object
         """
@@ -1930,7 +1946,7 @@ class researchQueue(object):
     def __iter__(self):
         """
         C++ signature:
-            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Deque_iterator<struct ResearchQueue::Element,class std::allocator<struct ResearchQueue::Element> > > __iter__(struct boost::python::back_reference<struct ResearchQueue &>)
+            struct boost::python::objects::iterator_range<struct boost::python::return_value_policy<struct boost::python::return_by_value,struct boost::python::default_call_policies>,class std::_Deque_iterator<class std::_Deque_val<struct std::_Deque_simple_types<struct ResearchQueue::Element> > > > __iter__(struct boost::python::back_reference<struct ResearchQueue &>)
         
         :rtype object
         """
@@ -1987,6 +2003,10 @@ class resourceCenter(object):
 
 class shipDesign(object):
     @property
+    def costTimeLocationInvariant(self):
+        return bool()
+
+    @property
     def dump(self):
         return str()
 
@@ -2000,10 +2020,6 @@ class shipDesign(object):
 
     @property
     def detection(self):
-        return float()
-
-    @property
-    def colonyCapacity(self):
         return float()
 
     @property
@@ -2055,6 +2071,10 @@ class shipDesign(object):
         return int()
 
     @property
+    def colonyCapacity(self):
+        return float()
+
+    @property
     def structure(self):
         return float()
 
@@ -2077,6 +2097,19 @@ class shipDesign(object):
     @property
     def industryGeneration(self):
         return float()
+
+    def productionTime(self, number1, number2):
+        """
+        C++ signature:
+            int productionTime(class ShipDesign {lvalue},int,int)
+        
+        :param number1:
+        :type number1: int
+        :param number2:
+        :type number2: int
+        :rtype int
+        """
+        return int()
 
     def productionCost(self, number1, number2):
         """
@@ -2127,19 +2160,6 @@ class shipDesign(object):
         :rtype str
         """
         return str()
-
-    def productionTime(self, number1, number2):
-        """
-        C++ signature:
-            int productionTime(class ShipDesign {lvalue},int,int)
-        
-        :param number1:
-        :type number1: int
-        :param number2:
-        :type number2: int
-        :rtype int
-        """
-        return int()
 
     def name(self, boolean):
         """
@@ -3443,7 +3463,7 @@ class shipPartClass(Enum):
     stealth = None  # shipPartClass(8, "stealth")
     fuel = None  # shipPartClass(9, "fuel")
     colony = None  # shipPartClass(10, "colony")
-    starlaneSpeed = None  # shipPartClass(11, "starlaneSpeed")
+    speed = None  # shipPartClass(11, "speed")
     general = None  # shipPartClass(12, "general")
     bombard = None  # shipPartClass(13, "bombard")
     industry = None  # shipPartClass(14, "industry")
@@ -3462,7 +3482,7 @@ shipPartClass.detection = shipPartClass(7, "detection")
 shipPartClass.stealth = shipPartClass(8, "stealth")
 shipPartClass.fuel = shipPartClass(9, "fuel")
 shipPartClass.colony = shipPartClass(10, "colony")
-shipPartClass.starlaneSpeed = shipPartClass(11, "starlaneSpeed")
+shipPartClass.speed = shipPartClass(11, "speed")
 shipPartClass.general = shipPartClass(12, "general")
 shipPartClass.bombard = shipPartClass(13, "bombard")
 shipPartClass.industry = shipPartClass(14, "industry")
@@ -4232,6 +4252,30 @@ def userString(string):
     :rtype str
     """
     return str()
+
+
+def userStringExists(string):
+    """
+    C++ signature:
+        bool userStringExists(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+    
+    :param string:
+    :type string: str
+    :rtype bool
+    """
+    return bool()
+
+
+def userStringList(string):
+    """
+    C++ signature:
+        class boost::python::list userStringList(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+    
+    :param string:
+    :type string: str
+    :rtype list
+    """
+    return list()
 
 
 def validShipDesign(string, string_list):
