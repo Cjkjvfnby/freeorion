@@ -45,7 +45,7 @@ class AIFleetOrder(object):
         if self.executed and self.execution_completed:
             print "\t\t order not valid because already executed and completed"
             return False
-        if self.fleet.valid and self.target.valid:
+        if self.fleet and self.target:
             return True
         else:
             # FIXME self.fleet.valid and self.target.valid is functions so this code will never execute
@@ -61,13 +61,13 @@ class AIFleetOrder(object):
             return False
 
         if verbose:
-            fleet_id = self.fleet.target_id
-            system_id = self.fleet.target_id
             sys1 = self.fleet.get_object()
             sys_name = sys1 and sys1.name or "unknown"
-            main_fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
+            main_fleet_mission = foAI.foAIstate.get_fleet_mission(self.fleet.target_id)
             main_mission_type = (main_fleet_mission.get_mission_types() + [-1])[0]
-            print "** %s -- Mission Type  %s (%s) , current loc sys %d  - %s" % (self, AIFleetMissionTypeNames.name(main_mission_type), main_mission_type, system_id, sys_name)
+            print "** %s -- Mission Type %s (%s) , current loc sys %d - %s" % (
+                                                                self, AIFleetMissionTypeNames.name(main_mission_type),
+                                                                main_mission_type, self.fleet.target_id, sys_name)
         return True
 
     def issue_order(self):
@@ -100,9 +100,8 @@ class OrderMove(AIFleetOrder):
         #         #if not target_id in interior systems
         #         foAI.foAIstate.needsEmergencyExploration.append(fleet.systemID)
         #         return False
-
-        system_id = self.fleet.get_system()
-        if system_id == self.target.get_system():
+        system_id = self.fleet.get_system().target_id
+        if system_id == self.target.get_system().target_id:
             return True  # TODO: already there, but could consider retreating
 
         fleet_rating = foAI.foAIstate.get_rating(self.fleet.target_id).get('overall', 0)
@@ -119,7 +118,7 @@ class OrderMove(AIFleetOrder):
             sys1 = universe.getSystem(system_id)
             sys1_name = sys1 and sys1.name or "unknown"
             targ1 = self.target.get_system()
-            targ1_name = (targ1 and targ1.name) or "unknown"
+            targ1_name = (targ1 and targ1.get_object().name) or "unknown"
             # following line was poor because AIstate.militaryFleetIDs only covers fleets without current missions
             # my_other_fleet_rating = sum([foAI.foAIstate.fleetStatus.get(fleet_id, {}).get('rating', 0) for fleet_id in foAI.foAIstate.militaryFleetIDs if ( foAI.foAIstate.fleetStatus.get(fleet_id, {}).get('sysID', -1) == thisSystemID ) ])
             # myOtherFleetsRatings = [foAI.foAIstate.fleetStatus.get(fid, {}).get('rating', {}) for fid in foAI.foAIstate.systemStatus.get(target_id, {}).get('myfleets', [])]
@@ -148,7 +147,7 @@ class OrderMove(AIFleetOrder):
         if not super(OrderMove, self).issue_order():
             return
         fleet_id = self.fleet.target_id
-        system_id = self.target.get_system()
+        system_id = self.target.get_system().target_id
         fleet = self.fleet.get_object()
         if system_id not in [fleet.systemID, fleet.nextSystemID]:
             dest_id = system_id
@@ -174,7 +173,7 @@ class OrderResupply(AIFleetOrder):
         if not super(OrderResupply, self).issue_order():
             return
         fleet_id = self.fleet.target_id
-        system_id = self.target.get_system()
+        system_id = self.target.get_system().target_id
         fleet = self.fleet.get_object()
         if system_id not in [fleet.systemID, fleet.nextSystemID]:
             # if self.order_type == AIFleetOrderType.ORDER_MOVE:
@@ -349,7 +348,7 @@ class OrderInvade(AIFleetOrder):
         universe = fo.getUniverse()
         ship = universe.getShip(ship_id)
         planet = self.target.get_object()
-        return ship is not None and self.fleet.get_system() == planet.systemID \
+        return ship is not None and self.fleet.get_system().target_id == planet.systemID \
                and ship.canInvade and not planet.currentMeterValue(fo.meterType.shield)
 
     def issue_order(self):
@@ -404,7 +403,7 @@ class OrderMilitary(AIFleetOrder):
         ship_id = FleetUtilsAI.get_ship_id_with_role(self.fleet.target_id, AIShipRoleType.SHIP_ROLE_MILITARY)
         universe = fo.getUniverse()
         ship = universe.getShip(ship_id)
-        return ship is not None and self.fleet.get_system() == self.target.target_id and ship.isArmed
+        return ship is not None and self.fleet.get_system() == self.target and ship.isArmed
 
     def issue_order(self):
         if not super(OrderMilitary, self).issue_order():
@@ -429,7 +428,7 @@ class OrderRepair(AIFleetOrder):
         if not super(OrderRepair, self).issue_order():
             return
         fleet_id = self.fleet.target_id
-        system_id = self.target.get_system()
+        system_id = self.target.get_system().target_id
         fleet = self.fleet.get_object()
         if system_id not in [fleet.systemID, fleet.nextSystemID]:
             fo.issueAggressionOrder(fleet_id, False)

@@ -1,4 +1,3 @@
-import EnumsAI
 import freeOrionAIInterface as fo  # pylint: disable=import-error
 
 
@@ -9,7 +8,7 @@ class UniverseObject(object):
         self.target_id = target_id
 
     def __cmp__(self, other):
-       return cmp(self.target_id, other.target_id)
+        return cmp(self.target_id, other.target_id)
 
     def __str__(self):
         target = self.get_object()
@@ -28,7 +27,7 @@ class UniverseObject(object):
         return None
 
     def valid(self):
-        # this mathod is present here only for compatibility with it miss usage
+        # this method is present here only for compatibility with its usage (witch if used wrong)
         return bool(self)
 
     def __nonzero__(self):
@@ -76,12 +75,3 @@ class Fleet(UniverseObject):
 
     def get_object(self):
         return fo.getUniverse().getFleet(self.target_id)
-
-
-# Old unused targets
-# TARGET_BUILDING = 0
-# TARGET_TECHNOLOGY = 1
-# TARGET_SHIP = 4
-# TARGET_EMPIRE = 6
-# TARGET_ALL_OTHER_EMPIRES = 7
-
