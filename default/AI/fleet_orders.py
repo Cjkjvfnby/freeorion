@@ -154,6 +154,7 @@ class OrderMove(AIFleetOrder):
         if system_id not in [fleet.systemID, fleet.nextSystemID]:
             dest_id = system_id
             fo.issueFleetMoveOrder(fleet_id, dest_id)
+            print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
 
         if system_id == fleet.systemID:
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
@@ -189,6 +190,7 @@ class OrderResupply(AIFleetOrder):
                                                                                                 PlanetUtilsAI.sys_name_ids([dest_id]),
                                                                                                 PlanetUtilsAI.sys_name_ids([system_id]))
             fo.issueFleetMoveOrder(fleet_id, dest_id)
+            print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
 
         if system_id == fleet.systemID:
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
@@ -213,6 +215,7 @@ class OrderSplitFleet(AIFleetOrder):
         fleet = self.fleet.get_object()
         if ship_id in fleet.shipIDs:
             fo.issueNewFleetOrder(str(ship_id), ship_id)
+            print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
         self.execution_completed = True
 
 
@@ -261,6 +264,7 @@ class OrderOutpost(AIFleetOrder):
         if ship_id is None:
             ship_id = FleetUtilsAI.get_ship_id_with_role(fleet_id, AIShipRoleType.SHIP_ROLE_BASE_OUTPOST)
         result = fo.issueColonizeOrder(ship_id, self.target.target_id)
+        print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
         if not result:
             self.executed = False
 
@@ -281,6 +285,7 @@ class OrderColonize(AIFleetOrder):
         planet = self.target.get_object()
         planet_name = planet and planet.name or "apparently invisible"
         result = fo.issueColonizeOrder(ship_id, self.target.target_id)
+        print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
         print "Ordered colony ship ID %d to colonize %s, got result %d" % (ship_id, planet_name, result)
         if not result:
             self.executed = False
@@ -321,16 +326,15 @@ class OrderAttack(AIFleetOrder):
         if not super(OrderAttack, self).is_valid():
             return
         fo.issueFleetMoveOrder(self.fleet.target_id, self.target.get_system().target_id)
+        print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
 
 
 class OrderDefend(AIFleetOrder):
+    """
+        Used for orbital defense, have no real orders.
+    """
     ORDER_NAME = 'defend'
     TARGET_TYPE = System
-
-    def issue_order(self, verbose=False):
-        if not super(OrderAttack, self).is_valid():
-            return
-        fo.issueFleetMoveOrder(self.fleet.target_id, self.target.get_system().target_id)
 
 
 class OrderInvade(AIFleetOrder):
@@ -379,6 +383,7 @@ class OrderInvade(AIFleetOrder):
             ship = universe.getShip(ship_id)
             if foAI.foAIstate.get_ship_role(ship.design.id) in [AIShipRoleType.SHIP_ROLE_MILITARY_INVASION, AIShipRoleType.SHIP_ROLE_BASE_INVASION]:
                 result = fo.issueInvadeOrder(ship_id, planet_id) or result  # will track if at least one invasion troops successfully deployed
+                print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
                 shields = planet.currentMeterValue(fo.meterType.shield)
                 owner = planet.owner
                 if not result:
@@ -418,6 +423,7 @@ class OrderMilitary(AIFleetOrder):
         return ship is not None and self.fleet.get_system() == self.target and ship.isArmed
 
     def issue_order(self):
+        print "zzxxcc ????"
         if not super(OrderMilitary, self).issue_order():
             return
         target_sys_id = self.target.target_id
@@ -450,6 +456,7 @@ class OrderRepair(AIFleetOrder):
                                                                                                 PlanetUtilsAI.sys_name_ids([dest_id]),
                                                                                                 PlanetUtilsAI.sys_name_ids([system_id]))
             fo.issueFleetMoveOrder(fleet_id, dest_id)
+            print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
 
         if system_id == fleet.systemID:
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
