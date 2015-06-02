@@ -323,6 +323,16 @@ class OrderAttack(AIFleetOrder):
         fo.issueFleetMoveOrder(self.fleet.target_id, self.target.get_system().target_id)
 
 
+class OrderDefend(AIFleetOrder):
+    ORDER_NAME = 'defend'
+    TARGET_TYPE = System
+
+    def issue_order(self, verbose=False):
+        if not super(OrderAttack, self).is_valid():
+            return
+        fo.issueFleetMoveOrder(self.fleet.target_id, self.target.get_system().target_id)
+
+
 class OrderInvade(AIFleetOrder):
     ORDER_NAME = 'invade'
     TARGET_TYPE = Planet

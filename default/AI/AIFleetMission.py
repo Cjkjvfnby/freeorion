@@ -1,17 +1,14 @@
 import freeOrionAIInterface as fo # pylint: disable=import-error
 
-from fleet_orders import OrderMove, OrderOutpost, OrderColonize, OrderMilitary, OrderInvade
+from fleet_orders import OrderMove, OrderOutpost, OrderColonize, OrderMilitary, OrderInvade, OrderDefend
 import AIstate
 import FleetUtilsAI
 import EnumsAI
 import FreeOrionAI as foAI
 import MoveUtilsAI
-import ProductionAI
 import MilitaryAI
 import InvasionAI
 import PlanetUtilsAI
-import math
-from freeorion_tools import dict_from_map
 from universe_object import System, Fleet, Planet
 from EnumsAI import FLEET_MISSION_TYPES, AIFleetMissionType
 
@@ -24,6 +21,7 @@ ORDERS_FOR_MISSION = {
         AIFleetMissionType.FLEET_MISSION_SECURE: OrderMilitary,  # mostly same as MILITARY, but waits for system removal from all targeted system lists (invasion, colonization, outpost, blockade) before clearing
         AIFleetMissionType.FLEET_MISSION_ORBITAL_INVASION: OrderInvade,
         AIFleetMissionType.FLEET_MISSION_ORBITAL_OUTPOST: OrderOutpost,
+        AIFleetMissionType.FLEET_MISSION_ORBITAL_DEFENSE: OrderDefend
         }
 
 COMBAT_MISSION_TYPES = (AIFleetMissionType.FLEET_MISSION_MILITARY,
