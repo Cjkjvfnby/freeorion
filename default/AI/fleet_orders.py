@@ -73,8 +73,10 @@ class AIFleetOrder(object):
     def issue_order(self):
         if not self.can_issue_order():  # appears to be redundant with check in IAFleetMission?
             print "\tcan't issue %s" % self
+            return False
         else:
-            self.executed = True
+            self.executed = True  # TODO check that it is really executed
+            return True
 
     def __str__(self):
         return "Fleet order[%s] source:%26s | target %26s" % (self.ORDER_NAME, self.fleet, self.target)
