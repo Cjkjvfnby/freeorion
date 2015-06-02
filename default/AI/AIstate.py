@@ -8,10 +8,9 @@ import AIFleetMission
 import EnumsAI
 import ExplorationAI
 import FleetUtilsAI
-import ProductionAI
 import ResourcesAI
 from EnumsAI import AIFleetMissionType, AIExplorableSystemType
-from MilitaryAI import MinThreat
+import MilitaryAI
 import PlanetUtilsAI
 from freeorion_tools import dict_from_map, get_ai_tag_grade
 from universe_object import System
@@ -278,7 +277,7 @@ class AIstate(object):
         my_fleets_by_system = {}
         fleet_spot_position = {}
         saw_enemies_at_system = {}
-        my_milship_rating = ProductionAI.cur_best_mil_ship_rating()
+        my_milship_rating = MilitaryAI.cur_best_mil_ship_rating()
         current_turn = fo.currentTurn()
         for fleet_id in universe.fleetIDs:
             fleet = universe.getFleet(fleet_id)
@@ -769,31 +768,16 @@ class AIstate(object):
         elif design_id in self.designStats:
             return self.designStats[design_id]
         design = fo.getShipDesign(design_id)
-        detect_bonus = 0
         if design:
             attacks = {}
             for attack in list(design.attackStats):
                 attacks[attack] = attacks.get(attack, 0) + 1
             parts = design.parts
-            shields = 0
-            if "SH_BLACK" in parts:
-                shields = 20
-            elif "SH_MULTISPEC" in parts:
-                shields = 15
-            elif "SH_PLASMA" in parts:
-                shields = 12
-            elif "SH_DEFLECTOR" in parts:
-                shields = 7
-            elif "SH_DEFENSE_GRID" in parts:
-                shields = 4
-            if "DT_DETECTOR_4" in parts:
-                detect_bonus = 4
-            elif "DT_DETECTOR_3" in parts:
-                detect_bonus = 3
-            elif "DT_DETECTOR_2" in parts:
-                detect_bonus = 2
-            elif "DT_DETECTOR_1" in parts:
-                detect_bonus = 1
+            part_types = [fo.getPartType(part) for part in parts if part]
+            shield_parts = [part for part in part_types if part.partClass == fo.shipPartClass.shields]
+            shields = max([part.capacity for part in shield_parts]) if shield_parts else 0
+            detector_parts = [part for part in part_types if part.partClass == fo.shipPartClass.detection]
+            detect_bonus = max([part.capacity for part in detector_parts]) if detector_parts else 0
             # stats = {'attack':design.attack, 'structure':(design.structure + detect_bonus), 'shields':shields, 'attacks':attacks}
             stats = {'attack': design.attack, 'structure': design.structure, 'shields': shields, 
                      'attacks': attacks, 'tact_adj': self.calc_tactical_rating_adjustment(parts)}
@@ -855,7 +839,7 @@ class AIstate(object):
                           AIFleetMissionType.FLEET_MISSION_INVASION
                           ]:
                 this_rating = self.get_rating(fleet_id)
-                if float(this_rating.get('overall', 0))/this_rating.get('nships', 1) >= 0.5 * ProductionAI.cur_best_mil_ship_rating():
+                if float(this_rating.get('overall', 0))/this_rating.get('nships', 1) >= 0.5 * MilitaryAI.cur_best_mil_ship_rating():
                     make_aggressive = True
             else:
                 make_aggressive = True
@@ -928,7 +912,7 @@ class AIstate(object):
             print "Fleets unaccounted for in Empire Records:", unaccounted_fleets
             print "-----------"
         print "-----------"
-        min_threat_rating = {'overall': MinThreat, 'attack': MinThreat ** 0.5, 'health': MinThreat ** 0.5}
+        min_threat_rating = {'overall': MilitaryAI.MinThreat, 'attack': MilitaryAI.MinThreat ** 0.5, 'health': MilitaryAI.MinThreat ** 0.5}
         fighters = {(0, ((0, 0),), 0.0, 5.0): [0]}  # start with a dummy entry
         for fleet_id in fleet_list:
             status = self.fleetStatus.setdefault(fleet_id, {})
@@ -949,7 +933,7 @@ class AIstate(object):
             if fleet_id not in ok_fleets:  # or fleet.empty:
                 if self.__fleetRoleByID.get(fleet_id, -1) != -1:
                     if not just_resumed:
-                        if rating.get('overall', 0) > MinThreat:
+                        if rating.get('overall', 0) > MilitaryAI.MinThreat:
                             fleetsLostBySystem.setdefault(old_sys_id, []).append(rating)
                         else:
                             fleetsLostBySystem.setdefault(old_sys_id, []).append(min_threat_rating)
