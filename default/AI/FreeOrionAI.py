@@ -4,6 +4,7 @@ these methods in turn activate other portions of the python AI code."""
 import pickle  # Python object serialization library
 import sys
 import random
+from freeorion_debug.dumper import dump_data
 from freeorion_debug.interactive_shell import handle_debug_chat
 from freeorion_debug import extend_free_orion_AI_interface  # update fo in import
 import freeOrionAIInterface as fo  # interface used to interact with FreeOrion AI client  # pylint: disable=import-error
@@ -157,6 +158,7 @@ def generateOrders():  # pylint: disable=invalid-name
     turn = fo.currentTurn()
     turn_uid = foAIstate.set_turn_uid()
     print "Start turn %s (%s) of game: %s" % (turn, turn_uid, foAIstate.uid)
+    dump_data()
 
     turn_timer.start("AI planning")
     universe = fo.getUniverse()
