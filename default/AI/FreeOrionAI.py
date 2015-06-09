@@ -176,6 +176,7 @@ def generateOrders():  # pylint: disable=invalid-name
     turn = fo.currentTurn()
     turn_uid = foAIstate.set_turn_uid()
     print "Start turn %s (%s) of game: %s" % (turn, turn_uid, foAIstate.uid)
+    dump_data()
 
     turn_timer.start("AI planning")
     empire = fo.getEmpire()
