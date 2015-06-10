@@ -2171,6 +2171,8 @@ Tech
     prerequisites = [
         "SHP_MINIAST_SWARM"
         "SHP_HEAVY_AST_HULL"
+        "SHP_CAMO_AST_HULL"
+        "SHP_MONOMOLEC_LATTICE"
     ]
     unlock = [
         Item type = ShipHull name = "SH_SCATTERED_ASTEROID"
@@ -2209,7 +2211,7 @@ Tech
     researchturns = 5
     prerequisites = [
         "SHP_ORG_HULL"
-        "GRO_LIFECYCLE_MAN"
+        "GRO_GENETIC_ENG"
     ]
     unlock = [
         Item type = ShipHull name = "SH_STATIC_MULTICELLULAR"
@@ -2225,7 +2227,10 @@ Tech
     category = "SHIPS_CATEGORY"
     researchcost = 45 * [[TECH_COST_MULTIPLIER]]
     researchturns = 8
-    prerequisites = "SHP_MULTICELL_CAST"
+    prerequisites = [
+        "SHP_MULTICELL_CAST"
+        "GRO_LIFECYCLE_MAN"
+        ]
     unlock = [
         Item type = ShipHull name = "SH_ENDOMORPHIC"
         Item type = Building name = "BLD_SHIPYARD_ORG_XENO_FAC"
