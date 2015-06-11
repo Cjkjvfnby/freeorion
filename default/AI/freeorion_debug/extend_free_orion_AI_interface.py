@@ -108,3 +108,41 @@ def logger(function):
         print "%s(*%s, **%s)" % (function.__name__, args, kwargs)
         return function(*args, **kwargs)
     return inner
+
+
+# dump for issue orders
+turn_dumps = {}
+
+params = {
+  'issueScrapOrder': ['object id'],
+  'issueAggressionOrder': ['fid', 'aggressive'],
+  'issueBombardOrder': ['?', '?'],
+  'issueChangeFocusOrder': ['pid', 'focus'],
+  'issueChangeProductionQuantityOrder': ['queue index', 'new quantity', 'new blocksize'],
+  'issueColonizeOrder': ['sid', 'pid'],
+  'issueCreateShipDesignOrder': ['name', 'description', 'hull', 'partlist', 'icon', 'model', 'has translation'],
+  'issueDequeueProductionOrder': ['queue index'],
+  'issueDequeueTechOrder': ['tech'],
+  'issueEnqueueBuildingProductionOrder': ['building', 'pid'],
+  'issueEnqueueShipProductionOrder': ['ship', 'location'],
+  'issueEnqueueTechOrder': ['tech', 'queue index'],
+  'issueFleetMoveOrder': ['fid', 'sid'],
+  'issueFleetTransferOrder': ['sid', 'fid'],
+  'issueGiveObjectToEmpireOrder': ['?', '?'],
+  'issueInvadeOrder': ['sid', 'pid'],
+  'issueNewFleetOrder': ['name', 'sid'],
+  'issueRenameOrder': ['object id', 'name'],
+  'IssueRequeueProductionOrder': ['old position', 'new position'],
+}
+
+
+def dump_order(function):
+    def wrapper(*args):
+        turn_dumps.setdefault(fo.currentTurn(), []).append((function.__name__[5:-5], dict(zip(params[function.__name__], args))))
+        return function(*args)
+    return wrapper
+
+for name in dir(fo):
+    if name.startswith('issue') and name.endswith('Order'):
+        setattr(fo, name, dump_order(getattr(fo, name)))
+

@@ -158,7 +158,6 @@ def generateOrders():  # pylint: disable=invalid-name
     turn = fo.currentTurn()
     turn_uid = foAIstate.set_turn_uid()
     print "Start turn %s (%s) of game: %s" % (turn, turn_uid, foAIstate.uid)
-    dump_data()
 
     turn_timer.start("AI planning")
     universe = fo.getUniverse()
@@ -233,6 +232,7 @@ def generateOrders():  # pylint: disable=invalid-name
     except Exception as e:
         print_error(e)  # TODO move it to cycle above
 
+    dump_data()
     if using_statprof:
         try:
             statprof.stop()

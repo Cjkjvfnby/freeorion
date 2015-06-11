@@ -25,7 +25,7 @@ def dump_data():
     #     - id:  unique id for item used to get diff for universe objects it can be objectID
     dump_planets(dumper, **data)
     dump_fleets(dumper, **data)
-
+    dump_orders(dumper, **data)
 
 
 def dump_planets(dumper, **kwargs):
@@ -79,8 +79,6 @@ def dump_fleets(dumper, **kwargs):
         assert set(headers).issuperset(set(data.keys())), 'keys is not mutch headers: headers: %s, keys: %s' % (headers, data.keys())
         fleets.append(data)
         # data.update(kwargs)
-
-
     kwargs['headers'] = headers
     dumper.dump('fleets', kwargs, fleets)
 
@@ -106,3 +104,21 @@ class Dumper(object):
         with open(file_path, 'a') as f:
             f.write(json.dumps([common_info, item_list]))
             f.write('\n')
+
+
+def dump_orders(dumper, **kwargs):
+    from freeorion_debug.extend_free_orion_AI_interface import turn_dumps
+    headers = ['id', 'name', 'args']
+    turn = fo.currentTurn()
+    turn_orders = turn_dumps.get(turn)
+    orders = []
+    for i, order in enumerate(turn_orders):
+        data = {
+            'id': '%s-%s' % (turn, i),
+            'name': order[0],
+            'args': order[1]
+        }
+        assert set(headers).issuperset(set(data.keys())), 'keys is not mutch headers: headers: %s, keys: %s' % (headers, data.keys())
+        orders.append(data)
+    kwargs['headers'] = headers
+    dumper.dump('orders', kwargs, orders)
