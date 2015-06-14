@@ -136,7 +136,7 @@ params = {
   'issueInvadeOrder': ['sid', 'pid'],
   'issueNewFleetOrder': ['name', 'sid'],
   'issueRenameOrder': ['object id', 'name'],
-  'IssueRequeueProductionOrder': ['old position', 'new position'],
+  'issueRequeueProductionOrder': ['old position', 'new position'],
 }
 
 
