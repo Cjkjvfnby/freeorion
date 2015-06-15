@@ -528,20 +528,25 @@ Drone Factory
 SM_DRONE_FACTORY_DESC
 Built in some long-forgotten war to defend long-vanished builders, amazingly the Drone Factory still functions, slowly producing new Drone Fighters.
 
+SM_GUARD_0
+Maintenance Ship
+SM_GUARD_0_DESC
+'''An unmanned ship programmed by the Precursers to maintain the starlane entries of the system. It's only lightly armed, but will attack all intruders.'''
+
 SM_GUARD_1
 Sentry
 SM_GUARD_1_DESC
-Sentries guard minor cool stuff.
+A small unmanned guard ship programmed by the Precursers to defend the system against intruders.
 
 SM_GUARD_2
 Sentinel
 SM_GUARD_2_DESC
-Sentinels guard cool stuff.
+An unmanned guard ship programmed by the Precursers to defend the system against intruders.
 
 SM_GUARD_3
 Warden
 SM_GUARD_3_DESC
-Wardens guard major cool stuff.
+A powerful unmanned guard ship programmed by the Precursers to defend the system against intruders.
 
 SM_KRAKEN_1
 Larval Kraken
@@ -4826,7 +4831,7 @@ Prefer Ocean planets.
 
 SP_HAPPY_DESC
 '''Description: Robotic exploration submersibles.
-Though some have more bulky and blocky forms, most happybirthdays are streamlined and somewhat fish-like in shape. They all have one or mare cameras and manipulator arms, usually forward facing. They also host a suit of sensors for temperature, vibrations, chemicals, radar, sonar, electrical and magnetic fields, though these often vary from model to model. They are functional in a wide range of temperature and pressure conditions in an aquatic environment.
+Though some have more bulky and blocky forms, most happybirthdays are streamlined and somewhat fish-like in shape. They all have one or more cameras and manipulator arms, usually forward facing. They also host a suit of sensors for temperature, vibrations, chemicals, radar, sonar, electrical and magnetic fields, though these often vary from model to model. They are functional in a wide range of temperature and pressure conditions in an aquatic environment.
 
 Any happybirthday can repair any other happybirthday, and their systems often have redundant pars for just such a reason. Sufficiently large groups can fully repair any other member of their kind, and through this same process also make a completely new unit. New units have the same programming as their parents, but a blank memory, to be filled by exploring their environment.
 
@@ -4839,7 +4844,7 @@ A lone happybirthday will (psychologically) latch onto the nearest (preferably a
 Colonization is slow and industry inefficient due to, species-wide depression, sometimes leading to bouts of mass suicide.  However since they don't want to make enemies, and they always want to make new friends they are eager traders.
 
 History: Sad.
-Weather it is the initial lonely quest to explore their homeworld, their abandonment by their creators, the interval war, or their quest into space to find friendship, their existence has been a sad, depressing and lonely one.
+Wether it is the initial lonely quest to explore their homeworld, their abandonment by their creators, the interval war, or their quest into space to find friendship, their existence has been a sad, depressing and lonely one.
 '''
 
 SP_HHHOH
@@ -5730,6 +5735,13 @@ COMPUTRONIUM_SPECIAL_DESC
 '''When a planet with a Computronium Moon is focused on [[encyclopedia RESEARCH_TITLE]], all research focused planets in the empire gain 0.2 [[encyclopedia RESEARCH_TITLE]] per Population.
 
 Left by some vanished civilization, the entire moon - from surface to core - is a computing device of awesome power. It can complete the most complicated simulations and equations faster than they can be entered.'''
+
+HONEYCOMB_SPECIAL
+Honeycomb
+HONEYCOMB_SPECIAL_DESC
+'''When a planet with a Honeycomb is focused on [[encyclopedia INDUSTRY_TITLE]], all industry focused [[encyclopedia SUPPLY_TITLE]] connected planets gain 0.5 [[encyclopedia INDUSTRY_TITLE]] per Population.
+
+The Honeycomb is a planet that was prepared as a stash by the Builders in ancient times. Almost all other planets in surrounding systems were stripped of valuable materials and then dismantled. The materials were sorted and stored separately in gigantic tubes embedded into the planets crust. The sprectrum ranges from rare and valuable elementals to hard to produce molecules and a vast array of energy sources. What the Builders wanted to create with this treasure or why they didn't use it in the end, is unclear.'''
 
 PHILOSOPHER_SPECIAL
 Philosopher Planet
@@ -7435,7 +7447,7 @@ Although high level initial design and initial facility setup still require acti
 PRO_EXOBOTS
 Exobots
 PRO_EXOBOTS_DESC
-Allows the construction of Exobot colonies optimized for industry on hostile planets.
+Allows the construction of [[species SP_EXOBOT]] colonies optimized for industry on hostile planets.
 
 PRO_RAPID_EXO_PROD
 Rapid Exobot Production
@@ -9017,13 +9029,13 @@ BLD_ART_FACTORY_PLANET
 Artificial Factory World
 
 BLD_ART_FACTORY_PLANET_DESC
-Forms an artificial planet from an asteroid belt or a gas giant, and then populates it with Exobots. Asteroids become tiny barren planets and gas giants become huge barren planets. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
+Forms an artificial planet from an asteroid belt or a gas giant, and then populates it with [[species SP_EXOBOT]]s. Asteroids become tiny barren planets and gas giants become huge barren planets. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
 
 BLD_ART_PARADISE_PLANET
 Artificial Paradise World
 
 BLD_ART_PARADISE_PLANET_DESC
-Forms an artificial paradise planet from an asteroid belt or a gas giant. Asteroids become tiny barren planets and gas giants become huge barren planets—the planet will have the Gaia special which will terraform it to suit its inhabitants. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
+Forms an artificial paradise planet from an asteroid belt or a gas giant. Asteroids become tiny barren planets and gas giants become huge barren planets. The planet will have the [[special GAIA_SPECIAL]] special which will terraform it to suit its inhabitants. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
 
 BLD_ART_MOON
 Artificial Moon
@@ -9109,145 +9121,151 @@ BLD_COL_ABADDONI
 Abaddoni Colony
 
 BLD_COL_ABADDONI_DESC
-[[BLD_COL_PART_1]] Abaddoni colony. [[BLD_COL_PART_2]] Abaddoni colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_ABADDONI]] colony. [[BLD_COL_PART_2]] Abaddoni colony [[BLD_COL_PART_3]].
 
 BLD_COL_CHATO
 Chato Colony
 
 BLD_COL_CHATO_DESC
-[[BLD_COL_PART_1]] Chato colony. [[BLD_COL_PART_2]] Chato colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_CHATO]] colony. [[BLD_COL_PART_2]] Chato colony [[BLD_COL_PART_3]].
 
 BLD_COL_CRAY
 Cray Colony
 
 BLD_COL_CRAY_DESC
-[[BLD_COL_PART_1]] Cray colony. [[BLD_COL_PART_2]] Cray colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_CRAY]] colony. [[BLD_COL_PART_2]] Cray colony [[BLD_COL_PART_3]].
 
 BLD_COL_DERTHREAN
 Derthrean Colony
 
 BLD_COL_DERTHREAN_DESC
-[[BLD_COL_PART_1]] Derthrean colony. [[BLD_COL_PART_2]] Derthrean colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_DERTHREAN]] colony. [[BLD_COL_PART_2]] Derthrean colony [[BLD_COL_PART_3]].
 
 BLD_COL_EAXAW
 Eaxaw Colony
 
 BLD_COL_EAXAW_DESC
-[[BLD_COL_PART_1]] Eaxaw colony. [[BLD_COL_PART_2]] Eaxaw colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_EAXAW]] colony. [[BLD_COL_PART_2]] Eaxaw colony [[BLD_COL_PART_3]].
 
 BLD_COL_EGASSEM
 Egassem Colony
 
 BLD_COL_EGASSEM_DESC
-[[BLD_COL_PART_1]] Egassem colony. [[BLD_COL_PART_2]] Egassem colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_EGASSEM]] colony. [[BLD_COL_PART_2]] Egassem colony [[BLD_COL_PART_3]].
 
 BLD_COL_ETTY
 Etty Colony
 
 BLD_COL_ETTY_DESC
-[[BLD_COL_PART_1]] Etty colony. [[BLD_COL_PART_2]] Etty colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_ETTY]] colony. [[BLD_COL_PART_2]] Etty colony [[BLD_COL_PART_3]].
 
 BLD_COL_FURTHEST
 Furthest Colony
 
 BLD_COL_FURTHEST_DESC
-[[BLD_COL_PART_1]] Furthest colony. [[BLD_COL_PART_2]] Furthest colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_FURTHEST]] colony. [[BLD_COL_PART_2]] Furthest colony [[BLD_COL_PART_3]].
 
 BLD_COL_GEORGE
 George Colony
 
 BLD_COL_GEORGE_DESC
-[[BLD_COL_PART_1]] George colony. [[BLD_COL_PART_2]] George colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_GEORGE]] colony. [[BLD_COL_PART_2]] George colony [[BLD_COL_PART_3]].
 
 BLD_COL_GYSACHE
 Gysache Colony
 
 BLD_COL_GYSACHE_DESC
-[[BLD_COL_PART_1]] Gysache colony. [[BLD_COL_PART_2]] Gysache colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_GYSACHE]] colony. [[BLD_COL_PART_2]] Gysache colony [[BLD_COL_PART_3]].
+
+BLD_COL_HAPPY
+Happybirthday Colony
+
+BLD_COL_HAPPY_DESC
+[[BLD_COL_PART_1]] [[species SP_HAPPY]] colony. [[BLD_COL_PART_2]] Happybirthday colony [[BLD_COL_PART_3]].
 
 BLD_COL_HHHOH
 Hhhoh Colony
 
 BLD_COL_HHHOH_DESC
-[[BLD_COL_PART_1]] Hhhoh colony. [[BLD_COL_PART_2]] Hhhoh colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_HHHOH]] colony. [[BLD_COL_PART_2]] Hhhoh colony [[BLD_COL_PART_3]].
 
 BLD_COL_HUMAN
 Human Colony
 
 BLD_COL_HUMAN_DESC
-[[BLD_COL_PART_1]] Human colony. [[BLD_COL_PART_2]] Human colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_HUMAN]] colony. [[BLD_COL_PART_2]] Human colony [[BLD_COL_PART_3]].
 
 BLD_COL_KOBUNTURA
 Kobuntura Colony
 
 BLD_COL_KOBUNTURA_DESC
-[[BLD_COL_PART_1]] Kobuntura colony. [[BLD_COL_PART_2]] Kobuntura colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_KOBUNTURA]] colony. [[BLD_COL_PART_2]] Kobuntura colony [[BLD_COL_PART_3]].
 
 BLD_COL_LAENFA
 Laenfa Colony
 
 BLD_COL_LAENFA_DESC
-[[BLD_COL_PART_1]] Laenfa colony. [[BLD_COL_PART_2]] Laenfa colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_LAENFA]] colony. [[BLD_COL_PART_2]] Laenfa colony [[BLD_COL_PART_3]].
 
 BLD_COL_MUURSH
 Mu Ursh Colony
 
 BLD_COL_MUURSH_DESC
-[[BLD_COL_PART_1]] Mu Ursh colony. [[BLD_COL_PART_2]] Mu Ursh colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_MUURSH]] colony. [[BLD_COL_PART_2]] Mu Ursh colony [[BLD_COL_PART_3]].
 
 BLD_COL_PHINNERT
 Phinnert Colony
 
 BLD_COL_PHINNERT_DESC
-[[BLD_COL_PART_1]] Phinnert colony. [[BLD_COL_PART_2]] Phinnert colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_PHINNERT]] colony. [[BLD_COL_PART_2]] Phinnert colony [[BLD_COL_PART_3]].
 
 BLD_COL_SCYLIOR
 Scylior Colony
 
 BLD_COL_SCYLIOR_DESC
-[[BLD_COL_PART_1]] Scylior colony. [[BLD_COL_PART_2]] Scylior colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SCYLIOR]] colony. [[BLD_COL_PART_2]] Scylior colony [[BLD_COL_PART_3]].
 
 BLD_COL_SETINON
 Setinon Colony
 
 BLD_COL_SETINON_DESC
-[[BLD_COL_PART_1]] Setinon colony. [[BLD_COL_PART_2]] Setinon colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SETINON]] colony. [[BLD_COL_PART_2]] Setinon colony [[BLD_COL_PART_3]].
 
 BLD_COL_SILEXIAN
 Silexian Colony
 
 BLD_COL_SILEXIAN_DESC
-[[BLD_COL_PART_1]] Silexian colony. [[BLD_COL_PART_2]] Silexian colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SILEXIAN]] colony. [[BLD_COL_PART_2]] Silexian colony [[BLD_COL_PART_3]].
 
 BLD_COL_SSLITH
 Sslith Colony
 
 BLD_COL_SSLITH_DESC
-[[BLD_COL_PART_1]] Sslith colony. [[BLD_COL_PART_2]] Sslith colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SSLITH]] colony. [[BLD_COL_PART_2]] Sslith colony [[BLD_COL_PART_3]].
 
 BLD_COL_TAEGHIRUS
 Tae Ghirus Colony
 
 BLD_COL_TAEGHIRUS_DESC
-[[BLD_COL_PART_1]] Tae Ghirus colony. [[BLD_COL_PART_2]] Tae Ghirus colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_TAEGHIRUS]] colony. [[BLD_COL_PART_2]] Tae Ghirus colony [[BLD_COL_PART_3]].
 
 BLD_COL_TRITH
 Trith Colony
 
 BLD_COL_TRITH_DESC
-[[BLD_COL_PART_1]] Trith colony. [[BLD_COL_PART_2]] Trith colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_TRITH]] colony. [[BLD_COL_PART_2]] Trith colony [[BLD_COL_PART_3]].
 
 BLD_COL_UGMORS
 Ugmors Colony
 
 BLD_COL_UGMORS_DESC
-[[BLD_COL_PART_1]] Ugmors colony. [[BLD_COL_PART_2]] Ugmors colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_UGMORS]] colony. [[BLD_COL_PART_2]] Ugmors colony [[BLD_COL_PART_3]].
 
 BLD_COL_EXOBOT
 Exobot Colony
 
 BLD_COL_EXOBOT_DESC
-This building will construct an Exobot colony at an outpost. Contrary to the colony buildings of other species, an Exobot colony does not need an already existing Exobot colony within supply range, as the Exobots are constructed as part of the colony directly planetside. However, because of that they are more expensive to build, and they still need an empire owned planet within supply range.
+This building will construct an [[species SP_EXOBOT]] colony at an outpost. Contrary to the colony buildings of other species, an Exobot colony does not need an already existing Exobot colony within supply range, as the Exobots are constructed as part of the colony directly planetside. However, because of that they are more expensive to build, and they still need an empire owned planet within supply range.
 
 BLD_COL_SUPER_TEST
 Super Tester Colony
@@ -9662,41 +9680,41 @@ SH_DEFENSE_GRID
 Defense Grid
 
 SH_DEFENSE_GRID_DESC
-'''Provides basic shield defense. Capable of completely negating or at least substantially reducing damage from hits by low powered weapons. Reduces damage sustained from a hit by 4.
+'''Provides basic shield defense. Capable of completely negating or at least substantially reducing damage from hits by low powered weapons.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_DEFLECTOR
 Deflector Shield
 
 SH_DEFLECTOR_DESC
-'''Provides advanced shield defense. Can absorb or at least substantially reduce damage dealt by moderately powered weapons. Reduces damage sustained from a hit by 7.
+'''Provides advanced shield defense. Can absorb or at least substantially reduce damage dealt by moderately powered weapons.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_PLASMA
 Plasma Shield
 
 SH_PLASMA_DESC
-'''Powerful shield that significantly reduces damage suffered from hits even by advanced weapons, and completely absorbs anything less. Reduces damage sustained from a hit by 12.
+'''Powerful shield that significantly reduces damage suffered from hits even by advanced weapons, and completely absorbs anything less.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_BLACK
 Blackshield
 
 SH_BLACK_DESC
-'''Most powerful shield defense, can only be penetrated by the most powerful weapons. Extremely expensive to research and build. Reduces damage sustained from a hit by 20.
+'''Most powerful shield defense, can only be penetrated by the most powerful weapons. Extremely expensive to research and build.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_MULTISPEC
 Multi-Spectral Shield
 
 SH_MULTISPEC_DESC
-'''Powerful [[encyclopedia SHIELDS_TITLE]] capable of protecting a ship within a star. Provides a high [[encyclopedia STEALTH_TITLE]] bonus on the galaxy map when the ship is in a star other than a Black Hole or a Neutron Star and allows the ship to enter a star in combat. Reduces damage sustained from a hit by 15.
+'''Powerful [[encyclopedia SHIELDS_TITLE]] capable of protecting a ship within a star. Provides a high [[encyclopedia STEALTH_TITLE]] bonus on the galaxy map when the ship is in a star other than a Black Hole or a Neutron Star and allows the ship to enter a star in combat.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_ROBOTIC_INTERFACE_SHIELDS
 Robotic Interface: Shields
@@ -9953,7 +9971,7 @@ SH_SCATTERED_ASTEROID
 Scattered Asteroid Hull
 
 SH_SCATTERED_ASTEROID_DESC
-'''This flagship is constructed from several large asteroids, some of which have been combined to form the main hull, and some of which have been broken apart to form numerous tiny asteroids, which are controlled by the main hull. These asteroids protect not only the main ship, but every accompanying friendly ship, giving a bonus to [[encyclopedia SHIELDS_TITLE]] for all owned ships and allies' ships in the vicinity. Like the compound asteroid hull, this hull has fifteen external slots and four internal slots. Structure is high. 
+'''This flagship is constructed from several large asteroids, some of which have been combined to form the main hull, and some of which have been broken apart to form numerous tiny asteroids, which are controlled by the main hull. These asteroids protect not only the main ship, but every accompanying friendly ship, giving a bonus to [[encyclopedia SHIELDS_TITLE]] for all owned ships and allies' ships in the vicinity. This hull has fifteen external slots and four internal slots. Structure is high. 
 
 [[encyclopedia STEALTH_TITLE]] is low but the hull gets a large bonus on the galaxy map when it is in a system with an asteroid belt, and in combat when it is hiding in an asteroid belt. [[encyclopedia DETECTION_RANGE_TITLE]] is average and starlane speed is low. 
 
@@ -10790,12 +10808,14 @@ Hydra
 Python
 Pegasus
 Phoenix
+Hercules
 Atlas
 Helios
 Prometheus
 Poseidon
 Hades
-Nemesis'''
+Nemesis
+Zeus'''
 
 AI_SHIPDESIGN_NAME_TROOPER_ORBITAL
 SpaceInvaders
