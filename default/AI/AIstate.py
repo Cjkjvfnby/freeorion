@@ -1,7 +1,7 @@
 import copy
 from collections import OrderedDict as odict
+from time import time
 import sys
-
 import freeOrionAIInterface as fo  # pylint: disable=import-error
 
 import AIFleetMission
@@ -11,7 +11,7 @@ import FleetUtilsAI
 import ProductionAI
 import ResourcesAI
 from EnumsAI import AIFleetMissionType, AIExplorableSystemType, TargetType
-from MilitaryAI import MinThreat
+import MilitaryAI
 import PlanetUtilsAI
 from freeorion_tools import dict_from_map, get_ai_tag_grade
 
@@ -49,6 +49,12 @@ piloting_grades = {}
 class AIstate(object):
     """Stores AI game state."""
     def __init__(self, aggression=fo.aggression.typical):
+        # Debug info
+        # unique id for game
+        self.uid = self.generate_uid(first=True)
+        # unique ids for turns.  {turn: uid}
+        self.turn_uids = {}
+
         # 'global' (?) variables
         # self.foodStockpileSize = 1    # food stored per population
         self.minimalColoniseValue = 3  # minimal value for a planet to be colonised
@@ -104,7 +110,21 @@ class AIstate(object):
         self.empire_standard_fighter = (4, ((4, 1),), 0.0, 10.0)
         self.empire_standard_enemy = (4, ((4, 1),), 0.0, 10.0)  # TODO: track on a per-empire basis
         self.empire_standard_enemy_rating = 40  # TODO: track on a per-empire basis
-        
+
+    def generate_uid(self, first=False):
+        """
+        Generates unique identifier.
+        It is hexed number of milliseconds.
+        To set self.uid use flag first=True result will be
+            number of mils between current time and some recent date
+        For turn result is mils between uid and current time
+        """
+        time_delta = (time() - 1433809768) * 1000
+        if not first:
+            time_delta - int(self.uid, 16)
+        res = hex(int(time_delta))[2:].strip('L')
+        return res
+
     def __setstate__(self, state_dict):
         self.__dict__.update(state_dict)  # update attributes
         for dict_attrib in ['qualifyingColonyBaseTargets',
@@ -120,7 +140,34 @@ class AIstate(object):
         for odict_attrib in ['colonisablePlanetIDs', 'colonisableOutpostIDs']:
             if dict_attrib not in state_dict:
                 self.__dict__[odict_attrib] = odict()
+        if 'uid' not in state_dict:
+            self.uid = self.generate_uid(first=True)
+        if 'turn_uids' not in state_dict:
+            self.turn_uids = {}
         self.__dict__.setdefault('empire_standard_enemy_rating', 40)
+
+    def set_turn_uid(self):
+        """
+        Set turn uid. Should be called once per generateOrders.
+        When game loaded same turn can be evaluated once again. We force change id for it.
+        """
+        uid = self.generate_uid()
+        self.turn_uids[fo.currentTurn()] = uid
+        return uid
+
+    def get_current_turn_uid(self):
+        """
+        Return uid of current turn.
+        """
+        return self.turn_uids.setdefault(fo.currentTurn(), self.generate_uid())
+
+    def get_prev_turn_uid(self):
+        """
+        Return uid of previous turn.
+        If called during the first turn after loading a saved game that had an AI version not yet using uids
+        will return default value.
+        """
+        return self.turn_uids.get(fo.currentTurn() - 1, '0')
 
     def refresh(self):
         """Turn start AIstate cleanup/refresh."""
@@ -277,7 +324,7 @@ class AIstate(object):
         my_fleets_by_system = {}
         fleet_spot_position = {}
         saw_enemies_at_system = {}
-        my_milship_rating = ProductionAI.cur_best_mil_ship_rating()
+        my_milship_rating = MilitaryAI.cur_best_mil_ship_rating()
         current_turn = fo.currentTurn()
         for fleet_id in universe.fleetIDs:
             fleet = universe.getFleet(fleet_id)
@@ -768,31 +815,16 @@ class AIstate(object):
         elif design_id in self.designStats:
             return self.designStats[design_id]
         design = fo.getShipDesign(design_id)
-        detect_bonus = 0
         if design:
             attacks = {}
             for attack in list(design.attackStats):
                 attacks[attack] = attacks.get(attack, 0) + 1
             parts = design.parts
-            shields = 0
-            if "SH_BLACK" in parts:
-                shields = 20
-            elif "SH_MULTISPEC" in parts:
-                shields = 15
-            elif "SH_PLASMA" in parts:
-                shields = 12
-            elif "SH_DEFLECTOR" in parts:
-                shields = 7
-            elif "SH_DEFENSE_GRID" in parts:
-                shields = 4
-            if "DT_DETECTOR_4" in parts:
-                detect_bonus = 4
-            elif "DT_DETECTOR_3" in parts:
-                detect_bonus = 3
-            elif "DT_DETECTOR_2" in parts:
-                detect_bonus = 2
-            elif "DT_DETECTOR_1" in parts:
-                detect_bonus = 1
+            part_types = [fo.getPartType(part) for part in parts if part]
+            shield_parts = [part for part in part_types if part.partClass == fo.shipPartClass.shields]
+            shields = max([part.capacity for part in shield_parts]) if shield_parts else 0
+            detector_parts = [part for part in part_types if part.partClass == fo.shipPartClass.detection]
+            detect_bonus = max([part.capacity for part in detector_parts]) if detector_parts else 0
             # stats = {'attack':design.attack, 'structure':(design.structure + detect_bonus), 'shields':shields, 'attacks':attacks}
             stats = {'attack': design.attack, 'structure': design.structure, 'shields': shields, 
                      'attacks': attacks, 'tact_adj': self.calc_tactical_rating_adjustment(parts)}
@@ -855,7 +887,7 @@ class AIstate(object):
                           AIFleetMissionType.FLEET_MISSION_INVASION
                           ]:
                 this_rating = self.get_rating(fleet_id)
-                if float(this_rating.get('overall', 0))/this_rating.get('nships', 1) >= 0.5 * ProductionAI.cur_best_mil_ship_rating():
+                if float(this_rating.get('overall', 0))/this_rating.get('nships', 1) >= 0.5 * MilitaryAI.cur_best_mil_ship_rating():
                     make_aggressive = True
             else:
                 make_aggressive = True
@@ -928,7 +960,7 @@ class AIstate(object):
             print "Fleets unaccounted for in Empire Records:", unaccounted_fleets
             print "-----------"
         print "-----------"
-        min_threat_rating = {'overall': MinThreat, 'attack': MinThreat ** 0.5, 'health': MinThreat ** 0.5}
+        min_threat_rating = {'overall': MilitaryAI.MinThreat, 'attack': MilitaryAI.MinThreat ** 0.5, 'health': MilitaryAI.MinThreat ** 0.5}
         fighters = {(0, ((0, 0),), 0.0, 5.0): [0]}  # start with a dummy entry
         for fleet_id in fleet_list:
             status = self.fleetStatus.setdefault(fleet_id, {})
@@ -949,7 +981,7 @@ class AIstate(object):
             if fleet_id not in ok_fleets:  # or fleet.empty:
                 if self.__fleetRoleByID.get(fleet_id, -1) != -1:
                     if not just_resumed:
-                        if rating.get('overall', 0) > MinThreat:
+                        if rating.get('overall', 0) > MilitaryAI.MinThreat:
                             fleetsLostBySystem.setdefault(old_sys_id, []).append(rating)
                         else:
                             fleetsLostBySystem.setdefault(old_sys_id, []).append(min_threat_rating)
@@ -1043,7 +1075,7 @@ class AIstate(object):
         print "--------------------"
         print "Map of Missions keyed by ID:"
         for item in self.get_fleet_missions_map().items():
-            print " %4d : %s " % item
+            print "    %-4d: %s" % item
         print "--------------------"
         # TODO: check length of fleets for losses or do in AIstat.__cleanRoles
         known_fleets = self.get_fleet_roles_map()

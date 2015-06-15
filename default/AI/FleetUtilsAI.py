@@ -1,6 +1,7 @@
 import freeOrionAIInterface as fo  # pylint: disable=import-error
 import FreeOrionAI as foAI
-from EnumsAI import AIFleetMissionType, AIShipRoleType, AIExplorableSystemType, AIShipDesignTypes
+import AITarget
+from EnumsAI import AIFleetMissionType, AIShipRoleType, AIExplorableSystemType, AIShipDesignTypes, TargetType
 import traceback
 
 __designStats = {}
@@ -68,6 +69,21 @@ def count_troops_in_fleet(fleet_id):
         if ship:
             fleet_troop_capacity += ship.troopCapacity
     return fleet_troop_capacity
+
+
+def get_targeted_planet_ids(planet_ids, mission_type):
+    """return subset list of planet ids that are targets of the specified mission type
+    :rtype : list of planet ids
+    """
+    selected_fleet_missions = foAI.foAIstate.get_fleet_missions_with_any_mission_types([mission_type])
+    targeted_planets = []
+    for planet_id in planet_ids:
+        # add planets that are target of a mission
+        for fleet_mission in selected_fleet_missions:
+            ai_target = AITarget.AITarget(TargetType.TARGET_PLANET, planet_id)
+            if fleet_mission.has_target(mission_type, ai_target):
+                targeted_planets.append(planet_id)
+    return targeted_planets
 
 
 def get_fleets_for_mission(nships, target_stats, min_stats, cur_stats, species, systems_to_check, systems_checked, fleet_pool_set, fleet_list,
@@ -170,12 +186,12 @@ def split_fleet(fleet_id):
         return []
     ship_ids = list(fleet.shipIDs)
     for ship_id in ship_ids[1:]:
-        new_fleet_id = fo.issueNewFleetOrder("Fleet %d" % ship_id, ship_id)
+        new_fleet_id = fo.issueNewFleetOrder("Fleet %4d" % ship_id, ship_id)
         if new_fleet_id:
             new_fleet = universe.getFleet(new_fleet_id)
             if not new_fleet:
                 print "Error: newly split fleet %d not available from universe" % new_fleet_id
-            fo.issueRenameOrder(new_fleet_id, "Fleet %5d" % new_fleet_id)  # to ease review of debugging logs
+            fo.issueRenameOrder(new_fleet_id, "Fleet %4d" % new_fleet_id)  # to ease review of debugging logs
             fo.issueAggressionOrder(new_fleet_id, True)
             foAI.foAIstate.get_rating(new_fleet_id)
             newfleets.append(new_fleet_id)

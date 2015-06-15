@@ -398,7 +398,7 @@ class AIFleetMission(object):
                 if order_type == AIFleetOrderType.ORDER_MOVE:
                     this_system_id = fleet_order.target.target_id
                     this_status = foAI.foAIstate.systemStatus.setdefault(this_system_id, {})
-                    if this_status.get('monsterThreat', 0) > fo.currentTurn() * ProductionAI.cur_best_mil_ship_rating()/4.0:
+                    if this_status.get('monsterThreat', 0) > fo.currentTurn() * MilitaryAI.cur_best_mil_ship_rating()/4.0:
                         first_mission = self.get_mission_types()[0] if self.get_mission_types() else AIFleetMissionType.FLEET_MISSION_INVALID
                         if (first_mission not in (AIFleetMissionType.FLEET_MISSION_ATTACK,
                                                    AIFleetMissionType.FLEET_MISSION_MILITARY,
@@ -614,10 +614,15 @@ class AIFleetMission(object):
             universe = fo.getUniverse()
             fleet_id = self.target_id
             fleet = universe.getFleet(fleet_id)
-            targets_string = "fleet %4d (%14s) [ %10s mission ] : %3d ships , total Rating:%7d " % (fleet_id, (fleet and fleet.name) or "Fleet Invalid",
-                                                                                                 AIFleetMissionType.name(aiFleetMissionType), (fleet and len(fleet.shipIDs)) or 0, foAI.foAIstate.get_rating(fleet_id).get('overall', 0))
+            targets_string = "%-20s [%10s mission]: %3d ships, total rating: %7d" % (fleet,
+                                                                                     AIFleetMissionType.name(aiFleetMissionType),
+                                                                                     (fleet and len(fleet.shipIDs)) or 0,
+                                                                                     foAI.foAIstate.get_rating(fleet_id).get('overall', 0))
             targets = self.get_targets(aiFleetMissionType)
             for target in targets:
-                targets_string += str(target)
+                targets_string += ' %s' % target
             mission_strings.append(targets_string)
-        return "\n".join(mission_strings)
+        if mission_strings:
+            return "\n".join(mission_strings)
+        else:
+            return 'Mission with out mission types'

@@ -1467,6 +1467,38 @@ namespace ValueRef {
             if (retval == INT_MAX)
                 return -1;
             return retval;
+
+        } else if (variable_name == "SlotsInHull") {
+            const HullType* hull_type = 0;
+            if (m_string_ref1) {
+                std::string hull_name = m_string_ref1->Eval(context);
+                hull_type = GetHullType(hull_name);
+                if (!hull_type)
+                    return 0;
+            } else {
+                return 0;
+            }
+
+            return hull_type->Slots().size();
+
+        } else if (variable_name == "SlotsInShipDesign") {
+            int design_id = ShipDesign::INVALID_DESIGN_ID;
+            if (m_int_ref1) {
+                design_id = m_int_ref1->Eval(context);
+                if (design_id == ShipDesign::INVALID_DESIGN_ID)
+                    return 0;
+            } else {
+                return 0;
+            }
+
+            const ShipDesign* design = GetShipDesign(design_id);
+            if (!design)
+                return 0;
+
+            const HullType* hull_type = GetHullType(design->Hull());
+            if (!hull_type)
+                return 0;
+            return hull_type->Slots().size();
         }
 
         return 0;
@@ -1952,8 +1984,58 @@ namespace ValueRef {
     template <>
     std::string Operation<std::string>::Eval(const ScriptingContext& context) const
     {
-        if (m_op_type == PLUS)
-            return m_operand1->Eval(context) + m_operand2->Eval(context);
+        if (m_op_type == PLUS) {
+            return LHS()->Eval(context) + RHS()->Eval(context);
+
+        } else if (m_op_type == MINIMUM || m_op_type == MAXIMUM) {
+            // evaluate all operands, return sorted first/last
+            std::set<std::string> vals;
+            for (std::vector<ValueRefBase<std::string>*>::const_iterator it = m_operands.begin();
+                 it != m_operands.end(); ++it)
+            {
+                ValueRefBase<std::string>* vr = *it;
+                if (vr)
+                    vals.insert(vr->Eval(context));
+            }
+            if (m_op_type == MINIMUM)
+                return vals.empty() ? "" : *vals.begin();
+            else
+                return vals.empty() ? "" : *vals.rbegin();
+
+        } else if (m_op_type == RANDOM_PICK) {
+            // select one operand, evaluate it, return result
+            if (m_operands.empty())
+                return "";
+            unsigned int idx = RandSmallInt(0, m_operands.size() - 1);
+            std::vector<ValueRefBase<std::string>*>::const_iterator it = m_operands.begin();
+            std::advance(it, idx);
+            ValueRefBase<std::string>* vr = *it;
+            if (!vr)
+                return "";
+            return vr->Eval(context);
+
+        } else if (m_op_type == SUBSTITUTION) {
+            // insert string into other string in place of %1% or similar placeholder
+            if (m_operands.empty())
+                return "";
+            ValueRefBase<std::string>* template_op = *(m_operands.begin());
+            if (!template_op)
+                return "";
+            std::string template_str = template_op->Eval(context);
+
+            boost::format formatter = FlexibleFormat(template_str);
+
+            for (unsigned int idx = 1; idx < m_operands.size(); ++idx) {
+                ValueRefBase<std::string>* op = m_operands[idx];
+                if (!op) {
+                    formatter % "";
+                    continue;
+                }
+                formatter % op->Eval(context);
+            }
+            return formatter.str();
+        }
+
         throw std::runtime_error("std::string ValueRef evaluated with an unknown or invalid OpType.");
         return "";
     }
@@ -1963,38 +2045,38 @@ namespace ValueRef {
     {
         switch (m_op_type) {
             case PLUS:
-                return m_operand1->Eval(context) + m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) + RHS()->Eval(context); break;
 
             case MINUS:
-                return m_operand1->Eval(context) - m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) - RHS()->Eval(context); break;
 
             case TIMES:
-                return m_operand1->Eval(context) * m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) * RHS()->Eval(context); break;
 
             case DIVIDE: {
-                double op2 = m_operand2->Eval(context);
+                double op2 = RHS()->Eval(context);
                 if (op2 == 0.0)
                     return 0.0;
-                return m_operand1->Eval(context) / op2;
+                return LHS()->Eval(context) / op2;
                 break;
             }
 
             case NEGATE:
-                return -m_operand1->Eval(context);                              break;
+                return -(LHS()->Eval(context));                     break;
 
             case EXPONENTIATE: {
-                return std::pow(m_operand1->Eval(context),
-                                m_operand2->Eval(context));
+                return std::pow(LHS()->Eval(context),
+                                RHS()->Eval(context));
                 break;
             }
 
             case ABS: {
-                return std::abs(m_operand1->Eval(context));
+                return std::abs(LHS()->Eval(context));
                 break;
             }
 
             case LOGARITHM: {
-                double op1 = m_operand1->Eval(context);
+                double op1 = LHS()->Eval(context);
                 if (op1 <= 0.0)
                     return 0.0;
                 return std::log(op1);
@@ -2002,27 +2084,41 @@ namespace ValueRef {
             }
 
             case SINE:
-                return std::sin(m_operand1->Eval(context));                     break;
+                return std::sin(LHS()->Eval(context));              break;
 
             case COSINE:
-                return std::cos(m_operand1->Eval(context));                     break;
+                return std::cos(LHS()->Eval(context));              break;
 
             case MINIMUM:
-                return std::min(m_operand1->Eval(context),
-                                m_operand2->Eval(context));
+                return std::min(LHS()->Eval(context),
+                                RHS()->Eval(context));
                 break;
 
             case MAXIMUM:
-                return std::max(m_operand1->Eval(context),
-                                m_operand2->Eval(context));
+                return std::max(LHS()->Eval(context),
+                                RHS()->Eval(context));
                 break;
 
             case RANDOM_UNIFORM: {
-                double op1 = m_operand1->Eval(context);
-                double op2 = m_operand2->Eval(context);
+                double op1 = LHS()->Eval(context);
+                double op2 = RHS()->Eval(context);
                 double min_val = std::min(op1, op2);
                 double max_val = std::max(op1, op2);
                 return RandDouble(min_val, max_val);
+                break;
+            }
+
+            case RANDOM_PICK: {
+                // select one operand, evaluate it, return result
+                if (m_operands.empty())
+                    return 0.0;
+                unsigned int idx = RandSmallInt(0, m_operands.size() - 1);
+                std::vector<ValueRefBase<double>*>::const_iterator it = m_operands.begin();
+                std::advance(it, idx);
+                ValueRefBase<double>* vr = *it;
+                if (!vr)
+                    return 0.0;
+                return vr->Eval(context);
                 break;
             }
 
@@ -2037,39 +2133,39 @@ namespace ValueRef {
     {
         switch (m_op_type) {
             case PLUS:
-                return m_operand1->Eval(context) + m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) + RHS()->Eval(context);   break;
 
             case MINUS:
-                return m_operand1->Eval(context) - m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) - RHS()->Eval(context);   break;
 
             case TIMES:
-                return m_operand1->Eval(context) * m_operand2->Eval(context);   break;
+                return LHS()->Eval(context) * RHS()->Eval(context);   break;
 
             case DIVIDE: {
-                int op2 = m_operand2->Eval(context);
+                int op2 = RHS()->Eval(context);
                 if (op2 == 0)
                     return 0;
-                return m_operand1->Eval(context) / op2;
+                return LHS()->Eval(context) / op2;
                 break;
             }
 
             case NEGATE:
-                return -m_operand1->Eval(context);                              break;
+                return -LHS()->Eval(context);                              break;
 
             case EXPONENTIATE: {
-                double op1 = m_operand1->Eval(context);
-                double op2 = m_operand2->Eval(context);
+                double op1 = LHS()->Eval(context);
+                double op2 = RHS()->Eval(context);
                 return static_cast<int>(std::pow(op1, op2));
                 break;
             }
 
             case ABS: {
-                return static_cast<int>(std::abs(m_operand1->Eval(context)));
+                return static_cast<int>(std::abs(LHS()->Eval(context)));
                 break;
             }
 
             case LOGARITHM: {
-                double op1 = m_operand1->Eval(context);
+                double op1 = LHS()->Eval(context);
                 if (op1 <= 0.0)
                     return 0;
                 return static_cast<int>(std::log(op1));
@@ -2077,33 +2173,47 @@ namespace ValueRef {
             }
 
             case SINE: {
-                double op1 = m_operand1->Eval(context);
+                double op1 = LHS()->Eval(context);
                 return static_cast<int>(std::sin(op1));
                 break;
             }
 
             case COSINE: {
-                double op1 = m_operand1->Eval(context);
+                double op1 = LHS()->Eval(context);
                 return static_cast<int>(std::cos(op1));
                 break;
             }
 
             case MINIMUM:
-                return std::min<int>(m_operand1->Eval(context),
-                                     m_operand2->Eval(context));
+                return std::min<int>(LHS()->Eval(context),
+                                     RHS()->Eval(context));
                 break;
 
             case MAXIMUM:
-                return std::max<int>(m_operand1->Eval(context),
-                                     m_operand2->Eval(context));
+                return std::max<int>(LHS()->Eval(context),
+                                     RHS()->Eval(context));
                 break;
 
             case RANDOM_UNIFORM: {
-                double op1 = m_operand1->Eval(context);
-                double op2 = m_operand2->Eval(context);
+                double op1 = LHS()->Eval(context);
+                double op2 = RHS()->Eval(context);
                 int min_val = static_cast<int>(std::min(op1, op2));
                 int max_val = static_cast<int>(std::max(op1, op2));
                 return RandInt(min_val, max_val);
+                break;
+            }
+
+            case RANDOM_PICK: {
+                // select one operand, evaluate it, return result
+                if (m_operands.empty())
+                    return 0;
+                unsigned int idx = RandSmallInt(0, m_operands.size() - 1);
+                std::vector<ValueRefBase<int>*>::const_iterator it = m_operands.begin();
+                std::advance(it, idx);
+                ValueRefBase<int>* vr = *it;
+                if (!vr)
+                    return 0;
+                return vr->Eval(context);
                 break;
             }
 

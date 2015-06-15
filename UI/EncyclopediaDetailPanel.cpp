@@ -6,6 +6,7 @@
 #include "FleetWnd.h"
 #include "GraphControl.h"
 #include "Hotkeys.h"
+#include "LinkText.h"
 #include "MapWnd.h"
 #include "../universe/Condition.h"
 #include "../universe/Universe.h"
@@ -445,6 +446,8 @@ EncyclopediaDetailPanel::EncyclopediaDetailPanel(GG::X w, GG::Y h, GG::Flags<GG:
     GG::Connect(m_index_button->LeftClickedSignal,  &EncyclopediaDetailPanel::OnIndex,                  this);
     GG::Connect(m_back_button->LeftClickedSignal,   &EncyclopediaDetailPanel::OnBack,                   this);
     GG::Connect(m_next_button->LeftClickedSignal,   &EncyclopediaDetailPanel::OnNext,                   this);
+    desc_box->SetDecorator(VarText::SHIP_ID_TAG, new ColorByOwner());
+    desc_box->SetDecorator(VarText::PLANET_ID_TAG, new ColorByOwner());
     m_description_box = desc_box;
     m_description_box->SetColor(GG::CLR_ZERO);
     m_description_box->SetInteriorColor(ClientUI::CtrlColor());
@@ -2129,16 +2132,12 @@ namespace {
             if (!species)
                 continue;
 
-            // Exclude species that can't colonize this planet (either by virtue
-            // of "can't produce ships" or "cannot colonize" traits) UNLESS they
+            // Exclude species that can't colonize UNLESS they
             // are already here (aka: it's their home planet). Showing them on
             // their own planet allows comparison vs other races, which might
             // be better suited to this planet. 
-            if (!species->CanProduceShips() || !species->CanColonize()) {
-                if (species_name != planet->SpeciesName())
-                    continue;
-            }
-            species_names.insert(species_name);
+            if (species->CanColonize() || species_name == planet->SpeciesName())
+                species_names.insert(species_name);
         }
 
         boost::shared_ptr<GG::Font> font = ClientUI::GetFont();

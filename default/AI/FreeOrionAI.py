@@ -155,15 +155,34 @@ def generateOrders():  # pylint: disable=invalid-name
     """Called once per turn to tell the Python AI to generate and issue orders to control its empire.
     at end of this function, fo.doneTurn() should be called to indicate to the client that orders are finished
     and can be sent to the server for processing."""
+    turn = fo.currentTurn()
+    turn_uid = foAIstate.set_turn_uid()
+    print "Start turn %s (%s) of game: %s" % (turn, turn_uid, foAIstate.uid)
+
     turn_timer.start("AI planning")
     empire = fo.getEmpire()
     # set the random seed (based on galaxy seed, empire ID and current turn)
     # for game-reload consistency 
-    random_seed = str(fo.getGalaxySetupData().seed) + "%03d%05d" % (fo.empireID(), fo.currentTurn())
+    random_seed = str(fo.getGalaxySetupData().seed) + "%03d%05d" % (fo.empireID(), turn)
     random.seed(random_seed)
     aggression_name = fo.aggression.values[foAIstate.aggression].name
+    print "***************************************************************************"
+    print "**********   String for chart. Do not modify.   ***************************"
+    print ("Generating Orders")
+    print ("EmpireID: {empire.empireID}"
+           " Name: {empire.name}_{empire.empireID}_pid:{p_id}_{p_name}RIdx_{res_idx}_{aggression}"
+           " Turn: {turn}").format(empire=empire,  p_id=fo.playerID(), p_name=fo.playerName(),
+                                   res_idx=ResearchAI.get_research_index(), turn=turn,
+                                   aggression=aggression_name.capitalize())
+    print "EmpireColors: {0.colour.r} {0.colour.g} {0.colour.b} {0.colour.a}".format(empire)
+    if planet:
+        print "CapitalID: " + str(planet_id) + " Name: " + planet.name + " Species: " + planet.speciesName
+    else:
+        print "CapitalID: None Currently Name: None Species: None "
+    print "***************************************************************************"
+    print "***************************************************************************"
 
-    if fo.currentTurn() == 1:
+    if turn == 1:
         declare_war_on_all()
         human_player = fo.empirePlayerID(1)
         fo.sendChatMessage(human_player,  '%s Empire (%s):\n"Ave, Human, morituri te salutant!"' % (empire.name, aggression_name))
@@ -174,8 +193,10 @@ def generateOrders():  # pylint: disable=invalid-name
     foAIstate.refresh()  # checks exploration border & clears roles/missions of missing fleets & updates fleet locs & threats
     foAIstate.report_system_threats()
     print("Calling AI Modules")
-
-    action_list = [PriorityAI.calculate_priorities,
+    # call AI modules
+    action_list = [ColonisationAI.survey_universe,
+                   ProductionAI.find_best_designs_this_turn,
+                   PriorityAI.calculate_priorities,
                    ExplorationAI.assign_scouts_to_explore_systems,
                    ColonisationAI.assign_colony_fleets_to_colonise,
                    InvasionAI.assign_invasion_fleets_to_invade,
