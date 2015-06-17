@@ -574,7 +574,7 @@ Black Kraken
 SM_BLACK_KRAKEN_DESC
 '''A powerful, unnatural-seeming space monster.
 
-Black Kraken are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out and attack populated planets, [[encyclopedia ORGANIC_SPECIES_TITLE]] inhabitants are particularly vulnerable to their attacks.'''
+Black Kraken are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out planets with visible buildings and attack their population.'''
 
 SM_SNOWFLAKE_1
 Small Snowflake
@@ -602,7 +602,7 @@ Psionic Snowflake
 SM_PSIONIC_SNOWFLAKE_DESC
 '''A monster with the power to neutralize the minds of organic beings.
 
-Psionic Snowflakes are bioengineered space monsters with dangerous weapons and the ability to take control of ships with [[encyclopedia ORGANIC_SPECIES_TITLE]] crews. A powerful fleet will be needed to fight them. They seek out and attack enemy space ships, forcing crews vulnerable to psychic attack to abandon their empire.'''
+Psionic Snowflakes are bioengineered space monsters with dangerous weapons and the ability to take control of ships with [[encyclopedia ORGANIC_SPECIES_TITLE]] crews. A powerful fleet will be needed to fight them. They seek out and attack enemy space ships, forcing crews vulnerable to psychic attack to abandon their empire. They are also able to directly attack the population of planets.'''
 
 SM_JUGGERNAUT_1
 Small Juggernaut
@@ -630,7 +630,7 @@ Bloated Juggernaut
 SM_BLOATED_JUGGERNAUT_DESC
 '''A massive, sickly-looking space monster.
 
-Bloated Juggernauts are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out and attack planetary buildings, [[encyclopedia ORGANIC_SPECIES_TITLE]] inhabitants are particularly vulnerable to their attacks.'''
+Bloated Juggernauts are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out planets with visible buildings and attack their population.'''
 
 SM_CLOUD
 Space Cloud
@@ -5486,6 +5486,10 @@ Prefers Radiated planets.
 [[AVERAGE_POPULATION]]
 [[GREAT_SUPPLY]]
 [[AVERAGE_GROUND_TROOPS]]
+
++	Good ship [[encyclopedia SHIELDS_TITLE]]: +1
++	Good planetary [[encyclopedia SHIELDS_TITLE]]: +5
++	Good planetary [[encyclopedia DEFENSE_TITLE]]: +5
 '''
 
 SP_ACIREMA_DESC
@@ -5496,14 +5500,12 @@ As the Acirema found the anomaly that allowed them to enter into this universe, 
 
 The massive amount of energy they can release as individuals and across the connection from Portal to their home universe, gives them the ability to produce large amounts of Industry, and also allows them to act as weapons. This makes Portal a very dangerous world to approach, as the Acirema are very wary of outsiders, and are sensitive to the vulnerability of their position. Trade with another universe is definitely beneficial, especially since they cannot obtain minerals from other planets. The Acirema on Portal seem to have a government that is similar to a military and/or research outpost (tightly controlled core with a majority loosely controlled) They are very secretive of the nature of their society back home.
 
-Living Weapons:
-Ships crewed by Acirema will gain a +1 bonus to their [[encyclopedia SHIELDS_TITLE]], even if the ship itself has no shield.
-
 "Homeworld"
 Portal is a Radiated world close to an unusually bright Blue Giant Star, with a connection to another universe. It is thought that Precursor testing may have opened the connection, and caused the star to change. There is suspicion that there may have been intelligent life on Portal, and they were destroyed by the Acirema when the connection opened (either due to research or advanced weapons use).
 
 Reason for staying
-They can't stay here long enough to actually move to another planet and still survive.'''
+They can't stay here long enough to actually move to another planet and still survive.
+'''
 
 SP_OURBOOLS
 Ourbools
@@ -9803,7 +9805,7 @@ SP_KRILL_SPAWNER
 Krill Spawner
 
 SP_KRILL_SPAWNER_DESC
-Spawns [[predefinedshipdesign SM_KRILL_1]] in systems with unowned asteroids which do not already contain a krill monster.
+Spawns [[predefinedshipdesign SM_KRILL_1]] in systems with unowned asteroids which do not already contain a krill monster.  When carried on an unarmed ship, the [[SP_KRILL_SPAWNER]] also provides substantial [[encyclopedia STEALTH_TITLE]] (but will not stack with any other [[encyclopedia STEALTH_TITLE]] - causing  parts).
 
 RS_AUTOLAB
 Autolab
