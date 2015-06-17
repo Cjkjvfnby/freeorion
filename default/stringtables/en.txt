@@ -574,7 +574,7 @@ Black Kraken
 SM_BLACK_KRAKEN_DESC
 '''A powerful, unnatural-seeming space monster.
 
-Black Kraken are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out and attack populated planets, [[encyclopedia ORGANIC_SPECIES_TITLE]] inhabitants are particularly vulnerable to their attacks.'''
+Black Kraken are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out planets with visible buildings and attack their population.'''
 
 SM_SNOWFLAKE_1
 Small Snowflake
@@ -602,7 +602,7 @@ Psionic Snowflake
 SM_PSIONIC_SNOWFLAKE_DESC
 '''A monster with the power to neutralize the minds of organic beings.
 
-Psionic Snowflakes are bioengineered space monsters with dangerous weapons and the ability to take control of ships with [[encyclopedia ORGANIC_SPECIES_TITLE]] crews. A powerful fleet will be needed to fight them. They seek out and attack enemy space ships, forcing crews vulnerable to psychic attack to abandon their empire.'''
+Psionic Snowflakes are bioengineered space monsters with dangerous weapons and the ability to take control of ships with [[encyclopedia ORGANIC_SPECIES_TITLE]] crews. A powerful fleet will be needed to fight them. They seek out and attack enemy space ships, forcing crews vulnerable to psychic attack to abandon their empire. They are also able to directly attack the population of planets.'''
 
 SM_JUGGERNAUT_1
 Small Juggernaut
@@ -630,7 +630,7 @@ Bloated Juggernaut
 SM_BLOATED_JUGGERNAUT_DESC
 '''A massive, sickly-looking space monster.
 
-Bloated Juggernauts are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out and attack planetary buildings, [[encyclopedia ORGANIC_SPECIES_TITLE]] inhabitants are particularly vulnerable to their attacks.'''
+Bloated Juggernauts are bioengineered space monsters, incredibly tough, with dangerous weapons and high [[encyclopedia STEALTH_TITLE]]. A powerful fleet and good [[encyclopedia DETECTION_TITLE]] will be needed to track them down. They seek out planets with visible buildings and attack their population.'''
 
 SM_CLOUD
 Space Cloud
@@ -5486,6 +5486,10 @@ Prefers Radiated planets.
 [[AVERAGE_POPULATION]]
 [[GREAT_SUPPLY]]
 [[AVERAGE_GROUND_TROOPS]]
+
++	Good ship [[encyclopedia SHIELDS_TITLE]]: +1
++	Good planetary [[encyclopedia SHIELDS_TITLE]]: +5
++	Good planetary [[encyclopedia DEFENSE_TITLE]]: +5
 '''
 
 SP_ACIREMA_DESC
@@ -5496,14 +5500,12 @@ As the Acirema found the anomaly that allowed them to enter into this universe, 
 
 The massive amount of energy they can release as individuals and across the connection from Portal to their home universe, gives them the ability to produce large amounts of Industry, and also allows them to act as weapons. This makes Portal a very dangerous world to approach, as the Acirema are very wary of outsiders, and are sensitive to the vulnerability of their position. Trade with another universe is definitely beneficial, especially since they cannot obtain minerals from other planets. The Acirema on Portal seem to have a government that is similar to a military and/or research outpost (tightly controlled core with a majority loosely controlled) They are very secretive of the nature of their society back home.
 
-Living Weapons:
-Ships crewed by Acirema will gain a +1 bonus to their [[encyclopedia SHIELDS_TITLE]], even if the ship itself has no shield.
-
 "Homeworld"
 Portal is a Radiated world close to an unusually bright Blue Giant Star, with a connection to another universe. It is thought that Precursor testing may have opened the connection, and caused the star to change. There is suspicion that there may have been intelligent life on Portal, and they were destroyed by the Acirema when the connection opened (either due to research or advanced weapons use).
 
 Reason for staying
-They can't stay here long enough to actually move to another planet and still survive.'''
+They can't stay here long enough to actually move to another planet and still survive.
+'''
 
 SP_OURBOOLS
 Ourbools
@@ -7447,7 +7449,7 @@ Although high level initial design and initial facility setup still require acti
 PRO_EXOBOTS
 Exobots
 PRO_EXOBOTS_DESC
-Allows the construction of Exobot colonies optimized for industry on hostile planets.
+Allows the construction of [[species SP_EXOBOT]] colonies optimized for industry on hostile planets.
 
 PRO_RAPID_EXO_PROD
 Rapid Exobot Production
@@ -9029,13 +9031,13 @@ BLD_ART_FACTORY_PLANET
 Artificial Factory World
 
 BLD_ART_FACTORY_PLANET_DESC
-Forms an artificial planet from an asteroid belt or a gas giant, and then populates it with Exobots. Asteroids become tiny barren planets and gas giants become huge barren planets. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
+Forms an artificial planet from an asteroid belt or a gas giant, and then populates it with [[species SP_EXOBOT]]s. Asteroids become tiny barren planets and gas giants become huge barren planets. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
 
 BLD_ART_PARADISE_PLANET
 Artificial Paradise World
 
 BLD_ART_PARADISE_PLANET_DESC
-Forms an artificial paradise planet from an asteroid belt or a gas giant. Asteroids become tiny barren planets and gas giants become huge barren planets—the planet will have the Gaia special which will terraform it to suit its inhabitants. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
+Forms an artificial paradise planet from an asteroid belt or a gas giant. Asteroids become tiny barren planets and gas giants become huge barren planets. The planet will have the [[special GAIA_SPECIAL]] special which will terraform it to suit its inhabitants. This process must be enacted at an outpost on either a gas giant or an asteroid belt.
 
 BLD_ART_MOON
 Artificial Moon
@@ -9121,145 +9123,151 @@ BLD_COL_ABADDONI
 Abaddoni Colony
 
 BLD_COL_ABADDONI_DESC
-[[BLD_COL_PART_1]] Abaddoni colony. [[BLD_COL_PART_2]] Abaddoni colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_ABADDONI]] colony. [[BLD_COL_PART_2]] Abaddoni colony [[BLD_COL_PART_3]].
 
 BLD_COL_CHATO
 Chato Colony
 
 BLD_COL_CHATO_DESC
-[[BLD_COL_PART_1]] Chato colony. [[BLD_COL_PART_2]] Chato colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_CHATO]] colony. [[BLD_COL_PART_2]] Chato colony [[BLD_COL_PART_3]].
 
 BLD_COL_CRAY
 Cray Colony
 
 BLD_COL_CRAY_DESC
-[[BLD_COL_PART_1]] Cray colony. [[BLD_COL_PART_2]] Cray colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_CRAY]] colony. [[BLD_COL_PART_2]] Cray colony [[BLD_COL_PART_3]].
 
 BLD_COL_DERTHREAN
 Derthrean Colony
 
 BLD_COL_DERTHREAN_DESC
-[[BLD_COL_PART_1]] Derthrean colony. [[BLD_COL_PART_2]] Derthrean colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_DERTHREAN]] colony. [[BLD_COL_PART_2]] Derthrean colony [[BLD_COL_PART_3]].
 
 BLD_COL_EAXAW
 Eaxaw Colony
 
 BLD_COL_EAXAW_DESC
-[[BLD_COL_PART_1]] Eaxaw colony. [[BLD_COL_PART_2]] Eaxaw colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_EAXAW]] colony. [[BLD_COL_PART_2]] Eaxaw colony [[BLD_COL_PART_3]].
 
 BLD_COL_EGASSEM
 Egassem Colony
 
 BLD_COL_EGASSEM_DESC
-[[BLD_COL_PART_1]] Egassem colony. [[BLD_COL_PART_2]] Egassem colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_EGASSEM]] colony. [[BLD_COL_PART_2]] Egassem colony [[BLD_COL_PART_3]].
 
 BLD_COL_ETTY
 Etty Colony
 
 BLD_COL_ETTY_DESC
-[[BLD_COL_PART_1]] Etty colony. [[BLD_COL_PART_2]] Etty colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_ETTY]] colony. [[BLD_COL_PART_2]] Etty colony [[BLD_COL_PART_3]].
 
 BLD_COL_FURTHEST
 Furthest Colony
 
 BLD_COL_FURTHEST_DESC
-[[BLD_COL_PART_1]] Furthest colony. [[BLD_COL_PART_2]] Furthest colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_FURTHEST]] colony. [[BLD_COL_PART_2]] Furthest colony [[BLD_COL_PART_3]].
 
 BLD_COL_GEORGE
 George Colony
 
 BLD_COL_GEORGE_DESC
-[[BLD_COL_PART_1]] George colony. [[BLD_COL_PART_2]] George colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_GEORGE]] colony. [[BLD_COL_PART_2]] George colony [[BLD_COL_PART_3]].
 
 BLD_COL_GYSACHE
 Gysache Colony
 
 BLD_COL_GYSACHE_DESC
-[[BLD_COL_PART_1]] Gysache colony. [[BLD_COL_PART_2]] Gysache colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_GYSACHE]] colony. [[BLD_COL_PART_2]] Gysache colony [[BLD_COL_PART_3]].
+
+BLD_COL_HAPPY
+Happybirthday Colony
+
+BLD_COL_HAPPY_DESC
+[[BLD_COL_PART_1]] [[species SP_HAPPY]] colony. [[BLD_COL_PART_2]] Happybirthday colony [[BLD_COL_PART_3]].
 
 BLD_COL_HHHOH
 Hhhoh Colony
 
 BLD_COL_HHHOH_DESC
-[[BLD_COL_PART_1]] Hhhoh colony. [[BLD_COL_PART_2]] Hhhoh colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_HHHOH]] colony. [[BLD_COL_PART_2]] Hhhoh colony [[BLD_COL_PART_3]].
 
 BLD_COL_HUMAN
 Human Colony
 
 BLD_COL_HUMAN_DESC
-[[BLD_COL_PART_1]] Human colony. [[BLD_COL_PART_2]] Human colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_HUMAN]] colony. [[BLD_COL_PART_2]] Human colony [[BLD_COL_PART_3]].
 
 BLD_COL_KOBUNTURA
 Kobuntura Colony
 
 BLD_COL_KOBUNTURA_DESC
-[[BLD_COL_PART_1]] Kobuntura colony. [[BLD_COL_PART_2]] Kobuntura colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_KOBUNTURA]] colony. [[BLD_COL_PART_2]] Kobuntura colony [[BLD_COL_PART_3]].
 
 BLD_COL_LAENFA
 Laenfa Colony
 
 BLD_COL_LAENFA_DESC
-[[BLD_COL_PART_1]] Laenfa colony. [[BLD_COL_PART_2]] Laenfa colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_LAENFA]] colony. [[BLD_COL_PART_2]] Laenfa colony [[BLD_COL_PART_3]].
 
 BLD_COL_MUURSH
 Mu Ursh Colony
 
 BLD_COL_MUURSH_DESC
-[[BLD_COL_PART_1]] Mu Ursh colony. [[BLD_COL_PART_2]] Mu Ursh colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_MUURSH]] colony. [[BLD_COL_PART_2]] Mu Ursh colony [[BLD_COL_PART_3]].
 
 BLD_COL_PHINNERT
 Phinnert Colony
 
 BLD_COL_PHINNERT_DESC
-[[BLD_COL_PART_1]] Phinnert colony. [[BLD_COL_PART_2]] Phinnert colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_PHINNERT]] colony. [[BLD_COL_PART_2]] Phinnert colony [[BLD_COL_PART_3]].
 
 BLD_COL_SCYLIOR
 Scylior Colony
 
 BLD_COL_SCYLIOR_DESC
-[[BLD_COL_PART_1]] Scylior colony. [[BLD_COL_PART_2]] Scylior colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SCYLIOR]] colony. [[BLD_COL_PART_2]] Scylior colony [[BLD_COL_PART_3]].
 
 BLD_COL_SETINON
 Setinon Colony
 
 BLD_COL_SETINON_DESC
-[[BLD_COL_PART_1]] Setinon colony. [[BLD_COL_PART_2]] Setinon colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SETINON]] colony. [[BLD_COL_PART_2]] Setinon colony [[BLD_COL_PART_3]].
 
 BLD_COL_SILEXIAN
 Silexian Colony
 
 BLD_COL_SILEXIAN_DESC
-[[BLD_COL_PART_1]] Silexian colony. [[BLD_COL_PART_2]] Silexian colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SILEXIAN]] colony. [[BLD_COL_PART_2]] Silexian colony [[BLD_COL_PART_3]].
 
 BLD_COL_SSLITH
 Sslith Colony
 
 BLD_COL_SSLITH_DESC
-[[BLD_COL_PART_1]] Sslith colony. [[BLD_COL_PART_2]] Sslith colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_SSLITH]] colony. [[BLD_COL_PART_2]] Sslith colony [[BLD_COL_PART_3]].
 
 BLD_COL_TAEGHIRUS
 Tae Ghirus Colony
 
 BLD_COL_TAEGHIRUS_DESC
-[[BLD_COL_PART_1]] Tae Ghirus colony. [[BLD_COL_PART_2]] Tae Ghirus colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_TAEGHIRUS]] colony. [[BLD_COL_PART_2]] Tae Ghirus colony [[BLD_COL_PART_3]].
 
 BLD_COL_TRITH
 Trith Colony
 
 BLD_COL_TRITH_DESC
-[[BLD_COL_PART_1]] Trith colony. [[BLD_COL_PART_2]] Trith colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_TRITH]] colony. [[BLD_COL_PART_2]] Trith colony [[BLD_COL_PART_3]].
 
 BLD_COL_UGMORS
 Ugmors Colony
 
 BLD_COL_UGMORS_DESC
-[[BLD_COL_PART_1]] Ugmors colony. [[BLD_COL_PART_2]] Ugmors colony [[BLD_COL_PART_3]].
+[[BLD_COL_PART_1]] [[species SP_UGMORS]] colony. [[BLD_COL_PART_2]] Ugmors colony [[BLD_COL_PART_3]].
 
 BLD_COL_EXOBOT
 Exobot Colony
 
 BLD_COL_EXOBOT_DESC
-This building will construct an Exobot colony at an outpost. Contrary to the colony buildings of other species, an Exobot colony does not need an already existing Exobot colony within supply range, as the Exobots are constructed as part of the colony directly planetside. However, because of that they are more expensive to build, and they still need an empire owned planet within supply range.
+This building will construct an [[species SP_EXOBOT]] colony at an outpost. Contrary to the colony buildings of other species, an Exobot colony does not need an already existing Exobot colony within supply range, as the Exobots are constructed as part of the colony directly planetside. However, because of that they are more expensive to build, and they still need an empire owned planet within supply range.
 
 BLD_COL_SUPER_TEST
 Super Tester Colony
@@ -9674,41 +9682,41 @@ SH_DEFENSE_GRID
 Defense Grid
 
 SH_DEFENSE_GRID_DESC
-'''Provides basic shield defense. Capable of completely negating or at least substantially reducing damage from hits by low powered weapons. Reduces damage sustained from a hit by 4.
+'''Provides basic shield defense. Capable of completely negating or at least substantially reducing damage from hits by low powered weapons.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_DEFLECTOR
 Deflector Shield
 
 SH_DEFLECTOR_DESC
-'''Provides advanced shield defense. Can absorb or at least substantially reduce damage dealt by moderately powered weapons. Reduces damage sustained from a hit by 7.
+'''Provides advanced shield defense. Can absorb or at least substantially reduce damage dealt by moderately powered weapons.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_PLASMA
 Plasma Shield
 
 SH_PLASMA_DESC
-'''Powerful shield that significantly reduces damage suffered from hits even by advanced weapons, and completely absorbs anything less. Reduces damage sustained from a hit by 12.
+'''Powerful shield that significantly reduces damage suffered from hits even by advanced weapons, and completely absorbs anything less.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_BLACK
 Blackshield
 
 SH_BLACK_DESC
-'''Most powerful shield defense, can only be penetrated by the most powerful weapons. Extremely expensive to research and build. Reduces damage sustained from a hit by 20.
+'''Most powerful shield defense, can only be penetrated by the most powerful weapons. Extremely expensive to research and build.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_MULTISPEC
 Multi-Spectral Shield
 
 SH_MULTISPEC_DESC
-'''Powerful [[encyclopedia SHIELDS_TITLE]] capable of protecting a ship within a star. Provides a high [[encyclopedia STEALTH_TITLE]] bonus on the galaxy map when the ship is in a star other than a Black Hole or a Neutron Star and allows the ship to enter a star in combat. Reduces damage sustained from a hit by 15.
+'''Powerful [[encyclopedia SHIELDS_TITLE]] capable of protecting a ship within a star. Provides a high [[encyclopedia STEALTH_TITLE]] bonus on the galaxy map when the ship is in a star other than a Black Hole or a Neutron Star and allows the ship to enter a star in combat.
 
-There can only be one active shield generator on a ship, so shield parts do not stack.'''
+Shields reduce damage sustained from each hit by their Shield Strength. There can only be one active shield generator on a ship, so shield parts do not stack.'''
 
 SH_ROBOTIC_INTERFACE_SHIELDS
 Robotic Interface: Shields
@@ -9797,7 +9805,7 @@ SP_KRILL_SPAWNER
 Krill Spawner
 
 SP_KRILL_SPAWNER_DESC
-Spawns [[predefinedshipdesign SM_KRILL_1]] in systems with unowned asteroids which do not already contain a krill monster.
+Spawns [[predefinedshipdesign SM_KRILL_1]] in systems with unowned asteroids which do not already contain a krill monster.  When carried on an unarmed ship, the [[SP_KRILL_SPAWNER]] also provides substantial [[encyclopedia STEALTH_TITLE]] (but will not stack with any other [[encyclopedia STEALTH_TITLE]] - causing  parts).
 
 RS_AUTOLAB
 Autolab
