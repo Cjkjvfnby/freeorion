@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from EnumsAI import AIFleetMissionType, TargetType
 
 sys.path.append('c:/Python27/Lib/site-packages/')
 
@@ -12,13 +13,14 @@ uid_time_format = '%y-%m-%d_%H-%M-%S%f'
 
 
 def dump_data():
-    dumper = Dumper(foAI.foAIstate.uid)
+    empire = fo.getEmpire()
+    dumper = Dumper('%s_%s_%s' % (empire.empireID, foAI.foAIstate.uid, empire.name.replace(' ', '_')))
     turn_uid = foAI.foAIstate.get_current_turn_uid()
     data = {
+
         'turn_uid': turn_uid,
         'parent_uid': foAI.foAIstate.get_prev_turn_uid(),
         'turn': fo.currentTurn(),
-        'empire_id': fo.getEmpire().empireID
     }
 
     # dump functions should define next keys:
@@ -45,7 +47,7 @@ def dump_planets(dumper, **kwargs):
                 'unowned': planet.unowned,
                 'owner': planet.owner if planet.owner != -1 else None,
                 'species': planet.speciesName,
-                'visibility': str(universe.getVisibility(pid, kwargs['empire_id']))
+                'visibility': str(universe.getVisibility(pid, fo.getEmpire().empireID))
                 }
         assert set(headers) == set(data.keys()), 'keys is not mutch headers: headers: %s, keys: %s' (headers, data.keys())
         planets.append(data)
@@ -56,7 +58,7 @@ def dump_planets(dumper, **kwargs):
 
 def dump_fleets(dumper, **kwargs):
     universe = fo.getUniverse()
-    headers = ['id', 'fid', 'name', 'sid', 'owner', 'visibility', 'ships', 'used_in_mission', 'mission_target', 'mission_type']
+    headers = ['id', 'fid', 'name', 'sid', 'owner', 'visibility', 'ships', 'used_in_mission', 'targets']
     fleets = []
     for fid in universe.fleetIDs:
         fleet = universe.getFleet(fid)
@@ -67,15 +69,20 @@ def dump_fleets(dumper, **kwargs):
                 'name': fleet.name,
                 'sid': fleet.systemID,
                 'owner': fleet.owner,
-                'visibility': str(universe.getVisibility(fid, kwargs['empire_id'])),
+                'visibility': str(universe.getVisibility(fid, fo.getEmpire().empireID)),
                 'ships': list(fleet.shipIDs),
                 'used_in_mission': mission is not None
                 }
 
         if mission:
             assert isinstance(mission, AIFleetMission)
-            data['mission_target'] = mission.target_id
-            data['mission_type'] = str(mission.mission_type)
+            targets = []
+            for k, v in mission._mission_types.items():
+                if v:
+                    for item in v:
+                        targets.append([AIFleetMissionType.name(k), TargetType().name(item.target_type), item.target_id])
+            data['targets'] = targets
+
         assert set(headers).issuperset(set(data.keys())), 'keys is not mutch headers: headers: %s, keys: %s' % (headers, data.keys())
         fleets.append(data)
         # data.update(kwargs)
@@ -110,7 +117,7 @@ def dump_orders(dumper, **kwargs):
     from freeorion_debug.extend_free_orion_AI_interface import turn_dumps
     headers = ['id', 'name', 'args']
     turn = fo.currentTurn()
-    turn_orders = turn_dumps.get(turn)
+    turn_orders = turn_dumps.get(turn, [])
     orders = []
     for i, order in enumerate(turn_orders):
         data = {
