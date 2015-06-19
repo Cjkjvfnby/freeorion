@@ -40,7 +40,7 @@ class AIFleetMission(object):
         self._mission_types = {}
         for mt in FLEET_MISSION_TYPES:
             self._mission_types[mt] = []
-        self.target_id = self.target.target_id
+        self.target_id = self.target.id
 
 
     # def __setstate__(self, state_dict):
@@ -201,7 +201,7 @@ class AIFleetMission(object):
         if mission_type == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
             if isinstance(target, System):
                 empire = fo.getEmpire()
-                if not empire.hasExploredSystem(target.target_id):
+                if not empire.hasExploredSystem(target.id):
                     return True
         elif mission_type in [AIFleetMissionType.FLEET_MISSION_OUTPOST, AIFleetMissionType.FLEET_MISSION_ORBITAL_OUTPOST]:
             universe = fo.getUniverse()
@@ -372,7 +372,7 @@ class AIFleetMission(object):
             else:  # check that we're not held up by a Big Monster
                 print "\t\t| CAN'T issue fleet order %s" % fleet_order
                 if isinstance(fleet_order, OrderMove):
-                    this_system_id = fleet_order.target.target_id
+                    this_system_id = fleet_order.target.id
                     this_status = foAI.foAIstate.systemStatus.setdefault(this_system_id, {})
                     if this_status.get('monsterThreat', 0) > fo.currentTurn() * MilitaryAI.cur_best_mil_ship_rating()/4.0:
                         first_mission = self.get_mission_types()[0] if self.get_mission_types() else AIFleetMissionType.FLEET_MISSION_INVALID
@@ -391,7 +391,7 @@ class AIFleetMission(object):
             # move order is also the last order in system
             if isinstance(fleet_order, OrderMove):
                 fleet = fo.getUniverse().getFleet(self.target_id)
-                if fleet.systemID != fleet_order.target.target_id:
+                if fleet.systemID != fleet_order.target.id:
                     break
         else:  # went through entire order list
             if order_completed:
@@ -401,7 +401,7 @@ class AIFleetMission(object):
                 universe = fo.getUniverse()
 
                 if last_order and isinstance(last_order, OrderColonize):
-                    planet = universe.getPlanet(last_order.target.target_id)
+                    planet = universe.getPlanet(last_order.target.id)
                     sys_partial_vis_turn = universe.getVisibilityTurnsMap(planet.systemID, fo.empireID()).get(fo.visibility.partial, -9999)
                     planet_partial_vis_turn = universe.getVisibilityTurnsMap(planet.id, fo.empireID()).get(fo.visibility.partial, -9999)
                     if planet_partial_vis_turn == sys_partial_vis_turn and not planet.currentMeterValue(fo.meterType.population):
@@ -416,7 +416,7 @@ class AIFleetMission(object):
                 clearAll = True
                 last_sys_target = -1
                 if last_order and isinstance(last_order, OrderMilitary):
-                    last_sys_target = last_order.target.target_id
+                    last_sys_target = last_order.target.id
                     # if (AIFleetMissionType.FLEET_MISSION_SECURE in self.get_mission_types()) or # not doing this until decide a way to release from a SECURE mission
                     secure_targets = set(AIstate.colonyTargetedSystemIDs + AIstate.outpostTargetedSystemIDs + AIstate.invasionTargetedSystemIDs + AIstate.blockadeTargetedSystemIDs)
                     if last_sys_target in secure_targets:  # consider a secure mission
@@ -501,7 +501,7 @@ class AIFleetMission(object):
                 repair_fleet_order = MoveUtilsAI.get_repair_fleet_order(self.target, start_sys_id)
                 if repair_fleet_order.is_valid():
                     self.orders.append(repair_fleet_order)
-            if self.get_location_target().target_id not in fleet_supplyable_system_ids:
+            if self.get_location_target().id not in fleet_supplyable_system_ids:
                 resupply_fleet_order = MoveUtilsAI.get_resupply_fleet_order(self.target, self.get_location_target())
                 if resupply_fleet_order.is_valid():
                     self.orders.append(resupply_fleet_order)

@@ -29,7 +29,7 @@ def get_fleet_orders_from_system_targets(fleet_target, targets):
     for target in targets:
         # determine systems required to visit(with possible return to supplied system)
         ensure_return = target.target_id not in secure_targets
-        system_targets = can_travel_to_system(fleet_target.target_id, last_system_target, target, ensure_return=ensure_return)
+        system_targets = can_travel_to_system(fleet_target.id, last_system_target, target, ensure_return=ensure_return)
         #print "making path with %d targets: "%len(system_targets) , ppstring(PlanetUtilsAI.sys_name_ids( [sysTarg.target_id for sysTarg in system_targets]))
         if system_targets:
             # for every system required to visit create move order
@@ -41,7 +41,7 @@ def get_fleet_orders_from_system_targets(fleet_target, targets):
                 result.append(fleet_order)
         else:
             if last_system_target.target_id != target.target_id:
-                print "fleetID: %s can't travel to target: %s" % (fleet_target.target_id, target)
+                print "fleetID: %s can't travel to target: %s" % (fleet_target.id, target)
     return result
 
 
@@ -67,14 +67,14 @@ def can_travel_to_system(fleet_id, from_system_target, to_system_target, ensure_
     universe = fo.getUniverse()
     fleet = universe.getFleet(fleet_id)
     fuel = int(fleet.fuel)
-    if fuel < 1.0 or from_system_target.target_id == to_system_target.target_id:
+    if fuel < 1.0 or from_system_target.id == to_system_target.id:
         return []
     if foAI.foAIstate.aggression <= fo.aggression.typical or True:  # TODO: sort out if shortestPath leaves off some intermediate destinations
         path_func = universe.leastJumpsPath
     else:
         path_func = universe.shortestPath
-    start_sys_id = from_system_target.target_id
-    target_sys_id = to_system_target.target_id
+    start_sys_id = from_system_target.id
+    target_sys_id = to_system_target.id
     if start_sys_id != -1 and target_sys_id != -1:
         short_path = list(path_func(start_sys_id, target_sys_id, empire_id))
     else:
@@ -119,7 +119,7 @@ def can_travel_to_system_and_return_to_resupply(fleet_id, from_system_target, to
     :rtype: list
     """
     system_targets = []
-    if not from_system_target.target_id == to_system_target.target_id:
+    if not from_system_target.id == to_system_target.id:
         # get supplyable systems
         empire = fo.getEmpire()
         fleet_supplyable_system_ids = empire.fleetSupplyableSystemIDs
@@ -132,12 +132,12 @@ def can_travel_to_system_and_return_to_resupply(fleet_id, from_system_target, to
         # print "   fleet ID %d has %.1f fuel to get from %s to %s"%(fleetID, fuel, fromSystemAITarget, toSystemAITarget )
 
         # try to find path without going resupply first
-        supply_system_target = get_nearest_supplied_system(to_system_target.target_id)
+        supply_system_target = get_nearest_supplied_system(to_system_target.id)
         system_targets = __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_system_target, system_targets, fleet_supplyable_system_ids, max_fuel, fuel, supply_system_target)
         # resupply in system first is required to find path
-        if not from_system_target.target_id in fleet_supplyable_system_ids and not system_targets:
+        if not from_system_target.id in fleet_supplyable_system_ids and not system_targets:
             # add supply system to visit
-            from_system_target = get_nearest_supplied_system(from_system_target.target_id)
+            from_system_target = get_nearest_supplied_system(from_system_target.id)
             system_targets.append(from_system_target)
             # find path from supplied system to wanted system
             system_targets = __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_system_target, system_targets, fleet_supplyable_system_ids, max_fuel, max_fuel, supply_system_target)
@@ -222,12 +222,12 @@ def __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_
     new_targets = result_system_targets[:]
     if from_system_target.valid and to_system_target.valid and supply_system_target.valid:
         universe = fo.getUniverse()
-        if from_system_target.target_id != -1 and to_system_target.target_id != -1:
-            least_jumps_path = universe.leastJumpsPath(from_system_target.target_id, to_system_target.target_id, empire_id)
+        if from_system_target.id != -1 and to_system_target.id != -1:
+            least_jumps_path = universe.leastJumpsPath(from_system_target.id, to_system_target.id, empire_id)
         else:
             least_jumps_path = []
             result = False
-        from_system_id = from_system_target.target_id
+        from_system_id = from_system_target.id
         for system_id in least_jumps_path:
             if from_system_id != system_id:
                 if from_system_id in fleet_supplyable_system_ids:
@@ -238,7 +238,7 @@ def __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_
 
                 # leastJumpPath can differ from shortestPath
                 # TODO: use Graph Theory to optimize
-                if True or (system_id != to_system_target.target_id and system_id in fleet_supplyable_system_ids):  # TODO: restructure
+                if True or (system_id != to_system_target.id and system_id in fleet_supplyable_system_ids):  # TODO: restructure
                     new_targets.append(universe_object.System(system_id))
                 if fuel < 0:
                     result = False
@@ -249,7 +249,7 @@ def __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_
     # if there is path to wanted system, then also if there is path back to supplyable system
     if result:
         # jump from A to B means least_jumps_path=[A,B], but min_jumps=1
-        min_jumps = len(universe.leastJumpsPath(to_system_target.target_id, supply_system_target.target_id, empire_id)) - 1
+        min_jumps = len(universe.leastJumpsPath(to_system_target.id, supply_system_target.id, empire_id)) - 1
 
         if min_jumps > fuel:
             # print "fleetID:" + str(fleetID) + " fuel:" + str(fuel) + " required: " + str(min_jumps)
@@ -275,7 +275,7 @@ def get_resupply_fleet_order(fleet_target, current_system_target):
     :rtype fleet_orders.OrderResupply
     """
     # find nearest supplied system
-    supplied_system_target = get_nearest_supplied_system(current_system_target.target_id)
+    supplied_system_target = get_nearest_supplied_system(current_system_target.id)
     # create resupply AIFleetOrder
     return fleet_orders.OrderResupply(fleet_target, supplied_system_target)
 

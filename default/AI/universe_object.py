@@ -5,19 +5,19 @@ class UniverseObject(object):
     """Stores information about AI target - its id and type."""
 
     def __init__(self, target_id):
-        self.target_id = target_id
+        self.id = target_id
 
     def __cmp__(self, other):
-        return cmp(self.target_id, other.target_id)
+        return cmp(self.id, other.target_id)
 
     def __str__(self):
         target = self.get_object()
         if target is None:
-            target_name = "%4d" % self.target_id
+            target_name = "%4d" % self.id
         else:
             target_name = target.name
         return "{ %7s : [%4d] %9s}" % (
-            self.object_name, self.target_id, target_name
+            self.object_name, self.id, target_name
         )
 
     def get_object(self):
@@ -31,7 +31,7 @@ class UniverseObject(object):
         return bool(self)
 
     def __nonzero__(self):
-        return self.target_id is not None and self.target_id >= 0
+        return self.id is not None and self.id >= 0
 
     def get_system(self):
         """Returns all system AITargets required to visit in this object."""
@@ -43,11 +43,11 @@ class Planet(UniverseObject):
 
     def get_system(self):
         universe = fo.getUniverse()
-        planet = universe.getPlanet(self.target_id)
+        planet = universe.getPlanet(self.id)
         return System(planet.systemID)
 
     def get_object(self):
-        return fo.getUniverse().getPlanet(self.target_id)
+        return fo.getUniverse().getPlanet(self.id)
 
 
 class System(UniverseObject):
@@ -57,7 +57,7 @@ class System(UniverseObject):
         return self
 
     def get_object(self):
-        return fo.getUniverse().getSystem(self.target_id)
+        return fo.getUniverse().getSystem(self.id)
 
 
 class Fleet(UniverseObject):
@@ -67,11 +67,11 @@ class Fleet(UniverseObject):
         # Fleet systemID is where is fleet going.
         # If fleet is going nowhere, then it is location of fleet
         universe = fo.getUniverse()
-        fleet = universe.getFleet(self.target_id)
+        fleet = universe.getFleet(self.id)
         system_id = fleet.nextSystemID
         if system_id == -1:
             system_id = fleet.systemID
         return System(system_id)
 
     def get_object(self):
-        return fo.getUniverse().getFleet(self.target_id)
+        return fo.getUniverse().getFleet(self.id)
