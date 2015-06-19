@@ -48,7 +48,6 @@ class AIFleetOrder(object):
         if self.fleet and self.target:
             return True
         else:
-            # FIXME self.fleet.valid and self.target.valid is functions so this code will never execute
             print "\t\t order not valid: fleet validity: %s and target validity %s" % (bool(self.fleet), bool(self.target))
             return False
 
