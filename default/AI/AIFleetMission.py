@@ -35,7 +35,6 @@ class AIFleetMission(object):
 
     def __init__(self, fleet_id):
         self.orders = []
-        self.mission_type = EnumsAI.AIMissionType.FLEET_MISSION
         self.target = Fleet(fleet_id)
         self._mission_types = {}
         for mt in FLEET_MISSION_TYPES:

@@ -215,14 +215,6 @@ def get_research_requirement_types():
     return range(0, 4)
 
 
-class AIMissionType(object):
-    MISSION_INVALID = -1
-    FLEET_MISSION = 0
-    EMPIRE_WAR_MISSION = 1
-    ALLIANCE_WAR_MISSION = 2
-    DIPLOMATIC_MISSION = 3
-
-
 def get_mission_types():
     return range(0, 4)
 
