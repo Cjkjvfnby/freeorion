@@ -28,9 +28,9 @@ def get_fleet_orders_from_system_targets(fleet_target, targets):
     # for every system which fleet wanted to visit, determine systems to visit and create move orders
     for target in targets:
         # determine systems required to visit(with possible return to supplied system)
-        ensure_return = target.target_id not in secure_targets
+        ensure_return = target.id not in secure_targets
         system_targets = can_travel_to_system(fleet_target.id, last_system_target, target, ensure_return=ensure_return)
-        #print "making path with %d targets: "%len(system_targets) , ppstring(PlanetUtilsAI.sys_name_ids( [sysTarg.target_id for sysTarg in system_targets]))
+        #print "making path with %d targets: "%len(system_targets) , ppstring(PlanetUtilsAI.sys_name_ids( [sysTarg.id for sysTarg in system_targets]))
         if system_targets:
             # for every system required to visit create move order
             for system_targer in system_targets:
@@ -40,7 +40,7 @@ def get_fleet_orders_from_system_targets(fleet_target, targets):
                 fleet_order = fleet_orders.OrderMove(fleet_target, system_targer)
                 result.append(fleet_order)
         else:
-            if last_system_target.target_id != target.target_id:
+            if last_system_target.id != target.id:
                 print "fleetID: %s can't travel to target: %s" % (fleet_target.id, target)
     return result
 
@@ -187,7 +187,7 @@ def get_safe_path_leg_to_dest(fleet_id, start_id, dest_id):
     dest_targ = universe_object.System(dest_id)
     #TODO actually get a safe path
     this_path = can_travel_to_system(fleet_id, start_targ, dest_targ, ensure_return=False)
-    path_ids = [targ.target_id for targ in this_path if targ.target_id != start_id] + [start_id]
+    path_ids = [targ.id for targ in this_path if targ.id != start_id] + [start_id]
     start_info = PlanetUtilsAI.sys_name_ids([start_id])
     dest_info = PlanetUtilsAI.sys_name_ids([dest_id])
     path_info = [PlanetUtilsAI.sys_name_ids([sys_id]) for sys_id in path_ids]
@@ -294,6 +294,6 @@ def get_repair_fleet_order(fleet_target, current_sys_id):
     """
     # find nearest supplied system
     drydock_sys_id = get_nearest_drydock_system_id(current_sys_id)
-    print "ordering fleet %d to %s for repair" % (fleet_target.target_id, ppstring(PlanetUtilsAI.sys_name_ids([drydock_sys_id])))
+    print "ordering fleet %d to %s for repair" % (fleet_target.id, ppstring(PlanetUtilsAI.sys_name_ids([drydock_sys_id])))
     # create resupply AIFleetOrder
     return fleet_orders.OrderRepair(fleet_target, universe_object.System(drydock_sys_id))

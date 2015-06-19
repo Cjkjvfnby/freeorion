@@ -56,7 +56,7 @@ class AIFleetMission(object):
     #             self.__dict__[attrib] = default
     #     if 'target' not in state_dict:
     #         old_target = state_dict.get('_AIAbstractMission__aiTarget', None)
-    #         target_id = old_target.target_id if (old_target is not None) else -1 #TODO consider a harder fail
+    #         target_id = old_target.id if (old_target is not None) else -1 #TODO consider a harder fail
     #         self.__dict__['target'] = old_target
     #         self.__dict__['target_id'] = target_id
     #         #print "Fleet mission unpickle: setting %s to %s"%('target', old_target)
@@ -284,7 +284,7 @@ class AIFleetMission(object):
         orders = self.orders
         last_sys_target = -1
         if orders:
-            last_sys_target = orders[-1].target.target_id
+            last_sys_target = orders[-1].target.id
         if last_sys_target == fleet.systemID:
             return  # TODO: check for best local target
         open_targets = []

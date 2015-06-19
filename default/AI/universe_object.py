@@ -8,7 +8,7 @@ class UniverseObject(object):
         self.id = target_id
 
     def __cmp__(self, other):
-        return cmp(self.id, other.target_id)
+        return cmp(self.id, other.id)
 
     def __str__(self):
         target = self.get_object()

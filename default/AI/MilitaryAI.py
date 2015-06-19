@@ -172,7 +172,7 @@ def get_military_fleets(milFleetIDs=None, tryReset=True, thisround="Main"):
                 sys_targets.append(aiTarget.get_system())
         if not sys_targets:  # shouldn't really be possible
             continue
-        last_sys = sys_targets[-1].target_id  # will count this fleet as assigned to last system in target list
+        last_sys = sys_targets[-1].id  # will count this fleet as assigned to last system in target list
         assigned_attack[last_sys] += foAI.foAIstate.get_rating(fleet_id).get('attack', 0)
         assigned_hp[last_sys] += foAI.foAIstate.get_rating(fleet_id).get('health', 0)
     for sys_id in universe.systemIDs:
