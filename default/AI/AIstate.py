@@ -603,8 +603,8 @@ class AIstate(object):
 
         deleted_fleet_ids = []
         for mission in self.get_all_fleet_missions():
-            if mission.target_id not in fleet_ids:
-                deleted_fleet_ids.append(mission.target_id)
+            if mission.target.id not in fleet_ids:
+                deleted_fleet_ids.append(mission.target.id)
         for deleted_fleet_id in deleted_fleet_ids:
             self.__remove_fleet_mission(deleted_fleet_id)
 
@@ -1023,7 +1023,7 @@ class AIstate(object):
                         if targets:
                             mMT0=targets[0]
                             if isinstance(mMT0.target_type, System):
-                                status['sysID'] = mMT0.target_id  # hmm, but might still be a fair ways from here
+                                status['sysID'] = mMT0.target.id  # hmm, but might still be a fair ways from here
         self.shipCount = ship_count
         std_fighter = sorted([(v, k) for k, v in fighters.items()])[-1][1]  # selects k with highest count (from fighters[k])
         self.empire_standard_fighter = std_fighter
