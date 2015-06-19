@@ -603,8 +603,8 @@ class AIstate(object):
 
         deleted_fleet_ids = []
         for mission in self.get_all_fleet_missions():
-            if mission.target.id not in fleet_ids:
-                deleted_fleet_ids.append(mission.target.id)
+            if mission.fleet.id not in fleet_ids:
+                deleted_fleet_ids.append(mission.fleet.id)
         for deleted_fleet_id in deleted_fleet_ids:
             self.__remove_fleet_mission(deleted_fleet_id)
 
