@@ -55,7 +55,7 @@ def try_again(mil_fleet_ids, try_reset=False, thisround=""):
     for fid in mil_fleet_ids:
         mission = foAI.foAIstate.get_fleet_mission(fid)
         mission.clear_fleet_orders()
-        mission.clear_targets(-1)
+        mission.clear_target()
     get_military_fleets(tryReset=try_reset, thisround=thisround)
     return
 
@@ -165,14 +165,9 @@ def get_military_fleets(milFleetIDs=None, tryReset=True, thisround="Main"):
         enemy_sup_factor[sys_id] = min(2, len(systems_status.get(sys_id, {}).get('enemies_nearly_supplied', [])))
     for fleet_id in [fid for fid in all_military_fleet_ids if fid not in milFleetIDs]:
         ai_fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
-        sys_targets = []
-        for ai_fleet_mission_type in ai_fleet_mission.get_mission_types():
-            ai_targets = ai_fleet_mission.get_targets(ai_fleet_mission_type)
-            for aiTarget in ai_targets:
-                sys_targets.append(aiTarget.get_system())
-        if not sys_targets:  # shouldn't really be possible
+        if not ai_fleet_mission.target:  # shouldn't really be possible
             continue
-        last_sys = sys_targets[-1].id  # will count this fleet as assigned to last system in target list
+        last_sys = ai_fleet_mission.target.get_system().id  # will count this fleet as assigned to last system in target list
         assigned_attack[last_sys] += foAI.foAIstate.get_rating(fleet_id).get('attack', 0)
         assigned_hp[last_sys] += foAI.foAIstate.get_rating(fleet_id).get('health', 0)
     for sys_id in universe.systemIDs:
@@ -710,7 +705,7 @@ def assign_military_fleets_to_systems(useFleetIDList=None, allocations=None):
             target = universe_object.System(sys_id)
             fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
             fleet_mission.clear_fleet_orders()
-            fleet_mission.clear_targets((fleet_mission.get_mission_types() + [-1])[0])
+            fleet_mission.clear_target()
             mission_type = AIFleetMissionType.FLEET_MISSION_ORBITAL_DEFENSE
             fleet_mission.add_target(mission_type, target)
 
@@ -769,7 +764,7 @@ def assign_military_fleets_to_systems(useFleetIDList=None, allocations=None):
             fo.issueAggressionOrder(fleet_id, True)
             fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
             fleet_mission.clear_fleet_orders()
-            fleet_mission.clear_targets((fleet_mission.get_mission_types() + [-1])[0])
+            fleet_mission.clear_target()
             if sys_id in list(set(AIstate.colonyTargetedSystemIDs + AIstate.outpostTargetedSystemIDs + AIstate.invasionTargetedSystemIDs + AIstate.blockadeTargetedSystemIDs)):
                 mission_type = AIFleetMissionType.FLEET_MISSION_SECURE
             else:

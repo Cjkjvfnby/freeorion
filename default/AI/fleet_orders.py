@@ -8,8 +8,6 @@ import PlanetUtilsAI
 from freeorion_tools import print_error
 from universe_object import Fleet, System, Planet
 
-
-AIFleetMissionTypeNames = AIFleetMissionType()
 dumpTurn = 0
 
 
@@ -63,10 +61,9 @@ class AIFleetOrder(object):
             sys1 = self.fleet.get_object()
             sys_name = sys1 and sys1.name or "unknown"
             main_fleet_mission = foAI.foAIstate.get_fleet_mission(self.fleet.id)
-            main_mission_type = (main_fleet_mission.get_mission_types() + [-1])[0]
             print "** %s -- Mission Type %s (%s) , current loc sys %d - %s" % (
-                                                                self, AIFleetMissionTypeNames.name(main_mission_type),
-                                                                main_mission_type, self.fleet.id, sys_name)
+                                                                self, AIFleetMissionType.name(main_fleet_mission.type),
+                                                                main_fleet_mission.type, self.fleet.id, sys_name)
         return True
 
     def issue_order(self):

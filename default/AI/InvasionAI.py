@@ -328,9 +328,9 @@ def evaluate_invasion_planet(planet_id, empire, secure_fleet_missions, verbose=T
         s_fleet = universe.getFleet(secure_fleet_id)
         if not s_fleet or s_fleet.systemID != p_sys_id:
             continue
-        for ai_target in mission.get_targets(EnumsAI.AIFleetMissionType.FLEET_MISSION_SECURE):
-            target_obj = ai_target.get_object()
-            if (target_obj is not None) and target_obj.id in secure_targets:
+        if mission == EnumsAI.AIFleetMissionType.FLEET_MISSION_SECURE:
+            target_obj = mission.target.get_object()
+            if target_obj is not None and target_obj.id in secure_targets:
                 system_secured = True
                 break
 
@@ -405,7 +405,7 @@ def send_invasion_fleets(fleet_ids, evaluated_planets, mission_type):
         for fleet_ID in these_fleets:
             fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_ID)
             fleet_mission.clear_fleet_orders()
-            fleet_mission.clear_targets( (fleet_mission.get_mission_types() + [-1])[0] )
+            fleet_mission.clear_target()
             fleet_mission.add_target(mission_type, target)
 
 

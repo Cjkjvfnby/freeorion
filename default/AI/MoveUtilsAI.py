@@ -8,7 +8,7 @@ import PlanetUtilsAI
 from freeorion_tools import ppstring
 
 
-def get_fleet_orders_from_system_targets(fleet_target, targets):
+def get_fleet_orders_from_system_targets(fleet_target, targets):  # TODO consider to change targets to single target
     """
     Return Move orders to fleet.
 

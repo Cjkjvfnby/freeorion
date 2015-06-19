@@ -574,8 +574,7 @@ class AIstate(object):
         """Returns all AIFleetMissions which contains any of fleetMissionTypes."""
         result = []
         for mission in self.get_all_fleet_missions():
-            these_types = mission.get_mission_types()
-            if any(wanted_mission_type in these_types for wanted_mission_type in mission_types):
+            if mission.type in mission_types:
                 result.append(mission)
         return result
 
@@ -937,7 +936,7 @@ class AIstate(object):
         invasion_missions = self.get_fleet_missions_with_any_mission_types([EnumsAI.AIFleetMissionType.FLEET_MISSION_INVASION])
         for mission in invasion_missions:
             mission.clear_fleet_orders()
-            mission.clear_targets(([-1] + mission.get_mission_types()[:1])[-1])
+            mission.clear_target()
 
     def __clean_fleet_roles(self, just_resumed=False):
         """Removes fleetRoles if a fleet has been lost, and update fleet Ratings."""

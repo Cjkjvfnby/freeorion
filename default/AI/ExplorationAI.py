@@ -23,16 +23,16 @@ def get_current_exploration_info(verbose=True):
     already_covered = set()
     for fleet_id in fleet_ids:
         fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
-        if len(fleet_mission.get_mission_types()) == 0:
+        if not fleet_mission.type:
             available_scouts.append(fleet_id)
         else:
-            targets = [targ.id for targ in fleet_mission.get_targets(AIFleetMissionType.FLEET_MISSION_EXPLORATION)]
-            if verbose:
-                if len(targets) == 0:
-                    print "problem determining existing exploration target systems from targets:\n%s" % (fleet_mission.get_targets(AIFleetMissionType.FLEET_MISSION_EXPLORATION))
-                else:
-                    print "found existing exploration targets: %s" % targets
-            already_covered.update(targets)
+            if fleet_mission.type == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
+                already_covered.add(fleet_mission.target)
+                if verbose:
+                    if not fleet_mission.target:
+                        print "problem determining existing exploration target systems"
+                    else:
+                        print "found existing exploration target: %s" % fleet_mission.target
     return list(already_covered), available_scouts
 
 

@@ -315,7 +315,7 @@ def get_empire_fleet_ids_by_role(fleet_role):
 
 def extract_fleet_ids_without_mission_types(fleets_ids):
     """Extracts a list with fleetIDs that have no mission."""
-    return [fleet_id for fleet_id in fleets_ids if not foAI.foAIstate.get_fleet_mission(fleet_id).get_mission_types()]
+    return [fleet_id for fleet_id in fleets_ids if not foAI.foAIstate.get_fleet_mission(fleet_id).type]
 
 
 def assess_fleet_role(fleet_id):

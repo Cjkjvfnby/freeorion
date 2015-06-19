@@ -5,8 +5,8 @@ class EnumsType(object):
     def name(cls, mtype):
         try:
             return cls.names[mtype]
-        except IndexError:
-            return "invalidPriorityType"
+        except (IndexError, TypeError):
+            return cls.names[-1]
 
 
 class AIPriorityType(object):
