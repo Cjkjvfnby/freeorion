@@ -26,10 +26,6 @@ class UniverseObject(object):
         """
         return None
 
-    def valid(self):
-        # this method is present here only for compatibility with its usage (witch if used wrong)
-        return bool(self)
-
     def __nonzero__(self):
         return self.id is not None and self.id >= 0
 

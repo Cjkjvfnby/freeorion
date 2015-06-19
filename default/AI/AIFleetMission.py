@@ -196,7 +196,7 @@ class AIFleetMission(object):
         return
 
     def _is_valid_fleet_mission_target(self, mission_type, target):
-        if not target.valid:
+        if not target:
             return False
         if mission_type == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
             if isinstance(target, System):
@@ -411,7 +411,7 @@ class AIFleetMission(object):
                         if not last_order.is_valid():
                             source_target = last_order.fleet
                             target_target = last_order.target
-                            print "        source target validity: %s; target target validity: %s " % (source_target.valid, target_target.valid)
+                            print "        source target validity: %s; target target validity: %s " % (bool(source_target), bool(target_target))
                         return  # colonize order must not have completed yet
                 clearAll = True
                 last_sys_target = -1

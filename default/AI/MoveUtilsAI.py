@@ -220,7 +220,7 @@ def __find_path_with_fuel_to_system_with_possible_return(from_system_target, to_
     result = True
     # try to find if there is possible path to wanted system from system
     new_targets = result_system_targets[:]
-    if from_system_target.valid and to_system_target.valid and supply_system_target.valid:
+    if from_system_target and to_system_target and supply_system_target:
         universe = fo.getUniverse()
         if from_system_target.id != -1 and to_system_target.id != -1:
             least_jumps_path = universe.leastJumpsPath(from_system_target.id, to_system_target.id, empire_id)

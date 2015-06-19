@@ -49,7 +49,7 @@ class AIFleetOrder(object):
             return True
         else:
             # FIXME self.fleet.valid and self.target.valid is functions so this code will never execute
-            print "\t\t order not valid: fleet validity: %s and target validity %s" % (self.fleet.valid, self.target.valid)
+            print "\t\t order not valid: fleet validity: %s and target validity %s" % (bool(self.fleet), bool(self.target))
             return False
 
     def can_issue_order(self, verbose=False):
