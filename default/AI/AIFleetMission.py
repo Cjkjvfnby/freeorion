@@ -70,8 +70,10 @@ class AIFleetMission(object):
         self.target = target
 
     def clear_target(self):
-        self.target = None
-        self.type = None
+        if self.target or self.type:
+            print "zzxxcc clear target: %s: %s" % (AIFleetMissionType.name(self.type), self.target)
+            self.target = None
+            self.type = None
 
     def has_target(self, mission_type, target):
         return self.type == mission_type and self.target == target
@@ -310,7 +312,7 @@ class AIFleetMission(object):
         # TODO: priority
         order_completed = True
         print "--------------"
-        print "Checking orders for fleet %d (on turn %d), with mission type %s" % (self.fleet.id, fo.currentTurn(), AIFleetMissionType.name(self.type))
+        print "Checking orders for fleet %d (on turn %d), with mission type %s" % (self.fleet.id, fo.currentTurn(), self.type and AIFleetMissionType.name(self.type) or 'No mission')
         print "\t Full Orders are:"
         for this_order in self.orders:
             print "\t\t| %s" % this_order
