@@ -83,7 +83,7 @@ class AIFleetOrder(object):
         return "Fleet order[%s] source:%26s | target %26s %s" % (self.ORDER_NAME, self.fleet, self.target, execute_status)
 
     def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.fleet == other.fleet and self.target == other.target
+        return type(self) == type(other) and self.fleet == other.fleet and self.target == other.target
 
 
 class OrderMove(AIFleetOrder):
@@ -424,7 +424,6 @@ class OrderMilitary(AIFleetOrder):
         return ship is not None and self.fleet.get_system() == self.target and ship.isArmed
 
     def issue_order(self):
-        print "zzxxcc ????"
         if not super(OrderMilitary, self).issue_order():
             return
         target_sys_id = self.target.id

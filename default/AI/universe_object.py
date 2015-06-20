@@ -11,7 +11,7 @@ class UniverseObject(object):
             print >> sys.stderr, "Target is invalid %s" % self
 
     def __cmp__(self, other):
-        return cmp(self.id, other.id)
+        return type(self) == type(other) and cmp(self.id, other.id)
 
     def __str__(self):
         target = self.get_object()
