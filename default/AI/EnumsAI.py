@@ -3,9 +3,11 @@ class EnumsType(object):
 
     @classmethod
     def name(cls, mtype):
+        if mtype is None:
+            return 'None'
         try:
             return cls.names[mtype]
-        except (IndexError, TypeError):
+        except (IndexError):
             return cls.names[-1]
 
 
