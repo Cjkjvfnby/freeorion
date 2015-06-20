@@ -70,10 +70,8 @@ class AIFleetMission(object):
         self.target = target
 
     def clear_target(self):
-        if self.target or self.type:
-            print "zzxxcc clear target: %s: %s" % (AIFleetMissionType.name(self.type), self.target)
-            self.target = None
-            self.type = None
+        self.target = None
+        self.type = None
 
     def has_target(self, mission_type, target):
         return self.type == mission_type and self.target == target
@@ -111,7 +109,7 @@ class AIFleetMission(object):
         if not self.target:
             m_MT0_id = None
         else:
-            m_MT0_id = self.fleet.id
+            m_MT0_id = self.target.id
 
         # TODO consider establishing an AI strategy & tactics planning document for discussing & planning
         # high level considerations for issues like fleet merger
@@ -147,7 +145,7 @@ class AIFleetMission(object):
                     #print "\t\t\t ** Considering merging fleetA (id: %4d) into fleet (id %d) and former has no targets, will take it. FleetA mission was %s "%(fid, fleetID, fleet_mission)
                     do_merge = True
                 else:
-                    target = fleet_mission.fleet.id
+                    target = fleet_mission.target.id if fleet_mission.target else None
                     if target == m_MT0_id:
                         print "Military fleet %d has same target as %s fleet %d and will (at least temporarily) be merged into the latter" % (fid, EnumsAI.AIShipRoleType.name(fleet_role), fleet_id)
                         do_merge = True  # TODO: should probably ensure that fleetA has aggression on now
@@ -481,7 +479,7 @@ class AIFleetMission(object):
                 self.orders.append(fleet_order)
 
         # if fleet is in some system = fleet.system_id >=0, then also generate system AIFleetOrders
-        if system_id >= 0:
+        if system_id >= 0 and self.target:
             # system in where fleet is
             system_target = System(system_id)
             # if mission aiTarget has required system where fleet is, then generate fleet_order from this aiTarget
