@@ -1,5 +1,5 @@
 import freeOrionAIInterface as fo  # pylint: disable=import-error
-import FreeOrionAI as foAI
+from state import state
 import TechsListsAI
 import AIDependencies
 import AIstate
@@ -13,16 +13,16 @@ inProgressTechs = {}
 def get_research_index():
     empire_id = fo.empireID()
     research_index = empire_id % 2
-    if foAI.foAIstate.aggression >= fo.aggression.aggressive:  # maniacal
+    if state.aggression >= fo.aggression.aggressive:  # maniacal
         research_index = 2 + (empire_id % 3)  # so indices [2,3,4]
-    elif foAI.foAIstate.aggression >= fo.aggression.typical:
+    elif state.aggression >= fo.aggression.typical:
         research_index += 1
     return research_index
 
 
 def exclude_tech(tech_name):
-    return ((foAI.foAIstate.aggression < AIDependencies.TECH_EXCLUSION_MAP_1.get(tech_name, fo.aggression.invalid)) or
-            (foAI.foAIstate.aggression > AIDependencies.TECH_EXCLUSION_MAP_2.get(tech_name, fo.aggression.maniacal)) or
+    return ((state.aggression < AIDependencies.TECH_EXCLUSION_MAP_1.get(tech_name, fo.aggression.invalid)) or
+            (state.aggression > AIDependencies.TECH_EXCLUSION_MAP_2.get(tech_name, fo.aggression.maniacal)) or
             tech_name in TechsListsAI.unusable_techs())
             
 
@@ -31,7 +31,7 @@ def generate_research_orders():
     report_adjustments = False
     empire = fo.getEmpire()
     empire_id = empire.empireID
-    enemies_sighted = foAI.foAIstate.misc.get('enemies_sighted', {})
+    enemies_sighted = state.misc.get('enemies_sighted', {})
     galaxy_is_sparse = ColonisationAI.galaxy_is_sparse()
     print "Research Queue Management:"
     resource_production = empire.resourceProduction(fo.resourceType.research)
@@ -106,14 +106,14 @@ def generate_research_orders():
             except:
                 print "    Error: failed attempt to enqueued Tech: " + name
                 print "    Error: exception triggered and caught: ", traceback.format_exc()
-        if foAI.foAIstate.aggression <= fo.aggression.cautious:
+        if state.aggression <= fo.aggression.cautious:
             research_queue_list = get_research_queue_techs()
             def_techs = TechsListsAI.defense_techs_1()
             for def_tech in def_techs:
                 if def_tech not in research_queue_list[:5] and not tech_is_complete(def_tech):
                     res = fo.issueEnqueueTechOrder(def_tech, min(3, len(research_queue_list)))
                     print "Empire is very defensive, so attempted to fast-track %s, got result %d" % (def_tech, res)
-        if False and foAI.foAIstate.aggression >= fo.aggression.aggressive:  # with current stats of Conc Camps, disabling this fast-track
+        if False and state.aggression >= fo.aggression.aggressive:  # with current stats of Conc Camps, disabling this fast-track
             research_queue_list = get_research_queue_techs()
             if "CON_CONC_CAMP" in research_queue_list:
                 insert_idx = min(40, research_queue_list.index("CON_CONC_CAMP"))
@@ -164,14 +164,14 @@ def generate_research_orders():
     #
     # Supply range and detection range
     if False:  # disabled for now, otherwise just to help with cold-folding / organization
-        if len(foAI.foAIstate.colonisablePlanetIDs) == 0:
+        if len(state.colonisablePlanetIDs) == 0:
             best_colony_site_score = 0
         else:
-            best_colony_site_score = foAI.foAIstate.colonisablePlanetIDs.items()[0][1]
-        if len(foAI.foAIstate.colonisableOutpostIDs) == 0:
+            best_colony_site_score = state.colonisablePlanetIDs.items()[0][1]
+        if len(state.colonisableOutpostIDs) == 0:
             best_outpost_site_score = 0
         else:
-            best_outpost_site_score = foAI.foAIstate.colonisableOutpostIDs.items()[0][1]
+            best_outpost_site_score = state.colonisableOutpostIDs.items()[0][1]
         need_improved_scouting = (best_colony_site_score < 150 or best_outpost_site_score < 200)
 
         if need_improved_scouting:
@@ -230,7 +230,7 @@ def generate_research_orders():
     # check to accelerate xeno_arch
     if True:  # just to help with cold-folding /  organization
         if (ColonisationAI.gotRuins and not tech_is_complete("LRN_XENOARCH") and
-                foAI.foAIstate.aggression >= fo.aggression.typical):
+                state.aggression >= fo.aggression.typical):
             if "LRN_ARTIF_MINDS" in research_queue_list:
                 insert_idx = 7 + research_queue_list.index("LRN_ARTIF_MINDS")
             elif "GRO_SYMBIOTIC_BIO" in research_queue_list:
@@ -322,7 +322,7 @@ def generate_research_orders():
     #
     # assess if our empire has any non-lousy colonizers, & boost gro_xeno_gen if we don't
     if True:  # just to help with cold-folding / organization
-        if got_ggg_tech and got_sym_bio and (not got_xeno_gen) and foAI.foAIstate.aggression >= fo.aggression.cautious:
+        if got_ggg_tech and got_sym_bio and (not got_xeno_gen) and state.aggression >= fo.aggression.cautious:
             most_adequate = 0
             for specName in ColonisationAI.empire_colonizers:
                 environs = {}
@@ -354,7 +354,7 @@ def generate_research_orders():
                 if this_spec and ("TELEPATHIC" in list(this_spec.tags)):
                     got_telepathy = True
                     break
-            if (foAI.foAIstate.aggression > fo.aggression.cautious) and (empire.population() > ([300, 100][got_telepathy])):
+            if (state.aggression > fo.aggression.cautious) and (empire.population() > ([300, 100][got_telepathy])):
                 insert_idx = num_techs_accelerated
                 for dt_ech in ["LRN_PHYS_BRAIN", "LRN_TRANSLING_THT", "LRN_PSIONICS", "LRN_DISTRIB_THOUGHT"]:
                     if dt_ech not in research_queue_list[:insert_idx + 2] and not tech_is_complete(dt_ech):
@@ -371,7 +371,7 @@ def generate_research_orders():
     #
     # check to accelerate quant net
     if False:  # disabled for now, otherwise just to help with cold-folding / organization
-        if (foAI.foAIstate.aggression > fo.aggression.cautious) and (ColonisationAI.empire_status.get('researchers', 0) >= 40):
+        if (state.aggression > fo.aggression.cautious) and (ColonisationAI.empire_status.get('researchers', 0) >= 40):
             if not tech_is_complete("LRN_QUANT_NET"):
                 insert_idx = num_techs_accelerated  # TODO determine min target slot if reenabling
                 for qnTech in ["LRN_NDIM_SUBSPACE", "LRN_QUANT_NET"]:
@@ -389,7 +389,7 @@ def generate_research_orders():
     # if we own a blackhole, accelerate sing_gen and conc camp
     if True:  # just to help with cold-folding / organization
         if (fo.currentTurn() > 50 and len(AIstate.empireStars.get(fo.starType.blackHole, [])) != 0 and
-                foAI.foAIstate.aggression > fo.aggression.cautious and not tech_is_complete(AIDependencies.PRO_SINGULAR_GEN) and
+                state.aggression > fo.aggression.cautious and not tech_is_complete(AIDependencies.PRO_SINGULAR_GEN) and
                 tech_is_complete(AIDependencies.PRO_SOL_ORB_GEN)):
             # sing_tech_list = [ "LRN_GRAVITONICS" , "PRO_SINGULAR_GEN"]  # formerly also "CON_ARCH_PSYCH", "CON_CONC_CAMP",
             sing_gen_tech = fo.getTech(AIDependencies.PRO_SINGULAR_GEN)

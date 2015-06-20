@@ -1,5 +1,5 @@
 import freeOrionAIInterface as fo  # interface used to interact with FreeOrion AI client # pylint: disable=import-error
-import FreeOrionAI as foAI
+from state import state
 import FleetUtilsAI
 from EnumsAI import AIFleetMissionType, TargetType
 import AITarget
@@ -22,7 +22,7 @@ def get_current_exploration_info(verbose=True):
     available_scouts = []
     already_covered = set()
     for fleet_id in fleet_ids:
-        fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
+        fleet_mission = state.get_fleet_mission(fleet_id)
         if len(fleet_mission.get_mission_types()) == 0:
             available_scouts.append(fleet_id)
         else:
@@ -41,7 +41,7 @@ def assign_scouts_to_explore_systems():
     universe = fo.getUniverse()
     capital_sys_id = PlanetUtilsAI.get_capital_sys_id()
     # order fleets to explore
-    #explorable_system_ids = foAI.foAIstate.get_explorable_systems(AIExplorableSystemType.EXPLORABLE_SYSTEM_UNEXPLORED)
+    #explorable_system_ids = state.get_explorable_systems(AIExplorableSystemType.EXPLORABLE_SYSTEM_UNEXPLORED)
     explorable_system_ids = list(borderUnexploredSystemIDs)
     if not explorable_system_ids or (capital_sys_id == -1):
         return
@@ -53,12 +53,12 @@ def assign_scouts_to_explore_systems():
 
     print "explorable sys IDs: %s" % explore_list
     print "already targeted: %s" % already_covered
-    if 'needsEmergencyExploration' not in dir(foAI.foAIstate):
-        foAI.foAIstate.needsEmergencyExploration = []
-    needs_coverage = foAI.foAIstate.needsEmergencyExploration + [sys_id for sys_id in explore_list if sys_id not in already_covered]  # emergency coverage cane be due to invasion detection trouble, etc.
+    if 'needsEmergencyExploration' not in dir(state):
+        state.needsEmergencyExploration = []
+    needs_coverage = state.needsEmergencyExploration + [sys_id for sys_id in explore_list if sys_id not in already_covered]  # emergency coverage cane be due to invasion detection trouble, etc.
     print "needs coverage: %s" % needs_coverage
 
-    print "available scouts & AIstate locs: %s" % (map(lambda x: (x, foAI.foAIstate.fleetStatus.get(x, {}).get('sysID', -1)), available_scouts))
+    print "available scouts & AIstate locs: %s" % (map(lambda x: (x, state.fleetStatus.get(x, {}).get('sysID', -1)), available_scouts))
     print "available scouts & universe locs: %s" % (map(lambda x: (x, universe.getFleet(x).systemID), available_scouts))
     if not needs_coverage or not available_scouts:
         return
@@ -67,8 +67,8 @@ def assign_scouts_to_explore_systems():
     sent_list = []
     while (len(available_scouts) > 0) and (len(needs_coverage) > 0):
         this_sys_id = needs_coverage.pop(0)
-        if (foAI.foAIstate.systemStatus.setdefault(this_sys_id, {}).setdefault('monsterThreat', 0) > 2000 * foAI.foAIstate.aggression) or (fo.currentTurn() < 20 and foAI.foAIstate.systemStatus[this_sys_id]['monsterThreat'] > 200):
-            print "Skipping exploration of system %d due to Big Monster, threat %d" % (this_sys_id, foAI.foAIstate.systemStatus[this_sys_id]['monsterThreat'])
+        if (state.systemStatus.setdefault(this_sys_id, {}).setdefault('monsterThreat', 0) > 2000 * state.aggression) or (fo.currentTurn() < 20 and state.systemStatus[this_sys_id]['monsterThreat'] > 200):
+            print "Skipping exploration of system %d due to Big Monster, threat %d" % (this_sys_id, state.systemStatus[this_sys_id]['monsterThreat'])
             continue
         found_fleets = []
         this_fleet_list = FleetUtilsAI.get_fleets_for_mission(nships=1, target_stats={}, min_stats={}, cur_stats={}, species="", systems_to_check=[this_sys_id], systems_checked=[],
@@ -77,7 +77,7 @@ def assign_scouts_to_explore_systems():
             print "seem to have run out of scouts while trying to cover sys_id %d" % this_sys_id
             break  # must have ran out of scouts
         fleet_id = this_fleet_list[0]
-        fleet_mission = foAI.foAIstate.get_fleet_mission(fleet_id)
+        fleet_mission = state.get_fleet_mission(fleet_id)
         target = AITarget.AITarget(TargetType.TARGET_SYSTEM, this_sys_id)
         if len(MoveUtilsAI.can_travel_to_system_and_return_to_resupply(fleet_id, fleet_mission.get_location_target(), target)) > 0:
             fleet_mission.add_target(AIFleetMissionType.FLEET_MISSION_EXPLORATION, target)
@@ -102,7 +102,7 @@ def assign_scouts_to_explore_systems():
         while ( isys < len(sysList) -1) :
             isys += 1
             sys_id = sysList[ isys]
-            fleet_mission = foAI.foAIstate.get_fleet_mission( fleet_id )
+            fleet_mission = state.get_fleet_mission( fleet_id )
             target = AITarget.AITarget(AITargetType.TARGET_SYSTEM, sys_id )
             # add exploration mission to fleet with target unexplored system and this system is in range
             #print "try to assign scout to system %d"%systemID
@@ -116,7 +116,7 @@ def assign_scouts_to_explore_systems():
 
 def follow_vis_system_connections(start_system_id, home_system_id):
     universe = fo.getUniverse()
-    empire_id = foAI.foAIstate.empireID
+    empire_id = state.empireID
     exploration_list = [start_system_id]
     while exploration_list:
         cur_system_id = exploration_list.pop()
@@ -125,12 +125,12 @@ def follow_vis_system_connections(start_system_id, home_system_id):
         graphFlags[cur_system_id] = 1
         system = universe.getSystem(cur_system_id)
         if not system:
-            sys_name = foAI.foAIstate.systemStatus.get(cur_system_id, {}).get('name', "name unknown")
+            sys_name = state.systemStatus.get(cur_system_id, {}).get('name', "name unknown")
         else:
-            sys_name = system.name or foAI.foAIstate.systemStatus.get(cur_system_id, {}).get('name', "name unknown")
-        if cur_system_id in foAI.foAIstate.visBorderSystemIDs:
+            sys_name = system.name or state.systemStatus.get(cur_system_id, {}).get('name', "name unknown")
+        if cur_system_id in state.visBorderSystemIDs:
             pre_vis = "a border system"
-        elif cur_system_id in foAI.foAIstate.visInteriorSystemIDs:
+        elif cur_system_id in state.visInteriorSystemIDs:
             pre_vis = "an interior system"
         else:
             pre_vis = "an unknown system"
@@ -145,10 +145,10 @@ def follow_vis_system_connections(start_system_id, home_system_id):
         status_str += " -- is %s partially visible " % (["not", ""][has_been_visible])
         status_str += " -- is %s visibly connected to homesystem " % (["not", ""][is_connected])
         if has_been_visible:
-            sys_status = foAI.foAIstate.systemStatus.setdefault(cur_system_id, {})
-            foAI.foAIstate.visInteriorSystemIDs[cur_system_id] = 1
-            if cur_system_id in foAI.foAIstate.visBorderSystemIDs:
-                del foAI.foAIstate.visBorderSystemIDs[cur_system_id]
+            sys_status = state.systemStatus.setdefault(cur_system_id, {})
+            state.visInteriorSystemIDs[cur_system_id] = 1
+            if cur_system_id in state.visBorderSystemIDs:
+                del state.visBorderSystemIDs[cur_system_id]
             #neighbors= dict( [(el.key(), el.data()) for el in universe.getSystemNeighborsMap(cur_system_id, empire_id)] )  #
             neighbors = set(dict_from_map(universe.getSystemNeighborsMap(cur_system_id, empire_id)).keys())
             sys_status.setdefault('neighbors', set()).update(neighbors)
@@ -181,10 +181,10 @@ def follow_vis_system_connections(start_system_id, home_system_id):
             if neighbors:
                 status_str += " -- has neighbors %s " % neighbors
                 for sys_id in neighbors:
-                    if sys_id not in foAI.foAIstate.exploredSystemIDs:
-                        foAI.foAIstate.unexploredSystemIDs[sys_id] = 1
-                    if (sys_id not in graphFlags) and (sys_id not in foAI.foAIstate.visInteriorSystemIDs):
-                        foAI.foAIstate.visBorderSystemIDs[sys_id] = 1
+                    if sys_id not in state.exploredSystemIDs:
+                        state.unexploredSystemIDs[sys_id] = 1
+                    if (sys_id not in graphFlags) and (sys_id not in state.visInteriorSystemIDs):
+                        state.visBorderSystemIDs[sys_id] = 1
                         exploration_list.append(sys_id)
         if fo.currentTurn() < 50:
             print status_str
@@ -201,13 +201,13 @@ def update_explored_systems():
         print "obstructed starlanes are: %s" % obs_lanes_list
     else:
         print "No obstructed Starlanes"
-    empire_id = foAI.foAIstate.empireID
+    empire_id = state.empireID
     newly_explored = []
     still_unexplored = []
-    for sys_id in list(foAI.foAIstate.unexploredSystemIDs):
+    for sys_id in list(state.unexploredSystemIDs):
         if empire.hasExploredSystem(sys_id):  # consider making determination according to visibility rather than actual visit, which I think is what empire.hasExploredSystem covers
-            del foAI.foAIstate.unexploredSystemIDs[sys_id]
-            foAI.foAIstate.exploredSystemIDs[sys_id] = 1
+            del state.unexploredSystemIDs[sys_id]
+            state.exploredSystemIDs[sys_id] = 1
             sys = universe.getSystem(sys_id)
             print "Moved system %d ( %s ) from unexplored list to explored list" % (sys_id, (sys and sys.name) or "name unknown")
             if sys_id in borderUnexploredSystemIDs:
@@ -223,7 +223,7 @@ def update_explored_systems():
             neighbors = list(universe.getImmediateNeighbors(sys_id, empire_id))
             all_explored = True
             for neighbor_id in neighbors:
-                if neighbor_id in foAI.foAIstate.unexploredSystemIDs:  # when it matters, unexplored will be smaller than explored
+                if neighbor_id in state.unexploredSystemIDs:  # when it matters, unexplored will be smaller than explored
                     all_explored = False
                 else:
                     next_list.append(neighbor_id)
@@ -238,7 +238,7 @@ def update_explored_systems():
         neighbors = list(universe.getImmediateNeighbors(sys_id, empire_id))
         any_explored = False
         for neighbor_id in neighbors:
-            if neighbor_id in foAI.foAIstate.exploredSystemIDs:  # consider changing to unexplored test -- when it matters, unexplored will be smaller than explored, but need to not get previously untreated neighbors
+            if neighbor_id in state.exploredSystemIDs:  # consider changing to unexplored test -- when it matters, unexplored will be smaller than explored, but need to not get previously untreated neighbors
                 any_explored = True
         if any_explored:
             borderUnexploredSystemIDs[sys_id] = 1

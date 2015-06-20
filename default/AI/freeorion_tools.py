@@ -3,7 +3,7 @@ import re
 import sys
 
 import freeOrionAIInterface as fo  # pylint: disable=import-error
-import FreeOrionAI as foAI
+from state import state
 from functools import wraps
 from traceback import format_exc
 
@@ -136,10 +136,10 @@ def cache_by_turn(function):
     """
     @wraps(function)
     def wrapper():
-        if foAI.foAIstate is None:
+        if state is None:
             return function()
         else:
-            cache = foAI.foAIstate.misc.setdefault('caches', {}).setdefault(function.__name__, {})
+            cache = state.misc.setdefault('caches', {}).setdefault(function.__name__, {})
             this_turn = fo.currentTurn()
             return cache[this_turn] if this_turn in cache else cache.setdefault(this_turn, function())
     return wrapper
