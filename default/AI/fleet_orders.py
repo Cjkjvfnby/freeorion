@@ -31,7 +31,7 @@ class AIFleetOrder(object):
         self.fleet = fleet
         self.target = target
         self.executed = False
-        self.execution_completed = False
+        self.order_issued = False
 
     def ship_in_fleet(self):
         universe = fo.getUniverse()
@@ -40,7 +40,7 @@ class AIFleetOrder(object):
 
     def is_valid(self):
         """Check if FleetOrder could be somehow in future issued = is valid."""
-        if self.executed and self.execution_completed:
+        if self.executed and self.order_issued:
             print "\t\t order not valid because already executed and completed"
             return False
         if self.fleet and self.target:
@@ -75,7 +75,12 @@ class AIFleetOrder(object):
             return True
 
     def __str__(self):
-        return "Fleet order[%s] source:%26s | target %26s" % (self.ORDER_NAME, self.fleet, self.target)
+        execute_status = 'in progress'
+        if self.executed:
+            execute_status = 'executed'
+        elif self.order_issued:
+            execute_status = 'order issued'
+        return "Fleet order[%s] source:%26s | target %26s %s" % (self.ORDER_NAME, self.fleet, self.target, execute_status)
 
     def __eq__(self, other):
         return isinstance(other, self.__class__) and self.fleet == other.fleet and self.target == other.target
@@ -156,7 +161,7 @@ class OrderMove(AIFleetOrder):
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
                 if system_id in foAI.foAIstate.needsEmergencyExploration:
                     del foAI.foAIstate.needsEmergencyExploration[foAI.foAIstate.needsEmergencyExploration.index(system_id)]
-            self.execution_completed = True
+            self.order_issued = True
 
 
 class OrderResupply(AIFleetOrder):
@@ -192,7 +197,7 @@ class OrderResupply(AIFleetOrder):
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
                 if system_id in foAI.foAIstate.needsEmergencyExploration:
                     del foAI.foAIstate.needsEmergencyExploration[foAI.foAIstate.needsEmergencyExploration.index(system_id)]
-            self.execution_completed = True
+            self.order_issued = True
 
 
 class OrderSplitFleet(AIFleetOrder):
@@ -212,7 +217,7 @@ class OrderSplitFleet(AIFleetOrder):
         if ship_id in fleet.shipIDs:
             fo.issueNewFleetOrder(str(ship_id), ship_id)
             print "Order issued: %s fleet: %s target: %s" % (self.ORDER_NAME, self.fleet, self.target)
-        self.execution_completed = True
+        self.order_issued = True
 
 
 # class OrderMergeFleet(AIFleetOrder):  # TODO check remove
@@ -232,7 +237,7 @@ class OrderOutpost(AIFleetOrder):
         planet_partial_vis_turn = universe.getVisibilityTurnsMap(planet.id, fo.empireID()).get(fo.visibility.partial, -9999)
         if not (planet_partial_vis_turn == sys_partial_vis_turn and planet.unowned):
             self.executed = True
-            self.execution_completed = True
+            self.order_issued = True
             return False
         else:
             return self.fleet.get_object().hasOutpostShips
@@ -253,7 +258,7 @@ class OrderOutpost(AIFleetOrder):
             return
         planet = self.target.get_object()
         if not planet.unowned:
-            self.execution_completed = True
+            self.order_issued = True
             return
         fleet_id = self.fleet.id
         ship_id = FleetUtilsAI.get_ship_id_with_role(fleet_id, AIShipRoleType.SHIP_ROLE_CIVILIAN_OUTPOST)
@@ -295,7 +300,7 @@ class OrderColonize(AIFleetOrder):
         planet_partial_vis_turn = universe.getVisibilityTurnsMap(planet.id, fo.empireID()).get(fo.visibility.partial, -9999)
         if not (planet_partial_vis_turn == sys_partial_vis_turn and planet.unowned or (planet.ownedBy(fo.empireID()) and not planet.currentMeterValue(fo.meterType.population))):
             self.executed = True
-            self.execution_completed = True
+            self.order_issued = True
             return False
         else:
             return self.fleet.get_object().hasColonyShips
@@ -345,7 +350,7 @@ class OrderInvade(AIFleetOrder):
         if planet.unowned and not planet_population:
             print "\t\t invasion order not valid due to target planet status-- owned: %s and population %.1f" % (not planet.unowned, planet_population)
             self.executed = True
-            self.execution_completed = True
+            self.order_issued = True
             return False
         else:
             return self.fleet.get_object().hasTroopShips
@@ -426,7 +431,7 @@ class OrderMilitary(AIFleetOrder):
         fleet = self.target.get_object()
         system_status = foAI.foAIstate.systemStatus.get(target_sys_id, {})
         if fleet and fleet.systemID == target_sys_id and not (system_status.get('fleetThreat', 0) + system_status.get('planetThreat', 0) + system_status.get('monsterThreat', 0)):
-            self.execution_completed = True
+            self.order_issued = True
 
 
 class OrderRepair(AIFleetOrder):
@@ -458,5 +463,5 @@ class OrderRepair(AIFleetOrder):
             if foAI.foAIstate.get_fleet_role(fleet_id) == AIFleetMissionType.FLEET_MISSION_EXPLORATION:
                 if system_id in foAI.foAIstate.needsEmergencyExploration:
                     del foAI.foAIstate.needsEmergencyExploration[foAI.foAIstate.needsEmergencyExploration.index(system_id)]
-            self.execution_completed = True
+            self.order_issued = True
 

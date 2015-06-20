@@ -333,8 +333,8 @@ class AIFleetMission(object):
                     fleet_order.issue_order()
                 else:
                     print "\t\t| NOT issuing (even though can_issue) fleet order %s" % fleet_order
-                print "\t\t| order status-- execution completed: %s" % fleet_order.execution_completed
-                if not fleet_order.execution_completed:
+                print "\t\t| order status-- order issued: %s" % fleet_order.order_issued
+                if not fleet_order.order_issued:
                     order_completed = False
             else:  # check that we're not held up by a Big Monster
                 print "\t\t| CAN'T issue fleet order %s" % fleet_order
