@@ -3,7 +3,7 @@
 import random
 
 import freeOrionAIInterface as fo  # pylint: disable=import-error
-import FreeOrionAI as foAI
+from state import state
 from freeorion_tools import UserStringList, chat_on_error
 
 
@@ -32,9 +32,9 @@ class DiplomaticCorp(object):
         if message.recipient != fo.empireID():
             return
         if message.type == fo.diplomaticMessageType.peaceProposal:
-            foAI.foAIstate.log_peace_request(message.sender, message.recipient)
+            state.log_peace_request(message.sender, message.recipient)
             proposal_sender_player = fo.empirePlayerID(message.sender)
-            suffix = "MILD" if foAI.foAIstate.aggression <= fo.aggression.typical else "HARSH"
+            suffix = "MILD" if state.aggression <= fo.aggression.typical else "HARSH"
             possible_acknowledgments = UserStringList("AI_PEACE_PROPOSAL_ACKNOWLEDGEMENTS_" + suffix + "_LIST")
             acknowledgement = random.choice(possible_acknowledgments)
             print "Acknowledging proposal with initial message (from %d choices): '%s'" % (
@@ -54,7 +54,7 @@ class DiplomaticCorp(object):
         elif message.type == fo.diplomaticMessageType.warDeclaration:
             # note: apparently this is currently (normally?) sent not as a warDeclaration,
             # but as a simple diplomatic_status_update to war
-            foAI.foAIstate.log_war_declaration(message.sender, message.recipient)
+            state.log_war_declaration(message.sender, message.recipient)
 
     @chat_on_error
     def handle_diplomatic_status_update(self, status_update):
@@ -63,7 +63,7 @@ class DiplomaticCorp(object):
         print "Received diplomatic status update to %s about empire %s and empire %s" % (
             status_update.status, status_update.empire1, status_update.empire2)
         if status_update.empire2 == fo.empireID() and status_update.status == fo.diplomaticStatus.war:
-            foAI.foAIstate.log_war_declaration(status_update.empire1, status_update.empire2)
+            state.log_war_declaration(status_update.empire1, status_update.empire2)
 
     @chat_on_error
     def evaluate_diplomatic_attitude(self, other_empire_id):
@@ -75,10 +75,10 @@ class DiplomaticCorp(object):
         # TODO: consider proximity, competitive needs, relations with other empires, past history with this empire, etc.
         # in the meantime, somewhat random
         log_index = (other_empire_id, fo.empireID())
-        num_peace_requests = len(foAI.foAIstate.diplomatic_logs.get('peace_requests', {}).get(log_index, []))
-        num_war_declarations = len(foAI.foAIstate.diplomatic_logs.get('war_declarations', {}).get(log_index, []))
+        num_peace_requests = len(state.diplomatic_logs.get('peace_requests', {}).get(log_index, []))
+        num_war_declarations = len(state.diplomatic_logs.get('war_declarations', {}).get(log_index, []))
         # Too many requests for peace irritate the AI, as do any war declarations
-        irritation = (foAI.foAIstate.aggression * (2.0 + num_peace_requests/10.0 + 2.0 * num_war_declarations) + 0.5)
+        irritation = (state.aggression * (2.0 + num_peace_requests/10.0 + 2.0 * num_war_declarations) + 0.5)
         attitude = 10 * random.random() - irritation
         return min(10, max(-10, attitude))
 

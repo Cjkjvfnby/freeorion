@@ -40,7 +40,7 @@ def handle_debug_chat(sender, message):
             debug_mode = True
             # add some variables to scope
             lines = ['import FreeOrionAI as foAI',
-                      'ai = foAI.foAIstate',
+                      'ai = state',
                       'u = fo.getUniverse()',
                       'e = fo.getEmpire()'
                       ]

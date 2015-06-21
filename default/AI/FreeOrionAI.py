@@ -22,6 +22,7 @@ import ResearchAI
 import ResourcesAI
 from freeorion_tools import UserString, UserStringList, chat_on_error, print_error
 from freeorion_debug import Timer
+from state import state
 
 main_timer = Timer('timer', write_log=True)
 turn_timer = Timer('bucket', write_log=True)
@@ -43,7 +44,7 @@ _capitals = {fo.aggression.beginner: UserStringList("AI_CAPITOL_NAMES_BEGINNER")
              fo.aggression.maniacal: UserStringList("AI_CAPITOL_NAMES_MANIACAL")}
 
 # AIstate
-foAIstate = None
+
 diplomatic_corp = None
 
 
@@ -62,9 +63,9 @@ def startNewGame(aggression=fo.aggression.aggressive):  # pylint: disable=invali
     print "New game started, AI Aggression level %d" % aggression
 
     # initialize AIstate
-    global foAIstate
-    foAIstate = AIstate.AIstate(aggression=aggression)
-    foAIstate.session_start_cleanup()
+
+    state.set_state(AIstate.AIstate(aggression=aggression))
+    state.session_start_cleanup()
     print "Initialized foAIstate class"
     planet_id = PlanetUtilsAI.get_capital()
     universe = fo.getUniverse()
@@ -88,23 +89,22 @@ def resumeLoadedGame(saved_state_string):  # pylint: disable=invalid-name
     """Called by client to when resume a loaded game."""
     turn_timer.start("Server Processing")
 
-    global foAIstate
     print "Resuming loaded game"
     try:
         # loading saved state
-        foAIstate = pickle.loads(saved_state_string)
-        foAIstate.session_start_cleanup()
+        state.set_state(pickle.loads(saved_state_string))
+        state.session_start_cleanup()
     except:
         print "failed to parse saved state string"
         # assigning new state
-        foAIstate = AIstate.AIstate(aggression=fo.aggression.aggressive)
-        foAIstate.session_start_cleanup()
+        state.set_state(AIstate.AIstate(aggression=fo.aggression.aggressive))
+        state.session_start_cleanup()
         print_error("Fail to load aiState form saved game")
 
     diplomatic_corp_configs = {fo.aggression.beginner: DiplomaticCorp.BeginnerDiplomaticCorp,
                                fo.aggression.maniacal: DiplomaticCorp.ManiacalDiplomaticCorp}
     global diplomatic_corp
-    diplomatic_corp = diplomatic_corp_configs.get(foAIstate.aggression, DiplomaticCorp.DiplomaticCorp)()
+    diplomatic_corp = diplomatic_corp_configs.get(state.aggression, DiplomaticCorp.DiplomaticCorp)()
 
 
 
@@ -116,7 +116,7 @@ def prepareForSave():  # pylint: disable=invalid-name
     print "Preparing for game save by serializing state"
 
     # serialize (convert to string) global state dictionary and send to AI client to be stored in save file
-    dump_string = pickle.dumps(foAIstate)
+    dump_string = pickle.dumps(state._state)
     print "foAIstate pickled to string, about to send to server"
     fo.setSaveStateString(dump_string)
 
@@ -155,8 +155,8 @@ def generateOrders():  # pylint: disable=invalid-name
     at end of this function, fo.doneTurn() should be called to indicate to the client that orders are finished
     and can be sent to the server for processing."""
     turn = fo.currentTurn()
-    turn_uid = foAIstate.set_turn_uid()
-    print "Start turn %s (%s) of game: %s" % (turn, turn_uid, foAIstate.uid)
+    turn_uid = state.set_turn_uid()
+    print "Start turn %s (%s) of game: %s" % (turn, turn_uid, state.uid)
 
     turn_timer.start("AI planning")
     universe = fo.getUniverse()
@@ -169,7 +169,7 @@ def generateOrders():  # pylint: disable=invalid-name
     planet = None
     if planet_id is not None:
         planet = universe.getPlanet(planet_id)
-    aggression_name = fo.aggression.values[foAIstate.aggression].name
+    aggression_name = fo.aggression.values[state.aggression].name
     print "***************************************************************************"
     print "**********   String for chart. Do not modify.   ***************************"
     print ("Generating Orders")
@@ -192,10 +192,10 @@ def generateOrders():  # pylint: disable=invalid-name
         fo.sendChatMessage(human_player,  '%s Empire (%s):\n"Ave, Human, morituri te salutant!"' % (empire.name, aggression_name))
 
     # turn cleanup !!! this was formerly done at start of every turn -- not sure why
-    foAIstate.split_new_fleets()
+    state.split_new_fleets()
 
-    foAIstate.refresh()  # checks exploration border & clears roles/missions of missing fleets & updates fleet locs & threats
-    foAIstate.report_system_threats()
+    state.refresh()  # checks exploration border & clears roles/missions of missing fleets & updates fleet locs & threats
+    state.report_system_threats()
     # ...missions
     # ...demands/priorities
     print("Calling AI Modules")
@@ -212,7 +212,7 @@ def generateOrders():  # pylint: disable=invalid-name
                    ResearchAI.generate_research_orders,
                    ProductionAI.generateProductionOrders,
                    ResourcesAI.generate_resources_orders,
-                   foAIstate.after_turn_cleanup,
+                   state.after_turn_cleanup,
                    ]
 
     for action in action_list:

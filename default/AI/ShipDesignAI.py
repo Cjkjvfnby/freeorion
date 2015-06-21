@@ -39,7 +39,7 @@ global variables:
 # TODO: For stable release, comment out the profiling functionality
 
 import freeOrionAIInterface as fo
-import FreeOrionAI as foAI
+from state import state
 import ColonisationAI
 import AIDependencies
 import copy
@@ -562,7 +562,7 @@ class AdditionalSpecifications(object):
             self.enemy_mine_dmg = 6
         else:
             self.enemy_mine_dmg = 14
-        self.update_enemy(foAI.foAIstate.empire_standard_enemy)
+        self.update_enemy(state.empire_standard_enemy)
 
     def update_enemy(self, enemy):
         """Read out the enemies stats and save them.
@@ -812,10 +812,10 @@ class ShipDesigner(object):
 
         if self.species and not ignore_species:
             # TODO: Add troop modifiers once added
-            weapons_grade, shields_grade = foAI.foAIstate.get_piloting_grades(self.species)
-            self.shields = foAI.foAIstate.weight_shields(self.shields, shields_grade)
+            weapons_grade, shields_grade = state.get_piloting_grades(self.species)
+            self.shields = state.weight_shields(self.shields, shields_grade)
             if self.attacks:
-                self.attacks = foAI.foAIstate.weight_attacks(self.attacks, weapons_grade)
+                self.attacks = state.weight_attacks(self.attacks, weapons_grade)
 
     def _apply_hardcoded_effects(self):
         """Update stats that can not be read out by the AI yet, i.e. applied by effects.
@@ -948,7 +948,7 @@ class ShipDesigner(object):
             # The piloting species is only important if its modifiers are of any use to the design
             # Therefore, consider only those treats that are actually useful. Note that the
             # canColonize trait is covered by the parts we can build, so no need to consider it here.
-            weapons_grade, shields_grade = foAI.foAIstate.get_piloting_grades(self.species)
+            weapons_grade, shields_grade = state.get_piloting_grades(self.species)
             relevant_grades = []
             if WEAPONS & self.useful_part_classes:
                 relevant_grades.append("WEAPON: %s" % weapons_grade)
@@ -1278,7 +1278,7 @@ class ShipDesigner(object):
         """
         # TODO: Consider total pp production output as additional factor
         # TODO: Rethink about math and maybe work out a more accurate formula
-        return self.production_cost**(1/(1+foAI.foAIstate.shipCount * AIDependencies.SHIP_UPKEEP))
+        return self.production_cost**(1/(1+state.shipCount * AIDependencies.SHIP_UPKEEP))
 
 
 class MilitaryShipDesigner(ShipDesigner):

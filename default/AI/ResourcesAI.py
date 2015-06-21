@@ -1,5 +1,5 @@
 import freeOrionAIInterface as fo  # pylint: disable=import-error
-import FreeOrionAI as foAI
+from state import state
 from EnumsAI import AIPriorityType, get_priority_resource_types, AIFocusType
 import PlanetUtilsAI
 import random
@@ -92,7 +92,7 @@ def print_resources_priority():
     print "Resource Priorities:"
     resourcePriorities = {}
     for priorityType in get_priority_resource_types():
-        resourcePriorities[priorityType] = foAI.foAIstate.get_priority(priorityType)
+        resourcePriorities[priorityType] = state.get_priority(priorityType)
 
     sortedPriorities = resourcePriorities.items()
     sortedPriorities.sort(lambda x, y: cmp(x[1], y[1]), reverse=True)
@@ -135,8 +135,8 @@ def weighted_sum_output(outputs):
 def assess_protection_focus(pid):
     """Return True if planet should use Protection Focus"""
     this_planet = planetMap[pid]
-    sys_status = foAI.foAIstate.systemStatus.get(this_planet.systemID, {})
-    threat_from_supply = (0.25 * foAI.foAIstate.empire_standard_enemy_rating *
+    sys_status = state.systemStatus.get(this_planet.systemID, {})
+    threat_from_supply = (0.25 * state.empire_standard_enemy_rating *
                           min(2, len(sys_status.get('enemies_nearly_supplied', []))))
     print "Planet %s has regional+supply threat of %.1f" % ('P_%d<%s>'%(pid, this_planet.name), threat_from_supply)
     regional_threat = sys_status.get('regional_threat', 0) + threat_from_supply
@@ -240,8 +240,8 @@ def set_planet_resource_foci():
         # TODO: take into acct splintering of resource groups
         # fleetSupplyableSystemIDs = empire.fleetSupplyableSystemIDs
         # fleetSupplyablePlanetIDs = PlanetUtilsAI.get_planets_in__systems_ids(fleetSupplyableSystemIDs)
-        ppPrio = foAI.foAIstate.get_priority(AIPriorityType.PRIORITY_RESOURCE_PRODUCTION)
-        rpPrio = foAI.foAIstate.get_priority(AIPriorityType.PRIORITY_RESOURCE_RESEARCH)
+        ppPrio = state.get_priority(AIPriorityType.PRIORITY_RESOURCE_PRODUCTION)
+        rpPrio = state.get_priority(AIPriorityType.PRIORITY_RESOURCE_RESEARCH)
         priorityRatio = float(rpPrio) / (ppPrio + 0.0001)
         resource_timer.start("Shuffle")
         # not supporting Growth for general planets until also adding code to make sure would actually benefit
@@ -393,7 +393,7 @@ def set_planet_resource_foci():
                         id_set.discard(pid)
                     continue
                 if adj_round == 3:  # take research at planets where can do reasonable balance
-                    if has_force or (foAI.foAIstate.aggression < fo.aggression.aggressive) or (curTargetRP >= priorityRatio * ctPP0):
+                    if has_force or (state.aggression < fo.aggression.aggressive) or (curTargetRP >= priorityRatio * ctPP0):
                         continue
                     pop = planet.currentMeterValue(fo.meterType.population)
                     t_pop = planet.currentMeterValue(fo.meterType.targetPopulation)
@@ -419,7 +419,7 @@ def set_planet_resource_foci():
         for ratio, pid in ratios:
             do_research = False  # (newFoci[pid]==RFocus)
             if (priorityRatio < (curTargetRP / (curTargetPP + 0.0001))) and not do_research:  # we have enough RP
-                if ratio < 1.1 and foAI.foAIstate.aggression > fo.aggression.cautious:  # but wait, RP is still super cheap relative to PP, maybe will take more RP
+                if ratio < 1.1 and state.aggression > fo.aggression.cautious:  # but wait, RP is still super cheap relative to PP, maybe will take more RP
                     if priorityRatio < 1.5 * (curTargetRP / (curTargetPP + 0.0001)):  # yeah, really a glut of RP, stop taking RP
                         break
                 else:  # RP not super cheap & we have enough, stop taking it
