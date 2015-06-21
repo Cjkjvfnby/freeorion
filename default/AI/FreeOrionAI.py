@@ -92,7 +92,7 @@ def resumeLoadedGame(saved_state_string):  # pylint: disable=invalid-name
     print "Resuming loaded game"
     try:
         # loading saved state
-        state.set_state()
+        state.set_state(pickle.loads(saved_state_string))
         state.session_start_cleanup()
     except:
         print "failed to parse saved state string"
