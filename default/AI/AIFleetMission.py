@@ -393,6 +393,11 @@ class AIFleetMission(object):
                 if not fleet_order.order_issued:
                     order_completed = False
             else:  # check that we're not held up by a Big Monster
+                if fleet_order.execution_completed:
+                    # It's unclear why we'd really get to this spot, but it has been observed to happen, perhaps due to
+                    # game being reloaded after code changes.
+                    # Go on to the next order.
+                    continue
                 print "\t\t| CAN'T issue fleet order %s" % fleet_order
                 if isinstance(fleet_order, OrderMove):
                     this_system_id = fleet_order.target.id
@@ -556,7 +561,7 @@ class AIFleetMission(object):
         fleet_id = self.fleet.id
         # if combat fleet, use military repair check
         if foAI.foAIstate.get_fleet_role(fleet_id) in COMBAT_MISSION_TYPES:
-            return fleet_id in MilitaryAI.avail_mil_needing_repair([fleet_id], False, True)[0]
+            return fleet_id in MilitaryAI.avail_mil_needing_repair([fleet_id], False, bool(self.orders))[0]
         fleet = universe.getFleet(fleet_id)
         ships_cur_health = 0
         ships_max_health = 0
@@ -565,7 +570,7 @@ class AIFleetMission(object):
             this_ship = universe.getShip(ship_id)
             ships_cur_health += this_ship.currentMeterValue(fo.meterType.structure)
             ships_max_health += this_ship.currentMeterValue(fo.meterType.maxStructure)
-        return ships_cur_health >= repair_limit * ships_max_health
+        return ships_cur_health < repair_limit * ships_max_health
 
     def get_location_target(self):
         """system AITarget where fleet is or will be"""
