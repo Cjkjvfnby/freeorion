@@ -39,24 +39,80 @@ class AIFleetMission(object):
         self.type = None
         self.target = None
 
-    # def __setstate__(self, state_dict):
-    #     # TODO fix me
-    #     self.__dict__.update(state_dict)  # update attributes
-    #     #print "Fleet mission unpickle: passed %s"%state_dict
-    #     for attrib, default in [('orders', state_dict.get('_AIFleetMission__aiFleetOrders', [])),
-    #                         ('mission_type', EnumsAI.AIMissionType.FLEET_MISSION),
-    #                         ('_mission_types', state_dict.get('_AIAbstractMission__aiMissionTypes', {})),
-    #                         ('target_type', EnumsAI.TargetType.TARGET_FLEET)]:
-    #         if attrib not in state_dict:
-    #             #print "Fleet mission unpickle: setting %s to %s"%(attrib, default)
-    #             self.__dict__[attrib] = default
-    #     if 'target' not in state_dict:
-    #         old_target = state_dict.get('_AIAbstractMission__aiTarget', None)
-    #         target_id = old_target.id if (old_target is not None) else -1 #TODO consider a harder fail
-    #         self.__dict__['target'] = old_target
-    #         self.__dict__['target_id'] = target_id
-    #         #print "Fleet mission unpickle: setting %s to %s"%('target', old_target)
-    #         #print "Fleet mission unpickle: setting %s to %s"%('target_id', target_id)
+    def __setstate__(self, state_dict):
+        # New class
+        if 'target_type' not in state_dict:
+            self.__dict__.update(state_dict)  # update attributes
+            return
+
+        cache = {}  # old obj: new_obj
+
+        from universe_object import Planet, Fleet, System
+        TARGET_PLANET = 2
+        TARGET_SYSTEM = 3
+        TARGET_FLEET = 5
+
+        def convert_target(obj):
+            if obj in cache:
+                return cache[obj]
+            return cache.setdefault(obj, {TARGET_PLANET: Planet,
+                                          TARGET_FLEET: Fleet,
+                                          TARGET_SYSTEM: System
+                                          }[obj.target_type](obj.target_id))
+
+        ORDER_MOVE = 1
+        ORDER_RESUPPLY = 2
+        ORDER_SPLIT_FLEET = 3
+        ORDER_OUTPOST = 5
+        ORDER_COLONISE = 6
+        ORDER_ATTACK = 7
+        ORDER_DEFEND = 8
+        ORDER_INVADE = 9
+        ORDER_MILITARY = 10
+        ORDER_REPAIR = 12
+
+        from fleet_orders import (OrderMove, OrderResupply, OrderSplitFleet, OrderOutpost, OrderColonize,
+                                  OrderAttack, OrderDefend, OrderInvade, OrderMilitary, OrderRepair)
+
+        def convert_order(obj):
+            if obj in cache:
+               return cache[obj]
+            types = {
+                ORDER_MOVE: OrderMove,
+                ORDER_RESUPPLY: OrderResupply,
+                ORDER_SPLIT_FLEET: OrderSplitFleet,
+                ORDER_OUTPOST: OrderOutpost,
+                ORDER_COLONISE: OrderColonize,
+                ORDER_ATTACK: OrderAttack,
+                ORDER_DEFEND: OrderDefend,
+                ORDER_INVADE: OrderInvade,
+                ORDER_MILITARY: OrderMilitary,
+                ORDER_REPAIR: OrderRepair}
+            fleet = convert_target(obj.fleet)
+            target = convert_target(obj.target)
+            new_order = types[obj.order_type](fleet, target)
+            new_order.executed = obj.executed
+            new_order.order_issued = obj.execution_completed
+            return new_order
+
+        for k, v in state_dict.items():
+            if k == 'orders':
+                self.orders = [convert_order(old) for old in v]
+            elif k == 'target':
+                self.fleet = convert_target(v)
+            elif k == '_mission_types':
+                v = {k: v for k, v in v.items() if v}
+                assert len(v) <= 1, 'olnly one mission allowed %s' % v
+                if not v:
+                    self.type = None
+                    self.target = None
+                    continue
+                target_type, targets = v.popitem()
+                assert len(targets) <= 1, 'only single target expected %s' % targets
+                self.type = target_type
+                self.target = convert_target(targets[0])
+            elif k in ('target_type', 'target_id'):
+                continue
 
     def add_target(self, mission_type, target):
         if self.type == mission_type and self.target == target:
