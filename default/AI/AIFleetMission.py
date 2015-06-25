@@ -393,7 +393,7 @@ class AIFleetMission(object):
                 if not fleet_order.order_issued:
                     order_completed = False
             else:  # check that we're not held up by a Big Monster
-                if fleet_order.execution_completed:
+                if fleet_order.order_issued:
                     # It's unclear why we'd really get to this spot, but it has been observed to happen, perhaps due to
                     # game being reloaded after code changes.
                     # Go on to the next order.
