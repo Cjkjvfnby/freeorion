@@ -1194,6 +1194,19 @@ class buildingType(object):
         """
         return float()
 
+    def canBeEnqueued(self, number1, number2):
+        """
+        C++ signature:
+            bool canBeEnqueued(BuildingType,int,int)
+        
+        :param number1:
+        :type number1: int
+        :param number2:
+        :type number2: int
+        :rtype bool
+        """
+        return bool()
+
 
 class diplomaticMessage(object):
     @property
