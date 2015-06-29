@@ -1334,6 +1334,9 @@ Toggles verbose logging of combat resolution information.
 OPTIONS_DB_VERBOSE_SITREP_DESC
 Toggles inclusion of situation report messages with errors.
 
+OPTIONS_DB_UI_SITREP_SIZE
+Sets the  sitrep icon width and height, and the text font size will be set to 75% of that; default 16 (min 10, max 28)
+
 OPTIONS_DB_TECH_DEMO
 Try out the 3D combat tech demo.
 
@@ -2660,6 +2663,12 @@ Damage
 SHIP_DAMAGE_STAT_MAIN
 Total damage done by ship weapons per combat round.
 
+SHIP_TROOPS_TITLE
+Troops
+
+SHIP_TROOPS_STAT
+Total troop capacity of this ship.
+
 SHIP_SPEED_STAT_TITLE
 Speed
 
@@ -2683,6 +2692,9 @@ Fleet Damage - Equal to the total damage of ships in the fleet.
 
 FW_FLEET_COUNT_SUMMARY
 Fleet Count - Equal to the total number of ships in the fleet.
+
+FW_FLEET_TROOP_SUMMARY
+Fleet Troops - Equal to the total number of troops in the fleet.
 
 FW_MERGE_SYSTEM_FLEETS
 Merge System Ships Into Fleet
@@ -3326,7 +3338,7 @@ ENC_FIELD
 [Game - Fields]
 
 ENC_HOMEWORLDS
-Species' Homeworlds
+[Game - Homeworlds]
 
 ENC_INDEX
 Encyclopedia Index
@@ -4203,6 +4215,7 @@ Filters
 ## SITREP_PRIORITY_ORDER is an ordered, whitespace separated list, prioritizing
 ## these sitreps to be presented in the SitrepPanel in the order set below.
 ## Sitreps not specified below will appear in the SitrepPanel following those below.
+## Sitreps should be placed with similar existing Sitreps as appropriate.
 
 ## ** DO NOT TRANSLATE the contents of SITREP_PRIORITY_ORDER  -- this is a functional entry
 SITREP_PRIORITY_ORDER
@@ -4232,8 +4245,6 @@ SITREP_PLANET_CAPTURED
 SITREP_PLANET_COLONIZED
 SITREP_NEW_COLONY_ESTABLISHED
 SITREP_POP_THRESHOLD
-SITREP_PLANET_BOMBARDED_AT_SYSTEM
-SITREP_UNOWNED_PLANET_BOMBARDED_AT_SYSTEM
 EFFECT_CONC_CAMP_COMLETE
 EFFECT_GAIAN_TERRAFORM
 EFFECT_TERRAFORM
@@ -4256,8 +4267,12 @@ SITREP_FOREIGN_FLEET_ARRIVED_AT_DESTINATION
 SITREP_FOREIGN_SHIP_ARRIVED_AT_DESTINATION
 SITREP_MONSTER_FLEET_ARRIVED_AT_DESTINATION
 SITREP_MONSTER_SHIP_ARRIVED_AT_DESTINATION
-SITREP_FLEET_ARRIVED_AT_DESTINATION'''
+SITREP_FLEET_ARRIVED_AT_DESTINATION
+SITREP_PLANET_BOMBARDED_AT_SYSTEM
+SITREP_UNOWNED_PLANET_BOMBARDED_AT_SYSTEM'''
 ## END OF SITREP_PRIORITY_ORDER
+
+## SitRep Format: Ideally always start with Location: with ship/fleet names near the end.
 
 SITREP_SHIP_BUILT
 At %system%: a new %shipdesign%, the '%ship%', has been produced.
@@ -4535,7 +4550,7 @@ EFFECT_CONC_CAMP_COMLETE_LABEL
 Ethnic Cleansing
 
 EFFECT_DRYDOCK_SHIP_REPAIR
-On %planet%: %ship% was repaired by %building%.
+On %planet%: the %building% repaired the %ship%.
 EFFECT_DRYDOCK_SHIP_REPAIR_LABEL
 Drydock Repair
 
@@ -4709,7 +4724,7 @@ Opinions of Other Species:
 SP_HUMAN
 Human
 SP_HUMAN_GAMEPLAY_DESC
-'''Mostly Harmless. All average stats for testing purposes.
+'''Relentless, tribal pursuit predators (average stats for testing purposes).
 Prefer Terran planets.
 [[encyclopedia ORGANIC_SPECIES_TITLE]]
 
@@ -4722,7 +4737,12 @@ Prefer Terran planets.
 '''
 
 SP_HUMAN_DESC
-''''''
+'''Description:
+Humans are bipedal, clannish and omniverous, with incredible endurance capabilities. Humans evolved tool use in order to better hunt their pray, and would pursue much larger animals for days if necessary in order to bring it down and then eat it. Modern humans still have a strong fight or flight response but any threat an individual cannot handle will be met by a larger group working together to defeat it with overwhelming force. Humans have been known to eat items they know to be indigestible, simply to prove they can do it, and use toxic substances as seasoning to flavour their food.
+
+Society:
+Modern humans have formed geographic nation states with a strong basis in historic tribes. These states compete with each other, sometimes to the extent of going to war, while still cooperating on other issues. Differences over religion, resource use and even the correct way to cook a particular meal are still used to justify aggressive acts, and these wars act as spurs for further technological progress.
+'''
 
 SP_SCYLIOR
 Scylior
@@ -4860,7 +4880,7 @@ SP_HAPPY_DESC
 '''Description: Robotic exploration submersibles.
 Though some have more bulky and blocky forms, most happybirthdays are streamlined and somewhat fish-like in shape. They all have one or more cameras and manipulator arms, usually forward facing. They also host a suit of sensors for temperature, vibrations, chemicals, radar, sonar, electrical and magnetic fields, though these often vary from model to model. They are functional in a wide range of temperature and pressure conditions in an aquatic environment.
 
-Any happybirthday can repair any other happybirthday, and their systems often have redundant pars for just such a reason. Sufficiently large groups can fully repair any other member of their kind, and through this same process also make a completely new unit. New units have the same programming as their parents, but a blank memory, to be filled by exploring their environment.
+Any happybirthday can repair any other happybirthday, and their systems often have redundant pairs for just such a reason. Sufficiently large groups can fully repair any other member of their kind, and through this same process also make a completely new unit. New units have the same programming as their parents, but a blank memory, to be filled by exploring their environment.
 
 Homeworld: Foreveralone.
 A vast and deep ocean planet. It is believed that they were originally created to survey the planet for potential colonization. It is not know why they were abandoned, but theories range from their creators deciding the planet was unsuitable for colonization, to being wiped out for some reason or another. Though the oceans are vast and there are many interesting features and life forms, there is little about the planet they were sent to that would indicate why they were sent to that world in particular.
@@ -4868,10 +4888,10 @@ A vast and deep ocean planet. It is believed that they were originally created t
 Social Structure: Codependent.
 A lone happybirthday will (psychologically) latch onto the nearest (preferably alien) sentient being and declare their eternal friendship. Their goal to alleviate their loneliness by find another being to be their friend, forever and ever and ever...
 
-Colonization is slow and industry inefficient due to, species-wide depression, sometimes leading to bouts of mass suicide.  However since they don't want to make enemies, and they always want to make new friends they are eager traders.
+Colonization is slow and industry inefficient due to species-wide depression, sometimes leading to bouts of mass suicide.  However since they don't want to make enemies and they always want to make new friends they are eager traders.
 
 History: Sad.
-Wether it is the initial lonely quest to explore their homeworld, their abandonment by their creators, the interval war, or their quest into space to find friendship, their existence has been a sad, depressing and lonely one.
+Whether it is the initial lonely quest to explore their homeworld, their abandonment by their creators, the interval war, or their quest into space to find friendship, their existence has been a sad, depressing and lonely one.
 '''
 
 SP_HHHOH
@@ -5142,6 +5162,8 @@ SP_PHINNERT_GAMEPLAY_DESC
 [[AVERAGE_POPULATION]]
 [[BAD_SUPPLY]]
 [[AVERAGE_GROUND_TROOPS]]
+
++	Fast Colonization: -25% time to build colonies
 '''
 
 SP_PHINNERT_DESC
@@ -7675,13 +7697,17 @@ SHP_INTSTEL_LOG_DESC
 
 Increases [[encyclopedia STARLANE_SPEED_TITLE]] of your ships by 20 when they are within 50 uu of a controlled planet.
 
+[[COLONY_BUILDING_TIME_DECREASE]]
+
 Effectively supplying ships, ordering general fleet movement and even organizing the movement of specific ships in battle requires a complex understanding of navigation and detection, and of methods of information acquisition.'''
 
 SHP_MIL_ROBO_CONT
 Military Robotic Control
 
 SHP_MIL_ROBO_CONT_DESC
-Robotic control can be used effectively for tasks such as mining and industry; the natural extension of this concept is to develop military robotic equipment capable of independently operating a starship. This would allow greater versatility in design, as the necessity for bulky life-support systems would be removed. Hulls produced with such technology could also perform dangerous repairs without thought for the safety and biological limitations of living engineers.
+'''Unless faster ship hulls have already been researched, this tech decreases the time to build a colony building far away from the corresponding species in the empire.
+
+Robotic control can be used effectively for tasks such as mining and industry; the natural extension of this concept is to develop military robotic equipment capable of independently operating a starship. This would allow greater versatility in design, as the necessity for bulky life-support systems would be removed. Hulls produced with such technology could also perform dangerous repairs without thought for the safety and biological limitations of living engineers.'''
 
 SHP_SPACE_FLUX_DRIVE
 Spatial Flux Drive
@@ -7711,7 +7737,9 @@ SHP_TRANSSPACE_DRIVE
 Trans-Spatial Drive
 
 SHP_TRANSSPACE_DRIVE_DESC
-'''Even when spatial dimensions are skewed by relativistic effects, an object generally has constant space-time characteristics. By creating a device which alters the characteristics of space-time itself using quasi-relativistic effects, it would be possible to create a fast, stealthy method of propulsion. '''
+'''[[COLONY_BUILDING_TIME_DECREASE]]
+
+Even when spatial dimensions are skewed by relativistic effects, an object generally has constant space-time characteristics. By creating a device which alters the characteristics of space-time itself using quasi-relativistic effects, it would be possible to create a fast, stealthy method of propulsion. '''
 
 SHP_MIDCOMB_LOG
 Mid-Combat Logistics
@@ -7801,7 +7829,9 @@ SHP_QUANT_ENRG_MAG
 Quantum Energy Magnification
 
 SHP_QUANT_ENRG_MAG_DESC
-Due to quantum uncertainty, it is possible for a particle to arbitrarily gain a small amount of energy or for new particles to temporarily enter existence. By detecting and magnifying these fluctuations in quantum energy, it would be possible to tremendously increase the capabilities of an energy hull.
+'''[[COLONY_BUILDING_TIME_DECREASE]]
+
+Due to quantum uncertainty, it is possible for a particle to arbitrarily gain a small amount of energy or for new particles to temporarily enter existence. By detecting and magnifying these fluctuations in quantum energy, it would be possible to tremendously increase the capabilities of an energy hull.'''
 
 SHP_ENRG_BOUND_MAN
 Energy Boundary Manipulation
@@ -8496,19 +8526,25 @@ SHP_IMPROVED_ENGINE_COUPLINGS
 Improved Engine Couplings
 
 SHP_IMPROVED_ENGINE_COUPLINGS_DESC
-Better engine parts equate to better engines. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 10. May be added more than once to a hull.
+'''[[COLONY_BUILDING_TIME_DECREASE]]
+
+Better engine parts equate to better engines. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 10. May be added more than once to a hull.'''
 
 SHP_N_DIMENSIONAL_ENGINE_MATRIX
 N-Dimensional Engine Matrix
 
 SHP_N_DIMENSIONAL_ENGINE_MATRIX_DESC
-N-Dimensional subspace research resulted in a more efficient engine matrix. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 20. May be added more than once to a hull.
+'''[[COLONY_BUILDING_TIME_DECREASE]]
+
+N-Dimensional subspace research resulted in a more efficient engine matrix. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 20. May be added more than once to a hull.'''
 
 SHP_SINGULARITY_ENGINE_CORE
 Singularity Engine Core
 
 SHP_SINGULARITY_ENGINE_CORE_DESC
-A smaller cousin of the [[buildingtype BLD_HYPER_DAM]] outfitted for ships, the Singularity Engine Core drastically boosts power generation. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 30. May be added more than once to a hull.
+'''[[COLONY_BUILDING_TIME_DECREASE]]
+
+A smaller cousin of the [[buildingtype BLD_HYPER_DAM]] outfitted for ships, the Singularity Engine Core drastically boosts power generation. Increases [[encyclopedia STARLANE_SPEED_TITLE]] by 30. May be added more than once to a hull.'''
 
 SHP_DEUTERIUM_TANK
 Deuterium Tank
@@ -8616,7 +8652,9 @@ SHP_ORG_HULL
 Organic Hull
 
 SHP_ORG_HULL_DESC
-'''This is the most basic type of organic hull: a living hull grown from the most basic unit of life and raised for battle. '''
+'''Unless faster ship hulls have already been researched, this tech decreases the time to build a colony building far away from the corresponding species in the empire.
+
+This is the most basic type of organic hull: a living hull grown from the most basic unit of life and raised for battle.'''
 
 SHP_ENDOSYMB_HULL
 Endosymbiotic Hull
@@ -9157,7 +9195,7 @@ BLD_COL_PART_2
 Minimum build time depends on the total starlane distance to the nearest
 
 BLD_COL_PART_3
-owned by the empire, and will increase the farther away it is; the time will also be reduced if the empire owns fast ships
+owned by the empire, and will increase the farther away it is; the increase will be reduced by researching techs that enable faster colony ships such as engine parts and faster hulls
 
 BLD_COL_ABADDONI
 Abaddoni Colony
@@ -10381,6 +10419,13 @@ NO_STACK_SUPPLY_CONNECTION_TEXT
 More than one in the same [[encyclopedia SUPPLY_TITLE]] connected Resource Group do not stack and add no extra bonus.
 
 #############################################################
+####                 T E C H   M A C R O S               ####
+#############################################################
+
+COLONY_BUILDING_TIME_DECREASE
+Among other things, this technology decreases the time to build a colony building far away from the corresponding species in the empire.
+
+#############################################################
 ####              Growth Macros                          ####
 #############################################################
 
@@ -10402,7 +10447,7 @@ GROWTH_SPECIALS_ENTRY_LIST
 [[special MONOPOLE_SPECIAL]] | [[special SUPERCONDUCTOR_SPECIAL]] | [[special POSITRONIUM_SPECIAL]]
 
 [[encyclopedia LITHIC_SPECIES_TITLE]] specials:
-[[special MINERALS_SPECIAL]] | [[special ELERIUM_SPECIAL]] | [[special CRYSTALS_SPECIAL]]'''
+[[special MINERALS_SPECIAL]] | [[special ELERIUM_SPECIAL]] | [[special CRYSTALS_SPECIAL]] '''
 
 #############################################################
 ####              S P E C I E S   P I C K S              ####
@@ -10885,6 +10930,9 @@ Starbase'''
 
 AI_SHIPDESIGN_NAME_SCOUT
 Scout
+
+AI_SHIPDESIGN_NAME_KRILLSPAWNER
+Krill Spawner
 
 ### End of AI Shipdesign Name Lists
 
@@ -12734,6 +12782,7 @@ Finch
 Flamingo
 Goose
 Heron
+Kestrel
 Kiwi
 Lark
 Osprey
@@ -13992,6 +14041,7 @@ Alexander
 Anderson
 Anthony
 Asimov
+Banks
 Baum
 Beagle
 Bear
@@ -14050,8 +14100,8 @@ Lafferty
 Landis
 Langford
 Larson
-Le
-Guin
+Le Guin
+Leckie
 Leiber
 Leinster
 Lem
@@ -14068,6 +14118,7 @@ Miller
 Niven
 Orwell
 Perry
+Pratchett
 Pohl
 Resnick
 Riley
