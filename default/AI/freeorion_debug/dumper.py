@@ -33,7 +33,7 @@ def dump_data():
 def dump_planets(dumper, **kwargs):
     universe = fo.getUniverse()
     planets = []
-    headers = ['id', 'pid', 'name', 'size', 'focus', 'sid', 'unowned', 'owner', 'visibility', 'species']
+    headers = ['id', 'pid', 'name', 'size', 'focus', 'sid', 'owned', 'owner', 'visibility', 'species']
 
     for pid in universe.planetIDs:
         planet = universe.getPlanet(pid)
@@ -44,7 +44,7 @@ def dump_planets(dumper, **kwargs):
                 'size': planet.size.name,
                 'focus': planet.focus,
                 'sid': planet.systemID,
-                'unowned': planet.unowned,
+                'owned': not planet.unowned,
                 'owner': planet.owner if planet.owner != -1 else None,
                 'species': planet.speciesName,
                 'visibility': str(universe.getVisibility(pid, fo.getEmpire().empireID))
@@ -58,9 +58,12 @@ def dump_planets(dumper, **kwargs):
 
 def dump_fleets(dumper, **kwargs):
     universe = fo.getUniverse()
-    headers = ['id', 'fid', 'name', 'sid', 'owner', 'visibility', 'ships', 'used_in_mission', 'targets']
+    headers = ['id', 'fid', 'name', 'sid', 'owner', 'visibility', 'ships', 'target']
     fleets = []
+    destroyed = set(universe.destroyedObjectIDs(fo.getEmpire().empireID))
     for fid in universe.fleetIDs:
+        if fid in destroyed:
+            continue
         fleet = universe.getFleet(fid)
         mission = foAI.foAIstate.get_fleet_mission(fid)
         data = {
@@ -71,17 +74,20 @@ def dump_fleets(dumper, **kwargs):
                 'owner': fleet.owner,
                 'visibility': str(universe.getVisibility(fid, fo.getEmpire().empireID)),
                 'ships': list(fleet.shipIDs),
-                'used_in_mission': mission is not None
                 }
 
         if mission:
             assert isinstance(mission, AIFleetMission)
-            targets = []
             for k, v in mission._mission_types.items():
                 if v:
                     for item in v:
-                        targets.append([AIFleetMissionType.name(k), TargetType().name(item.target_type), item.target_id])
-            data['targets'] = targets
+                        obj = item.target_obj
+                        if obj:
+                            name = obj.name
+                        else:
+                            name = "???"
+                        data['target'] = [AIFleetMissionType.name(k), item.target_id, TargetType().name(item.target_type), name]
+                        break
 
         assert set(headers).issuperset(set(data.keys())), 'keys is not mutch headers: headers: %s, keys: %s' % (headers, data.keys())
         fleets.append(data)
