@@ -140,6 +140,24 @@ class DumpOrders(Dumper):
             'args': args
         }
 
+class DumpResearch(Dumper):
+    HEADERS = ['id', 'name', 'category', 'allocation', 'cost', 'turn_left', 'type']
+    NAME = 'research'
+
+    def get_items(self):
+        return [element for element in fo.getEmpire().researchQueue]
+
+    def construct_item(self, element):
+        tech = fo.getTech(element.tech)
+        return {
+            'id': element.tech,
+            'category': tech.category,
+            'type': tech.type.name,
+            'name': tech.name,
+            'allocation': element.allocation,
+            'cost': tech.researchCost(fo.empireID()),
+            'turn_left': element.turnsLeft
+        }
 
 def dump_data():
     empire = fo.getEmpire()
@@ -150,5 +168,5 @@ def dump_data():
         'parent_uid': foAI.foAIstate.get_prev_turn_uid(),
         'turn': fo.currentTurn(),
     }
-    for cls in (DumpPlanets, DumpFleet, DumpOrders):
+    for cls in (DumpPlanets, DumpFleet, DumpOrders, DumpResearch):
         cls(uniq_key).dump(**data)
