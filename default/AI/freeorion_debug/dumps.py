@@ -170,3 +170,7 @@ def dump_data():
     }
     for cls in (DumpPlanets, DumpFleet, DumpOrders, DumpResearch):
         cls(uniq_key).dump(**data)
+
+
+from freeorion_debug.listeners import register_pre_handler
+register_pre_handler('generateOrders', dump_data)
