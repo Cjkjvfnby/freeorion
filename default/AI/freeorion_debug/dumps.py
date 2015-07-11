@@ -52,6 +52,50 @@ class Dumper(object):
         self._dump(self.NAME, kwargs, result)
 
 
+class DumpSystems(Dumper):
+    NAME = 'systems'
+
+    def get_items(self):
+        return fo.getUniverse().systemIDs
+
+    def sort(self, collection):
+        collection.sort(key=lambda x: x['sid'])
+
+    def construct_item(self, sid):
+        universe = fo.getUniverse()
+
+        system = universe.getSystem(sid)
+
+        owners = set()
+        for pid in system.planetIDs:
+            planet = universe.getPlanet(pid)
+            owners.add(planet.owner)
+
+        owner_tags = set()
+        for owner in owners:
+            if owner == fo.getEmpire().empireID:
+                owner_tags.add('owned')
+            elif owner == -1:
+                continue
+            else:
+                owner_tags.add('enemies')
+        if system in foAI.foAIstate.unexploredSystemIDs:
+            owner_tags.add('unexplored')
+
+        data = {
+            'sid': sid,
+            'name': system.name,
+            'star': system.starType.name,
+            'planets': list(system.planetIDs),
+            'visibility': str(universe.getVisibility(sid, fo.empireID())),
+            'neighbors': list(universe.getImmediateNeighbors(sid, fo.empireID())),
+            'tags': list(system.tags),
+            'coords': (system.x, system.y),
+            'last_battle': system.lastTurnBattleHere,
+            'owner_tags': list(owner_tags)
+        }
+        return data
+
 class DumpPlanets(Dumper):
     NAME = 'planets'
 
@@ -74,7 +118,7 @@ class DumpPlanets(Dumper):
             'owned': not planet.unowned,
             'owner': planet.owner if planet.owner != -1 else None,
             'species': planet.speciesName,
-            'visibility': str(universe.getVisibility(pid, fo.getEmpire().empireID))
+            'visibility': str(universe.getVisibility(pid, fo.empireID())),
         }
         return data
 
@@ -164,7 +208,7 @@ def dump_data(result):
         'parent_id': foAI.foAIstate.get_prev_turn_uid(),
         'turn': fo.currentTurn(),
     }
-    for cls in (DumpPlanets, DumpFleet, DumpOrders, DumpResearch):
+    for cls in (DumpPlanets, DumpFleet, DumpOrders, DumpResearch, DumpSystems):
         cls(uniq_key).dump(**data)
 
 
