@@ -31,7 +31,7 @@ class Dumper(object):
         raise NotImplementedError()
 
     def sort(self, collection):
-        return collection.sort(key=lambda x: x['id'])
+        raise NotImplementedError('Implement in children.')
 
     def _dump(self, section, common_info, item_list):
         """
@@ -82,6 +82,9 @@ class DumpPlanets(Dumper):
 class DumpFleet(Dumper):
     NAME = 'fleets'
 
+    def sort(self, collection):
+        collection.sort(key=lambda x: x['fid'])
+
     def get_items(self):
         universe = fo.getUniverse()
         return set(universe.fleetIDs) - set(universe.destroyedObjectIDs(fo.getEmpire().empireID))
@@ -115,6 +118,9 @@ class DumpFleet(Dumper):
 class DumpOrders(Dumper):
     NAME = 'orders'
 
+    def sort(self, collection):
+        collection.sort(key=lambda x: x['id'])
+
     def get_items(self):
         from freeorion_debug.extend_free_orion_AI_interface import turn_dumps
 
@@ -132,6 +138,9 @@ class DumpOrders(Dumper):
 
 class DumpResearch(Dumper):
     NAME = 'research'
+
+    def sort(self, collection):
+        collection.sort(key=lambda x: x['name'])
 
     def get_items(self):
         return [element for element in fo.getEmpire().researchQueue]
