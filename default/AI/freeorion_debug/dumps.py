@@ -12,11 +12,9 @@ uid_time_format = '%y-%m-%d_%H-%M-%S%f'
 
 
 class Dumper(object):
-    HEADERS = None
     NAME = None
 
     def __init__(self, uid):
-        assert 'id' in self.HEADERS, '"id" header is required'
         current_folder = os.path.dirname(__file__)
         dums_path = os.path.join(current_folder, 'dumps')
         if not os.path.exists(dums_path):
@@ -49,16 +47,12 @@ class Dumper(object):
         result = []
         for item in self.get_items():
             data = self.construct_item(item)
-            assert set(self.HEADERS).issuperset(data), 'Keys does not present in headers: %s' % set(data).difference(
-                self.HEADERS)
             result.append(data)
         self.sort(result)
-        kwargs['headers'] = self.HEADERS
         self._dump(self.NAME, kwargs, result)
 
 
 class DumpPlanets(Dumper):
-    HEADERS = ['id', 'pid', 'name', 'size', 'focus', 'sid', 'owned', 'owner', 'visibility', 'species']
     NAME = 'planets'
 
     def sort(self, collection):
@@ -87,7 +81,6 @@ class DumpPlanets(Dumper):
 
 
 class DumpFleet(Dumper):
-    HEADERS = headers = ['id', 'fid', 'name', 'sid', 'owner', 'visibility', 'ships', 'target']
     NAME = 'fleets'
 
     def get_items(self):
@@ -122,7 +115,6 @@ class DumpFleet(Dumper):
 
 
 class DumpOrders(Dumper):
-    HEADERS = ['id', 'name', 'args']
     NAME = 'orders'
 
     def get_items(self):
@@ -141,7 +133,6 @@ class DumpOrders(Dumper):
         }
 
 class DumpResearch(Dumper):
-    HEADERS = ['id', 'name', 'category', 'allocation', 'cost', 'turn_left', 'type']
     NAME = 'research'
 
     def get_items(self):
@@ -163,8 +154,8 @@ def dump_data(result):
     empire = fo.getEmpire()
     uniq_key = '%s_%s_%s' % (empire.empireID, foAI.foAIstate.uid, empire.name.replace(' ', '_'))
     data = {
-        'turn_uid': foAI.foAIstate.get_current_turn_uid(),
-        'parent_uid': foAI.foAIstate.get_prev_turn_uid(),
+        'turn_id': foAI.foAIstate.get_current_turn_uid(),
+        'parent_id': foAI.foAIstate.get_prev_turn_uid(),
         'turn': fo.currentTurn(),
     }
     for cls in (DumpPlanets, DumpFleet, DumpOrders, DumpResearch):
