@@ -66,7 +66,6 @@ class DumpPlanets(Dumper):
         universe = fo.getUniverse()
         planet = universe.getPlanet(pid)
         data = {
-            'id': pid,
             'pid': pid,
             'name': planet.name,
             'size': planet.size.name,
@@ -92,7 +91,6 @@ class DumpFleet(Dumper):
         fleet = universe.getFleet(fid)
         mission = foAI.foAIstate.get_fleet_mission(fid)
         data = {
-            'id': fid,
             'fid': fid,
             'name': fleet.name,
             'sid': fleet.systemID,
@@ -141,7 +139,6 @@ class DumpResearch(Dumper):
     def construct_item(self, element):
         tech = fo.getTech(element.tech)
         return {
-            'id': element.tech,
             'category': tech.category,
             'type': tech.type.name,
             'name': tech.name,
