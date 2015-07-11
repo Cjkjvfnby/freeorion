@@ -159,12 +159,11 @@ class DumpResearch(Dumper):
             'turn_left': element.turnsLeft
         }
 
-def dump_data():
+def dump_data(result):
     empire = fo.getEmpire()
     uniq_key = '%s_%s_%s' % (empire.empireID, foAI.foAIstate.uid, empire.name.replace(' ', '_'))
-    turn_uid = foAI.foAIstate.get_current_turn_uid()
     data = {
-        'turn_uid': turn_uid,
+        'turn_uid': foAI.foAIstate.get_current_turn_uid(),
         'parent_uid': foAI.foAIstate.get_prev_turn_uid(),
         'turn': fo.currentTurn(),
     }
@@ -172,5 +171,5 @@ def dump_data():
         cls(uniq_key).dump(**data)
 
 
-from freeorion_debug.listeners import register_pre_handler
-register_pre_handler('generateOrders', dump_data)
+from freeorion_debug.listeners import register_post_handler
+register_post_handler('generateOrders', dump_data)
