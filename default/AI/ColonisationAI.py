@@ -412,9 +412,9 @@ def survey_universe():
                         this_facility_dict.setdefault("systems", set()).add(sys_id)
                         this_facility_dict.setdefault("planets", set()).add(pid)
 
-                if planet.focus == EnumsAI.AIFocusType.FOCUS_INDUSTRY:
+                if planet.focus == AIFocusType.FOCUS_INDUSTRY:
                     empire_status['industrialists'] += planet_population
-                elif planet.focus == EnumsAI.AIFocusType.FOCUS_RESEARCH:
+                elif planet.focus == AIFocusType.FOCUS_RESEARCH:
                     empire_status['researchers'] += planet_population
                 if "ANCIENT_RUINS_SPECIAL" in planet.specials:
                     gotRuins = True
@@ -773,6 +773,38 @@ def project_ind_val(init_pop, max_pop_size, init_industry, max_ind_factor, flat_
         ind_val += val_factor * cur_ind
     return ind_val
 
+@cache_by_turn
+def get_base_outpost_defense_value():
+    """
+    :return:planet defenses contribution towards planet evaluations
+    :rtype float
+    """
+    #TODO: assess current AI defense technology, compare the resulting planetary rating to the current
+    # best military ship design, derive a planet defenses value related to the cost of such a ship
+    return 20.0
+
+@cache_by_turn
+def get_base_colony_defense_value():
+    """
+    :return:planet defenses contribution towards planet evaluations
+    :rtype float
+    """
+    #TODO: assess current AI defense technology, compare the resulting planetary rating to the current
+    # best military ship design, derive a planet defenses value related to the cost of such a ship
+    return 40.0
+
+def get_defense_value(species_name):
+    """
+    :param species_name:
+    :type species_name: str
+    :return:planet defenses contribution towards planet evaluations
+    :rtype float
+    """
+    #TODO: assess species defense characteristics
+    if species_name:
+        return get_base_colony_defense_value()
+    else:
+        return get_base_outpost_defense_value()
 
 def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
     """returns the colonisation value of a planet"""
@@ -781,6 +813,7 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
     retval = 0
     discount_multiplier = [30.0, 40.0][fo.empireID() % 2]
     species = fo.getSpecies(spec_name or "")  # in case None is passed as specName
+    species_foci = [] and species and list(species.foci)
     tag_list = list(species.tags) if species else []
     pilot_val = pilot_rating = 0
     if species and species.canProduceShips:
@@ -834,7 +867,12 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
         return 0
     detail.append("%s : " % planet.name)
     # only count existing presence if not target planet
-    have_existing_presence = AIstate.colonizedSystems.get(this_sysid, []) not in [[], [planet_id]]
+    # TODO: consider neighboring sytems for smaller contribution, and bigger contributions for
+    # local colonies versus local outposts
+    locally_owned_planets = [lpid for lpid in AIstate.colonizedSystems.get(this_sysid, []) if lpid != planet_id]
+    locally_owned_pop_ctrs = [lpid for lpid in locally_owned_planets if lpid in empire_species_by_planet]
+    # triple count pop_ctrs
+    existing_presence = len(locally_owned_planets) + 2 * len(locally_owned_pop_ctrs)
     system = universe.getSystem(this_sysid)
     sys_status = foAI.foAIstate.systemStatus.get(this_sysid, {})
 
@@ -877,7 +915,7 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
     thrt_factor = 1.0
     ship_limit = 2 * (2 ** (fo.currentTurn() / 40.0))
     threat_tally = fleet_threat_ratio + neighbor_threat_ratio + monster_threat_ratio
-    if have_existing_presence:
+    if existing_presence:
         threat_tally += 0.3 * jump2_threat_ratio
         threat_tally *= 0.8
     else:
@@ -1010,7 +1048,7 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
                 retval += fort_val
                 detail.append("%s %.1f" % (special, fort_val))
             elif special == "HONEYCOMB_SPECIAL":
-                honey_val = (0.5 * AIDependencies.HONEYCOMB_IND_MULTIPLIER * AIDependencies.INDUSTRY_PER_POP *
+                honey_val = 0.3*(AIDependencies.HONEYCOMB_IND_MULTIPLIER * AIDependencies.INDUSTRY_PER_POP *
                              empire_status['industrialists'] * discount_multiplier)
                 retval += honey_val
                 detail.append("%s %.1f" % (special, honey_val))
@@ -1083,9 +1121,9 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
         if thrt_factor < 1.0:
             retval *= thrt_factor
             detail.append("threat reducing value by %3d %%" % (100 * (1 - thrt_factor)))
-        if have_existing_presence:
+        if existing_presence:
             detail.append("preexisting system colony")
-            retval *= 1.5
+            retval = (retval + existing_presence * get_defense_value(spec_name)) * 1.5
         supply_val = 0
         if sys_supply < 0:
             if sys_supply + planet_supply >= 0:
@@ -1104,6 +1142,13 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
         if "ANCIENT_RUINS_SPECIAL" in planet.specials:
             retval += discount_multiplier * 50
             detail.append("Undepleted Ruins %.1f" % discount_multiplier * 50)
+        if "HONEYCOMB_SPECIAL" in planet.specials:
+            honey_val = (AIDependencies.HONEYCOMB_IND_MULTIPLIER * AIDependencies.INDUSTRY_PER_POP *
+                         empire_status['industrialists'] * discount_multiplier)
+            if not AIFocusType.FOCUS_INDUSTRY in species_foci:
+                honey_val *= -0.3  # discourage settlement by colonizers not able to use Industry Focus
+            retval += honey_val
+            detail.append("%s %.1f" % ("HONEYCOMB_SPECIAL", honey_val))
 
         if sys_supply <= 0:
             if sys_supply + planet_supply >= 0:
@@ -1278,9 +1323,9 @@ def evaluate_planet(planet_id, mission_type, spec_name, empire, detail=None):
         if thrt_factor < 1.0:
             retval *= thrt_factor
             detail.append("threat reducing value by %3d %%" % (100 * (1 - thrt_factor)))
-        if have_existing_presence:
+        if existing_presence:
             detail.append("preexisting system colony")
-            retval *= 1.5
+            retval = (retval + existing_presence * get_defense_value(spec_name)) * 2
     return retval
 
 

@@ -4318,6 +4318,10 @@ Filters
 ## ** DO NOT TRANSLATE the contents of SITREP_PRIORITY_ORDER  -- this is a functional entry
 SITREP_PRIORITY_ORDER
 '''SITREP_WELCOME
+CustomSitrepPriority1
+CustomSitrepPriority2
+CustomSitrepPriority3
+CustomSitrepPriority4
 SITREP_VICTORY
 SITREP_VICTORY_DESTRUCTION
 SITREP_VICTORY_CAPTURE
@@ -8629,6 +8633,16 @@ SPY_STEALTH_4_DESC
 
 Even the most carefully concealed ship emits radiation in the form of force carrier particles. By modulating the wave forms of these particles, it is possible to synchronize them with the background radiation, hampering even very advanced attempts to detect the ship.'''
 
+SPY_CUSTOM_ADVISORIES
+Empire Intelligence Agency
+
+SPY_CUSTOM_ADVISORIES_DESC
+'''The Empire Intelligence Agency gathers and organizes information from many sources, including spies, common informers, and official chains of command reporting.  The most important items of information are presented each turn as Situation Reports (SitReps). 
+
+Many of the SitReps are determined automatically, but additional custom SitReps can be specified by editing the file default/customizations/custom_sitreps.txt
+More particulars on the FreeOrion scripting, such as for these custom SitReps, can be found at http://www.freeorion.org/index.php/Free_Orion_Content_Script_(FOCS)
+'''
+
 SHP_IMPROVED_ENGINE_COUPLINGS
 Improved Engine Couplings
 
@@ -10382,7 +10396,7 @@ SH_XENTRONIUM
 Xentronium Hull
 
 SH_XENTRONIUM_DESC
-A hull constructed primarily with xentronium. Though small, it has extremely high max [[encyclopedia STRUCTURE_TITLE]]. It has four external slots et one internal slot.
+A hull constructed primarily with xentronium. Though small, it has extremely high max [[encyclopedia STRUCTURE_TITLE]]. It has four external slots and one internal slot.
 
 SH_COLONY_BASE
 Colony Base Hull
