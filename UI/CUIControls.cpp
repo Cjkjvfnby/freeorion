@@ -1259,9 +1259,47 @@ ColorSelector::ColorSelector(GG::Clr color, GG::Clr default_color) :
     m_default_color(default_color)
 { SetColor(color); }
 
+ColorSelector::~ColorSelector()
+{ m_border_buffer.clear(); }
+
+void ColorSelector::InitBuffer() {
+    GG::Pt sz = Size();
+    m_border_buffer.clear();
+    m_border_buffer.store(0.0f,        0.0f);
+    m_border_buffer.store(Value(sz.x), 0.0f);
+    m_border_buffer.store(Value(sz.x), Value(sz.y));
+    m_border_buffer.store(0.0f,        Value(sz.y));
+    m_border_buffer.store(0.0f,        0.0f);
+}
+
 void ColorSelector::Render() {
-    GG::Pt ul = UpperLeft(), lr = LowerRight();
-    GG::FlatRectangle(ul, lr, Color(), GG::CLR_WHITE, 1);
+    GG::Pt ul = UpperLeft();
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(static_cast<GLfloat>(Value(ul.x)), static_cast<GLfloat>(Value(ul.y)), 0.0f);
+    glDisable(GL_TEXTURE_2D);
+    glLineWidth(1.0f);
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    m_border_buffer.activate();
+    glColor(Color());
+    glDrawArrays(GL_TRIANGLE_FAN,   0, m_border_buffer.size() - 1);
+    glColor(GG::CLR_WHITE);
+    glDrawArrays(GL_LINE_STRIP,     0, m_border_buffer.size());
+
+    glEnable(GL_TEXTURE_2D);
+    glPopMatrix();
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+void ColorSelector::SizeMove(const GG::Pt& ul, const GG::Pt& lr) {
+    GG::Pt old_size = GG::Control::Size();
+
+    GG::Control::SizeMove(ul, lr);
+
+    if (old_size != GG::Wnd::Size())
+        InitBuffer();
 }
 
 void ColorSelector::LClick(const GG::Pt& pt, GG::Flags<GG::ModKey> mod_keys) {
@@ -1526,70 +1564,6 @@ void FPSIndicator::Render() {
 
 void FPSIndicator::UpdateEnabled()
 { m_enabled = GetOptionsDB().Get<bool>("show-fps"); }
-
-
-//////////////////////////////////////////////////
-// ShadowedTextControl
-//////////////////////////////////////////////////
-
-// Create a regex that recognizes a tag
-boost::regex TagRegex(const std::string& tag){
-   return boost::regex(std::string("<")+tag+"[^<>]*>(.*)</"+tag+">");
-}
-
-
-std::string RemoveRGB(const std::string& text){
-    static boost::regex rx("<rgba[^<>]*>|</rgba>");// = TagRegex("rgba");
-    return boost::regex_replace(text, rx, "", boost::match_default | boost::format_all);
-}
-
-ShadowedTextControl::ShadowedTextControl(const std::string& str,
-                                         const boost::shared_ptr<GG::Font>& font,
-                                         GG::Clr color, GG::Flags<GG::TextFormat> format) :
-    GG::Control(GG::X0, GG::Y0, GG::X1, GG::Y1, GG::NO_WND_FLAGS),
-    shadow_text(new GG::TextControl(GG::X0, GG::Y0, GG::X1, GG::Y1, RemoveRGB(str), font, GG::CLR_BLACK, format, GG::NO_WND_FLAGS)),
-    main_text(new GG::TextControl(GG::X0, GG::Y0, GG::X1, GG::Y1, str, font, color, format, GG::NO_WND_FLAGS))
-{
-    Resize(main_text->Size());
-    AttachChild(shadow_text);
-    AttachChild(main_text);
-}
-
-GG::Pt ShadowedTextControl::MinUsableSize() const
-{ return main_text->MinUsableSize(); }
-
-void ShadowedTextControl::SetText(const std::string& str) {
-    shadow_text->SetText(str);
-    main_text->SetText(str);
-}
-
-void ShadowedTextControl::SizeMove(const GG::Pt& ul, const GG::Pt& lr) {
-    GG::Control::SizeMove(ul, lr);
-    main_text->Resize(Size());
-    shadow_text->Resize(Size());
-}
-
-void ShadowedTextControl::SetColor(GG::Clr c)
-{ main_text->SetColor(c); }
-
-void ShadowedTextControl::SetTextColor ( GG::Clr c )
-{ main_text->SetTextColor(c); }
-
-void ShadowedTextControl::Render() {
-    shadow_text->OffsetMove(GG::Pt(-GG::X1, GG::Y(0)));      // shadow to left
-    shadow_text->Render();
-
-    shadow_text->OffsetMove(GG::Pt(GG::X1, GG::Y1));         // up
-    shadow_text->Render();
-
-    shadow_text->OffsetMove(GG::Pt(GG::X1, -GG::Y1));        // right
-    shadow_text->Render();
-
-    shadow_text->OffsetMove(GG::Pt(-GG::X1, -GG::Y1));       // down
-    shadow_text->Render();
-
-    shadow_text->OffsetMove(GG::Pt(GG::X0, GG::Y1));       // center
-}
 
 
 //////////////////////////////////////////////////

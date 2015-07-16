@@ -140,6 +140,7 @@ namespace {
         Hotkey::AddHotkey("map.research",             UserStringNop("HOTKEY_MAP_RESEARCH"),             GG::GGK_r,          GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.production",           UserStringNop("HOTKEY_MAP_PRODUCTION"),           GG::GGK_p,          GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.design",               UserStringNop("HOTKEY_MAP_DESIGN"),               GG::GGK_d,          GG::MOD_KEY_CTRL);
+        Hotkey::AddHotkey("map.objects",              UserStringNop("HOTKEY_MAP_OBJECTS"),              GG::GGK_o,          GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.menu",                 UserStringNop("HOTKEY_MAP_MENU"),                 GG::GGK_F10);
         Hotkey::AddHotkey("map.zoom_in",              UserStringNop("HOTKEY_MAP_ZOOM_IN"),              GG::GGK_z,          GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.zoom_in_alt",          UserStringNop("HOTKEY_MAP_ZOOM_IN_ALT"),          GG::GGK_KP_PLUS,    GG::MOD_KEY_CTRL);
@@ -150,11 +151,11 @@ namespace {
         Hotkey::AddHotkey("map.zoom_next_system",     UserStringNop("HOTKEY_MAP_ZOOM_NEXT_SYSTEM"),     GG::GGK_GREATER,    GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.zoom_prev_fleet",      UserStringNop("HOTKEY_MAP_ZOOM_PREV_FLEET"),      GG::GGK_f,          GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("map.zoom_next_fleet",      UserStringNop("HOTKEY_MAP_ZOOM_NEXT_FLEET"),      GG::GGK_g,          GG::MOD_KEY_CTRL);
-        Hotkey::AddHotkey("map.zoom_prev_idle_fleet", UserStringNop("HOTKEY_MAP_ZOOM_PREV_IDLE_FLEET"), GG::GGK_UNKNOWN);
-        Hotkey::AddHotkey("map.zoom_next_idle_fleet", UserStringNop("HOTKEY_MAP_ZOOM_NEXT_IDLE_FLEET"), GG::GGK_UNKNOWN);
+        Hotkey::AddHotkey("map.zoom_prev_idle_fleet", UserStringNop("HOTKEY_MAP_ZOOM_PREV_IDLE_FLEET"), GG::GGK_f,          GG::MOD_KEY_ALT);
+        Hotkey::AddHotkey("map.zoom_next_idle_fleet", UserStringNop("HOTKEY_MAP_ZOOM_NEXT_IDLE_FLEET"), GG::GGK_g,          GG::MOD_KEY_ALT);
 
-        Hotkey::AddHotkey("map.toggle_scale_line",    UserStringNop("HOTKEY_MAP_TOGGLE_SCALE_LINE"),    GG::GGK_UNKNOWN);
-        Hotkey::AddHotkey("map.toggle_scale_circle",  UserStringNop("HOTKEY_MAP_TOGGLE_SCALE_CIRCLE"),  GG::GGK_UNKNOWN);
+        Hotkey::AddHotkey("map.toggle_scale_line",    UserStringNop("HOTKEY_MAP_TOGGLE_SCALE_LINE"),    GG::GGK_l,          GG::MOD_KEY_ALT);
+        Hotkey::AddHotkey("map.toggle_scale_circle",  UserStringNop("HOTKEY_MAP_TOGGLE_SCALE_CIRCLE"),  GG::GGK_c,          GG::MOD_KEY_ALT);
 
         Hotkey::AddHotkey("cut",                      UserStringNop("HOTKEY_CUT"),            GG::GGK_x,  GG::MOD_KEY_CTRL);
         Hotkey::AddHotkey("copy",                     UserStringNop("HOTKEY_COPY"),           GG::GGK_c,  GG::MOD_KEY_CTRL);
@@ -295,7 +296,7 @@ public:
         m_label(0),
         m_enabled(false)
     {
-        m_label = new ShadowedTextControl("", ClientUI::GetFont(), ClientUI::TextColor());
+        m_label = new GG::TextControl(GG::X0, GG::Y0, GG::X1, GG::Y1, "", ClientUI::GetFont(), ClientUI::TextColor());
         AttachChild(m_label);
         std::set<int> dummy = std::set<int>();
         Update(1.0, dummy, INVALID_OBJECT_ID);
@@ -454,7 +455,7 @@ private:
 
     double              m_scale_factor;
     GG::X               m_line_length;
-    ShadowedTextControl* m_label;
+    GG::TextControl*    m_label;
     bool                m_enabled;
 };
 
@@ -1239,6 +1240,29 @@ void MapWnd::DoLayout() {
     m_research_wnd->Resize(GG::Pt(AppWidth(), AppHeight() - m_toolbar->Height()));
     m_production_wnd->Resize(GG::Pt(AppWidth(), AppHeight() - m_toolbar->Height()));
     m_design_wnd->Resize(GG::Pt(AppWidth(), AppHeight() - m_toolbar->Height()));
+    m_sitrep_panel->ValidatePosition();
+    m_object_list_wnd->ValidatePosition();
+    m_pedia_panel->ValidatePosition();
+    m_side_panel->ValidatePosition();
+    m_combat_report_wnd->ValidatePosition();
+    m_moderator_wnd->ValidatePosition();
+
+    if (ClientUI* cui = ClientUI::GetClientUI()) {
+        if (MessageWnd* msg_wnd = cui->GetMessageWnd())
+            msg_wnd->ValidatePosition();
+        if (PlayerListWnd* plr_wnd = cui->GetPlayerListWnd())
+            plr_wnd->ValidatePosition();
+    }
+
+    for (FleetUIManager::iterator fwnd_it = FleetUIManager::GetFleetUIManager().begin();
+         fwnd_it != FleetUIManager::GetFleetUIManager().end(); ++fwnd_it)
+    {
+        if (*fwnd_it) {
+            (*fwnd_it)->ValidatePosition();
+        } else {
+            ErrorLogger() << "MapWnd::DoLayout(): null FleetWnd* found in the FleetUIManager::iterator.";
+        }
+    }
 }
 
 GG::Pt MapWnd::ClientUpperLeft() const
@@ -2190,7 +2214,9 @@ void MapWnd::InitTurn() {
 
 
     // are there any sitreps to show?
-    if (m_sitrep_panel->NumVisibleSitrepsThisTurn() > 0) {
+    bool show_intro_sitreps = CurrentTurn() == 1 && GetOptionsDB().Get<Aggression>("GameSetup.ai-aggression") <= TYPICAL;
+    DebugLogger() << "showing intro sitreps : " << show_intro_sitreps;
+    if ( show_intro_sitreps ||   m_sitrep_panel->NumVisibleSitrepsThisTurn() > 0) {
         m_sitrep_panel->ShowSitRepsForTurn(CurrentTurn());
         if (!m_design_wnd->Visible() && !m_research_wnd->Visible() && !m_production_wnd->Visible())
             ShowSitRep();
@@ -3060,7 +3086,7 @@ void MapWnd::ShowEmpire(int empire_id) {
 void MapWnd::ShowEncyclopediaEntry(const std::string& str) {
     if (!m_pedia_panel->Visible())
         TogglePedia();
-    m_pedia_panel->SetText(str);
+    m_pedia_panel->SetText(str, false);
 }
 
 void MapWnd::CenterOnObject(int id) {
@@ -5450,6 +5476,7 @@ void MapWnd::ConnectKeyboardAcceleratorSignals() {
     hkm->Connect(this, &MapWnd::ToggleResearch,         "map.research",         new VisibleWindowCondition(this));
     hkm->Connect(this, &MapWnd::ToggleProduction,       "map.production",       new VisibleWindowCondition(this));
     hkm->Connect(this, &MapWnd::ToggleDesign,           "map.design",           new VisibleWindowCondition(this));
+    hkm->Connect(this, &MapWnd::ToggleObjects,          "map.objects",          new VisibleWindowCondition(this));
     hkm->Connect(this, &MapWnd::ShowMenu,               "map.menu",             new VisibleWindowCondition(this));
     hkm->Connect(this, &MapWnd::KeyboardZoomIn,         "map.zoom_in",          new VisibleWindowCondition(this));
     hkm->Connect(this, &MapWnd::KeyboardZoomIn,         "map.zoom_in_alt",      new VisibleWindowCondition(this));

@@ -143,13 +143,19 @@ Special
         Planet
         Not Planet type = [Asteroids GasGiant]
         Not ContainedBy And [
-                System 
-                Contains Or [
-                    Capital
-                    And [ Planet HasSpecial name = "ANCIENT_RUINS_SPECIAL" ]
-                    Design name = "SM_EXP_OUTPOST"
-                ]
+            System 
+            Contains Or [
+                And [ Planet HasSpecial name = "ANCIENT_RUINS_SPECIAL" ]
+                Design name = "SM_EXP_OUTPOST"
             ]
+        ]
+        Not WithinStarlaneJumps jumps = 2 condition = And [
+            System
+            Contains And [
+                Planet
+                OwnedBy affiliation = AnyEmpire
+            ]
+        ]
     ]
     effectsgroups = [
         EffectsGroup
@@ -163,13 +169,6 @@ Special
                 Random probability = 0.9
                 ValueTest low = 1 testvalue = GalaxyMaxAIAggression
                 ValueTest low = 1 testvalue = GalaxyMonsterFrequency
-                Not WithinStarlaneJumps jumps = 1 condition = And [
-                    System
-                    Contains And [
-                        Planet
-                        OwnedBy affiliation = AnyEmpire
-                    ]
-                ]
             ]
             effects = CreateShip designname = "SM_GUARD_2"
             
@@ -916,7 +915,7 @@ Special
                 Planet
                 Turn low = 10
                 Unowned
-                Random probability = 0.12
+                Random probability = 0.12 * GalaxyMonsterFrequency / 2.0
             ]
             stackinggroup = "KRAKEN_NEST_STACK"
             effects = CreateShip designname = "SM_KRAKEN_1"
@@ -965,7 +964,7 @@ Special
                 Planet
                 Turn low = 10
                 Unowned
-                Random probability = 0.12
+                Random probability = 0.12 * GalaxyMonsterFrequency / 2.0
             ]
             stackinggroup = "SNOWFLAKE_NEST_STACK"
             effects = CreateShip designname = "SM_SNOWFLAKE_1"
@@ -995,7 +994,7 @@ Special
                 Planet
                 OwnedBy affiliation = AnyEmpire
                 OwnerHasTech name = "SHP_DOMESTIC_MONSTER"
-                Random probability = 0.06
+                Random probability = 0.06 
             ]
             stackinggroup = "JUGGERNAUT_NEST_STACK"
             effects = [
@@ -1015,7 +1014,7 @@ Special
                 Planet
                 Turn low = 10
                 Unowned
-                Random probability = 0.12
+                Random probability = 0.12 * GalaxyMonsterFrequency / 2.0
             ]
             stackinggroup = "JUGGERNAUT_NEST_STACK"
             effects = CreateShip designname = "SM_JUGGERNAUT_1"
@@ -1129,16 +1128,16 @@ Special
 Special
     name = "CLOUD_COVER_MASTER_SPECIAL"
     description = "CLOUD_COVER_MASTER_SPECIAL_DESC"
-    stealth = 30
+    stealth = 25
     spawnrate = 0.0
     effectsgroups = [
-        [[STEALTH_BOOST_PLUS_PLUS]]
-        [[SYSTEM_STEALTH_PLUS_PLUS]]
-
         EffectsGroup
             scope = Source
             stackinggroup = "STEALTH_SPECIAL_MASTER_STACK"
             effects = AddSpecial name = "CLOUD_COVER_SLAVE_SPECIAL"
+        /*[[STEALTH_BOOST_PLUS_PLUS]]
+        [[SYSTEM_STEALTH_PLUS_PLUS]]
+        */
     ]
     graphic = "icons/specials_huge/cloud_cover.png"
 
@@ -1166,18 +1165,18 @@ Special
 Special
     name = "VOLCANIC_ASH_MASTER_SPECIAL"
     description = "VOLCANIC_ASH_MASTER_SPECIAL_DESC"
-    stealth = 50
+    stealth = 45
     spawnrate = 0.0
     effectsgroups = [
-        [[STEALTH_BOOST_PLUS_PLUS]]
-        [[SYSTEM_STEALTH_PLUS_PLUS]]
-
         EffectsGroup
             scope = Source
             stackinggroup = "STEALTH_SPECIAL_MASTER_STACK"
             effects = AddSpecial name = "VOLCANIC_ACTIVITY_SPECIAL"
 
         [[REMOVE_CLOUD_COVER]]
+        /*[[STEALTH_BOOST_PLUS_PLUS]]
+        [[SYSTEM_STEALTH_PLUS_PLUS]]
+*/
     ]
     graphic = "icons/specials_huge/volcanic_ash.png"
 
@@ -1216,12 +1215,9 @@ Special
 Special
     name = "DIM_RIFT_MASTER_SPECIAL"
     description = "DIM_RIFT_MASTER_SPECIAL_DESC"
-    stealth = 70
+    stealth = 65
     spawnrate = 0.0
     effectsgroups = [
-        [[STEALTH_BOOST_PLUS_PLUS]]
-        [[SYSTEM_STEALTH_PLUS_PLUS]]
-
         EffectsGroup
             scope = Source
             stackinggroup = "STEALTH_SPECIAL_MASTER_STACK"
@@ -1232,6 +1228,9 @@ Special
 
         [[REMOVE_CLOUD_COVER]]
         [[REMOVE_ASH]]
+        /*[[STEALTH_BOOST_PLUS_PLUS]]
+        [[SYSTEM_STEALTH_PLUS_PLUS]]
+*/
     ]
     graphic = "icons/specials_huge/dim_rift.png"
 
@@ -1259,12 +1258,9 @@ Special
 Special
     name = "VOID_MASTER_SPECIAL"
     description = "VOID_MASTER_SPECIAL_DESC"
-    stealth = 90
+    stealth = 85
     spawnrate = 0.0
     effectsgroups = [
-        [[STEALTH_BOOST_PLUS_PLUS]]
-        [[SYSTEM_STEALTH_PLUS_PLUS]]
-
         EffectsGroup
             scope = Source
             stackinggroup = "STEALTH_SPECIAL_MASTER_STACK"
@@ -1273,6 +1269,9 @@ Special
         [[REMOVE_CLOUD_COVER]]
         [[REMOVE_ASH]]
         [[REMOVE_DIM]]
+        /*[[STEALTH_BOOST_PLUS_PLUS]]
+        [[SYSTEM_STEALTH_PLUS_PLUS]]
+*/
     ]
     graphic = "icons/specials_huge/void.png"
 
@@ -1296,7 +1295,7 @@ Special
 Special
     name = "DERELICT_SPECIAL2"               //  MAP / DETECTION
     description = "DERELICT_SPECIAL_DESC"
-    stealth = 40
+    stealth = 45
     spawnrate = 0.5
     spawnlimit = 100
     location = And [
@@ -1374,7 +1373,7 @@ Special
 Special
     name = "DERELICT_SPECIAL3"               //  FUEL
     description = "DERELICT_SPECIAL_DESC"
-    stealth = 40
+    stealth = 45
     spawnrate = 0.5
     spawnlimit = 100
     location = And [
@@ -1528,7 +1527,7 @@ Special
                 Planet
                 OwnedBy empire = Source.Owner
                 HasTag name = "ORGANIC"
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
                 ResourceSupplyConnected empire = Source.Owner condition = Source
             ]
             activation =  Focus type = "FOCUS_GROWTH"
@@ -1572,7 +1571,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "ORGANIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "FRUIT_STACK"
@@ -1614,7 +1613,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "ORGANIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "SPICE_STACK"
@@ -1658,7 +1657,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "ROBOTIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "MONOPOLE_STACK"
@@ -1702,7 +1701,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "ROBOTIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "SUPERCONDUCTOR_STACK"
@@ -1747,7 +1746,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "ROBOTIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "POSITRONIUM_STACK"
@@ -1792,7 +1791,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "LITHIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "MINERALS_STACK"
@@ -1836,7 +1835,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "LITHIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "CRYSTALS_STACK"
@@ -1881,7 +1880,7 @@ Special
                 OwnedBy empire = Source.Owner
                 HasTag name = "LITHIC"
                 ResourceSupplyConnected empire = Source.Owner condition = Source
-                TargetPopulation low = 0
+                //TargetPopulation low = 0
             ]
             activation =  Focus type = "FOCUS_GROWTH"
             stackinggroup = "ELERIUM_STACK"

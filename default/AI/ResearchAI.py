@@ -5,6 +5,7 @@ import AIDependencies
 import AIstate
 import traceback
 import ColonisationAI
+import ShipDesignAI
 from freeorion_tools import tech_is_complete, chat_human
 
 inProgressTechs = {}
@@ -49,6 +50,7 @@ def generate_research_orders():
     #
     research_queue = empire.researchQueue
     research_queue_list = get_research_queue_techs()
+    total_rp = empire.resourceProduction(fo.resourceType.research)
     inProgressTechs.clear()
     tech_turns_left = {}
     if research_queue_list:
@@ -72,9 +74,14 @@ def generate_research_orders():
     #
     # set starting techs, or after turn 100 add any additional default techs
     #
-    if (fo.currentTurn() == 1) or ((fo.currentTurn() < 5) and (len(research_queue_list) == 0)):
+    if (fo.currentTurn() == 1) or ((total_rp - research_queue.totalSpent) > 0):
         research_index = get_research_index()
-        new_tech = TechsListsAI.sparse_galaxy_techs(research_index) if galaxy_is_sparse else TechsListsAI.primary_meta_techs(research_index)
+        if fo.currentTurn() == 1:
+            # do only this one on first turn, to facilitate use of a turn-1 savegame for testing of alternate
+            # research strategies
+            new_tech = ["LRN_ALGO_ELEGANCE"]
+        else:
+            new_tech = TechsListsAI.sparse_galaxy_techs(research_index) if galaxy_is_sparse else TechsListsAI.primary_meta_techs(research_index)
         print "Empire %s (%d) is selecting research index %d" % (empire.name, empire_id, research_index)
         # techs_to_enqueue = (set(new_tech)-(set(completed_techs)|set(research_queue_list)))
         techs_to_enqueue = new_tech[:]
@@ -106,6 +113,19 @@ def generate_research_orders():
             except:
                 print "    Error: failed attempt to enqueued Tech: " + name
                 print "    Error: exception triggered and caught: ", traceback.format_exc()
+
+
+        print "\n\nAll techs:"
+        alltechs = fo.techs()  # returns names of all techs
+        for tname in alltechs:
+            print tname
+        print "\n-------------------------------\nAll unqueued techs:"
+        # coveredTechs = new_tech+completed_techs
+        for tname in [tn for tn in alltechs if tn not in tech_base]:
+            print tname
+
+        if fo.currentTurn() == 1:
+            return
         if foAI.foAIstate.aggression <= fo.aggression.cautious:
             research_queue_list = get_research_queue_techs()
             def_techs = TechsListsAI.defense_techs_1()
@@ -129,18 +149,6 @@ def generate_research_orders():
                         chat_human(msg)
                     else:
                         print msg
-
-        print""
-
-        generate_default_research_order()
-        print "\n\nAll techs:"
-        alltechs = fo.techs()  # returns names of all techs
-        for tname in alltechs:
-            print tname
-        print "\n-------------------------------\nAll unqueued techs:"
-        # coveredTechs = new_tech+completed_techs
-        for tname in [tn for tn in alltechs if tn not in tech_base]:
-            print tname
 
     elif fo.currentTurn() > 100:
         generate_default_research_order()
@@ -436,6 +444,47 @@ def generate_research_orders():
                     if "SHP_WEAPON_4_2" in research_queue_list:  # (should be)
                         idx = research_queue_list.index("SHP_WEAPON_4_2")
                         fo.issueEnqueueTechOrder("SHP_WEAPON_4_2", max(0, idx-18))
+
+    # TODO: Remove the following example code
+    # Example/Test code for the new ShipDesigner functionality
+    techs = ["SHP_WEAPON_4_2", "SHP_TRANSSPACE_DRIVE", "SHP_INTSTEL_LOG", "SHP_ASTEROID_HULLS", ""]
+    for tech in techs:
+        this_tech = fo.getTech(tech)
+        if not this_tech:
+            print "Invalid Tech specified"
+            continue
+        unlocked_items = this_tech.unlockedItems
+        unlocked_hulls = []
+        unlocked_parts = []
+        for item in unlocked_items:
+            if item.type == fo.unlockableItemType.shipPart:
+                print "Tech %s unlocks a ShipPart: %s" % (tech, item.name)
+                unlocked_parts.append(item.name)
+            elif item.type == fo.unlockableItemType.shipHull:
+                print "Tech %s unlocks a ShipHull: %s" % (tech, item.name)
+                unlocked_hulls.append(item.name)
+        if not (unlocked_parts or unlocked_hulls):
+            print "No new ship parts/hulls unlocked by tech %s" % tech
+            continue
+        old_designs = ShipDesignAI.MilitaryShipDesigner().optimize_design(consider_fleet_count=False)
+        new_designs = ShipDesignAI.MilitaryShipDesigner().optimize_design(additional_hulls=unlocked_hulls, additional_parts=unlocked_parts, consider_fleet_count=False)
+        if not (old_designs and new_designs):
+            # AI is likely defeated; don't bother with logging error message
+            continue
+        old_rating, old_pid, old_design_id, old_cost = old_designs[0]
+        old_design = fo.getShipDesign(old_design_id)
+        new_rating, new_pid, new_design_id, new_cost = new_designs[0]
+        new_design = fo.getShipDesign(new_design_id)
+        if new_rating > old_rating:
+            print "Tech %s gives access to a better design!" % tech
+            print "old best design: Rating %.5f" % old_rating
+            print "old design specs: %s - " % old_design.hull, list(old_design.parts)
+            print "new best design: Rating %.5f" % new_rating
+            print "new design specs: %s - " % new_design.hull, list(new_design.parts)
+        else:
+            print "Tech %s gives access to new parts or hulls but there seems to be no military advantage." % tech
+
+
 
 
 def generate_default_research_order():

@@ -584,6 +584,7 @@ bool Font::LineData::Empty() const
 ///////////////////////////////////////
 Font::RenderState::RenderState() :
     use_italics(0),
+    use_shadow(0),
     draw_underline(0)
 {
     // Initialize the color stack with the current color
@@ -594,6 +595,7 @@ Font::RenderState::RenderState() :
 
 Font::RenderState::RenderState (Clr color):
     use_italics(0),
+    use_shadow(0),
     draw_underline(0)
 {
     PushColor(color.r, color.g, color.b, color.a);
@@ -698,6 +700,7 @@ Font::Font() :
     m_underline_offset(0.0),
     m_underline_height(0.0),
     m_italics_offset(0.0),
+    m_shadow_offset(0.0),
     m_space_width(0)
 {}
 
@@ -711,6 +714,7 @@ Font::Font(const std::string& font_filename, unsigned int pts) :
     m_underline_offset(0.0),
     m_underline_height(0.0),
     m_italics_offset(0.0),
+    m_shadow_offset(0.0),
     m_space_width(0)
 {
     if (m_font_filename != "") {
@@ -732,6 +736,7 @@ Font::Font(const std::string& font_filename, unsigned int pts,
     m_underline_offset(0.0),
     m_underline_height(0.0),
     m_italics_offset(0.0),
+    m_shadow_offset(0.0),
     m_space_width(0)
 {
     assert(!file_contents.empty());
@@ -786,7 +791,7 @@ X Font::RenderText(const Pt& pt_, const std::string& text) const
         if (it == m_glyphs.end()) {
             pt.x += m_space_width; // move forward by the extent of the character when a whitespace or unprintable glyph is requested
         } else {
-            pt.x += StoreGlyph (pt, it->second, &render_state, cache);
+            pt.x += StoreGlyph(pt, it->second, &render_state, cache);
         }
     }
 
@@ -817,9 +822,9 @@ void Font::RenderText(const Pt& ul, const Pt& lr, const std::string& text, Flags
 }
 
 void Font::RenderText(const Pt& ul, const Pt& lr, const std::string& text, Flags<TextFormat>& format,
-                     const std::vector<LineData>& line_data, RenderState& render_state,
-                     std::size_t begin_line, CPSize begin_char,
-                     std::size_t end_line, CPSize end_char) const
+                      const std::vector<LineData>& line_data, RenderState& render_state,
+                      std::size_t begin_line, CPSize begin_char,
+                      std::size_t end_line, CPSize end_char) const
  {
     RenderCache cache;
     PreRenderText(ul, lr, text, format, line_data, render_state, begin_line, begin_char, end_line, end_char, cache);
@@ -827,7 +832,7 @@ void Font::RenderText(const Pt& ul, const Pt& lr, const std::string& text, Flags
 }
 
 void Font::PreRenderText(const Pt& ul, const Pt& lr, const std::string& text, Flags<TextFormat>& format, RenderCache& cache,
-                      const std::vector<LineData>* line_data/* = 0*/, RenderState* render_state/* = 0*/) const
+                         const std::vector<LineData>* line_data/* = 0*/, RenderState* render_state/* = 0*/) const
  {
     RenderState state;
     if (!render_state)
@@ -845,14 +850,14 @@ void Font::PreRenderText(const Pt& ul, const Pt& lr, const std::string& text, Fl
 }
 
 void Font::PreRenderText(const Pt& ul, const Pt& lr, const std::string& text, Flags<TextFormat>& format,
-                      const std::vector<LineData>& line_data, RenderState& render_state,
-                      std::size_t begin_line, CPSize begin_char,
-                      std::size_t end_line, CPSize end_char,
-                      RenderCache& cache) const
+                         const std::vector<LineData>& line_data, RenderState& render_state,
+                         std::size_t begin_line, CPSize begin_char,
+                         std::size_t end_line, CPSize end_char,
+                         RenderCache& cache) const
 {
     double orig_color[4];
     glGetDoublev(GL_CURRENT_COLOR, orig_color);
-    glBindTexture(GL_TEXTURE_2D, m_texture->OpenGLId());
+    //glBindTexture(GL_TEXTURE_2D, m_texture->OpenGLId());
 
     Y y_origin = ul.y; // default value for FORMAT_TOP
     if (format & FORMAT_BOTTOM)
@@ -936,10 +941,10 @@ void Font::ProcessTagsBefore(const std::vector<LineData>& line_data, RenderState
     double orig_color[4];
     glGetDoublev(GL_CURRENT_COLOR, orig_color);
 
-    for (std::size_t i = 0; i < begin_line; ++i) {
+    for (std::size_t i = 0; i <= begin_line; ++i) {
         const LineData& line = line_data[i];
         for (CPSize j = CP0;
-             j < ((i == begin_line - 1) ? begin_char : CPSize(line.char_data.size()));
+             j < ((i == begin_line) ? begin_char : CPSize(line.char_data.size()));
              ++j) {
             for (std::size_t k = 0; k < line.char_data[Value(j)].tags.size(); ++k) {
                 HandleTag(line.char_data[Value(j)].tags[k], orig_color, render_state);
@@ -1002,6 +1007,7 @@ void Font::ClearKnownTags()
 {
     s_action_tags.clear();
     s_action_tags.insert("i");
+    s_action_tags.insert("s");
     s_action_tags.insert("u");
     s_action_tags.insert("rgba");
     s_action_tags.insert(ALIGN_LEFT_TAG);
@@ -1459,6 +1465,8 @@ void Font::Init(FT_Face& face)
     }
     // italics info
     m_italics_offset = Value(ITALICS_FACTOR * m_height / 2.0);
+    // shadow info
+    m_shadow_offset = 1.0;
 
     // we always need these whitespace, number, and punctuation characters
     std::vector<std::pair<boost::uint32_t, boost::uint32_t> > range_vec(
@@ -1616,46 +1624,73 @@ void Font::ValidateFormat(Flags<TextFormat>& format) const
         format &= ~FORMAT_LINEWRAP;
 }
 
+void Font::StoreGlyphImpl(Font::RenderCache& cache, GG::Clr color, const Pt& pt, const Glyph& glyph, int x_top_offset) const {
+    cache.coordinates->store(glyph.sub_texture.TexCoords()[0], glyph.sub_texture.TexCoords()[1]);
+    cache.vertices->store(pt.x + glyph.left_bearing + x_top_offset, pt.y + glyph.y_offset);
+    cache.colors->store(color);
+
+    cache.coordinates->store(glyph.sub_texture.TexCoords()[2], glyph.sub_texture.TexCoords()[1]);
+    cache.vertices->store(pt.x + glyph.sub_texture.Width() + glyph.left_bearing + x_top_offset, pt.y + glyph.y_offset);
+    cache.colors->store(color);
+
+    cache.coordinates->store(glyph.sub_texture.TexCoords()[2], glyph.sub_texture.TexCoords()[3]);
+    cache.vertices->store(pt.x + glyph.sub_texture.Width() + glyph.left_bearing - x_top_offset,
+                                        pt.y + glyph.sub_texture.Height() + glyph.y_offset);
+    cache.colors->store(color);
+
+    cache.coordinates->store(glyph.sub_texture.TexCoords()[0], glyph.sub_texture.TexCoords()[3]);
+    cache.vertices->store(pt.x + glyph.left_bearing - x_top_offset, pt.y + glyph.sub_texture.Height() + glyph.y_offset);
+    cache.colors->store(color);
+}
+
+void Font::StoreUnderlineImpl(Font::RenderCache& cache, GG::Clr color, const Pt& pt, const Glyph& glyph,
+                        Y descent, Y height, Y underline_height, Y underline_offset) const
+{
+    X x1 = pt.x;
+    Y y1(pt.y + height + descent - underline_offset);
+    X x2 = x1 + glyph.advance;
+    Y y2(y1 + underline_height);
+
+    cache.underline_vertices->store(x1, y1);
+    cache.underline_colors->store(color);
+    cache.underline_vertices->store(x2, y1);
+    cache.underline_colors->store(color);
+    cache.underline_vertices->store(x2, y2);
+    cache.underline_colors->store(color);
+    cache.underline_vertices->store(x1, y2);
+    cache.underline_colors->store(color);
+}
+
 X Font::StoreGlyph(const Pt& pt, const Glyph& glyph, const Font::RenderState* render_state,
                    Font::RenderCache& cache) const
 {
-    int offset = 0;
+    int italic_top_offset = 0;
+    int shadow_offset = 0;
 
     if (render_state && render_state->use_italics) {
         // Should we enable sub pixel italics offsets?
-        offset = static_cast<int>(m_italics_offset);
+        italic_top_offset = static_cast<int>(m_italics_offset);
     }
-    cache.coordinates->store(glyph.sub_texture.TexCoords()[0], glyph.sub_texture.TexCoords()[1]);
-    cache.vertices->store(pt.x + glyph.left_bearing + offset, pt.y + glyph.y_offset);
-    cache.colors->store(render_state->CurrentColor());
+    if (render_state && render_state->use_shadow) {
+        shadow_offset = static_cast<int>(m_shadow_offset);
+    }
 
-    cache.coordinates->store(glyph.sub_texture.TexCoords()[2], glyph.sub_texture.TexCoords()[1]);
-    cache.vertices->store(pt.x + glyph.sub_texture.Width() + glyph.left_bearing + offset, pt.y + glyph.y_offset);
-    cache.colors->store(render_state->CurrentColor());
+    // render shadows?
+    if (shadow_offset > 0) {
+        StoreGlyphImpl(cache, GG::CLR_BLACK, pt + GG::Pt(X1, Y0), glyph, italic_top_offset);
+        StoreGlyphImpl(cache, GG::CLR_BLACK, pt + GG::Pt(X0, Y1), glyph, italic_top_offset);
+        StoreGlyphImpl(cache, GG::CLR_BLACK, pt + GG::Pt(-X1, Y0), glyph, italic_top_offset);
+        StoreGlyphImpl(cache, GG::CLR_BLACK, pt + GG::Pt(X0, -Y1), glyph, italic_top_offset);
+        if (render_state && render_state->draw_underline) {
+            StoreUnderlineImpl(cache, GG::CLR_BLACK, pt + GG::Pt(X0, Y1), glyph, m_descent, m_height, Y(m_underline_height), Y(m_underline_offset));
+            StoreUnderlineImpl(cache, GG::CLR_BLACK, pt + GG::Pt(X0, -Y1), glyph, m_descent, m_height, Y(m_underline_height), Y(m_underline_offset));
+        }
+    }
 
-    cache.coordinates->store(glyph.sub_texture.TexCoords()[2], glyph.sub_texture.TexCoords()[3]);
-    cache.vertices->store(pt.x + glyph.sub_texture.Width() + glyph.left_bearing - offset,
-                                     pt.y + glyph.sub_texture.Height() + glyph.y_offset);
-    cache.colors->store(render_state->CurrentColor());
-
-    cache.coordinates->store(glyph.sub_texture.TexCoords()[0], glyph.sub_texture.TexCoords()[3]);
-    cache.vertices->store(pt.x + glyph.left_bearing - offset, pt.y + glyph.sub_texture.Height() + glyph.y_offset);
-    cache.colors->store(render_state->CurrentColor());
-
+    // render main text
+    StoreGlyphImpl(cache, render_state->CurrentColor(), pt, glyph, italic_top_offset);
     if (render_state && render_state->draw_underline) {
-        X x1 = pt.x;
-        Y y1(pt.y + m_height + m_descent - m_underline_offset);
-        X x2 = x1 + glyph.advance;
-        Y y2(y1 + m_underline_height);
-
-        cache.underline_vertices->store(x1, y1);
-        cache.underline_colors->store(render_state->CurrentColor());
-        cache.underline_vertices->store(x2, y1);
-        cache.underline_colors->store(render_state->CurrentColor());
-        cache.underline_vertices->store(x2, y2);
-        cache.underline_colors->store(render_state->CurrentColor());
-        cache.underline_vertices->store(x1, y2);
-        cache.underline_colors->store(render_state->CurrentColor());
+        StoreUnderlineImpl(cache, render_state->CurrentColor(), pt, glyph, m_descent, m_height, Y(m_underline_height), Y(m_underline_offset));
     }
 
     return glyph.advance;
@@ -1679,6 +1714,14 @@ void Font::HandleTag(const boost::shared_ptr<FormattingTag>& tag, double* orig_c
             }
         } else {
             ++render_state.draw_underline;
+        }
+    } else if (tag->tag_name == "s") {
+        if (tag->close_tag) {
+            if (render_state.use_shadow) {
+                --render_state.use_shadow;
+            }
+        } else {
+            ++render_state.use_shadow;
         }
     } else if (tag->tag_name == "rgba") {
         if (tag->close_tag) {

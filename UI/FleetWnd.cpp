@@ -423,15 +423,15 @@ namespace {
     boost::shared_ptr<ShaderProgram> scanline_shader;
 
     void AddOptions(OptionsDB& db) {
-        db.Add("ui.fleet-wnd-aggression",   UserStringNop("OPTIONS_DB_FLEET_WND_AGGRESSION"),   INVALID_FLEET_AGGRESSION,   Validator<NewFleetAggression>());
+        db.Add("UI.fleet-wnd-aggression",   UserStringNop("OPTIONS_DB_FLEET_WND_AGGRESSION"),   INVALID_FLEET_AGGRESSION,   Validator<NewFleetAggression>());
     }
     bool temp_bool = RegisterOptions(&AddOptions);
 
     NewFleetAggression NewFleetsAggressiveOptionSetting()
-    { return GetOptionsDB().Get<NewFleetAggression>("ui.fleet-wnd-aggression"); }
+    { return GetOptionsDB().Get<NewFleetAggression>("UI.fleet-wnd-aggression"); }
 
     void SetNewFleetAggressiveOptionSetting(NewFleetAggression aggression)
-    { GetOptionsDB().Set<NewFleetAggression>("ui.fleet-wnd-aggression", aggression); }
+    { GetOptionsDB().Set<NewFleetAggression>("UI.fleet-wnd-aggression", aggression); }
 
     boost::shared_ptr<GG::Texture> FleetAggressiveIcon()
     { return ClientUI::GetTexture(ClientUI::ArtDir() / "icons" / "buttons" / "fleet_aggressive.png"); }
@@ -924,7 +924,6 @@ void ShipDataPanel::Refresh() {
         }
     }
 
-
     // update stat icon values and browse wnds
     for (std::vector<std::pair<MeterType, StatisticIcon*> >::const_iterator it = m_stat_icons.begin();
          it != m_stat_icons.end(); ++it)
@@ -933,9 +932,8 @@ void ShipDataPanel::Refresh() {
 
         it->second->ClearBrowseInfoWnd();
         if (it->first == METER_DAMAGE) {
-            boost::shared_ptr<GG::BrowseInfoWnd> browse_wnd(new IconTextBrowseWnd(
-                DamageIcon(), UserString("SHIP_DAMAGE_STAT_TITLE"),
-                UserString("SHIP_DAMAGE_STAT_MAIN")));
+            boost::shared_ptr<GG::BrowseInfoWnd> browse_wnd(new ShipDamageBrowseWnd(
+                m_ship_id, it->first));
             it->second->SetBrowseInfoWnd(browse_wnd);
         } else if (it->first == METER_TROOPS) {
             boost::shared_ptr<GG::BrowseInfoWnd> browse_wnd(new IconTextBrowseWnd(
@@ -2602,8 +2600,8 @@ FleetWnd::~FleetWnd() {
 }
 
 void FleetWnd::Init(int selected_fleet_id) {
-    SetMinSize(GG::Pt(CUIWnd::MinimizedWidth(), BORDER_TOP + INNER_BORDER_ANGLE_OFFSET + BORDER_BOTTOM +
-                                                ListRowHeight() + 2*GG::Y(PAD)));
+    SetMinSize(GG::Pt(CUIWnd::MinimizedSize().x, BORDER_TOP + INNER_BORDER_ANGLE_OFFSET + BORDER_BOTTOM +
+                                                 ListRowHeight() + 2*GG::Y(PAD)));
 
     // ensure position is not off screen
     GG::Pt window_pos = UpperLeft();

@@ -1913,8 +1913,14 @@ Tech
             scope = And [
                 Planet
                 OwnedBy empire = Source.Owner
-                ValueTest low = 0.1 high = ([[MIN_RECOLONIZING_SIZE]] - 0.001) testvalue = LocalCandidate.Population
-                ValueTest low = ([[MIN_RECOLONIZING_SIZE]] - RootCandidate.Population)  testvalue = LocalCandidate.NextTurnPopGrowth
+                CanColonize
+                ValueTest low = ([[MIN_RECOLONIZING_SIZE]] - LocalCandidate.Population)  testvalue = LocalCandidate.NextTurnPopGrowth
+                ValueTest low = ([[MIN_RECOLONIZING_HAPPINESS]])  testvalue = LocalCandidate.TargetHappiness
+                ValueTest low = ([[MIN_RECOLONIZING_HAPPINESS]] - 1)  testvalue = LocalCandidate.Happiness
+                Or [
+                    ValueTest low = 0.1 high = ([[MIN_RECOLONIZING_SIZE]] - 0.001) testvalue = LocalCandidate.Population
+                    ValueTest low = 0.1 high = ([[MIN_RECOLONIZING_HAPPINESS]] - 0.001) testvalue = LocalCandidate.Happiness
+                ]
             ]
             activation = Source
             effects = [
@@ -1924,6 +1930,16 @@ Tech
                     parameters = [
                         tag = "planet" data = Target.ID
                     ]
+                    empire = Source.Owner
+                ]
+
+        EffectsGroup
+            scope = Source
+            activation = Turn high = 1
+            effects = [
+                GenerateSitRepMessage
+                    message = "SITREP_WELCOME"
+                    icon = "icons/specials_huge/ancient_ruins.png"
                     empire = Source.Owner
                 ]
     ]
@@ -2983,9 +2999,13 @@ Tech
     Unresearchable
     effectsgroups =
         EffectsGroup
-            scope = Building
+            scope = OR [
+                Building
+                Planet
+                ]
             stackinggroup = "PLANET_STEALTH_MOD_STACK"
-            effects = SetStealth value = Value + 0.01
+            accountinglabel = "BASIC_PLANET_STEALTH"
+            effects = SetStealth value = Value + 5
     graphic = ""
 
 

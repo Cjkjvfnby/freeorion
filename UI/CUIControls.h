@@ -15,6 +15,7 @@
 #include <GG/StaticGraphic.h>
 #include <GG/TabWnd.h>
 #include <GG/dialogs/FileDlg.h>
+#include <GG/GLClientAndServerBuffer.h>
 
 #include <boost/function.hpp>
 
@@ -409,18 +410,22 @@ class ColorSelector : public GG::Control {
 public:
     /** \name Structors */ //@{
     ColorSelector(GG::Clr color, GG::Clr default_color);
+    virtual ~ColorSelector();
     //@}
 
     /** \name Mutators */ //@{
     virtual void Render();
     virtual void LClick(const GG::Pt& pt, GG::Flags<GG::ModKey> mod_keys);
     virtual void RClick(const GG::Pt& pt, GG::Flags<GG::ModKey> mod_keys);
+    virtual void SizeMove(const GG::Pt& ul, const GG::Pt& lr);
     //@}
 
     mutable boost::signals2::signal<void (const GG::Clr&)> ColorChangedSignal;
 
 private:
-    GG::Clr m_default_color;
+    virtual void InitBuffer();
+    GG::GL2DVertexBuffer    m_border_buffer;
+    GG::Clr                 m_default_color;
 };
 
 /** A GG file dialog in the FreeOrion style. */
@@ -507,24 +512,6 @@ public:
 private:
     void UpdateEnabled();
     bool m_enabled;
-};
-
-/** Acts like a normal TextControl, but renders extra black copy / copies of text behind to create a
-  * drop-shadow effect, impriving text readability. */
-class ShadowedTextControl : public GG::Control {
-public:
-    ShadowedTextControl(const std::string& str, const boost::shared_ptr<GG::Font>& font,
-                        GG::Clr color = GG::CLR_BLACK, GG::Flags<GG::TextFormat> format = GG::FORMAT_NONE);
-
-    virtual GG::Pt MinUsableSize() const;
-    virtual void SetText(const std::string& str);
-    virtual void SizeMove(const GG::Pt& ul, const GG::Pt& lr);
-    virtual void SetColor(GG::Clr c);
-    virtual void SetTextColor(GG::Clr c);
-    virtual void Render();
-private:
-    GG::TextControl* shadow_text;
-    GG::TextControl* main_text;
 };
 
 /** Functions like a StaticGraphic, except can have multiple textures that are rendered bottom to top

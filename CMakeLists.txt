@@ -87,6 +87,12 @@ add_custom_target(freeorionversion
     "CMake"
 )
 
+set_source_files_properties(
+    ${CMAKE_CURRENT_SOURCE_DIR}/util/Version.cpp
+    PROPERTIES
+    GENERATED TRUE
+)
+
 if (WIN32)
     # Add icon resource file to freeorion.exe
     if (NOT EXISTS ${CMAKE_BINARY_DIR}/win32_resources.rc)
@@ -142,6 +148,7 @@ set (freeorioncommon_HEADER
     universe/Condition.h
     universe/EffectAccounting.h
     universe/Effect.h
+    universe/Encyclopedia.h
     universe/Enums.h
     universe/Field.h
     universe/Fleet.h
@@ -204,6 +211,7 @@ set (freeorioncommon_SOURCE
     universe/Condition.cpp
     universe/EffectAccounting.cpp
     universe/Effect.cpp
+    universe/Encyclopedia.cpp
     universe/Enums.cpp
     universe/Field.cpp
     universe/Fleet.cpp

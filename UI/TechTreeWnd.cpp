@@ -583,13 +583,19 @@ public:
     mutable TechTreeWnd::TechClickSignalType    TechDoubleClickedSignal;
 
 private:
+    void            InitBuffers();
+
+    GG::GL2DVertexBuffer            m_border_buffer;
+    GG::GL2DVertexBuffer            m_eta_border_buffer;
+    GG::GL2DVertexBuffer            m_enqueued_indicator_buffer;
+
     const std::string&              m_tech_name;
     std::string                     m_name_text;
     std::string                     m_eta_text;
     const TechTreeWnd::LayoutPanel* m_layout_panel;
     GG::StaticGraphic*              m_icon;
-    ShadowedTextControl*            m_name_label;
-    ShadowedTextControl*            m_eta_label;
+    GG::TextControl*                m_name_label;
+    GG::TextControl*                m_eta_label;
     GG::Clr                         m_colour;
     TechStatus                      m_status;
     bool                            m_browse_highlight;
@@ -617,8 +623,8 @@ TechTreeWnd::LayoutPanel::TechPanel::TechPanel(const std::string& tech_name, con
     const int GRAPHIC_SIZE = Value(TechPanelHeight());
     m_icon = new GG::StaticGraphic(ClientUI::TechIcon(m_tech_name), GG::GRAPHIC_FITGRAPHIC | GG::GRAPHIC_PROPSCALE);
     m_icon->Resize(GG::Pt(GG::X(GRAPHIC_SIZE), GG::Y(GRAPHIC_SIZE)));
-    m_name_label = new ShadowedTextControl("", ClientUI::GetFont(FontSize()),ClientUI::TextColor(), GG::FORMAT_WORDBREAK | GG::FORMAT_VCENTER | GG::FORMAT_LEFT);
-    m_eta_label = new ShadowedTextControl("", ClientUI::GetFont(FontSize()),ClientUI::TextColor());
+    m_name_label = new GG::TextControl(GG::X0, GG::Y0, GG::X1, GG::Y1, "", ClientUI::GetFont(FontSize()),ClientUI::TextColor(), GG::FORMAT_WORDBREAK | GG::FORMAT_VCENTER | GG::FORMAT_LEFT);
+    m_eta_label = new GG::TextControl(GG::X0, GG::Y0, GG::X1, GG::Y1, "", ClientUI::GetFont(FontSize()),ClientUI::TextColor());
 
     // intentionally not attaching as child; TechPanel::Render the child Render() function instead.
 
@@ -627,8 +633,7 @@ TechTreeWnd::LayoutPanel::TechPanel::TechPanel(const std::string& tech_name, con
     Update();
 }
 
-TechTreeWnd::LayoutPanel::TechPanel::~TechPanel()
-{
+TechTreeWnd::LayoutPanel::TechPanel::~TechPanel() {
     delete m_icon;
     delete m_name_label;
     delete m_eta_label;
@@ -828,8 +833,8 @@ void TechTreeWnd::LayoutPanel::TechPanel::Update() {
     m_icon->SetColor(icon_colour);
 
     m_name_text = UserString(m_tech_name);
-    m_name_label->SetText(m_name_text);
-    m_eta_label->SetText(m_eta_text);
+    m_name_label->SetText("<s>" + m_name_text + "</s>");
+    m_eta_label->SetText("<s>" + m_eta_text + "</s>");
 
     ClearBrowseInfoWnd();
     SetBrowseInfoWnd(TechPanelRowBrowseWnd(m_tech_name, client_empire_id));
@@ -1678,8 +1683,11 @@ TechTreeWnd::~TechTreeWnd() {
 void TechTreeWnd::SizeMove(const GG::Pt& ul, const GG::Pt& lr) {
     const GG::Pt old_size = Size();
     GG::Wnd::SizeMove(ul, lr);
-    if (old_size != Size())
+    if (old_size != Size()) {
+        m_enc_detail_panel->ValidatePosition();
+        m_tech_tree_controls->ValidatePosition();
         m_layout_panel->Resize(this->Size());
+    }
 }
 
 double TechTreeWnd::Scale() const
