@@ -16,7 +16,6 @@ import time
 import cProfile, pstats, StringIO
 from freeorion_tools import dict_from_map, ppstring, chat_human
 from TechsListsAI import EXOBOT_TECH_NAME
-from freeorion_tools import print_error
 
 best_military_design_rating_cache = {}  # indexed by turn, values are rating of the military design of the turn
 design_cost_cache = {0: {(-1, -1): 0}} #outer dict indexed by cur_turn (currently only one turn kept); inner dict indexed by (design_id, pid)
