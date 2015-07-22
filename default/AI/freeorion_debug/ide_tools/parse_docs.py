@@ -1,7 +1,5 @@
 import re
 
-
-
 normalization_dict = {'empire': 'empire_object',
                       'int': 'number',
                       'str': 'string',
