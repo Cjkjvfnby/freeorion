@@ -26,6 +26,21 @@ def create_universe(psd_map):
     """
     print "Python Universe Generator"
 
+    # ====== inspector code start ====== #
+    import sys
+    import os
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'AI', 'freeorion_debug', 'ide_tools'))
+    from interface_inspector import inspect
+
+    fleet_plan_list = fo.load_fleet_plan_list("starting_fleets.txt")
+    spec_list = fo.load_item_spec_list("preunlocked_items.txt")
+    monster_plan_list = fo.load_monster_fleet_plan_list("space_monster_spawn_fleets.txt")
+    inspect(fo, fo.get_galaxy_setup_data(),
+             fleet_plan_list[0], spec_list[0], monster_plan_list[0])
+    exit(1)
+    # ====== inspector code end ====== #
+
+
     # fetch universe and player setup data
     gsd = fo.get_galaxy_setup_data()
     total_players = len(psd_map)
