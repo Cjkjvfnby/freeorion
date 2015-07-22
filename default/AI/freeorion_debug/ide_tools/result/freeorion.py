@@ -693,13 +693,13 @@ def all_empires():
     return int()
 
 
-def base_star_type_dist(arg):
+def base_star_type_dist(star_type):
     """
     C++ signature:
         int base_star_type_dist(StarType)
     
-    :param arg:
-    :type arg: starType
+    :param star_type:
+    :type star_type: starType
     :rtype int
     """
     return int()
@@ -717,13 +717,13 @@ def calc_typical_universe_width(number):
     return float()
 
 
-def cluster_galaxy_calc_positions(arg, number1, number2, floating_number1, floating_number2):
+def cluster_galaxy_calc_positions(positions, number1, number2, floating_number1, floating_number2):
     """
     C++ signature:
         void cluster_galaxy_calc_positions(std::vector<SystemPosition,std::allocator<SystemPosition> > {lvalue},unsigned int,unsigned int,double,double)
     
-    :param arg:
-    :type arg: SystemPositionVec
+    :param positions:
+    :type positions: SystemPositionVec
     :param number1:
     :type number1: int
     :param number2:
@@ -795,13 +795,13 @@ def create_monster_fleet(number):
     return int()
 
 
-def create_planet(arg, planet_type, number1, number2, string):
+def create_planet(planet_size, planet_type, number1, number2, string):
     """
     C++ signature:
         int create_planet(PlanetSize,PlanetType,int,int,std::string)
     
-    :param arg:
-    :type arg: planetSize
+    :param planet_size:
+    :type planet_size: planetSize
     :param planet_type:
     :type planet_type: planetType
     :param number1:
@@ -833,13 +833,13 @@ def create_ship(string1, string2, string3, number):
     return int()
 
 
-def create_system(arg, string, floating_number1, floating_number2):
+def create_system(star_type, string, floating_number1, floating_number2):
     """
     C++ signature:
         int create_system(StarType,std::string,double,double)
     
-    :param arg:
-    :type arg: starType
+    :param star_type:
+    :type star_type: starType
     :param string:
     :type string: str
     :param floating_number1:
@@ -860,15 +860,15 @@ def current_turn():
     return int()
 
 
-def density_mod_to_planet_size_dist(arg1, arg2):
+def density_mod_to_planet_size_dist(setup_option, planet_size):
     """
     C++ signature:
         int density_mod_to_planet_size_dist(GalaxySetupOption,PlanetSize)
     
-    :param arg1:
-    :type arg1: galaxySetupOption
-    :param arg2:
-    :type arg2: planetSize
+    :param setup_option:
+    :type setup_option: galaxySetupOption
+    :param planet_size:
+    :type planet_size: planetSize
     :rtype int
     """
     return int()
@@ -916,13 +916,13 @@ def design_get_premade_list():
     return list()
 
 
-def elliptical_galaxy_calc_positions(arg, number, floating_number1, floating_number2):
+def elliptical_galaxy_calc_positions(positions, number, floating_number1, floating_number2):
     """
     C++ signature:
         void elliptical_galaxy_calc_positions(std::vector<SystemPosition,std::allocator<SystemPosition> > {lvalue},unsigned int,double,double)
     
-    :param arg:
-    :type arg: SystemPositionVec
+    :param positions:
+    :type positions: SystemPositionVec
     :param number:
     :type number: int
     :param floating_number1:
@@ -978,15 +978,15 @@ def empire_set_name(number, string):
     return None
 
 
-def empire_unlock_item(number, arg, string):
+def empire_unlock_item(number, unlockable_item_type, string):
     """
     C++ signature:
         void empire_unlock_item(int,UnlockableItemType,std::string)
     
     :param number:
     :type number: int
-    :param arg:
-    :type arg: unlockableItemType
+    :param unlockable_item_type:
+    :type unlockable_item_type: unlockableItemType
     :param string:
     :type string: str
     :rtype None
@@ -994,21 +994,21 @@ def empire_unlock_item(number, arg, string):
     return None
 
 
-def galaxy_shape_mod_to_planet_size_dist(arg1, arg2):
+def galaxy_shape_mod_to_planet_size_dist(galaxy_shape, planet_size):
     """
     C++ signature:
         int galaxy_shape_mod_to_planet_size_dist(Shape,PlanetSize)
     
-    :param arg1:
-    :type arg1: galaxyShape
-    :param arg2:
-    :type arg2: planetSize
+    :param galaxy_shape:
+    :type galaxy_shape: galaxyShape
+    :param planet_size:
+    :type planet_size: planetSize
     :rtype int
     """
     return int()
 
 
-def generate_sitrep(number, string1, arg, string2):
+def generate_sitrep(number, string1, dictionary, string2):
     """
     C++ signatures:
         void generate_sitrep(int,std::string,boost::python::dict,std::string)
@@ -1018,8 +1018,8 @@ def generate_sitrep(number, string1, arg, string2):
     :type number: int
     :param string1:
     :type string1: str
-    :param arg:
-    :type arg: dict
+    :param dictionary:
+    :type dictionary: dict
     :param string2:
     :type string2: str
     :rtype None
@@ -1027,13 +1027,13 @@ def generate_sitrep(number, string1, arg, string2):
     return None
 
 
-def generate_starlanes(arg):
+def generate_starlanes(setup_option):
     """
     C++ signature:
         void generate_starlanes(GalaxySetupOption)
     
-    :param arg:
-    :type arg: galaxySetupOption
+    :param setup_option:
+    :type setup_option: galaxySetupOption
     :rtype None
     """
     return None
@@ -1189,13 +1189,13 @@ def invalid_position():
     return float()
 
 
-def irregular_galaxy_positions(arg, number, floating_number1, floating_number2):
+def irregular_galaxy_positions(positions, number, floating_number1, floating_number2):
     """
     C++ signature:
         void irregular_galaxy_positions(std::vector<SystemPosition,std::allocator<SystemPosition> > {lvalue},unsigned int,double,double)
     
-    :param arg:
-    :type arg: SystemPositionVec
+    :param positions:
+    :type positions: SystemPositionVec
     :param number:
     :type number: int
     :param floating_number1:
@@ -1298,39 +1298,39 @@ def min_system_separation():
     return float()
 
 
-def monster_frequency(arg):
+def monster_frequency(setup_option):
     """
     C++ signature:
         int monster_frequency(GalaxySetupOption)
     
-    :param arg:
-    :type arg: galaxySetupOption
+    :param setup_option:
+    :type setup_option: galaxySetupOption
     :rtype int
     """
     return int()
 
 
-def native_frequency(arg):
+def native_frequency(setup_option):
     """
     C++ signature:
         int native_frequency(GalaxySetupOption)
     
-    :param arg:
-    :type arg: galaxySetupOption
+    :param setup_option:
+    :type setup_option: galaxySetupOption
     :rtype int
     """
     return int()
 
 
-def orbit_mod_to_planet_size_dist(number, arg):
+def orbit_mod_to_planet_size_dist(number, planet_size):
     """
     C++ signature:
         int orbit_mod_to_planet_size_dist(int,PlanetSize)
     
     :param number:
     :type number: int
-    :param arg:
-    :type arg: planetSize
+    :param planet_size:
+    :type planet_size: planetSize
     :rtype int
     """
     return int()
@@ -1456,15 +1456,15 @@ def planet_set_focus(number, string):
     return None
 
 
-def planet_set_size(number, arg):
+def planet_set_size(number, planet_size):
     """
     C++ signature:
         void planet_set_size(int,PlanetSize)
     
     :param number:
     :type number: int
-    :param arg:
-    :type arg: planetSize
+    :param planet_size:
+    :type planet_size: planetSize
     :rtype None
     """
     return None
@@ -1498,13 +1498,13 @@ def planet_set_type(number, planet_type):
     return None
 
 
-def planet_size_mod_to_planet_type_dist(arg, planet_type):
+def planet_size_mod_to_planet_type_dist(planet_size, planet_type):
     """
     C++ signature:
         int planet_size_mod_to_planet_type_dist(PlanetSize,PlanetType)
     
-    :param arg:
-    :type arg: planetSize
+    :param planet_size:
+    :type planet_size: planetSize
     :param planet_type:
     :type planet_type: planetType
     :rtype int
@@ -1526,13 +1526,13 @@ def remove_special(number, string):
     return None
 
 
-def ring_galaxy_calc_positions(arg, number, floating_number1, floating_number2):
+def ring_galaxy_calc_positions(positions, number, floating_number1, floating_number2):
     """
     C++ signature:
         void ring_galaxy_calc_positions(std::vector<SystemPosition,std::allocator<SystemPosition> > {lvalue},unsigned int,double,double)
     
-    :param arg:
-    :type arg: SystemPositionVec
+    :param positions:
+    :type positions: SystemPositionVec
     :param number:
     :type number: int
     :param floating_number1:
@@ -1632,13 +1632,13 @@ def special_spawn_rate(string):
     return float()
 
 
-def specials_frequency(arg):
+def specials_frequency(setup_option):
     """
     C++ signature:
         int specials_frequency(GalaxySetupOption)
     
-    :param arg:
-    :type arg: galaxySetupOption
+    :param setup_option:
+    :type setup_option: galaxySetupOption
     :rtype int
     """
     return int()
@@ -1710,13 +1710,13 @@ def species_remove_homeworld(string, number):
     return None
 
 
-def spiral_galaxy_calc_positions(arg, number1, number2, floating_number1, floating_number2):
+def spiral_galaxy_calc_positions(positions, number1, number2, floating_number1, floating_number2):
     """
     C++ signature:
         void spiral_galaxy_calc_positions(std::vector<SystemPosition,std::allocator<SystemPosition> > {lvalue},unsigned int,unsigned int,double,double)
     
-    :param arg:
-    :type arg: SystemPositionVec
+    :param positions:
+    :type positions: SystemPositionVec
     :param number1:
     :type number1: int
     :param number2:
@@ -1730,27 +1730,27 @@ def spiral_galaxy_calc_positions(arg, number1, number2, floating_number1, floati
     return None
 
 
-def star_type_mod_to_planet_size_dist(arg1, arg2):
+def star_type_mod_to_planet_size_dist(star_type, planet_size):
     """
     C++ signature:
         int star_type_mod_to_planet_size_dist(StarType,PlanetSize)
     
-    :param arg1:
-    :type arg1: starType
-    :param arg2:
-    :type arg2: planetSize
+    :param star_type:
+    :type star_type: starType
+    :param planet_size:
+    :type planet_size: planetSize
     :rtype int
     """
     return int()
 
 
-def star_type_mod_to_planet_type_dist(arg, planet_type):
+def star_type_mod_to_planet_type_dist(star_type, planet_type):
     """
     C++ signature:
         int star_type_mod_to_planet_type_dist(StarType,PlanetType)
     
-    :param arg:
-    :type arg: starType
+    :param star_type:
+    :type star_type: starType
     :param planet_type:
     :type planet_type: planetType
     :rtype int
@@ -1875,29 +1875,29 @@ def sys_remove_starlane(number1, number2):
     return None
 
 
-def sys_set_star_type(number, arg):
+def sys_set_star_type(number, star_type):
     """
     C++ signature:
         void sys_set_star_type(int,StarType)
     
     :param number:
     :type number: int
-    :param arg:
-    :type arg: starType
+    :param star_type:
+    :type star_type: starType
     :rtype None
     """
     return None
 
 
-def universe_age_mod_to_star_type_dist(arg1, arg2):
+def universe_age_mod_to_star_type_dist(setup_option, star_type):
     """
     C++ signature:
         int universe_age_mod_to_star_type_dist(GalaxySetupOption,StarType)
     
-    :param arg1:
-    :type arg1: galaxySetupOption
-    :param arg2:
-    :type arg2: starType
+    :param setup_option:
+    :type setup_option: galaxySetupOption
+    :param star_type:
+    :type star_type: starType
     :rtype int
     """
     return int()
