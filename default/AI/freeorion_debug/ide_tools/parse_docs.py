@@ -4,52 +4,28 @@ normalization_dict = {'empire': 'empire_object',
                       'int': 'number',
                       'str': 'string',
                       'float': 'floating_number',
+
                       'object': 'obj',
-                      'IntBoolMap': 'int_bool_map',
-                      'IntDblMap': 'int_dbl_map',
                       'universeObject': 'base_object',
-                      'meterType': 'meter_type',
                       'bool': 'boolean',
                       'StringVec': 'string_list',
-                      'shipDesign': 'ship_design',
                       'universe': 'universe_object',
-                      'researchQueue': 'research_queue',
                       'resPoolMap': 'res_pool',
-                      'productionQueue': 'production_queue',
-                      'diplomaticMessage': 'diplomatic_message',
                       'ship': 'ship_object',
                       'species': 'species_object',
-                      'planetType': 'planet_type',
                       'system': 'system_object',
                       'tech': 'tech_object',
                       'list': 'item_list',
                       'planet': 'planet_object',
-                      'partType': 'part_type',
-                      'resPool': 'res_pool',
-                      'researchQueueElement': 'research_queue_element',
-                      'shipSlotType': 'ship_slot_type',
                       'sitrep': 'sitrep_object',
-                      'IntIntMap': 'int_int_map',
-                      'IntPairVec': 'int_pair_list',
-                      'IntSet': 'int_set',
-                      'IntSetSet': 'int_set_set',
-                      'IntVec': 'int_list',
-                      'IntVisibilityMap': 'int_visibility_map',
-                      'ItemSpecVec': 'item_spec_vec',
-                      'StringSet': 'string_set',
-                      'VisibilityIntMap': 'visibility_int_map',
-                      'buildingType': 'buildingType',
-                      'productionQueueElement': 'production_queue_element',
-                      'resourceType': 'resource_type',
-                      'buildType': 'build_type',
-                      'field': 'field',
-                      'hullType': 'hull_type',
+                      'dict': 'dictionary',
+                      'SystemPositionVec': 'positions',
+                      'galaxySetupOption': 'setup_option',
                       }
 
-
 def normalize_name(tp):
-    if not tp in normalization_dict:
-        return 'arg'
+    if tp not in normalization_dict:
+        return re.sub('[A-Z]', lambda x: '_%s' % x.group(0).lower(), tp)
     else:
         return normalization_dict[tp]
 
