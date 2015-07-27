@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from EnumsAI import AIFleetMissionType, TargetType
+from EnumsAI import AIFleetMissionType
 
 sys.path.append('c:/Python27/Lib/site-packages/')
 
@@ -145,17 +145,12 @@ class DumpFleet(Dumper):
             'visibility': str(universe.getVisibility(fid, fo.getEmpire().empireID)),
             'ships': list(fleet.shipIDs),
         }
-        if mission:
-            for k, v in mission._mission_types.items():
-                if v:
-                    for item in v:
-                        obj = item.target_obj
-                        if obj:
-                            name = obj.name
-                        else:
-                            name = "???"
-                        data['target'] = [AIFleetMissionType.name(k), item.target_id,
-                                          TargetType().name(item.target_type), name]
+        if mission and mission.target:
+
+            obj = mission.target.get_object()
+            name = obj and obj.name or 'unknown'
+            data['target'] = [AIFleetMissionType.name(mission.type), mission.target.id,
+                              mission.target.object_name, name]
         return data
 
 
