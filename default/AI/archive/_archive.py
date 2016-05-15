@@ -13,7 +13,6 @@ class Archive(object):
 
     def __init__(self):
         self.__initialized = False
-        self.planet_history = None
         self._histories = []
 
     def initialization(self):
@@ -24,8 +23,10 @@ class Archive(object):
             setattr(foAI.foAIstate, 'archive', {})
 
         planet_history_entries = foAI.foAIstate.archive.setdefault(PlanetHistory.name, {})
-        self.planet_history = PlanetHistory(planet_history_entries)
-        self._histories.append(self.planet_history)
+
+        self._histories.append(
+            PlanetHistory(planet_history_entries),
+        )
 
     def update(self):
         if not self.__initialized:

@@ -28,11 +28,21 @@ class PlanetHistory(object):
 
     def get_history(self):
         res = []
-        for turn, entry_list in sorted(self.entries.items()):
+        state = {}
+        entries = sorted(self.entries.items())
+        for turn, entry_list in entries:
             res.append('Turn %s' % turn)
-            for entry in entry_list:
-                if entry['is_my']:
-                    res.append('  %-4s %s' % (entry.pid, entry['focus']))
+            for entry in sorted(entry_list):
+                focus = entry['focus']
+                if not entry['is_my'] or not focus:
+                    continue
+                if entry.pid not in state:
+                    res.append('  %-4s focus set to %s' % (entry.pid, focus))
+                else:
+                    old_focus = state[entry.pid]['focus']
+                    if old_focus != focus:
+                        res.append('  %-4s focus changed from %s to %s' % (entry.pid, old_focus, focus))
+                state[entry.pid] = entry
         return '\n'.join(res)
 
 
