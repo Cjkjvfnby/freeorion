@@ -1,5 +1,6 @@
 import freeOrionAIInterface as fo
 from freeOrionAIInterface import meterType
+from history import History
 
 # may be useful later
 all_meters = [
@@ -13,11 +14,8 @@ all_meters = [
 ]
 
 
-class PlanetHistory(object):
+class PlanetHistory(History):
     name = 'planet_history'
-
-    def __init__(self, entries):
-        self.entries = entries
 
     def update(self):
         turn = fo.currentTurn()

@@ -5,6 +5,7 @@ from datetime import datetime
 import freeOrionAIInterface as fo
 import FreeOrionAI as foAI
 from archive.planet_history import PlanetHistory
+from archive.research_history import ResearchHistory
 
 
 class Archive(object):
@@ -13,7 +14,10 @@ class Archive(object):
 
     def __init__(self):
         self.__initialized = False
-        self._histories = []
+        self._histories = [
+            PlanetHistory(),
+            ResearchHistory(),
+        ]
 
     def initialization(self):
         self.__initialized = True
@@ -22,11 +26,8 @@ class Archive(object):
         if not hasattr(foAI.foAIstate, 'archive'):
             setattr(foAI.foAIstate, 'archive', {})
 
-        planet_history_entries = foAI.foAIstate.archive.setdefault(PlanetHistory.name, {})
-
-        self._histories.append(
-            PlanetHistory(planet_history_entries),
-        )
+        for x in self._histories:
+            foAI.foAIstate.archive.setdefault(x.name, x.entries)
 
     def update(self):
         if not self.__initialized:
