@@ -258,6 +258,7 @@ def generateOrders():  # pylint: disable=invalid-name
     except Exception as e:
         print_error(e)  # TODO move it to cycle above
 
+    dump_data()
     if using_statprof:
         try:
             statprof.stop()
