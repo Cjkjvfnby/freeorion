@@ -10,7 +10,7 @@ from archive.research_history import ResearchHistory
 
 class Archive(object):
     def __repr__(self):
-        return 'Archive, use "write()" method to dump history.'
+        return 'Archive, use ".write" to dump history.'
 
     def __init__(self):
         self.__initialized = False
@@ -35,6 +35,7 @@ class Archive(object):
         for history in self._histories:
             history.update()
 
+    @property
     def write(self):
         def join_and_create(path, prefix):
             p = os.path.join(path, prefix)
