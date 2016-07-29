@@ -1,7 +1,5 @@
 import freeOrionAIInterface as fo
-from freeOrionAIInterface import meterType
-
-from print_utils import Table, Text, Sequence
+from common.print_utils import Table, Text, Sequence
 from history import History
 
 
