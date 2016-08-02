@@ -1,3 +1,8 @@
+from collections import defaultdict
+from operator import attrgetter
+
+from common.print_utils import Table, Float, Text
+
 import freeOrionAIInterface as fo
 from freeOrionAIInterface import meterType
 from history import History
@@ -14,6 +19,8 @@ all_meters = [
 ]
 
 
+
+
 class PlanetHistory(History):
     name = 'planet_history'
 
@@ -25,22 +32,39 @@ class PlanetHistory(History):
         self.entries[turn] = [PlanetTurn(turn, pid) for pid in universe.planetIDs]
 
     def get_history(self):
+        planets = defaultdict(list)
+
         res = []
-        state = {}
         entries = sorted(self.entries.items())
         for turn, entry_list in entries:
-            res.append('Turn %s' % turn)
-            for entry in sorted(entry_list):
-                focus = entry['focus']
-                if not entry['is_my'] or not focus:
-                    continue
-                if entry.pid not in state:
-                    res.append('  %-4s focus set to %s' % (entry.pid, focus))
-                else:
-                    old_focus = state[entry.pid]['focus']
-                    if old_focus != focus:
-                        res.append('  %-4s focus changed from %s to %s' % (entry.pid, old_focus, focus))
-                state[entry.pid] = entry
+            for entry in entry_list:
+                planets[entry.pid].append(entry)
+
+        for planet_id, entries in sorted(planets.items()):
+            planet_table = Table(
+                [
+                    Text('turn', align='>'),
+                    Text('owner'),
+                    Text('focus'),
+                    Text('industry'),
+                    Text('research'),
+                    Float('buildings', precession=0),
+                ],
+                table_name='Planet %s' % planet_id
+            )
+            for entry in sorted(entries, key=attrgetter('turn')):
+                planet_table.add_row(
+                    [
+                        entry.turn,
+                        entry['owner'],
+                        entry['focus'],
+                        '%.1f / %.1f' % tuple(entry['industry']),
+                        '%.1f / %.1f' % tuple(entry['research']),
+                        len(entry['buildingIDs']),
+                        ]
+                )
+            res.append(planet_table.get_table())
+            res.append('')
         return '\n'.join(res)
 
 
