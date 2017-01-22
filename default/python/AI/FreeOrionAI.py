@@ -9,6 +9,9 @@ from common import configure_logging
 import freeOrionAIInterface as fo  # interface used to interact with FreeOrion AI client  # pylint: disable=import-error
 
 from common.option_tools import parse_config
+
+from archive import archive
+
 parse_config(fo.getAIConfigStr(), fo.getUserConfigDir())
 
 from freeorion_tools import patch_interface
@@ -277,6 +280,7 @@ def generateOrders():  # pylint: disable=invalid-name
             statprof.start()
         except:
             pass
+    archive.update()
 
 
 # The following methods should probably be moved to the AIstate module, to keep this module more focused on implementing required interface

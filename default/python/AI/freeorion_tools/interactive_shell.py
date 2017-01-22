@@ -49,6 +49,7 @@ def handle_debug_chat(sender, message):
 
             initial_code = [
                 'import FreeOrionAI as foAI',
+                'from archive import archive',
             ]
 
             # add some variables to scope: (name, help text, value)
@@ -56,6 +57,7 @@ def handle_debug_chat(sender, message):
                 ('ai', 'aistate', 'foAI.foAIstate'),
                 ('u', 'universe', 'fo.getUniverse()'),
                 ('e', 'empire', 'fo.getEmpire()'),
+                ('a', 'archive', 'archive'),
             )
             for var, _, code in scopes_variable:
                 initial_code.append('%s = %s' % (var, code))
