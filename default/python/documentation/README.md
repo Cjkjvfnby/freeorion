@@ -21,8 +21,8 @@ C++ API use camelCase style
 Python code should be written using general Python style
 according to [PEP8](https://www.python.org/dev/peps/pep-0008/)
 also useful to read [google recommendations](https://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
-We perform automatic Python style checks with flake8
-`TODO find how to add the link to the description, it is one level up from this point`
+We perform automatic Python [style checks with flake8](../README.MD)
+
 
 
 ## Extend C+ API via Python
