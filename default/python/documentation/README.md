@@ -181,8 +181,12 @@ Best way to deploy your code to game is to specify
 ```#!xml
 <?xml version="1.0"?>
 <XMLDoc>
-<resource-dir>repository_path/freeorion/default</resource-dir>
-<stringtable-filename>repository_pathfreeorion/default/stringtables/en.txt</stringtable-filename>
+   <resource>
+    <path>repository_path/default</path>
+    <stringtable>
+      <path>repository_path/default/stringtables/en.txt</path>
+    </stringtable>
+  </resource>
 </XMLDoc>
 ```
 
