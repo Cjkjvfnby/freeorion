@@ -39,7 +39,8 @@ The AIState is stored as JSON string in save game files.
 See [module docs](../AI/savegame_codec/__init__.py#L1).
 
 ## Preserving backwards compatibility for save games
-AI state have version attribute, which describes current version.
+AI state now support versioning, see `AIstate.version` in
+[AIstate.py](../AI/AIstate.py).
 
 Adding or removing AIState attributes can
 break save compatibility. If you're not entirely sure
@@ -49,14 +50,12 @@ leave them with comment to remove, to make breaks less frequent.
 When adding attributes or changing their names,
 compatibility can be broken because some of the new code will try
 to use attributes that the saved object won't have.
-
-You should increment version and update `AI.AIstate.convert_to_version`
-method to convert from older versions.
+You should increment `AIstate.version` and update `convert_to_version`
+function in [AIstate.py](../AI/AIstate.py) to convert from older versions.
 
 Keep in mind, this method is just used for converting version;
-default values still need to be provided in `__init__` to
+default values still need to be provided in `AIstate.__init__` to
 handle new games.
-
 
 ## Debugging
 ### Internal Debug Mode
