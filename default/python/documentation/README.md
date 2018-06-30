@@ -36,7 +36,7 @@ Add `__repr__` and `__str__` methods to objects as soon as you need it.
 
 ## AI state in save file
 The AIState is stored as JSON string in save game files.
-See [module docs](../AI/savegame_codec/__init__.py).
+See [module docs](../AI/savegame_codec/__init__.py#L1).
 
 ## Preserving backwards compatibility for save games
 AI state have version attribute, which describes current version.
