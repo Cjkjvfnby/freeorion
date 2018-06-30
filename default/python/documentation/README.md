@@ -1,3 +1,4 @@
+# Python Development
 This page will be devoted to matters relating to
 python development in general for the FreeOrion project.
 The next topics will be covered in separate documents:
