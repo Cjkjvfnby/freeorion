@@ -40,7 +40,7 @@ See [module docs](../AI/savegame_codec/__init__.py#L1).
 
 ## Preserving backwards compatibility for save games
 AI state now support versioning, see `AIstate.version` in
-[AIstate.py](../AI/AIstate.py).
+[AIstate.py](../AI/AIstate.py#L1).
 
 Adding or removing AIState attributes can
 break save compatibility. If you're not entirely sure
@@ -51,7 +51,7 @@ When adding attributes or changing their names,
 compatibility can be broken because some of the new code will try
 to use attributes that the saved object won't have.
 You should increment `AIstate.version` and update `convert_to_version`
-function in [AIstate.py](../AI/AIstate.py) to convert from older versions.
+function in [AIstate.py](../AI/AIstate.py#L1) to convert from older versions.
 
 Keep in mind, this method is just used for converting version;
 default values still need to be provided in `AIstate.__init__` to
