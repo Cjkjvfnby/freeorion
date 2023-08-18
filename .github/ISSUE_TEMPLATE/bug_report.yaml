@@ -1,0 +1,98 @@
+name: Report bug (under test)
+description: Report problems and bugs with FreeOrion.
+title: ""
+labels: ["category:bug"]
+body:
+  - type: markdown
+    id: environment
+    attributes:
+      value: |
+        Please fill in a a meaningful and concise title in the field above.
+        It helps us to classify the issue even  before reading the body and handling the
+        issue a bit better.
+        
+        Examples:
+          * Great: "Unable to select fleet in galaxy map"
+          * Good: "Unable to click fleet"
+          * Not really okay: "Issue with fleets"
+          * Horrible: "HELP!!!"
+        
+        You don't need to provide the information in section when they are not useful in
+        the context of this issue.  For example a crashing hosted server may not need
+        information about the graphic card, but maybe depend on the operating system you
+        use.  When in doubt provide all information you have available.
+  - type: input
+    id: version
+    attributes:
+      label: FreeOrion Version
+      description: You can find the FreeOrion version number in the lower right corner of the game main screen.
+      placeholder: v0.5
+    validations:
+      required: false
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: |
+        When stating the operating system also note the version of the operating system
+        so, `Windows 10 Home` instead of `Windows` or `Mac OSX Mountain Lion` instead of
+        `OSX`.
+      placeholder: Windows 10 Home
+    validations:
+      required: false
+  - type: input
+    id: gpu
+    attributes:
+      label: Graphic card used
+      description: Graphic card you are using.
+    validations:
+      required: false
+  - type: dropdown
+    id: fetched
+    attributes:
+      label: Fetched as
+      description: How did you get the game?
+      multiple: false
+      options:
+        - Binary release
+        - Weekly development build
+        - Compiled from source
+      default: 0
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        Add a meaningful description of the bug you encountered.
+        If a screenshot or image helps to describe the issue content feel free to create one.
+        Also attach the log files the game creates.  The log files The log files can be found on
+        * Windows: %APPDATA%\FreeOrion
+        * MacOSX: ~/Library/"Application Support"/FreeOrion
+        * Linux: ${XDG_DATA_HOME:-~/.local/share}/freeorion
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Result
+      description: |
+        When you enter an issue please add a description of what behaviour you would expect from the game instead of the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: |
+        If the error only manifests itself after doing a certain number of actions
+        please add a list of steps to reproduce the bug.  If the error only occurs in
+        a certain game state please be sure to add a save game to the issue.
+        
+        To upload save games please pack them into a Zip archive (*.zip) first.
+      placeholder: |
+        * First step.
+        * Second step.
+        * Another step.
+        * Issue occurs.
+    validations:
+      required: true
